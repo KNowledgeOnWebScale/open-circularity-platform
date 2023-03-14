@@ -1,0 +1,54 @@
+services:
+  
+  user1:
+    image: gddmulde/community-solid-server:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - CSS_CONFIG=/config/server.json
+      - CSS_ROOT_FILE_PATH=/pods
+      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_PORT=3000
+    volumes:
+      - type: bind
+        source: ./actors/user1/data
+        target: /data
+      - type: bind
+        source: ./actors/user1/config/css-users.json
+        target: /config/pods.json
+      - type: bind
+        source: ./common/css.json
+        target: /config/server.json
+      - type: bind
+        source: ./common/templatepod
+        target: /config/templatepod
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+
+  manufacturer1:
+    image: gddmulde/community-solid-server:latest
+    ports:
+      - "3001:3001"
+    environment:
+      - CSS_CONFIG=/config/server.json
+      - CSS_ROOT_FILE_PATH=/pods
+      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_PORT=3001
+    volumes:
+      - type: bind
+        source: ./actors/manufacturer1/data
+        target: /data
+      - type: bind
+        source: ./actors/manufacturer1/config/css-users.json
+        target: /config/pods.json
+      - type: bind
+        source: ./common/css.json
+        target: /config/server.json
+      - type: bind
+        source: ./common/templatepod
+        target: /config/templatepod
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+

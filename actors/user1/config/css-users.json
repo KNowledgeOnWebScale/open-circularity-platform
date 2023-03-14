@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "user1",
+    "email": "user1@example.com",
+    "password": "user123",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "http://localhost:3000/webid/user1#me",
+    "register": true
+  }
+]

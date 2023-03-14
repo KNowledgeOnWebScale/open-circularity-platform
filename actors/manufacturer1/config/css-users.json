@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "manufacturer1",
+    "email": "manufacturer1@example.com",
+    "password": "manufacturer123",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "http://localhost:3001/webid/manufacturer1#me",
+    "register": true
+  }
+]
