@@ -5,7 +5,7 @@
     "password": "manufacturer123",
     "createWebId": true,
     "createPod": true,
-    "webId": "http://localhost:3001/webid/manufacturer1#me",
+    "webId": "http://pod2/webid/manufacturer1#me",
     "register": true
   }
 ]

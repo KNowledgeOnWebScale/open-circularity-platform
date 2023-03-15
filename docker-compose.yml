@@ -1,18 +1,22 @@
 services:
-  
-  user1:
+  ##############################################################################
+  # PODS
+  ##############################################################################
+  pod1:
+    profiles: [ "pod"]
     image: gddmulde/community-solid-server:latest
     ports:
-      - "3000:3000"
+      - "3081:80"
     environment:
+      - CSS_BASE_URL=http://pod1
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_PORT=3000
+      - CSS_PORT=80
     volumes:
       - type: bind
         source: ./actors/user1/data
-        target: /data
+        target: /pods/user1/data
       - type: bind
         source: ./actors/user1/config/css-users.json
         target: /config/pods.json
@@ -26,19 +30,21 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
 
-  manufacturer1:
+  pod2:
+    profiles: [ "pod"]
     image: gddmulde/community-solid-server:latest
     ports:
-      - "3001:3001"
+      - "3082:80"
     environment:
+      - CSS_BASE_URL=http://pod2
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_PORT=3001
+      - CSS_PORT=80
     volumes:
       - type: bind
         source: ./actors/manufacturer1/data
-        target: /data
+        target: /pods/manufacturer1/data
       - type: bind
         source: ./actors/manufacturer1/config/css-users.json
         target: /config/pods.json
@@ -52,7 +58,37 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
 
+  ##############################################################################
+  # FRONTEND
+  ##############################################################################
   webclient:
+    profiles: [ "frontend"]
     image: comunica/jquery-widget.js:latest
     ports:
       - "4000:80"
+  
+  browser:
+    profiles: [ "frontend" ]
+    image: jlesage/firefox:latest
+    shm_size: '2g'
+    environment:
+      - DISPLAY_WIDTH=1024
+      - DISPLAY_HEIGHT=768
+    ports:
+      - 5800:5800
+    volumes:
+      - ./volumes/shared-certs:/shared-certs:ro
+      - ./volumes/browser-data:/config:rw
+
+  ##############################################################################
+  # PROXY
+  ##############################################################################
+  proxy:
+    profiles: [ "proxy"]
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - type: bind
+        source: ."/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf:ro
