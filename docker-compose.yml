@@ -52,3 +52,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
 
+  webclient:
+    image: comunica/jquery-widget.js:latest
+    ports:
+      - "4000:80"
