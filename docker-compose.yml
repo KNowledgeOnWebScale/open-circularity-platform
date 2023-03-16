@@ -2,26 +2,31 @@ services:
   ##############################################################################
   # PODS
   ##############################################################################
-  pod1:
+  css0:
     profiles: [ "pod"]
     image: gddmulde/community-solid-server:latest
     ports:
       - "3081:80"
+      - "4081:443"
+      
     environment:
-      - CSS_BASE_URL=http://pod1
+      - CSS_BASE_URL=https://css0
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_PORT=80
+      - CSS_PORT=443
+      - CSS_HTTPS_KEY=/my-cert/actor-private.key
+      - CSS_HTTPS_CERT=/my-cert/actor.crt
+      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/user1/data
-        target: /pods/user1/data
+        source: ./actors/user1
+        target: /pods/user1
       - type: bind
         source: ./actors/user1/config/css-users.json
         target: /config/pods.json
       - type: bind
-        source: ./common/css.json
+        source: ./common/css-01.json
         target: /config/server.json
       - type: bind
         source: ./common/templatepod
@@ -29,34 +34,10 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
+      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      - ./scripts/cert/outputs/css0:/my-cert:ro
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
 
-  pod2:
-    profiles: [ "pod"]
-    image: gddmulde/community-solid-server:latest
-    ports:
-      - "3082:80"
-    environment:
-      - CSS_BASE_URL=http://pod2
-      - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_PORT=80
-    volumes:
-      - type: bind
-        source: ./actors/manufacturer1/data
-        target: /pods/manufacturer1/data
-      - type: bind
-        source: ./actors/manufacturer1/config/css-users.json
-        target: /config/pods.json
-      - type: bind
-        source: ./common/css.json
-        target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
-      # these lines make the current computer's users and groups available in the container
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
 
   ##############################################################################
   # FRONTEND
@@ -65,7 +46,10 @@ services:
     profiles: [ "frontend"]
     image: comunica/jquery-widget.js:latest
     ports:
-      - "4000:80"
+      - 443:443
+    volumes:
+      - ./actors/webclient/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./scripts/cert/outputs/webclient:/etc/ssl/cert:ro
   
   browser:
     profiles: [ "frontend" ]
@@ -77,18 +61,5 @@ services:
     ports:
       - 5800:5800
     volumes:
-      - ./volumes/shared-certs:/shared-certs:ro
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./volumes/browser-data:/config:rw
-
-  ##############################################################################
-  # PROXY
-  ##############################################################################
-  proxy:
-    profiles: [ "proxy"]
-    image: nginx:latest
-    ports:
-      - "8080:80"
-    volumes:
-      - type: bind
-        source: ."/nginx/nginx.conf
-        target: /etc/nginx/nginx.conf:ro
