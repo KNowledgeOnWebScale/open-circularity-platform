@@ -7,7 +7,7 @@
     "css:config/app/variables/default.json",
     "css:config/http/handler/default.json",
     "css:config/http/middleware/websockets.json",
-    "css:config/http/server-factory/websockets.json",
+    "css:config/http/server-factory/https-websockets.json",
     "css:config/http/static/default.json",
     "css:config/identity/access/public.json",
     "css:config/identity/email/default.json",
