@@ -31,6 +31,9 @@ services:
       - type: bind
         source: ./common/templatepod
         target: /config/templatepod
+      - type: bind
+        source: ./volumes/css0/pods
+        target: /pods
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -46,7 +49,10 @@ services:
     profiles: [ "frontend"]
     image: comunica/jquery-widget.js:latest
     ports:
-      - "4000:80"
+      - 443:443
+    volumes:
+      - ./webclient/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./scripts/cert/outputs/webclient:/etc/ssl/cert:ro
   
   browser:
     profiles: [ "frontend" ]
