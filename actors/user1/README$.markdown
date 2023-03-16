@@ -3,5 +3,5 @@
 This pod has been registered to:
 
 ```
-http://pod1/user1/profile/card#me
+https://css0/user1/profile/card#me
 ```

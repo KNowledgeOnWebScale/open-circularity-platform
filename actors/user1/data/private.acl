@@ -2,5 +2,5 @@
 
 <#owner> a acl:Authorization;
     acl:accessTo <./private>;
-    acl:agent <http://localhost:3000/webid/user1#me>;
+    acl:agent <https://css0/user1/profile/card#me>;
     acl:mode acl:Read, acl:Write, acl:Control.

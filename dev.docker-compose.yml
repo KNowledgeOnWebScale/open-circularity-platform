@@ -20,13 +20,13 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/user1/data
-        target: /pods/user1/data
+        source: ./actors/user1
+        target: /pods/user1
       - type: bind
         source: ./actors/user1/config/css-users.json
         target: /config/pods.json
       - type: bind
-        source: ./common/css.json
+        source: ./common/css-01.json
         target: /config/server.json
       - type: bind
         source: ./common/templatepod

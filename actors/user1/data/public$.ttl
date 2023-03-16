@@ -1,1 +1,1 @@
-<#me> <http://ex.com#smth> "public" .
+<#publicResource> <http://ex.com#smth> "public" .

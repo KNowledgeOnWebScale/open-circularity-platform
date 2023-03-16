@@ -1,7 +1,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix o: <https://www.example/com/ont/> .
 
-<http://localhost:3000/webid/user1#me> 
+<#smth> 
   a o:User ;
   o:address "Silicon Valley 8"
 .
