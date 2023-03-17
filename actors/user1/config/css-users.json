@@ -5,7 +5,7 @@
     "password": "user123",
     "createWebId": true,
     "createPod": true,
-    "webId": "http://localhost:3000/webid/user1#me",
+    "webId": "https://css0/user1/profile#me",
     "register": true
   }
 ]

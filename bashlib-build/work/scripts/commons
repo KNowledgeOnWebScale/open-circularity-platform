@@ -1,0 +1,41 @@
+# to be sourced from scripts needing it
+
+CSS_INDEX_MAX=1
+# --- arrays of constants having values for each CSS containing a pod
+#     (make sure all arrays have the same length)
+
+INDEX_PER_CSS_LINDNER_GROUP=0
+INDEX_PER_CSS_BUILDING_OWNER=1
+INDEX_PER_CSS_BUILDING_OWNER_2=2
+INDEX_PER_CSS_RAGN_SELLS=3
+
+
+PER_CSS_URL=()
+PER_CSS_URL+=("https://css1")
+PER_CSS_URL+=("https://css2")
+PER_CSS_URL+=("https://css3")
+PER_CSS_URL+=("https://css4")
+
+PER_CSS_POD_OWNER_TOKEN_NAME=()
+PER_CSS_POD_OWNER_TOKEN_NAME+=("Lindner Group on css1")
+PER_CSS_POD_OWNER_TOKEN_NAME+=("Building Owner on css2")
+PER_CSS_POD_OWNER_TOKEN_NAME+=("Building Owner 2 on css3")
+PER_CSS_POD_OWNER_TOKEN_NAME+=("Ragn-Sells on css4")
+
+PER_CSS_POD_OWNER_WEBID=()
+PER_CSS_POD_OWNER_WEBID+=("https://css0/webid/lindner-group#me")
+PER_CSS_POD_OWNER_WEBID+=("https://css0/webid/building-owner#me")
+PER_CSS_POD_OWNER_WEBID+=("https://css0/webid/building-owner-2#me")
+PER_CSS_POD_OWNER_WEBID+=("https://css0/webid/ragn-sells#me")
+
+PER_CSS_POD_OWNER_EMAIL=()
+PER_CSS_POD_OWNER_EMAIL+=("info@lindner-group.com")
+PER_CSS_POD_OWNER_EMAIL+=("info@building-owner.com")
+PER_CSS_POD_OWNER_EMAIL+=("bob@realestate.com")
+PER_CSS_POD_OWNER_EMAIL+=("mikael@ragn-sells.se")
+
+PER_CSS_POD_OWNER_PWD=()
+PER_CSS_POD_OWNER_PWD+=("Lindner_123")
+PER_CSS_POD_OWNER_PWD+=("Building_123")
+PER_CSS_POD_OWNER_PWD+=("Bob_123")
+PER_CSS_POD_OWNER_PWD+=("Mikael_123")

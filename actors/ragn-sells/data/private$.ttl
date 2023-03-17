@@ -2,6 +2,6 @@
 @prefix o: <https://www.example/com/ont/> .
 
 <#smth> 
-  a o:User ;
-  o:address "Silicon Valley 8"
+  a o:PrivateData ;
+  o:address "Private data about Ragn-Sells"
 .

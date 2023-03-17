@@ -1,0 +1,1 @@
+<#publicResource> <http://ex.com#smth> "public data about building owner" .
