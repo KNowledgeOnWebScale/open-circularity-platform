@@ -49,3 +49,5 @@ open up a tab within the Firefox browser and navigate to
 This Comunica webclient allows you to query both
 public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
+The following screenshot demonstrates queries the `foaf:Agent`s over each actor's Solid pod.
+![Query: FOAF Agents](doc/img/query-agents.png)
