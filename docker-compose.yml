@@ -58,6 +58,7 @@ services:
     environment:
       - DISPLAY_WIDTH=1024
       - DISPLAY_HEIGHT=768
+      - FF_OPEN_URL=https://webclient
     ports:
       - 5800:5800
     volumes:
