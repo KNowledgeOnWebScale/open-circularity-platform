@@ -3,7 +3,7 @@ services:
   # PODS
   ##############################################################################
   css0:
-    profiles: [ "pod"]
+    profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
     ports:
       - "3081:80"
@@ -37,7 +37,12 @@ services:
       # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
       - ./scripts/cert/outputs/css0:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
-
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css0 --spider; then touch healthy.flag; else false; fi"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   ##############################################################################
   # FRONTEND
@@ -64,3 +69,22 @@ services:
     volumes:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./volumes/browser-data:/config:rw
+  
+  ##############################################################################
+  # 
+  ##############################################################################
+  bashlib:
+    profiles: [ "backend" ]
+    build: ./bashlib-build
+    environment:
+      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
+    volumes:
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
+      - ./bashlib-build/work/scripts:/work/scripts:ro
+      - ./data-out:/data:ro
+    depends_on:
+      css0:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
