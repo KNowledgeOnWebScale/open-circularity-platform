@@ -8,6 +8,15 @@
 
 ## Development
 
+🧹 Clean start
+
+```bash
+./scripts/docker-reset.sh
+./setup_browser.sh
+```
+
+🚀 Fire up the services !
+
 ```bash
 docker compose --profile pod --profile frontend up
 ```
