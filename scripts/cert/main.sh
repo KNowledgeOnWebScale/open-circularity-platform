@@ -28,6 +28,7 @@ CA_SUBJ="/C=BE/ST=Oost-Vlaanderen/L=Gent/O=imec/OU=KNoWS/CN=ca"
 DOMAINS=(
   css0
   css1
+  css2
   webclient
 )
 

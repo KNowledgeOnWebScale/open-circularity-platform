@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "building-owner",
+    "email": "info@building-owner.com",
+    "password": "building123",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "https://css2/building-owner/profile#me",
+    "register": true
+  }
+]
