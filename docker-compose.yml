@@ -233,6 +233,7 @@ services:
     volumes:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./volumes/browser-data:/config:rw
+      - ./scripts/cert/outputs/certificate-authority:/config/Desktop:rw
   
   ##############################################################################
   # 
