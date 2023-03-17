@@ -29,6 +29,8 @@ DOMAINS=(
   css0
   css1
   css2
+  css3
+  css4
   webclient
 )
 
