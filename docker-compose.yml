@@ -167,6 +167,47 @@ services:
       retries: 3
       start_period: 60s
 
+  css4:
+    profiles: [ "pod", "backend" ]
+    image: gddmulde/community-solid-server:latest
+    ports:
+      - "3085:80"
+      - "4085:443" 
+    environment:
+      - CSS_BASE_URL=https://css4
+      - CSS_CONFIG=/config/server.json
+      - CSS_ROOT_FILE_PATH=/pods
+      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_PORT=443
+      - CSS_HTTPS_KEY=/my-cert/actor-private.key
+      - CSS_HTTPS_CERT=/my-cert/actor.crt
+      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
+    volumes:
+      - type: bind
+        source: ./actors/ragn-sells
+        target: /pods/ragn-sells
+      - type: bind
+        source: ./actors/ragn-sells/config/css-users.json
+        target: /config/pods.json
+      - type: bind
+        source: ./common/css-01.json
+        target: /config/server.json
+      - type: bind
+        source: ./common/templatepod
+        target: /config/templatepod
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      - ./scripts/cert/outputs/css4:/my-cert:ro
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css4 --spider; then touch healthy.flag; else false; fi"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s    
+
   ##############################################################################
   # FRONTEND
   ##############################################################################
