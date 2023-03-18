@@ -232,7 +232,7 @@ services:
     ports:
       - 5800:5800
     volumes:
-      - ./scripts/cert/outputs/certificate-authority:/config/certs:ro
+      - ./scripts/cert/outputs/certificate-authority:/config/certs:rw
   
   ##############################################################################
   # 
