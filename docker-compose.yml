@@ -228,12 +228,11 @@ services:
       - DISPLAY_WIDTH=1024
       - DISPLAY_HEIGHT=768
       - FF_OPEN_URL=https://webclient
+      - SECURE_CONNECTION=1
     ports:
       - 5800:5800
     volumes:
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
-      - ./volumes/browser-data:/config:rw
-      - ./scripts/cert/outputs/certificate-authority:/config/Desktop:rw
+      - ./scripts/cert/outputs/certificate-authority:/config/certs:ro
   
   ##############################################################################
   # 
@@ -244,7 +243,7 @@ services:
     environment:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:rw
       - ./bashlib-build/work/scripts:/work/scripts:ro
       - ./data-out:/data:ro
     depends_on:
