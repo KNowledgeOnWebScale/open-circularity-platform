@@ -1,0 +1,18 @@
+{
+  "id": "fsml88",
+  "address": "88 Fairview Street Mount Laurel, NJ 08054",
+
+  "building-storey": [
+    {
+      "type": "floor",
+      "name": "l0",
+      "tiles": [
+        {"id": "0x03", "x": 0, "y": 0},
+        {"id": "0x04", "x": 0, "y": 1},
+        {"id": "0x05", "x": 1, "y": 0}
+      ]
+    }
+    
+  ]
+}
+

@@ -1,0 +1,29 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/ont/
+  d: https://www.example/com/data/
+
+sources:
+  products-source:
+    access: ../in/lindner-group-products.csv
+    referenceFormulation: csv
+mappings:
+  product:
+    source:
+    - products-source
+    s: d:product-$(ProductID)
+    po:
+    - p: a
+      o:
+        value: o:Product
+        type: iri
+    - p: o:prod-date
+      o:
+        value: $(ProductionDate)
+    - p: o:has-bom
+      o:
+        value: d:bom-$(BoMID)
+        type: iri

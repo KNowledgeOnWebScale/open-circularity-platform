@@ -1,0 +1,42 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/ont/
+  d: https://www.example/com/data/
+
+sources:
+  rg-services:
+    access: ../in/ragn-sells.xml
+    referenceFormulation: xpath
+    iterator: /root/services/service
+    
+  rg-wastestreams:
+    access: ../in/ragn-sells.xml
+    referenceFormulation: xpath
+    iterator: /root/services/service/waste-streams/waste-stream
+  
+ 
+mappings:
+
+  service:
+    source: rg-services
+    s: d:Service-$(@name)
+    po:
+    - p: a
+      o: o:Service
+    - p: o:accepts
+      o:
+        value: d:WasteStream-$(waste-streams/waste-stream/@name)
+        type: iri
+    
+  waste-stream:
+    source: rg-wastestreams
+    s: d:WasteStream-$(@name)
+    po:
+    - p: a
+      o: o:WasteStream
+    - p: o:WasteStreamDescription
+      o: $(description) # TODO: trim value (currently the value includes a lot of new-lines and tabs)
+    
