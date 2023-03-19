@@ -1,0 +1,42 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/ont/
+  d: https://www.example/com/data/
+
+sources:
+  boms-source:
+    access: ../in/lindner-group-boms.csv
+    referenceFormulation: csv
+mappings:
+  bom:
+    source:
+    - boms-source
+    s: d:bom-$(BoMID)
+    po:
+    - p: a
+      o:
+        value: o:Bom
+        type: iri
+    - p: o:has-bom-material-assoc
+      o:
+        value: d:bom-$(BoMID)-material-$(MaterialID)
+        type: iri
+  bom-material-assoc:
+    source:
+      - boms-source
+    s: d:bom-$(BoMID)-material-$(MaterialID)
+    po:
+      - p: a
+        o:
+          value: o:BomMaterialAssoc
+          type: iri
+      - p: o:has-material
+        o:
+          value: d:material-$(MaterialID)
+          type: iri
+      - p: o:quantity
+        o:
+          value: $(quantity)

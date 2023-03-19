@@ -1,0 +1,26 @@
+{
+  "name": "architecture",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@gitlab.ilabt.imec.be:KNoWS/projects/onto-deside/architecture.git",
+  "author": "Gertjan De Mulder <gertjan.demulder@ugent.be>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dt:mapping:setup": "node node_modules/@rmlio/rmlmapper-java-wrapper/lib/download-latest-rmlmapper.js",
+    "dt:mapping:parse": "node ./scripts/rml/parseMappings.js",
+    "dt:mapping:parse:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:parse",
+    "dt:mapping:execute": "node ./scripts/rml/executeMappings.js",
+    "dt:mapping:execute:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:execute",
+    "dt:mapping:pipeline": "yarn run dt:mapping:parse && yarn run dt:mapping:execute",
+    "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "dependencies": {
+    "@rmlio/rmlmapper-java-wrapper": "^2.0.3",
+    "@rmlio/yarrrml-parser": "^1.4.0",
+    "fs-extra": "^11.1.0"
+  }
+}

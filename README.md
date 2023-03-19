@@ -1,22 +1,44 @@
 <!-- omit in toc -->
 # Architecture
 
+- [Setup](#setup)
+  - [Data](#data)
+  - [Security](#security)
+    - [Self-Signed Certificates](#self-signed-certificates)
+    - [Firefox browser](#firefox-browser)
 - [Usage](#usage)
-  - [Setup](#setup)
   - [Query](#query)
 
-## Usage
+## Setup
 
-### Setup
-
-🚀 Fire up the services !
+### Data
 
 ```bash
+yarn install
+yarn run dt:mapping:setup
+yarn run dt:mapping:pipeline
+```
+
+### Security
+
+To enable HTTPS traffic between every actor within the Docker network,
+we generate a public/private keypair and a certificate that is signed by
+a local Certificate Authority (CA).
+
+#### Self-Signed Certificates
+
+🚀 Generate self-signed certificates and fire up the services !
+
+```bash
+cd open-circularity-platform/scripts/cert
+./main.sh # generate certificates
+cd ../../
 docker compose --profile pod --profile frontend up
 ```
 
-Initially,
-the certificate of our Certificate Authority (CA) must be added to the Firefox
+#### Firefox browser
+
+The certificate of our Certificate Authority (CA) must be added to the Firefox
 browser.
 To do this,
 open up a browser and navigate to the Firefox container at <http:localhost5800>.
@@ -38,6 +60,8 @@ open up a browser and navigate to the Firefox container at <http:localhost5800>.
 
 At this point,
 the Solid network can be browsed securely over HTTPS.
+
+## Usage
 
 ### Query
 

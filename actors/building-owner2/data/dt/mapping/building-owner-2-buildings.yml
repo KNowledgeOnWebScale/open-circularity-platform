@@ -1,0 +1,63 @@
+# TODOs
+# - [ ] link building to floor
+# - [ ] link floor to tile
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/ont/
+  d: https://www.example/com/data/
+
+sources:
+  buildings-source:
+    access: ../in/building-owner-2.json
+    referenceFormulation: jsonpath
+    iterator: $
+  floors-source:
+    access: ../in/building-owner-2.json
+    referenceFormulation: jsonpath
+    iterator: $.building-storey.[*]
+  tiles-source:
+    access: ../in/building-owner-2.json
+    referenceFormulation: jsonpath
+    iterator: $.building-storey.[*].tiles.[*]
+ 
+mappings:
+  building:
+    source:
+    - buildings-source
+    s: d:building-$(id)
+    po:
+    - p: a
+      o:
+        value: o:Building
+        type: iri
+    - p: o:address
+      o: $(address)
+    - p: o:has-floor-tile
+      o: d:tile-$(building-storey.[*].tiles[*].id)~iri
+  floors:
+    source:
+    - floors-source
+    s: d:floor-$(name)
+    po:
+    - p: a
+      o:
+        value: o:Floor
+        type: iri
+    - p: o:has-floor-tile
+      o: d:tile-$(tiles[*].id)~iri
+  tiles:
+    source:
+    - tiles-source
+    s: d:tile-$(id)
+    po:
+    - p: a
+      o:
+        value: o:Tile
+        type: iri
+    - p: d:coordinate-x
+      o: $(x)
+    - p: d:coordinate-y
+      o: $(y)
