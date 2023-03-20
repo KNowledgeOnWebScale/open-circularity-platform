@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const helpers = require('./helpers.js');
-const { actors, dirActors } = require('./config.js')
+const { actors, dirActors } = require('../config.js')
 
 /**
  * Iterate over actor-directories & execute their RML Mappings.

@@ -1,4 +1,4 @@
-const config = require('./config.js')
+const rmlConfig = require('./config.js')
 const path = require('path');
 const fs = require('fs');
 const fse = require("fs-extra");
@@ -33,7 +33,7 @@ module.exports.writeFile = (data, fpath) => {
 }
 
 module.exports.executeRMLMapping = async (fpathMapping, fpathOutput) => {
-  const { rmlmapperPath, tempFolderPath, serialization } = config.RMLMapper;
+  const { rmlmapperPath, tempFolderPath, serialization } = rmlConfig.RMLMapper;
   fse.removeSync(fpathOutput);
   const cmd = `java -jar ${rmlmapperPath} -m ${fpathMapping} -o ${fpathOutput} -s ${serialization}`;
   const cwd = path.dirname(fpathMapping);

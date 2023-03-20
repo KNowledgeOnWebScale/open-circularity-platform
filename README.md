@@ -9,6 +9,8 @@
 - [Usage](#usage)
   - [Query](#query)
 
+![Open Circularity Platform](doc/img/ocp.png)
+
 ## Setup
 
 ### Data

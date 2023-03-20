@@ -245,10 +245,15 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
-      - ./bashlib-build/work/scripts:/work/scripts:ro
-      - ./data-out:/data:ro
+      - ./scripts/ac:/scripts:rw
     depends_on:
-      css0:
+      css1:
+        condition: service_healthy
+      css2:
+        condition: service_healthy
+      css3:
+        condition: service_healthy
+      css4:
         condition: service_healthy
     stdin_open: true
     tty: true
