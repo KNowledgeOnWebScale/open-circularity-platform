@@ -35,7 +35,7 @@ a local Certificate Authority (CA).
 cd open-circularity-platform/scripts/cert
 ./main.sh # generate certificates
 cd ../../
-docker compose --profile pod --profile frontend up
+docker compose --profile backend --profile frontend up
 ```
 
 #### Firefox browser
