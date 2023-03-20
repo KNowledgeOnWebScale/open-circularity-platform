@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const helpers = require('./helpers.js');
-const { actors, dirActors } = require('./config.js')
+const { actors, dirActors } = require('../config.js')
 
 /**
  * Iterate over actor-directories & parse their YARRRML mappings to RML (Turtle).
@@ -13,7 +13,7 @@ actors
     const fpathsYARRRMLMappings =
       fs.readdirSync(dirMapping)
         // Only keep files with a YAML extension
-        .filter( x => x.endsWith('.yml') || x.endsWith('.yaml'))
+        .filter( x => x.endsWith('.yml') || x.endsWith('.yaml'))
         // Resolve each path
         .map(x => path.resolve(dirMapping, x))
 
