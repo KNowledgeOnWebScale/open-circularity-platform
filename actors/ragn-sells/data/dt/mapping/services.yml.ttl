@@ -1,12 +1,12 @@
 <http://mapping.example.com/rules_000> a <http://rdfs.org/ns/void#Dataset>.
 <http://mapping.example.com/source_000> a <http://semweb.mmlab.be/ns/rml#LogicalSource>;
     <http://www.w3.org/2000/01/rdf-schema#label> "rg-services";
-    <http://semweb.mmlab.be/ns/rml#source> "../in/ragn-sells.xml";
+    <http://semweb.mmlab.be/ns/rml#source> "../in/services.xml";
     <http://semweb.mmlab.be/ns/rml#iterator> "/root/services/service";
     <http://semweb.mmlab.be/ns/rml#referenceFormulation> <http://semweb.mmlab.be/ns/ql#XPath>.
 <http://mapping.example.com/source_001> a <http://semweb.mmlab.be/ns/rml#LogicalSource>;
     <http://www.w3.org/2000/01/rdf-schema#label> "rg-wastestreams";
-    <http://semweb.mmlab.be/ns/rml#source> "../in/ragn-sells.xml";
+    <http://semweb.mmlab.be/ns/rml#source> "../in/services.xml";
     <http://semweb.mmlab.be/ns/rml#iterator> "/root/services/service/waste-streams/waste-stream";
     <http://semweb.mmlab.be/ns/rml#referenceFormulation> <http://semweb.mmlab.be/ns/ql#XPath>.
 <http://mapping.example.com/rules_000> <http://rdfs.org/ns/void#exampleResource> <http://mapping.example.com/map_service_000>.
