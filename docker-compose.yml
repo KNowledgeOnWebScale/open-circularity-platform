@@ -218,6 +218,7 @@ services:
       - 443:443
     volumes:
       - ./actors/webclient/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./scripts/comunica/outputs/queries.json:/usr/share/nginx/html/queries.json
       - ./scripts/cert/outputs/webclient:/etc/ssl/cert:ro
   
   browser:
