@@ -33,14 +33,18 @@ sld perms edit root:$obj p=r
 obj=data/dt/out/boms.ttl
 agent=https://css4/ragn-sells/profile/card#me
 perms=r
-echo "Set permissions of
-  💾 $obj
-  to
-  📝 $perms
-  for
-  👨‍💻 $agent"
+echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
 sld perms edit root:$obj $agent=r
 
+# Admin: read access to all files in dt/out directory
+agent=https://css0/admin/profile/card#me
+perms=r
+for uri in $(sld ls root:data/dt/out/ --full);
+do
+  echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
+  sld perms edit $uri $agent=r
+done;
+ 
 ################################################################################
 # Building Owner
 ################################################################################
@@ -69,13 +73,17 @@ sld auth set $webid
 obj=data/dt/out/buildings.ttl
 agent=https://css1/lindner-group/profile/card#me
 perms=r
-echo "Set permissions of
-  💾 $obj
-  to
-  📝 $perms
-  for
-  👨‍💻 $agent"
+echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
 sld perms edit root:$obj $agent=r
+
+# Admin: read access to all files in dt/out directory
+agent=https://css0/admin/profile/card#me
+perms=r
+for uri in $(sld ls root:data/dt/out/ --full);
+do
+  echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
+  sld perms edit $uri $agent=r
+done;
 
 ################################################################################
 # Building Owner 2
@@ -105,13 +113,17 @@ sld auth set $webid
 obj=data/dt/out/buildings.ttl
 agent=https://css1/lindner-group/profile/card#me
 perms=r
-echo "Set permissions of
-  💾 $obj
-  to
-  📝 $perms
-  for
-  👨‍💻 $agent"
+echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
 sld perms edit root:$obj $agent=r
+
+# Admin: read access to all files in dt/out directory
+agent=https://css0/admin/profile/card#me
+perms=r
+for uri in $(sld ls root:data/dt/out/ --full);
+do
+  echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
+  sld perms edit $uri $agent=r
+done;
 
 ################################################################################
 # Ragn-Sells
@@ -141,3 +153,12 @@ sld auth set $webid
 obj=data/dt/out/ragn-sells-services.ttl
 echo "Enable public read access for $obj"
 sld perms edit root:$obj p=r
+
+# Admin: read access to all files in dt/out directory
+agent=https://css0/admin/profile/card#me
+perms=r
+for uri in $(sld ls root:data/dt/out/ --full);
+do
+  echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
+  sld perms edit $uri $agent=r
+done;

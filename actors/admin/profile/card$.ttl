@@ -5,4 +5,4 @@
 
 <#me> a foaf:Agent;
     solid:oidcIssuer <https://css0/>;
-    pim:storage <https://css0/user1/>.
+    pim:storage <https://css0/admin/>.

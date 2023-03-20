@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "admin",
+    "email": "admin@ocp.com",
+    "password": "admin123",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "https://css0/admin/profile#me",
+    "register": true
+  }
+]
