@@ -13,12 +13,14 @@
     "dt:mapping:execute": "node ./scripts/rml/executeMappings.js",
     "dt:mapping:execute:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:execute",
     "dt:mapping:pipeline": "yarn run dt:mapping:parse && yarn run dt:mapping:execute",
-    "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all"
+    "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all",
+    "comunica:queries:setup": "node ./scripts/comunica/setup.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
   },
   "dependencies": {
+    "@comunica/web-client-generator": "^1.7.1",
     "@rmlio/rmlmapper-java-wrapper": "^2.0.3",
     "@rmlio/yarrrml-parser": "^1.4.0",
     "fs-extra": "^11.1.0"

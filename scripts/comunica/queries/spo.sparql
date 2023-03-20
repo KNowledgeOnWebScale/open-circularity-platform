@@ -1,0 +1,7 @@
+# Query all triples!
+# Datasources: https://css1/lindner-group/data/dt/out/products.ttl https://css1/lindner-group/data/dt/out/boms.ttl https://css1/lindner-group/data/dt/out/materials.ttl https://css2/building-owner/data/dt/out/buildings.ttl https://css3/building-owner2/data/dt/out/buildings.ttl https://css4/ragn-sells/data/dt/out/services.ttl
+SELECT
+  ?s ?p ?o
+WHERE {
+  ?s ?p ?o .
+}

@@ -8,12 +8,12 @@ prefixes:
 
 sources:
   rg-services:
-    access: ../in/ragn-sells.xml
+    access: ../in/services.xml
     referenceFormulation: xpath
     iterator: /root/services/service
     
   rg-wastestreams:
-    access: ../in/ragn-sells.xml
+    access: ../in/services.xml
     referenceFormulation: xpath
     iterator: /root/services/service/waste-streams/waste-stream
   
