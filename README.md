@@ -8,6 +8,7 @@
     - [Firefox browser](#firefox-browser)
 - [Usage](#usage)
   - [Query](#query)
+- [Demonstration Scenario](#demonstration-scenario)
 
 ![Open Circularity Platform](doc/img/ocp.png)
 
@@ -15,7 +16,24 @@
 
 This repository contains the implementation
 of an Open Circularity Platform as part of the Onto-DESIDE Horizon Europe project.</br>
-We demonstrate the Open Circularity Platform through an [example use case within Construction domain](./doc/construction-use-case.md).
+We demonstrate the Open Circularity Platform through an [example use case within the Construction domain](./doc/construction-use-case.md).
+
+The setup of the Open Circularity Platform is made reproducible by relying on [Docker containers](https://www.docker.com/resources/what-container/) and
+[Docker Compose](https://docs.docker.com/compose/) for setting up the network locally
+that represents the Solid-based decentralized data sharing platform.
+
+Within the network, we have set up:
+
+- multiple data providers each publishing their data behind a secure access layer using Solid pods,
+- a webclient providing a Web UI to execute queries on these Solid pods, and
+- a Firefox container providing a means to browse the Solid-based data-sharing platform.
+ 
+During the setup-flow, an administrative user generates and loads all data structured using the Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) into a Solid pod.
+
+During the usage-flow, an end user browses to the emulated Firefox browser (<http://localhost:5800/>)
+which provides access to the Solid-based decentralised data-sharing platform.
+Within the emulated browser, the user navigates to the Comunica Webclient (<http://webclient>)
+which provides a set of predefined queries the user can execute over the Solid pods. 
 
 ## Setup
 
@@ -89,3 +107,15 @@ public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
 The following screenshot demonstrates queries the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
+
+## Demonstration Scenario
+
+We demonstrate how this Open Circularity Platform copes with multiple existing data sources in different serializations,
+and with different actors that have different authorization levels.
+
+> 📽️ [Demo][screencast-d4_2]
+
+
+- [ ] Fill in textual description of the Demonstration Scenario
+
+[screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
