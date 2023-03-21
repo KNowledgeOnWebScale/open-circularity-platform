@@ -22,11 +22,16 @@ We demonstrate the Open Circularity Platform through an [example use case within
 ```bash
 # Install dependencies
 yarn install
-# Download RML Mapper JAR & setup file structure
-yarn run dt:setup
-# Generate RDF
+# Setup scripts
+# - Download RML Mapper JAR
+# - Setup file structure
+# - Compile comunica queries
+yarn run setup
+# Parse YARRRML Mappings to RML & Execute RML Mappings
 yarn run dt:mapping:pipeline
 ```
+
+Now it is time to create the  [Self-Signed Certificates](#self-signed-certificates) and start the Docker infrastructure!
 
 ### Security
 
