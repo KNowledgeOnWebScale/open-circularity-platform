@@ -2,7 +2,6 @@
 # Architecture
 
 - [Setup](#setup)
-  - [Data](#data)
   - [Security](#security)
     - [Self-Signed Certificates](#self-signed-certificates)
     - [Firefox browser](#firefox-browser)
@@ -13,11 +12,12 @@
 
 ## Setup
 
-### Data
-
 ```bash
+# Install dependencies
 yarn install
-yarn run dt:mapping:setup
+# Download RML Mapper JAR & setup file structure
+yarn run dt:setup
+# Generate RDF
 yarn run dt:mapping:pipeline
 ```
 
@@ -32,7 +32,7 @@ a local Certificate Authority (CA).
 🚀 Generate self-signed certificates and fire up the services !
 
 ```bash
-cd open-circularity-platform/scripts/cert
+cd ./scripts/cert
 ./main.sh # generate certificates
 cd ../../
 docker compose --profile backend --profile frontend up
@@ -67,7 +67,7 @@ the Solid network can be browsed securely over HTTPS.
 
 ### Query
 
-Browse the network through the Firefox container at <http:localhost5800>.
+Browse the network through the Firefox container at <http://localhost5800>.
 
 To query the Solid pods,
 open up a tab within the Firefox browser and navigate to

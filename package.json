@@ -7,7 +7,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    
+    "dt:fs:setup": "node ./scripts/fs/setup.js",
     "dt:mapping:setup": "node node_modules/@rmlio/rmlmapper-java-wrapper/lib/download-latest-rmlmapper.js",
+    "dt:setup": "yarn run dt:fs:setup && yarn run dt:mapping:setup",
     "dt:mapping:parse": "node ./scripts/rml/parseMappings.js",
     "dt:mapping:parse:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:parse",
     "dt:mapping:execute": "node ./scripts/rml/executeMappings.js",

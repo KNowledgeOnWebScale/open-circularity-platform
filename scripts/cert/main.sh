@@ -88,4 +88,8 @@ done;
 mkdir -p $DIR_OUTPUT/certificate-authority
 mv $DIR_OUTPUT/ca* $DIR_OUTPUT/certificate-authority
 
+# 7. UPDATE PERMISSIONS
+# Note: needed to fix permission denied errors in Docker containers
+chmod 777 $DIR_OUTPUT/*/*
+
 

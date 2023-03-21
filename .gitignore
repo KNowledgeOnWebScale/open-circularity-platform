@@ -1,3 +1,4 @@
 /volumes
 *.jar
 node_modules
+actors/*/data/dt/out/
