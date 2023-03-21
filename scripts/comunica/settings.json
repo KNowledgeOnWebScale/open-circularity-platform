@@ -42,6 +42,22 @@
     {
       "name": "Ragn-Sells services",
       "url": "https://css4/ragn-sells/data/dt/out/services.ttl"
+    },
+    {
+      "name": "WebID Profile Document: Lindner Group",
+      "url": "https://css1/lindner-group/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Building Owner",
+      "url": "https://css2/building-owner/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Building Owner 2",
+      "url": "https://css3/building-owner2/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Ragn-Sells",
+      "url": "https://css4/ragn-sells/profile/card#me"
     }
   ],
   "prefixes": {

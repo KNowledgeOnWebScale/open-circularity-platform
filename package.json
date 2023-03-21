@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    
     "dt:fs:setup": "node ./scripts/fs/setup.js",
     "dt:mapping:setup": "node node_modules/@rmlio/rmlmapper-java-wrapper/lib/download-latest-rmlmapper.js",
     "dt:setup": "yarn run dt:fs:setup && yarn run dt:mapping:setup",
@@ -17,7 +16,8 @@
     "dt:mapping:execute:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:execute",
     "dt:mapping:pipeline": "yarn run dt:mapping:parse && yarn run dt:mapping:execute",
     "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all",
-    "comunica:queries:setup": "node ./scripts/comunica/setup.js"
+    "comunica:queries:setup": "node ./scripts/comunica/setup.js",
+    "setup": "yarn run dt:setup && yarn run comunica:queries:setup"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
