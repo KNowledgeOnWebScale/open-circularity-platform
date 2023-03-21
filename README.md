@@ -114,8 +114,33 @@ We demonstrate how this Open Circularity Platform copes with multiple existing d
 and with different actors that have different authorization levels.
 
 > 📽️ [Demo][screencast-d4_2]
+ 
+When an actor is not yet authenticated,
+only access to publicly shared data can be read.
+For example, the actors within the Solid network.
+[📽️ [Not authenticated] Query actors within the Solid network](https://youtube.com/clip/UgkxKL2O-5JJ3dZ1f01BJPbMRP1egqnx5Sjb)
 
+A Manufacturer can *READ* User/Customer data.</br>
+When authenticating as a Manufacturer,
+like Lindner Group,
+one can query the where its tiles are located.
 
-- [ ] Fill in textual description of the Demonstration Scenario
+- [Authenticating as Lindner Group](https://youtube.com/clip/UgkxsSfr3KDmiqoZUs5xoSrSxWW6IZotsKIw)
+- [[Authenticated as Lindner Group] Query: What are the tiles of Building B0?](https://youtube.com/clip/UgkxC3Mawc5yP-2ZTL8gwjs2uhVueoC6kvKR)
+- [[Authenticated as Lindner Group] Query: What are the tiles of the building at a specific address?](https://youtube.com/clip/Ugkx4wWg-6mgz45aUczUXiFEeOyNmP43OXHP)
+- [[Authenticated as Lindner Group] Query 1: What are Linder Group's Products? Query 2: What are the product details?](https://youtube.com/clip/UgkxtDBtWkJkZbwGElBf0hrZiOcF1drFmxQa)
+
+A User can *READ* the *Products* of a *Manufacturer*.</br>
+From the perspective of a Building Owner, only product data is readable.
+However, it is not possible for a *User* to read *Product Details*.</br>
+More specifically, the *Building Owner* is not able to query the product details.
+
+- [Authenticating as Building Owner](https://youtube.com/clip/UgkxndBmpEvsJerW3oTNNQSWKLnlcuQZjZRK)
+- [[Authenticated as Building Owner] Query Lindner Group's products](https://youtube.com/clip/UgkxEfq0IwN144XwS-KZ1B9gkdCAKUQk4_ZS)
+- [[Authenticated as Building Owner] Query Lindner Group's product details: Not Authorized!](https://youtube.com/clip/UgkxlDoAHFJQVidm9s1WWCyHUho1P8_Q7iXH)
+
+The *Admin* actor can *READ* every actor’s generated data.
+
+- [[Authenticated as Admin] Count & Query all triples!](https://youtube.com/clip/UgkxXGvlJCiqNT1zaLBESrmgRErY0puAlrw7)
 
 [screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
