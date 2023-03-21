@@ -31,8 +31,6 @@ secondary raw materials.
 
 ![Construction use case](img/construction-use-case.png)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xMYpdIqsxZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Implementation
 
 We map the source data to Linked Data using the [YARRRML parser][yarrrml-parser]
@@ -86,4 +84,4 @@ Applied to the construction example use case, this comes down to
 [bashlib]: https://github.com/SolidLabResearch/Bashlib
 [rmlmapper]: https://github.com/RMLio/rmlmapper-java
 [yarrrml-parser]: https://github.com/RMLio/yarrrml-parser/tree/development/lib
-[screencast-d4_2]: https://youtu.be/xMYpdIqsxZo
+[screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
