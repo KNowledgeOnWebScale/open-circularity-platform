@@ -7,6 +7,8 @@ TODOs
 
 ---
 
+> 📽️ [Demo][screencast-d4_2]
+
 The use case is as follows:
 
 A building owner owns some buildings.
@@ -17,6 +19,8 @@ and wants to decide on what to do with the floor tiles, based on economic and
 environmental costs.
 
 ![Construction use case](img/construction-use-case.png)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xMYpdIqsxZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Implementation
 
@@ -71,3 +75,4 @@ Applied to the construction example use case, this comes down to
 [bashlib]: https://github.com/SolidLabResearch/Bashlib
 [rmlmapper]: https://github.com/RMLio/rmlmapper-java
 [yarrrml-parser]: https://github.com/RMLio/yarrrml-parser/tree/development/lib
+[screencast-d4_2]: https://youtu.be/xMYpdIqsxZo
