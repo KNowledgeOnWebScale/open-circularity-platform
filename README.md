@@ -50,7 +50,7 @@ docker compose --profile backend --profile frontend up
 The certificate of our Certificate Authority (CA) must be added to the Firefox
 browser.
 To do this,
-open up a browser and navigate to the Firefox container at <http:localhost5800>.
+open up a browser and navigate to the Firefox container at <http://localhost:5800>.
 
 1. Open up the Firefox Certificate Manager as follows:
    1. Click the the "Settings"-button (upper right),
