@@ -8,6 +8,7 @@
     - [Firefox browser](#firefox-browser)
 - [Usage](#usage)
   - [Query](#query)
+- [Demonstration Scenario] (#demonstration-scenario)
 
 ![Open Circularity Platform](doc/img/ocp.png)
 
@@ -106,3 +107,15 @@ public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
 The following screenshot demonstrates queries the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
+
+## Demonstration Scenario
+
+We demonstrate how this Open Circularity Platform copes with multiple existing data sources in different serializations,
+and with different actors that have different authorization levels.
+
+> 📽️ [Demo][screencast-d4_2]
+
+
+- [ ] Fill in textual description of the Demonstration Scenario
+
+[screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
