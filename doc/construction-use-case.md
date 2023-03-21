@@ -11,12 +11,23 @@ TODOs
 
 The use case is as follows:
 
-A building owner owns some buildings.
-Floors in a building are covered with floor tiles, delivered by a manufacturer,
-who uses materials to construct the tiles.
-At some time in a building’s lifetime, the building owner refurbishes a building
-and wants to decide on what to do with the floor tiles, based on economic and
-environmental costs.
+A building owner owns some buildings. Floors in a building are covered with
+floor tiles, delivered by a manufacturer (Lindner Group), who uses materials to
+construct the tiles. At some time in a building’s lifetime, the building owner
+refurbishes a building and wants to decide on what to do with the floor tiles,
+based on economic and environmental costs.
+
+From Lindner Group's perspective, all product data and quality metrics are known. On
+the other hand, Lindner does not have information on dismantled raised floor
+elements: where to find them, how many can be found, when we these elements be
+available? Therefore, procuring secondary raw materials in a secure way is hard
+due to lack of data on those materials. Access to more data, and at increased
+granularity, would increase the usage of those materials.
+
+Information on product level are not registered throughout the lifecycle of the
+product which makes it hard to securely assess the quality and secure the
+correct handling of the product, either for reuse or to transform it into
+secondary raw materials.
 
 ![Construction use case](img/construction-use-case.png)
 
