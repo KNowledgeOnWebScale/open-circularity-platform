@@ -74,7 +74,7 @@ the Solid network can be browsed securely over HTTPS.
 
 ### Query
 
-Browse the network through the Firefox container at <http://localhost5800>.
+Browse the network through the Firefox container at <http://localhost:5800>.
 
 To query the Solid pods,
 open up a tab within the Firefox browser and navigate to
