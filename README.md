@@ -8,7 +8,7 @@
     - [Firefox browser](#firefox-browser)
 - [Usage](#usage)
   - [Query](#query)
-- [Demonstration Scenario] (#demonstration-scenario)
+- [Demonstration Scenario](#demonstration-scenario)
 
 ![Open Circularity Platform](doc/img/ocp.png)
 
