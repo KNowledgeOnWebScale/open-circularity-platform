@@ -1,6 +1,7 @@
 <!-- omit in toc -->
 # Architecture
 
+- [Introduction](#introduction)
 - [Setup](#setup)
   - [Security](#security)
     - [Self-Signed Certificates](#self-signed-certificates)
@@ -9,6 +10,12 @@
   - [Query](#query)
 
 ![Open Circularity Platform](doc/img/ocp.png)
+
+## Introduction
+
+This repository contains the implementation
+of an Open Circularity Platform as part of the Onto-DESIDE Horizon Europe project.</br>
+We demonstrate the Open Circularity Platform through an [example use case within Construction domain](./doc/construction-use-case.md).
 
 ## Setup
 
