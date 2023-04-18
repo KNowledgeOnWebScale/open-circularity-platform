@@ -150,9 +150,9 @@ echo "🔐 Authenticating as $webid"
 sld auth set $webid
 
 # Public access to services
-obj=data/dt/out/ragn-sells-services.ttl
+obj=data/dt/out/services.ttl
 echo "Enable public read access for $obj"
-sld perms edit root:$obj p=r
+sld perms edit root:$obj p=rd
 
 # Admin: read access to all files in dt/out directory
 agent=https://css0/admin/profile/card#me
