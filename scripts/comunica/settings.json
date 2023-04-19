@@ -18,6 +18,9 @@
     "settingsOnly": true,
     "defaultIdp": "https://css1"
   },
+  "context": {
+    "lenient" : true
+  },
   "datasources": [
     {
       "name": "Lindner Group's products",
