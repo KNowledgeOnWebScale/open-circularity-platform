@@ -30,8 +30,7 @@
     a earl:Software, earl:TestSubject ;
     doap:name "Community Solid Server"@en ;
     doap:release <css#test-subject-release> ;
-    doap:developer <https://solidproject.org> ;
-    doap:homepage <https://github.com/CommunitySolidServer/CommunitySolidServer> ;
+    doap:homepage <https://css0/admin/profile#me> ;
     doap:description "An open and modular implementation of the Solid specifications."@en ;
     doap:programming-language "TypeScript"@en ;
     solid-test:skip "acp", "http-redirect" .
