@@ -1,0 +1,7 @@
+# Development config
+.env
+*.env
+config
+reports
+target
+/certs/
