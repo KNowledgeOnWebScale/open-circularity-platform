@@ -16,10 +16,3 @@ prefix sopr: <https://solidproject.org/TR/protocol#>
 
 prefix manifest: <#>
 
-manifest:if-none-match-asterisk
-  a td:TestCase ;
-  spec:requirementReference sopr:server-conditional-requests ;
-  td:reviewStatus td:unreviewed ;
-  spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example1/start.feature> .
-
