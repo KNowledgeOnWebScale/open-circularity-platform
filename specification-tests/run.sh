@@ -81,8 +81,8 @@ EOF
 
   # Assumption: You have added 'server' as a mapping of localhost in /etc/hosts
 
-  docker network create testnet
-  docker run -d --name=server --network=testnet --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
+  # docker network create ontodeside_default || As we want to test this on our, own docker network. 
+  docker run -d --name=server --network=ontodeside_default --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
     -v "$(pwd)"/certs:/certs \
     -p 443:443 -it solidproject/community-server:5 \
@@ -104,7 +104,6 @@ stop_css() {
   echo 'Stopped CSS'
   docker rm server
   echo 'Removed CSS'
-  docker network rm testnet
 }
 
 setup_config() {
@@ -120,7 +119,7 @@ then
 fi
 
 dockerimage='solidproject/conformance-test-harness'
-dockerargs=('-i' '--rm')
+dockerargs=('-i --rm')
 cwd=$(pwd)
 harnessargs=('--output=/reports')
 
@@ -183,7 +182,7 @@ mkdir -p reports/$subject
 if [ $subject == "css" ]
 then
   setup_css
-  dockerargs+=('--network=testnet')
+  dockerargs+=('--network=ontodeside_default')
 fi
 
 # optionally pull published CTH image
