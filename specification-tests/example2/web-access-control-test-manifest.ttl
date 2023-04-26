@@ -12,8 +12,7 @@ prefix manifest: <#>
 
 manifest:acl-object-none
   a td:TestCase ;
-  spec:requirementReference wac:access-objects ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/end.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/header-exists.feature> .
 
