@@ -12,4 +12,8 @@
 
 <lindner-building>
     a earl:Software, earl:TestSubject ;
-    solid-test:skip "acp", "http-redirect" .
+    solid-test:skip "alice-admin", "alice-building" , "http-redirect" .
+
+<admin-any>
+    a earl:Software, earl:TestSubject ;
+    solid-test:skip "alice-lindner" .
