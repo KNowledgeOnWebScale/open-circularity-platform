@@ -178,12 +178,10 @@ fi
 # ensure report directory exists
 mkdir -p reports/$subject
 
-# optionally start CSS
-if [ $subject == "css" ]
-then
-  setup_css
-  dockerargs+=('--network=ontodeside_default')
-fi
+
+setup_css
+dockerargs+=('--network=ontodeside_default')
+
 
 # optionally pull published CTH image
 if [[ ! $dockerimage == 'testharness' ]]
@@ -197,9 +195,6 @@ exit_code=$?
 echo "Exit code: $exit_code"
 
 # optionally stop CSS
-if [ $subject == "css" ]
-then
-  stop_css
-fi
+stop_css
 
 exit "$exit_code"
