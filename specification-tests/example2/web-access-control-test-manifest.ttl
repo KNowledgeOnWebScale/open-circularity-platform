@@ -10,9 +10,26 @@ prefix wac: <https://solidproject.org/TR/wac#>
 
 prefix manifest: <#>
 
-manifest:acl-object-none
+manifest:headers-exist
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
     <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/header-exists.feature> .
 
+manifest:lindner
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/lindner-acces.feature> .
+
+manifest:building-owners-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/building-owner-acces.feature> .
+
+manifest:users-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/users-access.feature> .
