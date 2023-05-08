@@ -33,3 +33,9 @@ manifest:users-access
   td:reviewStatus td:approved ;
   spec:testScript
     <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/users-access.feature> .
+
+manifest:admin-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/admin-acces.feature> .
