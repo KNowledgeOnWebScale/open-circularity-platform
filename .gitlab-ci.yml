@@ -12,14 +12,18 @@ start-tests:
 
 test-admin-access:
   stage: test  
-  image: gitlab/dind
   services:
     - docker:dind
   tags:
     - docker
     - linux
   before_script:
-    - docker compose --profile backend up --detach &
+    - docker info
+    - akp update
+    - apk upgrade
+    - apk add python python-dev py-pip build-base
+    - pip install docker-compose
+    - docker-compose --profile backend up --detach &
   script:
     - echo "Testing admin access..."
     - cd specification-tests
