@@ -31,7 +31,7 @@ test-admin-access:
     - ./run.sh -d . admin-any
 
   after_script:
-    - docker compose --profile backend down
+    - docker-compose --profile backend down
 
  
 
