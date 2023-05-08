@@ -1,0 +1,22 @@
+
+
+stages:
+  - test 
+
+
+start-tests:
+  stage: test
+  script:
+    - echo "Starting testing... This can take some time"
+
+test-admin-access:
+  stage: test
+  script:
+    - echo "Testing admin access..."
+    - ./specification-tests/run.sh -d ./specification-tests/ admin-any
+
+test-lindner-building:
+  stage: test
+  script: 
+    - echo "Testing Lindner-Building interactions..."
+  - ./specification-tests/run.sh -d ./specification-tests/ lindner-building
