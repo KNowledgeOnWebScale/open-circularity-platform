@@ -18,7 +18,7 @@ test-admin-access:
     - echo "Testing admin access..."
     - cd specification-tests
     - chmod +x ./run.sh
-    - ./run.sh -d . admin-any
+    - bash -c "./run.sh -d . admin-any"
 
   after_script:
     - docker-compose --profile backend down
