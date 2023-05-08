@@ -19,4 +19,4 @@ test-lindner-building:
   stage: test
   script: 
     - echo "Testing Lindner-Building interactions..."
-  - ./specification-tests/run.sh -d ./specification-tests/ lindner-building
+    - ./specification-tests/run.sh -d ./specification-tests/ lindner-building
