@@ -12,13 +12,18 @@ start-tests:
 
 test-admin-access:
   stage: test  
+
+  tags:
+    - docker
+    - linux
+    - docker-executor
   before_script:
-    - docker-compose --profile backend up &
+    - docker-compose --profile backend up --detach &
   script:
     - echo "Testing admin access..."
     - cd specification-tests
     - chmod +x ./run.sh
-    - bash -c "./run.sh -d . admin-any"
+    - ./run.sh -d . admin-any
 
   after_script:
     - docker-compose --profile backend down
