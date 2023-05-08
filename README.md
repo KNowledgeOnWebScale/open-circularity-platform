@@ -9,7 +9,9 @@
 - [Usage](#usage)
   - [Query](#query)
 - [Demonstration Scenario](#demonstration-scenario)
-
+- [Testing](#testing)
+  - [Adding Tests](#adding-tests)
+  - [Execution Guide](#exeuction-guide)
 ![Open Circularity Platform](doc/img/ocp.png)
 
 ## Introduction
@@ -144,3 +146,37 @@ The *Admin* actor can *READ* every actor’s generated data.
 - [[Authenticated as Admin] Count & Query all triples!](https://youtube.com/clip/UgkxXGvlJCiqNT1zaLBESrmgRErY0puAlrw7)
 
 [screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
+
+## Testing 
+
+### Exeuction guide
+
+Currently, to run the tests, you need to run: ```./run.sh -d . <alice>-<bob>``` where you need to change <alice> with whoever you want alice to be and <bob> with whoever you want bob to be. This will run all tests with tags that do not have any other alice or bob. Be aware that whatever ```<alice>-<bob>``` gets replaced with must be declared in the [test-subjects.ttl](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/blob/test_env/specification-tests/test-subjects.ttl) file (see further) and an ```<alice>-<bob>.env``` configuration file must be defined in the same folder. 
+
+### Adding tests
+The specification-tests documentation provides a tutorial on how to do this, but this can be quite confusing as our usecase strayed of the path [CTH](https://github.com/solid-contrib/conformance-test-harness) is meant for. 
+
+Given the current setup of the project, one should start off with the configuration file, which is called ```application.yaml``` and this name cannot be changed as it is a file which is looked for by the [CTH](https://github.com/solid-contrib/conformance-test-harness). 
+
+This file is essential to understand the whole of the testing. [CTH](https://github.com/solid-contrib/conformance-test-harness) expects [RDF](https://www.w3.org/RDF/) resources in lots of places so seeing links everywhere which ultimately refer to local files can be confusing. The mappings object defines a prefix and what it gets mapped to. 
+
+In this example:
+
+```
+- prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
+  path: /data
+```
+
+The prefix will get replaced by  ```/data``` in every file regarded to testing. ```path``` Doesn't refer to a local path, but to the path in the docker container that gets generated. In this case, ```/data```  will be the [specification-tests](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/tree/test_env/specification-tests) folder. Thus from this point forward you need to replace the prefix accordingly to understand which file you are working with. 
+
+The sources object in this same file list in which files the [CTH](https://github.com/solid-contrib/conformance-test-harness) file should look for tests (note that the prefixes here get replaced and thus we get local files.) These files are manifest files which we will get into later.
+
+Finally, the subjects object states in which file the test subjects are defined. These define subjects which will be tested. In our case this is set to [test-subjects.ttl](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/blob/test_env/specification-tests/test-subjects.ttl).
+
+The subjects file gives a description of the “subject” that gets tested. The name however is crucial. Whenever we test, say ```css```, [CTH](https://github.com/solid-contrib/conformance-test-harness) will also look for the ```css.env``` file. So these names must match. One cannot work without the other. 
+
+Finally, actually writing tests. 
+To write tests we use [Karate](https://www.karatelabs.io/). For this create a ```.feature``` file that describes what you want to test and fire away. For examples you can take a look at tests that are already made and/or 
+[specification-tests repo](https://github.com/solid-contrib/specification-tests). When a case is ready, you can add this to the corresponding manifest file. If the test file is not mentioned in one of the manifest files mentioned in the configuration file, the tests will simply be ignored. *Warning* 2 tests cannot have the same ```manifest```, no error will be generated if if 2 manifests have the same name, but one of the 2 tests will be ignored.
+
+As our architecture doesn’t comply with the [CTH](https://github.com/solid-contrib/conformance-test-harness) expectations we will need to add certain tags to some tests. Say you make a test where ```alice``` is expected to be ```Actor x``` than you need to add a tag ```@alice-actor-x``` 
