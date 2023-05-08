@@ -16,6 +16,7 @@ test-admin-access:
   tags:
     - docker
     - linux
+    - docker-executor
   before_script:
     - docker compose --profile backend up --detach &
   script:
