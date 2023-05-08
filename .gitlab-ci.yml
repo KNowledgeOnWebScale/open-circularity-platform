@@ -11,6 +11,7 @@ start-tests:
 
 
 test-admin-access:
+  image: docker:latest
   stage: test  
   services:
     - docker:dind
