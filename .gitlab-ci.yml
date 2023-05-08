@@ -11,6 +11,10 @@ start-tests:
 
 
 test-admin-access:
+  variables:
+    DOCKER_DRIVER: overlay
+
+
   image: docker:latest
   stage: test  
   services:
