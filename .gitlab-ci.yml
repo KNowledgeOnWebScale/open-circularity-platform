@@ -12,7 +12,9 @@ start-tests:
 
 test-admin-access:
   stage: test  
-
+  image: gitlab/dind
+  services:
+    - docker:dind
   tags:
     - docker
     - linux
