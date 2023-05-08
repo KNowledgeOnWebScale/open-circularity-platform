@@ -9,14 +9,25 @@ start-tests:
   script:
     - echo "Starting testing... This can take some time"
 
+start-backend:
+  script:
+    - docker-compose --profile backend up
+
 test-admin-access:
   stage: test
   script:
     - echo "Testing admin access..."
-    - ./specification-tests/run.sh -d ./specification-tests/ admin-any
+    - cd specification-tests
+    - ./run.sh -d . admin-any
+  after_script:
+    - docker-compose --profile backend down
+  depends_on:
+    css0:
+      condition: service_healthy
+    css1:
+      condition: service_healthy
+    css2: 
+      condition: service_healthy
+    css3:
+      condition: service_healthy
 
-test-lindner-building:
-  stage: test
-  script: 
-    - echo "Testing Lindner-Building interactions..."
-    - ./specification-tests/run.sh -d ./specification-tests/ lindner-building
