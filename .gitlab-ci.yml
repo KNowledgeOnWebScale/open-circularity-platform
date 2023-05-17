@@ -22,9 +22,10 @@ test-admin-access:
     - apk update
     - apk upgrade
     - apk add python3 py3-pip build-base
+    - docker-compose --profile backend up --detach &
     - pip install docker-compose
     - apk add --no-cache --upgrade bash
-    - docker-compose --profile backend up --detach &
+    - apk add curl
   script:
     - echo "Testing admin access..."
     - cd specification-tests
