@@ -22,7 +22,7 @@ test-admin-access:
     - apk upgrade
     - apk add python3 py3-pip build-base
     - docker-compose --profile backend up --detach &
-    - bash wait-for-container.sh ontodeside-css0-1
+    - bash wait-for-container.sh ontodeside-css0
     - pip install docker-compose
     - apk add curl
   script:
