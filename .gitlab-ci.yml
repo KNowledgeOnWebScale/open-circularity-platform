@@ -27,6 +27,7 @@ test-admin-access:
   script:
     - echo "Testing admin access..."
     - cd specification-tests
+    - pwd
     - chmod +x ./run.sh
     - ./run.sh -d . admin-any
 
