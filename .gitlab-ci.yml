@@ -1,5 +1,3 @@
-
-
 stages:
   - test 
 
@@ -12,19 +10,29 @@ start-tests:
 
 test-admin-access:
   stage: test  
-  tags:
-    - docker
-    - linux
+  image: docker:latest
+
+  services:
+    - docker:dind
+
   before_script:
+    - apk add --no-cache --upgrade bash
+    - docker info
+    - apk update
+    - apk upgrade
+    - apk add python3 py3-pip build-base
     - docker-compose --profile backend up --detach &
+    - bash wait-for-container.sh ontodeside-css0-1
+    - pip install docker-compose
+    - apk add curl
   script:
     - echo "Testing admin access..."
     - cd specification-tests
+    - pwd
     - chmod +x ./run.sh
-    - ./run.sh -d . admin-any
+    - bash run.sh -d . admin-any
 
   after_script:
     - docker-compose --profile backend down
 
  
-
