@@ -81,8 +81,18 @@ EOF
 
   # Assumption: You have added 'server' as a mapping of localhost in /etc/hosts
 
+  docker network inspect ontodeside_default &> /dev/null
+
+
+  if [ $? -eq "0" ]
+  then 
+      network="ontodeside_default"
+  else 
+      network="architecture_default" 
+  fi
+
   # docker network create ontodeside_default || As we want to test this on our, own docker network. 
-  docker run -d --name=server --network=ontodeside_default --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
+  docker run -d --name=server --network=$network --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
     -v "$(pwd)"/certs:/certs \
     -p 443:443 -it solidproject/community-server:5 \
