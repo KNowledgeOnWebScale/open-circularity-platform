@@ -103,8 +103,12 @@ EOF
     --port=443 --baseUrl=https://server/
 
   echo 'Please wait while CSS is starting up'
-  until $(curl --output /dev/null --silent --head --fail -k https://server); do
+  hello=$(curl -I --fail -k https://server | head -n 1|cut -d$' ' -f2)
+  while [[ "$hello" != "200" ]]
+  do
     printf '.'
+    hello=$(curl -I --fail -k https://server | head -n 1|cut -d$' ' -f2)
+    echo $hello
     sleep 1
   done
   echo 'CSS is running'
