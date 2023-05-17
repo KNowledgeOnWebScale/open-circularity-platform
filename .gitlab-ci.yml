@@ -21,10 +21,11 @@ test-admin-access:
     - apk update
     - apk upgrade
     - apk add python3 py3-pip build-base
-    - docker-compose --profile backend up --detach &
-    - bash wait-for-container.sh ontodeside-css0
+    - docker-compose --profile backend create
+    - docker-compose --profile backend start --detach &
     - pip install docker-compose
     - apk add curl
+    - bash wait-for-container.sh architecture-css0-1
   script:
     - echo "Testing admin access..."
     - cd specification-tests
