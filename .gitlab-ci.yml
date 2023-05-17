@@ -25,7 +25,7 @@ test-admin-access:
     - docker-compose --profile backend start --detach &
     - pip install docker-compose
     - apk add curl
-    - bash wait-for-container.sh ontodeside-css0-1
+    - bash wait-for-container.sh architecture-css0-1
   script:
     - echo "Testing admin access..."
     - cd specification-tests
