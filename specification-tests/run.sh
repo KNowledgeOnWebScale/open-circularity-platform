@@ -91,6 +91,8 @@ EOF
       network="architecture_default" 
   fi
 
+  docker network inspect $network
+
   # docker network create ontodeside_default || As we want to test this on our, own docker network. 
   docker run -d --name=server --network=$network --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
