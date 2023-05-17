@@ -21,7 +21,7 @@ test-admin-access:
     - docker info
     - apk update
     - apk upgrade
-    - apk add python3 python-dev py-pip build-base
+    - apk add python3 py3-pip build-base
     - pip install docker-compose
     - docker-compose --profile backend up --detach &
   script:
