@@ -1,24 +1,9 @@
 subjects: /data/test-subjects.ttl
 sources:
-  # Protocol spec & manifest (latest published version)
-  - https://solidproject.org/TR/protocol
-  - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example1/solid-protocol-test-manifest.ttl
-  - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example1/requirement-comments.ttl
+    - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example1/solid-protocol-test-manifest.ttl
 
-  # WAC spec & manifest (latest published version)
-  - https://solidproject.org/TR/wac
-  - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/web-access-control-test-manifest.ttl
-  - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/requirement-comments.ttl
+    - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/web-access-control-test-manifest.ttl
 
-  # This is an example of how you could run tests for a specific version of a specification
-#  - https://solidproject.org/TR/2021/wac-20210711
-#  - https://github.com/solid-contrib/specification-tests/blob/main/web-access-control/web-access-control-test-manifest-20210711.ttl
-
-  # Link old tests to new spec temporarily
-  - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/wac-spec-additions.ttl
-
-  # Include unlinked additional tests
-#  - https://github.com/solid-contrib/specification-tests/blob/main/protocol/converted.ttl
 
 mappings:
   - prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
