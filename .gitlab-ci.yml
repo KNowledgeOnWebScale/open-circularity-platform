@@ -21,15 +21,15 @@ test-admin-access:
     - apk update
     - apk upgrade
     - apk add python3 py3-pip build-base
-    - docker-compose --profile backend create
-    - docker-compose --profile backend start --detach &
     - pip install docker-compose
+    - docker-compose --profile backend create
+    - docker-compose --profile backend start  &
     - apk add --update curl && rm -rf /var/cache/apk/*
     - bash wait-for-container.sh architecture-css0-1
     - bash wait-for-container.sh architecture-css2-1
     - bash wait-for-container.sh architecture-css3-1
     - bash wait-for-container.sh architecture-css4-1
-    - echo "127.0.0.1       server" >> /etc/hosts
+    - echo "127.0.0.1     server" >> /etc/hosts
     - cat /etc/hosts
   script:
     - echo "Testing admin access..."
