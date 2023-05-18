@@ -104,7 +104,6 @@ EOF
   echo 'Please wait while CSS is starting up'
   until $(curl --output /dev/null --silent --head --fail -k https://server); do
     printf '.'
-    docker inspect server
     sleep 1
   done
   echo 'CSS is running'
