@@ -91,8 +91,7 @@ EOF
       network="architecture_default" 
   fi
 
-  docker network inspect $network
-
+  
   # docker network create ontodeside_default || As we want to test this on our, own docker network. 
   docker run -d --name=server --network=$network --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
@@ -103,11 +102,8 @@ EOF
     --port=443 --baseUrl=https://server/
 
   echo 'Please wait while CSS is starting up'
-  hello=$(curl -I --fail -k https://server/ | head -n 1|cut -d$' ' -f2)
-  while [[ "$hello" != "200" ]]
-  do
+  until $(curl --output /dev/null --silent --head --fail -k https://localhost); do
     printf '.'
-    hello=$(curl -I  --fail -k https://server/ | head -n 1|cut -d$' ' -f2)
     sleep 1
   done
   echo 'CSS is running'
