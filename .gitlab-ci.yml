@@ -3,8 +3,8 @@ stages:
 
 image: docker:latest
 
-  services:
-    - docker:dind
+services:
+  - docker:dind
 
 start-tests:
   stage: test
@@ -12,26 +12,26 @@ start-tests:
     - echo "Starting testing... This can take some time"
 
 before_script:
-    - docker info
-    - apk update
-    - apk upgrade
-    - apk add curl 
-    - apk add --no-cache --upgrade bash
-    - apk add python3 py3-pip build-base
-    - pip install docker-compose
-    - sh -c bash
-    - apk add --update nodejs npm
-    - npm install --global yarn
-    - apk add --update openjdk11
-    - apk add openssl
-    - yarn install
-    - yarn run setup
-    - yarn run dt:mapping:pipeline 
-    - cd scripts/cert
-    - chmod +x main.sh
-    - bash main.sh
-    - cd ../../
-    - docker-compose --profile backend up --wait
+  - docker info
+  - apk update
+  - apk upgrade
+  - apk add curl 
+  - apk add --no-cache --upgrade bash
+  - apk add python3 py3-pip build-base
+  - pip install docker-compose
+  - sh -c bash
+  - apk add --update nodejs npm
+  - npm install --global yarn
+  - apk add --update openjdk11
+  - apk add openssl
+  - yarn install
+  - yarn run setup
+  - yarn run dt:mapping:pipeline 
+  - cd scripts/cert
+  - chmod +x main.sh
+  - bash main.sh
+  - cd ../../
+  - docker-compose --profile backend up --wait
 
 test-admin-access:
   stage: test  
