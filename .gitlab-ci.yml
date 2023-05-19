@@ -29,7 +29,7 @@ test-admin-access:
     - yarn install
     - yarn run setup
     - yarn run dt:mapping:pipeline 
-    - cd scripts/certs
+    - cd scripts/cert
     - chmod +x main.sh
     - bash main.sh
     - cd ../../
