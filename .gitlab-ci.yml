@@ -24,6 +24,7 @@ test-admin-access:
     - sh -c bash
     - apk add --update nodejs npm
     - npm install --global yarn
+    - apk add openjdk11
     - apk add openssl
     - yarn config set registry https://registry.npmjs.org
     - yarn install
