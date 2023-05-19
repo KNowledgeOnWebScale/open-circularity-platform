@@ -27,17 +27,24 @@ before_script:
   - chmod +x main.sh
   - bash main.sh
   - cd ../../
-  - docker-compose --profile backend up --wait
+  - docker-compose --profile backend --profile test up --wait
+  - cd specification-tests
+  - chmod +x ./run.sh
 
 test-admin-access:
   stage: test  
     
   script:
-    - docker-compose --profile test up --wait
     - echo "Testing admin access..."
-    - cd specification-tests
-    - chmod +x ./run.sh
     - bash run.sh -d . admin-any
+
+test-lindner-building-owner:
+  stage: test
+
+  script:
+    - echo "Testing Lindner Group and building owner interaction..."
+    - bash run.sh -d . lindner-building
+
 
 after_script:
     - docker stop -t 0 architecture-css-test-1
