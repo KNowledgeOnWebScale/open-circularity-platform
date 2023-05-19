@@ -26,7 +26,6 @@ test-admin-access:
     - npm install --global yarn
     - apk add --update openjdk8
     - apk add openssl
-    - yarn config set registry https://registry.npmjs.org
     - yarn install
     - yarn run setup
     - yarn run dt:mapping:pipeline 
