@@ -81,20 +81,8 @@ EOF
 
   # Assumption: You have added 'server' as a mapping of localhost in /etc/hosts
 
-  docker network inspect ontodeside_default &> /dev/null
-
-
-  if [ $? -eq "0" ]
-  then 
-      network="ontodeside_default"
-  else 
-      network="architecture_default" 
-  fi
-
-  docker network inspect $network
-
-  # docker network create ontodeside_default || As we want to test this on our, own docker network. 
-  docker run -d --name=server --network=$network --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
+  docker network create testnet
+  docker run -d --name=server --network=testnet --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
     -v "$(pwd)"/certs:/certs \
     -p 443:443 -it solidproject/community-server:5 \
@@ -103,11 +91,8 @@ EOF
     --port=443 --baseUrl=https://server/
 
   echo 'Please wait while CSS is starting up'
-  hello=$(curl -I --fail -k https://server/ | head -n 1|cut -d$' ' -f2)
-  while [[ "$hello" != "200" ]]
-  do
+  until $(curl --output /dev/null --silent --head --fail -k https://server); do
     printf '.'
-    hello=$(curl -I  --fail -k https://server/ | head -n 1|cut -d$' ' -f2)
     sleep 1
   done
   echo 'CSS is running'
@@ -119,6 +104,7 @@ stop_css() {
   echo 'Stopped CSS'
   docker rm server
   echo 'Removed CSS'
+  docker network rm testnet
 }
 
 setup_config() {
@@ -134,7 +120,8 @@ then
 fi
 
 dockerimage='solidproject/conformance-test-harness'
-dockerargs=('-i --rm')
+# dockerargs=('-i' '--rm')
+dockerargs=('-i')
 cwd=$(pwd)
 harnessargs=('--output=/reports')
 
@@ -193,10 +180,12 @@ fi
 # ensure report directory exists
 mkdir -p reports/$subject
 
-
-setup_css
-dockerargs+=('--network=ontodeside_default')
-
+# optionally start CSS
+if [ $subject == "css" ]
+then
+  setup_css
+  dockerargs+=('--network=testnet')
+fi
 
 # optionally pull published CTH image
 if [[ ! $dockerimage == 'testharness' ]]
@@ -204,12 +193,16 @@ then
   docker pull solidproject/conformance-test-harness
 fi
 
+dockerargs+=('--network=architecture_default')
 echo "RUNNING: docker run ${dockerargs[@]} $dockerimage ${harnessargs[@]} $@"
 docker run ${dockerargs[@]} $dockerimage ${harnessargs[@]} $@
 exit_code=$?
 echo "Exit code: $exit_code"
 
 # optionally stop CSS
-stop_css
+if [ $subject == "css" ]
+then
+  stop_css
+fi
 
 exit "$exit_code"
