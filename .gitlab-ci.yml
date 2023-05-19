@@ -24,7 +24,7 @@ test-admin-access:
     - sh -c bash
     - apk add --update nodejs npm
     - npm install --global yarn
-    - apk add --update openjdk8
+    - apk add --update openjdk11
     - apk add openssl
     - yarn install
     - yarn run setup
