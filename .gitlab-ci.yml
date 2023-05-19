@@ -23,7 +23,7 @@ test-admin-access:
     - apk add python3 py3-pip build-base
     - pip install docker-compose
     - docker-compose --profile backend --profile test create
-    - docker-compose --profile backend --profile test start --detach &
+    - docker-compose --profile backend --profile test start &
     - bash wait-for-container.sh architecture-bashlib-1
   script:
     - echo "Testing admin access..."
