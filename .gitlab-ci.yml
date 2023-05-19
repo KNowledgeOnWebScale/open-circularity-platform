@@ -37,10 +37,6 @@ test-admin-access:
     - docker-compose --profile backend --profile test up --wait
   script:
     - echo "Testing admin access..."
-    - curl --insecure https://css-test
-    - curl --insecure https://css0
-    - curl --insecure https://css1
-    - curl --insecure https://css2
     - cd specification-tests
     - chmod +x ./run.sh
     - bash run.sh -d . admin-any
