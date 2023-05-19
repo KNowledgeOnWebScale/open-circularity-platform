@@ -6,10 +6,6 @@ image: docker:latest
 services:
   - docker:dind
 
-start-tests:
-  stage: test
-  script:
-    - echo "Starting testing... This can take some time"
 
 before_script:
   - docker info
@@ -35,18 +31,16 @@ before_script:
 
 test-admin-access:
   stage: test  
-  
-  before_script: 
-    - docker-compose --profile test up --wait
-  
+    
   script:
+    - docker-compose --profile test up --wait
     - echo "Testing admin access..."
     - cd specification-tests
     - chmod +x ./run.sh
     - bash run.sh -d . admin-any
 
-  after_script:
+after_script:
     - docker stop -t 0 architecture-css-test-1
-    - docker architecture-css-test-1
+    - docker rm architecture-css-test-1
 
  
