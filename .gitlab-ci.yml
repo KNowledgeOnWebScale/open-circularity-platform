@@ -1,20 +1,17 @@
 stages:
   - test 
 
+image: docker:latest
+
+  services:
+    - docker:dind
+
 start-tests:
   stage: test
   script:
     - echo "Starting testing... This can take some time"
 
-
-test-admin-access:
-  stage: test  
-  image: docker:latest
-
-  services:
-    - docker:dind
-
-  before_script:
+before_script:
     - docker info
     - apk update
     - apk upgrade
@@ -34,7 +31,14 @@ test-admin-access:
     - chmod +x main.sh
     - bash main.sh
     - cd ../../
-    - docker-compose --profile backend --profile test up --wait
+    - docker-compose --profile backend up --wait
+
+test-admin-access:
+  stage: test  
+  
+  before_script: 
+    - docker-compose --profile test up --wait
+  
   script:
     - echo "Testing admin access..."
     - cd specification-tests
@@ -42,6 +46,7 @@ test-admin-access:
     - bash run.sh -d . admin-any
 
   after_script:
-    - docker-compose --profile backend down
+    - docker stop -t 0 architecture-css-test-1
+    - docker architecture-css-test-1
 
  
