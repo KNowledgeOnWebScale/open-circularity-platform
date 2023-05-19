@@ -22,7 +22,8 @@ test-admin-access:
     - apk add --no-cache --upgrade bash
     - apk add python3 py3-pip build-base
     - pip install docker-compose
-    - docker-compose --profile backend --profile test up --detach &
+    - docker-compose --profile backend --profile test up --detach
+    - sleep 10 
     - bash wait-for-container.sh architecture-bashlib-1
   script:
     - echo "Testing admin access..."
