@@ -29,7 +29,7 @@ test-admin-access:
     - bash wait-for-container.sh architecture-css2-1
     - bash wait-for-container.sh architecture-css3-1
     - bash wait-for-container.sh architecture-css4-1
-    - echo "127.0.0.1     server" >> /etc/hosts
+    - echo "127.0.0.1      server" >> /etc/hosts
     - cat /etc/hosts
   script:
     - echo "Testing admin access..."
