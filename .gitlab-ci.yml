@@ -16,21 +16,15 @@ test-admin-access:
     - docker:dind
 
   before_script:
-    - apk add --no-cache --upgrade bash
     - docker info
     - apk update
     - apk upgrade
+    - apk add --no-cache --upgrade bash
     - apk add python3 py3-pip build-base
     - pip install docker-compose
-    - docker-compose --profile backend create
-    - docker-compose --profile backend start  &
-    - apk add --update curl && rm -rf /var/cache/apk/*
-    - bash wait-for-container.sh architecture-css0-1
-    - bash wait-for-container.sh architecture-css2-1
-    - bash wait-for-container.sh architecture-css3-1
-    - bash wait-for-container.sh architecture-css4-1
-    - echo "127.0.0.1      server" >> /etc/hosts
-    - cat /etc/hosts
+    - docker-compose --profile backend --profile test create
+    - docker-compose --profile backend --profile test start --detach &
+    - bash wait-for-container.sh architecture-bashlib-1
   script:
     - echo "Testing admin access..."
     - cd specification-tests
