@@ -3,4 +3,4 @@
 node_modules
 actors/*/data/dt/out/
 
-scripts/comunica/outputs/
+scripts/comunica/outputs/*
