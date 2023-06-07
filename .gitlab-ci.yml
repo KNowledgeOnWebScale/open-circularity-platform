@@ -47,7 +47,7 @@ test-lindner-building-owner:
 
 
 after_script:
-    - docker stop -t 0 architecture-css-test-1
-    - docker rm architecture-css-test-1
+    - docker-compose --profile test stop -t 0
+    
 
  
