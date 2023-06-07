@@ -95,7 +95,7 @@ EOF
   # docker network create ontodeside_default || As we want to test this on our, own docker network. 
   docker run -d --name=server --network=$network --env NODE_TLS_REJECT_UNAUTHORIZED=0 \
     -v "$(pwd)"/config:/config \
-    -v "$(pwd)"/certs:/certs \
+    -v "$(pwd)"specification-tests/certs:/certs \
     -p 443:443 -it solidproject/community-server:5 \
     -c /config/css-config.json \
     --httpsKey=/certs/server.key --httpsCert=/certs/server.cert \
