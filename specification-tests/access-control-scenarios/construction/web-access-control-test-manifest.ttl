@@ -14,28 +14,28 @@ manifest:headers-exist
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/header-exists.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/header-exists.feature> .
 
 manifest:lindner
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/lindner-acces.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/lindner-acces.feature> .
 
 manifest:building-owners-access
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/building-owner-acces.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/building-owner-acces.feature> .
 
 manifest:users-access
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/users-access.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/users-access.feature> .
 
 manifest:admin-access
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/admin-acces.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/admin-acces.feature> .
