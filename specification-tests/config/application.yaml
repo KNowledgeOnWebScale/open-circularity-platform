@@ -1,7 +1,5 @@
 subjects: /data/test-subjects.ttl
 sources:
-    - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example1/solid-protocol-test-manifest.ttl
-
     - https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/example2/web-access-control-test-manifest.ttl
 
 

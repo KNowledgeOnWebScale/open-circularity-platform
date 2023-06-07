@@ -118,11 +118,6 @@ stop_css() {
   docker network rm testnet
 }
 
-setup_config() {
-  mkdir -p config
-  cp ./application.yaml ./config/application.yaml
-}
-
 # if no arguments supplied, display usage
 if [ $# -lt 1 ]
 then
@@ -142,7 +137,6 @@ while getopts "lhd:e:t:" arg; do
   case $arg in
     d)
       testDir="$(cd "${OPTARG}" && pwd)"
-      setup_config
       outdir='local'
       dockerargs+=('-v' "$testDir/:/data" '-v' "$cwd/config:/app/config" '-v' "$cwd/target:/app/target")
       ;;

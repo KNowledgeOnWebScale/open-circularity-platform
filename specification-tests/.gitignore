@@ -1,6 +1,5 @@
 # Development config
 .env
-config
 reports
 target
 /certs/
