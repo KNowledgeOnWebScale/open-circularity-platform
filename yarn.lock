@@ -3226,10 +3226,10 @@
     rdf-isomorphic "^1.1.0"
     uuid "^8.3.2"
 
-"@rmlio/yarrrml-parser@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@rmlio/yarrrml-parser/-/yarrrml-parser-1.5.0.tgz#e4db47284d400afc8155695fbf5f942e22713e33"
-  integrity sha512-LF89zaXf08mqY5YKHgtdhWssgL28kpW3aamg4WA7yJ3LGqys+BjPqvspqYvjQ+4g8/ztD6EFZx+f7SRjetU5UA==
+"@rmlio/yarrrml-parser@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@rmlio/yarrrml-parser/-/yarrrml-parser-1.5.1.tgz#4f1650c1f7be283f68cc4bf93a36f80d657d445a"
+  integrity sha512-pt7qufaDqnjpA+hLLzdk3MxR4KCtaHB3iIjp7hg6LGv89d0jNgfR02yToXqrbShTglmRaEx20fj5uzSeLsq9qA==
   dependencies:
     commander "^9.4.1"
     extend "^3.0.2"
