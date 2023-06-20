@@ -38,4 +38,4 @@ manifest:admin-access
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/admin-acces.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/admin-access.feature> .
