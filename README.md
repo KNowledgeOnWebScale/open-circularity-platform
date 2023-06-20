@@ -153,6 +153,12 @@ The *Admin* actor can *READ* every actor’s generated data.
 
 ### Local testing
 
+Make sure that the backend containers are up and running:
+
+```bash
+docker compose --profile backend up -d
+```
+
 To test scenario's between the administrator and all other actors:
 
 ```bash
