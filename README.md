@@ -10,9 +10,8 @@
   - [Query](#query)
 - [Demonstration Scenario](#demonstration-scenario)
 - [Testing](#testing)
-  - [Adding Tests](#adding-tests)
-  - [Execution Guide](#exeuction-guide)
-![Open Circularity Platform](doc/img/ocp.png)
+  - [Execution guide](#execution-guide)
+  - [Adding tests](#adding-tests)
 
 ## Introduction
 
@@ -147,9 +146,9 @@ The *Admin* actor can *READ* every actor’s generated data.
 
 [screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
 
-## Testing 
+## Testing
 
-### Exeuction guide
+### Execution guide
 
 Currently, to run the tests, you need to run: ```./run.sh -d . <alice>-<bob>``` where you need to change <alice> with whoever you want alice to be and <bob> with whoever you want bob to be. This will run all tests with tags that do not have any other alice or bob. Be aware that whatever ```<alice>-<bob>``` gets replaced with must be declared in the [test-subjects.ttl](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/blob/test_env/specification-tests/test-subjects.ttl) file (see further) and an ```<alice>-<bob>.env``` configuration file must be defined in the same folder. 
 
