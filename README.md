@@ -11,9 +11,10 @@
 - [Demonstration Scenario](#demonstration-scenario)
 - [Testing](#testing)
   - [Local testing](#local-testing)
-  - [Background](#background)
-    - [Executing tests](#executing-tests)
-    - [Adding tests](#adding-tests)
+  - [CTH Testing Environment](#cth-testing-environment)
+    - [Subjects](#subjects)
+    - [Sources](#sources)
+      - [Mappings](#mappings)
 
 ## Introduction
 
@@ -170,37 +171,68 @@ docker compose --profile test up -d
 cd specification-tests && ./run.sh -d . lindner-building && cd -
 ```
 
-### Background
+As illustrated by the previous commands,
+the command for running tests has the following form:
 
-#### Executing tests
-
-Currently, to run the tests, you need to run: ```./run.sh -d . <alice>-<bob>``` where you need to change <alice> with whoever you want alice to be and <bob> with whoever you want bob to be. This will run all tests with tags that do not have any other alice or bob. Be aware that whatever ```<alice>-<bob>``` gets replaced with must be declared in the [test-subjects.ttl](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/blob/test_env/specification-tests/test-subjects.ttl) file (see further) and an ```<alice>-<bob>.env``` configuration file must be defined in the same folder.
-
-#### Adding tests
-
-The specification-tests documentation provides a tutorial on how to do this, but this can be quite confusing as our usecase strayed of the path [CTH](https://github.com/solid-contrib/conformance-test-harness) is meant for.
-
-Given the current setup of the project, one should start off with the configuration file, which is called ```application.yaml``` and this name cannot be changed as it is a file which is looked for by the [CTH](https://github.com/solid-contrib/conformance-test-harness). 
-
-This file is essential to understand the whole of the testing. [CTH](https://github.com/solid-contrib/conformance-test-harness) expects [RDF](https://www.w3.org/RDF/) resources in lots of places so seeing links everywhere which ultimately refer to local files can be confusing. The mappings object defines a prefix and what it gets mapped to. 
-
-In this example:
-
-```yaml
-- prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
-  path: /data
+```bash
+./run.sh -d . <basename environment file>
 ```
 
-The prefix will get replaced by  ```/data``` in every file regarded to testing. ```path``` Doesn't refer to a local path, but to the path in the docker container that gets generated. In this case, ```/data```  will be the [`specification-tests`](./specification-tests) folder. Thus from this point forward you need to replace the prefix accordingly to understand which file you are working with.
+For more details, check out the section [Environment Variables](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#3-environment-variables) in the CTH Usage docs.
 
-The sources object in this same file list in which files the [CTH](https://github.com/solid-contrib/conformance-test-harness) file should look for tests (note that the prefixes here get replaced and thus we get local files.) These files are manifest files which we will get into later.
+### CTH Testing Environment
 
-Finally, the subjects object states in which file the test subjects are defined. These define subjects which will be tested. In our case this is set to [`test-subjects.ttl`](./specification-tests/test-subjects.ttl).
+The testing environment is configured in
+[`specification-tests/config/application.yaml`](./specification-tests/config/application.yaml).</br>
+In this file, 3 important settings can be configured:
 
-The subjects file gives a description of the “subject” that gets tested. The name however is crucial. Whenever we test, say ```css```, [CTH](https://github.com/solid-contrib/conformance-test-harness) will also look for the ```css.env``` file. So these names must match. One cannot work without the other.
+1. `subjects` - The location of the file describing test subjects.
+For example, [`test-subjects.ttl`](./specification-tests/test-subjects.ttl).
+2. `sources` - The locations of annotated documents that list the test cases to be run.
+3. `mappings` - Maps test cases IRIs to a local file system (there can be multiple mappings).
 
-Finally, actually writing tests.
-To write tests we use [Karate](https://www.karatelabs.io/). For this create a ```.feature``` file that describes what you want to test and fire away. For examples you can take a look at tests that are already made and/or 
-[specification-tests repo](https://github.com/solid-contrib/specification-tests). When a case is ready, you can add this to the corresponding manifest file. If the test file is not mentioned in one of the manifest files mentioned in the configuration file, the tests will simply be ignored. *Warning* 2 tests cannot have the same ```manifest```, no error will be generated if if 2 manifests have the same name, but one of the 2 tests will be ignored.
+For more details, check out the section [CTH Configuration](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#2-cth-configuration) in the CTH Usage docs.
+  
+#### Subjects
 
-As our architecture doesn’t comply with the [CTH](https://github.com/solid-contrib/conformance-test-harness) expectations we will need to add certain tags to some tests. Say you make a test where ```alice``` is expected to be ```Actor x``` than you need to add a tag ```@alice-actor-x```.
+The files referred to in `subjects` are Turtle files which describes the test subject and its capabilities, primarily using EARL and DOAP vocabularies.</br>
+For example,
+
+```turtle
+<lindner-building>
+  a earl:Software, earl:TestSubject ;
+  solid-test:skip "alice-admin", "alice-building" , "http-redirect" .
+```
+
+The subjects object in the configuration file states in which file the test subjects are defined. These define subjects which will be tested. In our case this is set to test-subjects.ttl
+
+The subjects file gives a description of the “subject” that gets tested. The name however is crucial. Whenever we test, e.g. “css”, CTH will also look for the css.env file. So these names must match.
+
+For more details, check out the section[Test Subject Description](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md) in the CTH Usage docs.
+
+#### Sources
+
+A source is a path to a manifest file where test cases that need to be tested are defined.
+For example,
+[`./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl`](./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl)
+
+The prefixes defined in the manifest file get replaced by the defined `mappings`,
+which will be explained in the following subsection.
+
+##### Mappings
+
+Mappings are used to map the IRIs of test cases to a local file system (there can be multiple mappings).
+Mappings should be ordered so the most specific is first.
+This allows individual files to be mapped
+separately from their containing directories.
+
+> The `path` refers to a path within the CTH Docker container.
+
+An example can be found below,
+where the prefix will get replaced by `/data` in every file regarded to testing.
+
+```YAML
+mappings:
+  - prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
+    path: /data
+```
