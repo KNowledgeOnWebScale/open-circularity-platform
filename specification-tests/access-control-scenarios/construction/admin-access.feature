@@ -31,11 +31,3 @@ Scenario: "Admin can read building-owner generated data (buildings)"
     And headers clients.alice.getAuthHeaders('GET', targetUrl)
     When method GET 
     Then status 200
-
-@alice-admin
-Scenario: "Admin can read building-owner generated data (buildings)"
-    * def targetUrl = "https://css4/ragn-sells/data/dt/out/services.ttl"
-    Given url targetUrl
-    And headers clients.alice.getAuthHeaders('GET', targetUrl)
-    When method GET 
-    Then status 200
