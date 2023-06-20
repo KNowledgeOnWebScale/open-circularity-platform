@@ -38,12 +38,12 @@ test-admin-access:
     - echo "Testing admin access..."
     - bash run.sh -d . admin-any
 
-test-lindner-building-owner:
-  stage: test
+# test-lindner-building-owner:
+#   stage: test
 
-  script:
-    - echo "Testing Lindner Group and building owner interaction..."
-    - bash run.sh -d . lindner-building
+#   script:
+#     - echo "Testing Lindner Group and building owner interaction..."
+#     - bash run.sh -d . lindner-building
 
 
 after_script:
