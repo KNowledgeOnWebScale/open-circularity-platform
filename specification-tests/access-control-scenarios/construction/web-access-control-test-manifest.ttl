@@ -20,7 +20,7 @@ manifest:lindner
   a td:TestCase ;
   td:reviewStatus td:approved ;
   spec:testScript
-    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/lindner-acces.feature> .
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/lindner-access.feature> .
 
 manifest:building-owners-access
   a td:TestCase ;
