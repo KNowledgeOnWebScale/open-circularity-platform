@@ -1,4 +1,9 @@
+# JetBrains IDE
+.idea/
+
 /volumes
 *.jar
 node_modules
 actors/*/data/dt/out/
+
+scripts/comunica/outputs/*

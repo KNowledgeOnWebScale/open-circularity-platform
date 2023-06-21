@@ -1,0 +1,41 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix td: <http://www.w3.org/2006/03/test-description#>
+prefix spec: <http://www.w3.org/ns/spec#>
+
+# Latest published version
+prefix wac: <https://solidproject.org/TR/wac#>
+
+prefix manifest: <#>
+
+manifest:headers-exist
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/header-exists.feature> .
+
+manifest:lindner
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/lindner-access.feature> .
+
+manifest:building-owners-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/building-owner-access.feature> .
+
+manifest:users-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/users-access.feature> .
+
+manifest:admin-access
+  a td:TestCase ;
+  td:reviewStatus td:approved ;
+  spec:testScript
+    <https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/access-control-scenarios/construction/admin-access.feature> .

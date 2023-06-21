@@ -9,8 +9,12 @@
 - [Usage](#usage)
   - [Query](#query)
 - [Demonstration Scenario](#demonstration-scenario)
-
-![Open Circularity Platform](doc/img/ocp.png)
+- [Testing](#testing)
+  - [Local testing](#local-testing)
+  - [CTH Testing Environment](#cth-testing-environment)
+    - [Subjects](#subjects)
+    - [Sources](#sources)
+      - [Mappings](#mappings)
 
 ## Introduction
 
@@ -144,3 +148,97 @@ The *Admin* actor can *READ* every actor’s generated data.
 - [[Authenticated as Admin] Count & Query all triples!](https://youtube.com/clip/UgkxXGvlJCiqNT1zaLBESrmgRErY0puAlrw7)
 
 [screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
+
+## Testing
+
+### Local testing
+
+Make sure that the backend containers are up and running:
+
+```bash
+docker compose --profile backend up -d
+```
+
+To test scenario's between the administrator and all other actors:
+
+```bash
+# Before running tests, bring down any running test container.
+docker compose --profile test down -t 0
+docker compose --profile test up -d
+cd specification-tests && ./run.sh -d . admin-any && cd -
+```
+
+To test scenario's between "Lindner Group" and the buidling owners.
+
+```bash
+# Before running tests, bring down a running test container, if any.
+docker compose --profile test down -t 0
+docker compose --profile test up -d 
+cd specification-tests && ./run.sh -d . lindner-building && cd -
+```
+
+As illustrated by the previous commands,
+the command for running tests has the following form:
+
+```bash
+./run.sh -d . <basename environment file>
+```
+
+For more details, check out the section [Environment Variables](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#3-environment-variables) in the CTH Usage docs.
+
+### CTH Testing Environment
+
+The testing environment is configured in
+[`specification-tests/config/application.yaml`](./specification-tests/config/application.yaml).</br>
+In this file, 3 important settings can be configured:
+
+1. `subjects` - The location of the file describing test subjects.
+For example, [`test-subjects.ttl`](./specification-tests/test-subjects.ttl).
+2. `sources` - The locations of annotated documents that list the test cases to be run.
+3. `mappings` - Maps test cases IRIs to a local file system (there can be multiple mappings).
+
+For more details, check out the section [CTH Configuration](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#2-cth-configuration) in the CTH Usage docs.
+  
+#### Subjects
+
+The files referred to in `subjects` are Turtle files which describes the test subject and its capabilities, primarily using EARL and DOAP vocabularies.</br>
+For example,
+
+```turtle
+<lindner-building>
+  a earl:Software, earl:TestSubject ;
+  solid-test:skip "alice-admin", "alice-building" , "http-redirect" .
+```
+
+The subjects object in the configuration file states in which file the test subjects are defined. These define subjects which will be tested. In our case this is set to test-subjects.ttl
+
+The subjects file gives a description of the “subject” that gets tested. The name however is crucial. Whenever we test, e.g. “css”, CTH will also look for the css.env file. So these names must match.
+
+For more details, check out the section[Test Subject Description](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md) in the CTH Usage docs.
+
+#### Sources
+
+A source is a path to a manifest file where test cases that need to be tested are defined.
+For example,
+[`./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl`](./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl)
+
+The prefixes defined in the manifest file get replaced by the defined `mappings`,
+which will be explained in the following subsection.
+
+##### Mappings
+
+Mappings are used to map the IRIs of test cases to a local file system (there can be multiple mappings).
+Mappings should be ordered so the most specific is first.
+This allows individual files to be mapped
+separately from their containing directories.
+
+> The `path` refers to a path within the CTH Docker container.
+
+An example can be found below,
+where the prefix will get replaced by `/data` in every file regarded to testing.
+
+```YAML
+mappings:
+  - prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
+    path: /data
+```
