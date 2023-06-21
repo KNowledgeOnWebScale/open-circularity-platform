@@ -1,3 +1,6 @@
+# JetBrains IDE
+.idea/
+
 /volumes
 *.jar
 node_modules
