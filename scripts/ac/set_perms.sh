@@ -30,9 +30,15 @@ echo "Enable public read access for $obj"
 sld perms edit root:$obj p=r
 
 # Ragn-Sells can view BOMs and materials
-obj=data/dt/out/boms.ttl
 agent=https://css4/ragn-sells/profile/card#me
 perms=r
+## BOMs
+obj=data/dt/out/boms.ttl
+echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
+sld perms edit root:$obj $agent=r
+
+## Materials
+obj=data/dt/out/materials.ttl
 echo "Edit permissions of 💾 $uri => 👨‍💻 $agent has permission(s): $perms"
 sld perms edit root:$obj $agent=r
 

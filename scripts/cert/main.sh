@@ -32,6 +32,7 @@ DOMAINS=(
   css3
   css4
   webclient
+  css-test
 )
 
 for DOMAIN in ${DOMAINS[@]}; do
