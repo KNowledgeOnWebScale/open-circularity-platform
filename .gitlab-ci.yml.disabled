@@ -1,0 +1,53 @@
+stages:
+  - test 
+
+image: docker:latest
+
+services:
+  - docker:dind
+
+
+before_script:
+  - docker info
+  - apk update
+  - apk upgrade
+  - apk add curl 
+  - apk add --no-cache --upgrade bash
+  - apk add python3 py3-pip build-base
+  - pip install docker-compose
+  - sh -c bash
+  - apk add --update nodejs npm
+  - npm install --global yarn
+  - apk add --update openjdk11
+  - apk add openssl
+  - yarn install
+  - yarn run setup
+  - yarn run dt:mapping:pipeline 
+  - cd scripts/cert
+  - chmod +x main.sh
+  - bash main.sh
+  - cd ../../
+  - docker-compose --profile backend --profile test up --wait
+  - cd specification-tests
+  - chmod +x ./run.sh
+
+test-admin-access:
+  stage: test  
+    
+  script:
+    - echo "Testing admin access..."
+    - bash run.sh -d . admin-any
+
+# test-lindner-building-owner:
+#   stage: test
+
+#   script:
+#     - echo "Testing Lindner Group and building owner interaction..."
+#     - bash run.sh -d . lindner-building
+
+
+after_script:
+    - docker-compose --profile test stop -t 0
+    
+
+ 
