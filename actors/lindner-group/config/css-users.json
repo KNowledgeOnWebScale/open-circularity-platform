@@ -5,7 +5,7 @@
     "password": "lindner123",
     "createWebId": true,
     "createPod": true,
-    "webId": "https://css1/lindner-group/profile#me",
+    "webId": "https://css1/lindner-group/profile/card#me",
     "register": true
   }
 ]

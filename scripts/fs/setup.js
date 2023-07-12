@@ -8,7 +8,7 @@ const { actors, dirActors } = require('../config.js')
  */
 actors
   .forEach(a => {
-    const dirDT = path.resolve(dirActors, a, 'data', 'dt');
+    const dirDT = path.resolve(dirActors, a, 'pod', 'data', 'dt');
     ['in', 'mapping', 'out'].forEach(dirName => {
       fse.ensureDirSync(path.resolve(dirDT, dirName))
     })

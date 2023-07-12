@@ -20,7 +20,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/admin
+        source: ./actors/admin/pod
         target: /pods/admin
       - type: bind
         source: ./actors/admin/config/css-users.json
@@ -39,10 +39,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css0 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
 
   css1:
     profiles: [ "pod", "backend" ]
@@ -61,7 +61,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/lindner-group
+        source: ./actors/lindner-group/pod
         target: /pods/lindner-group
       - type: bind
         source: ./actors/lindner-group/config/css-users.json
@@ -80,10 +80,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css1 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
 
   css2:
     profiles: [ "pod", "backend" ]
@@ -102,7 +102,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/building-owner
+        source: ./actors/building-owner/pod
         target: /pods/building-owner
       - type: bind
         source: ./actors/building-owner/config/css-users.json
@@ -121,10 +121,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css2 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
 
   css3:
     profiles: [ "pod", "backend" ]
@@ -143,7 +143,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/building-owner2
+        source: ./actors/building-owner2/pod
         target: /pods/building-owner2
       - type: bind
         source: ./actors/building-owner2/config/css-users.json
@@ -162,10 +162,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css3 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
 
   css4:
     profiles: [ "pod", "backend" ]
@@ -184,7 +184,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/ragn-sells
+        source: ./actors/ragn-sells/pod
         target: /pods/ragn-sells
       - type: bind
         source: ./actors/ragn-sells/config/css-users.json
@@ -203,10 +203,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css4 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
 
   ##############################################################################
   # FRONTEND
@@ -237,10 +237,10 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/config/Desktop:rw
 
   ##############################################################################
-  #
+  # BASHLIB
   ##############################################################################
   bashlib:
-    profiles: [ "backend" ]
+    profiles: [ "backend", "bashlib" ]
     build: ./bashlib-build
     environment:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
@@ -248,6 +248,8 @@ services:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./scripts/ac:/scripts:rw
     depends_on:
+      css0:
+        condition: service_healthy
       css1:
         condition: service_healthy
       css2:
@@ -258,6 +260,15 @@ services:
         condition: service_healthy
     stdin_open: true
     tty: true
+    # the script in command must end with 'touch /healthy.flag' and then 'sleep infinity` for the health check to work!
+    # you may visit bashlib interactively with `docker compose [--profile ...] exec -it bashlib bash'; very useful for script debugging
+    command: ["./set_perms.sh"]
+    healthcheck:
+      test: "[ -e /healthy.flag ]"
+      interval: 5s
+      timeout: 10s
+      retries: 40
+      start_period: 30s
 
   ##############################################################################
   # TESTING
@@ -279,7 +290,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
-        source: ./actors/test
+        source: ./actors/test/pod
         target: /pods/test
       - type: bind
         source: ./actors/test/config/css-users.json
@@ -296,9 +307,12 @@ services:
       # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
       - ./scripts/cert/outputs/css-test:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
+    depends_on:
+      bashlib:
+        condition: service_healthy
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css0 --spider; then touch healthy.flag; else false; fi"
-      interval: 30s
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate https://css-test --spider; then touch healthy.flag; else false; fi"
+      interval: 5s
       timeout: 10s
-      retries: 3
-      start_period: 120s
+      retries: 40
+      start_period: 30s
