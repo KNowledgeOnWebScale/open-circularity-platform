@@ -5,7 +5,7 @@
     "password": "building123",
     "createWebId": true,
     "createPod": true,
-    "webId": "https://css2/building-owner/profile#me",
+    "webId": "https://css2/building-owner/profile/card#me",
     "register": true
   }
 ]

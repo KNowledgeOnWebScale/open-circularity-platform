@@ -156,7 +156,7 @@ Applied to the construction example use case, this comes down to
 - “Lindner Group” can *READ* buildings data from “Building Owner” & “Building Owner 2”
 - “Building Owner” & “Building Owner 2” can *READ* product data from “Lindner Group”
 - All actors can *READ* service descriptions from Ragn-Sells
-- The “admin” actor can *READ* every actor’s generated data (i.e. data within `<actor>/data/dt/out`)
+- The “admin” actor can *READ* every actor’s generated data (i.e. data within `<actor>/pod/data/dt/out`)
 
 <!-- Refs -->
 [comunica-webclient]: https://github.com/comunica/jQuery-Widget.js
