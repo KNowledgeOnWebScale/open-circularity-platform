@@ -5,7 +5,7 @@
     "password": "test123",
     "createWebId": true,
     "createPod": true,
-    "webId": "https://css-test/test/profile#me",
+    "webId": "https://css-test/test/profile/card#me",
     "register": true
   }
 ]

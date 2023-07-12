@@ -8,7 +8,7 @@ const { actors, dirActors } = require('../config.js')
  */
 actors
   .forEach(a => {
-    const dirDT = path.resolve(dirActors, a, 'data', 'dt');
+    const dirDT = path.resolve(dirActors, a, 'pod', 'data', 'dt');
     const dirMapping = path.resolve(dirDT, 'mapping');
     const fpathsRMLMappings =
       fs.readdirSync(dirMapping)
@@ -20,7 +20,7 @@ actors
     // Execute RML Mappings
     fpathsRMLMappings.forEach( m => {
       const bnameOutput = path.basename(m).replace('.yml', '').replace('.ttl', '')
-      const fpathOutput = path.resolve(m, `../../out/${bnameOutput}.ttl`); 
+      const fpathOutput = path.resolve(m, `../../out/${bnameOutput}.ttl`);
       helpers.executeRMLMapping(m, fpathOutput);
     })
   })

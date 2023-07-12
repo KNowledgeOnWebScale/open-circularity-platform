@@ -2,19 +2,15 @@
 # Architecture
 
 - [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
 - [Setup](#setup)
+  - [General](#general)
   - [Security](#security)
-    - [Self-Signed Certificates](#self-signed-certificates)
-    - [Firefox browser](#firefox-browser)
+  - [Docker infrastructure](#docker-infrastructure)
 - [Usage](#usage)
   - [Query](#query)
 - [Demonstration Scenario](#demonstration-scenario)
-- [Testing](#testing)
-  - [Local testing](#local-testing)
-  - [CTH Testing Environment](#cth-testing-environment)
-    - [Subjects](#subjects)
-    - [Sources](#sources)
-      - [Mappings](#mappings)
+- [Other documentation resources](#other-documentation-resources)
 
 ## Introduction
 
@@ -39,7 +35,21 @@ which provides access to the Solid-based decentralised data-sharing platform.
 Within the emulated browser, the user navigates to the Comunica Webclient (<http://webclient>)
 which provides a set of predefined queries the user can execute over the Solid pods. 
 
+## Prerequisites
+
+- a bash shell
+- Node >= 16 with npm
+- [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
+    - Depending on your platform, different installation guides are available from the above links.
+- [OpenSSL](https://www.openssl.org/source/)
+    - Installation depends on your platform. On Linux (especially on Ubuntu 20.04 LTS), if it is not yet installed, execute `sudo apt install openssl`.
+- [yarn classic](https://classic.yarnpkg.com/lang/en/)
+ 
 ## Setup
+
+Unless specified otherwise below, execute commands from a bash shell in the repository root.
+
+### General
 
 ```bash
 # Install dependencies
@@ -53,26 +63,44 @@ yarn run setup
 yarn run dt:mapping:pipeline
 ```
 
-Now it is time to create the  [Self-Signed Certificates](#self-signed-certificates) and start the Docker infrastructure!
-
 ### Security
 
 To enable HTTPS traffic between every actor within the Docker network,
-we generate a public/private keypair and a certificate that is signed by
-a local Certificate Authority (CA).
-
-#### Self-Signed Certificates
-
-🚀 Generate self-signed certificates and fire up the services !
+we generate a public/private keypair, a local Certificate Authority (CA) and a self-signed certificate.
 
 ```bash
 cd ./scripts/cert
 ./main.sh # generate certificates
 cd ../../
-docker compose --profile backend --profile frontend up
 ```
 
-#### Firefox browser
+### Docker infrastructure
+
+#### 1. Build locally defined images
+
+Execute:
+
+```bash
+docker compose --profile backend --profile frontend build
+```
+
+#### 2. Start containers and wait until all's healthy
+
+Execute:
+
+```bash
+docker compose --profile backend --profile frontend up --wait
+```
+
+Note that the command above may take some time to complete.
+
+Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
+
+```bash
+docker compose --profile backend --profile frontend logs -f
+```
+
+#### 3. Let the Firefox browser trust our self-made Certificate Authority
 
 The certificate of our Certificate Authority (CA) must be added to the Firefox
 browser.
@@ -80,7 +108,7 @@ To do this,
 open up a browser and navigate to the Firefox container at <http://localhost:5800>.
 
 1. Open up the Firefox Certificate Manager as follows:
-   1. Click the the "Settings"-button (upper right),
+   1. Click the "Settings"-button (upper right),
    ![Browser setup (step 1): Settings / Privacy & Security](doc/img/setup-browser-step1.png)
    2. Click the "Privacy & Security"-tab (left),
    3. "View Certificates..." (bottom of the page)
@@ -97,6 +125,17 @@ open up a browser and navigate to the Firefox container at <http://localhost:580
 At this point,
 the Solid network can be browsed securely over HTTPS.
 
+#### 4. Use it
+
+Explore the section [Usage](#usage) and/or follow the [Demonstration Scenario](#demonstration-scenario).
+
+#### 5. Stop and remove containers
+
+To stop and remove the containers, execute:
+```bash
+docker compose --profile backend --profile frontend down -t 0
+```
+
 ## Usage
 
 ### Query
@@ -109,7 +148,7 @@ open up a tab within the Firefox browser and navigate to
 This Comunica webclient allows you to query both
 public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
-The following screenshot demonstrates queries the `foaf:Agent`s over each actor's Solid pod.
+The following screenshot demonstrates querying the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
 
 ## Demonstration Scenario
@@ -149,96 +188,7 @@ The *Admin* actor can *READ* every actor’s generated data.
 
 [screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
 
-## Testing
-
-### Local testing
-
-Make sure that the backend containers are up and running:
-
-```bash
-docker compose --profile backend up -d
-```
-
-To test scenario's between the administrator and all other actors:
-
-```bash
-# Before running tests, bring down any running test container.
-docker compose --profile test down -t 0
-docker compose --profile test up -d
-cd specification-tests && ./run.sh -d . admin-any && cd -
-```
-
-To test scenario's between "Lindner Group" and the buidling owners.
-
-```bash
-# Before running tests, bring down a running test container, if any.
-docker compose --profile test down -t 0
-docker compose --profile test up -d 
-cd specification-tests && ./run.sh -d . lindner-building && cd -
-```
-
-As illustrated by the previous commands,
-the command for running tests has the following form:
-
-```bash
-./run.sh -d . <basename environment file>
-```
-
-For more details, check out the section [Environment Variables](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#3-environment-variables) in the CTH Usage docs.
-
-### CTH Testing Environment
-
-The testing environment is configured in
-[`specification-tests/config/application.yaml`](./specification-tests/config/application.yaml).</br>
-In this file, 3 important settings can be configured:
-
-1. `subjects` - The location of the file describing test subjects.
-For example, [`test-subjects.ttl`](./specification-tests/test-subjects.ttl).
-2. `sources` - The locations of annotated documents that list the test cases to be run.
-3. `mappings` - Maps test cases IRIs to a local file system (there can be multiple mappings).
-
-For more details, check out the section [CTH Configuration](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md#2-cth-configuration) in the CTH Usage docs.
-  
-#### Subjects
-
-The files referred to in `subjects` are Turtle files which describes the test subject and its capabilities, primarily using EARL and DOAP vocabularies.</br>
-For example,
-
-```turtle
-<lindner-building>
-  a earl:Software, earl:TestSubject ;
-  solid-test:skip "alice-admin", "alice-building" , "http-redirect" .
-```
-
-The subjects object in the configuration file states in which file the test subjects are defined. These define subjects which will be tested. In our case this is set to test-subjects.ttl
-
-The subjects file gives a description of the “subject” that gets tested. The name however is crucial. Whenever we test, e.g. “css”, CTH will also look for the css.env file. So these names must match.
-
-For more details, check out the section[Test Subject Description](https://github.com/solid-contrib/conformance-test-harness/blob/main/USAGE.md) in the CTH Usage docs.
-
-#### Sources
-
-A source is a path to a manifest file where test cases that need to be tested are defined.
-For example,
-[`./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl`](./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl)
-
-The prefixes defined in the manifest file get replaced by the defined `mappings`,
-which will be explained in the following subsection.
-
-##### Mappings
-
-Mappings are used to map the IRIs of test cases to a local file system (there can be multiple mappings).
-Mappings should be ordered so the most specific is first.
-This allows individual files to be mapped
-separately from their containing directories.
-
-> The `path` refers to a path within the CTH Docker container.
-
-An example can be found below,
-where the prefix will get replaced by `/data` in every file regarded to testing.
-
-```YAML
-mappings:
-  - prefix: https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture
-    path: /data
-```
+## Other documentation resources
+- [Overview of actors' WebIDs, emails and passwords](ACTORS_OVERVIEW.md)
+- [Overview of permissions in the demo scenario](PERMISSIONS_OVERVIEW.md)
+- [Testing guide](TESTING.md)

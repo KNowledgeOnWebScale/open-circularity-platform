@@ -4,6 +4,6 @@
 /volumes
 *.jar
 node_modules
-actors/*/data/dt/out/
+actors/*/pod/data/dt/out/
 
 scripts/comunica/outputs/*
