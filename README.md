@@ -7,6 +7,11 @@
   - [General](#general)
   - [Security](#security)
   - [Docker infrastructure](#docker-infrastructure)
+    - [1. Build locally defined images](#1-build-locally-defined-images)
+    - [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
+    - [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
+    - [4. Use it](#4-use-it)
+    - [5. Stop and remove containers](#5-stop-and-remove-containers)
 - [Usage](#usage)
   - [Query](#query)
 - [Demonstration Scenario](#demonstration-scenario)
@@ -153,42 +158,26 @@ The following screenshot demonstrates querying the `foaf:Agent`s over each actor
 
 ## Demonstration Scenario
 
-We demonstrate how this Open Circularity Platform copes with multiple existing data sources in different serializations,
+We demonstrate how this Open Circularity Platform copes with multiple existing
+data sources in different serializations,
 and with different actors that have different authorization levels.
+Concretely, the data sharing capabilities of the Open Circularity Platform
+are demonstrated through the Comunica Web client: a jQuery widget to query heterogeneous interfaces using SPARQL.
+This client allows actors to log in to their Solid pod and execute queries on data federated over Solid pods that are connected to the platform.
 
-> 📽️ [Demo][screencast-d4_2]
- 
-When an actor is not yet authenticated,
-only access to publicly shared data can be read.
-For example, the actors within the Solid network.
-[📽️ [Not authenticated] Query actors within the Solid network](https://youtube.com/clip/UgkxKL2O-5JJ3dZ1f01BJPbMRP1egqnx5Sjb)
-
-A Manufacturer can *READ* User/Customer data.</br>
-When authenticating as a Manufacturer,
-like Lindner Group,
-one can query the where its tiles are located.
-
-- [Authenticating as Lindner Group](https://youtube.com/clip/UgkxsSfr3KDmiqoZUs5xoSrSxWW6IZotsKIw)
-- [[Authenticated as Lindner Group] Query: What are the tiles of Building B0?](https://youtube.com/clip/UgkxC3Mawc5yP-2ZTL8gwjs2uhVueoC6kvKR)
-- [[Authenticated as Lindner Group] Query: What are the tiles of the building at a specific address?](https://youtube.com/clip/Ugkx4wWg-6mgz45aUczUXiFEeOyNmP43OXHP)
-- [[Authenticated as Lindner Group] Query 1: What are Linder Group's Products? Query 2: What are the product details?](https://youtube.com/clip/UgkxtDBtWkJkZbwGElBf0hrZiOcF1drFmxQa)
-
-A User can *READ* the *Products* of a *Manufacturer*.</br>
-From the perspective of a Building Owner, only product data is readable.
-However, it is not possible for a *User* to read *Product Details*.</br>
-More specifically, the *Building Owner* is not able to query the product details.
-
-- [Authenticating as Building Owner](https://youtube.com/clip/UgkxndBmpEvsJerW3oTNNQSWKLnlcuQZjZRK)
-- [[Authenticated as Building Owner] Query Lindner Group's products](https://youtube.com/clip/UgkxEfq0IwN144XwS-KZ1B9gkdCAKUQk4_ZS)
-- [[Authenticated as Building Owner] Query Lindner Group's product details: Not Authorized!](https://youtube.com/clip/UgkxlDoAHFJQVidm9s1WWCyHUho1P8_Q7iXH)
-
-The *Admin* actor can *READ* every actor’s generated data.
-
-- [[Authenticated as Admin] Count & Query all triples!](https://youtube.com/clip/UgkxXGvlJCiqNT1zaLBESrmgRErY0puAlrw7)
-
-[screencast-d4_2]: https://youtu.be/WkQUwIwi_1M
+The [screencasts](https://www.youtube.com/playlist?list=PLRjX1hcEWzHCrKURt1XuCoS79I0swX8Bs)
+showcase the access control scenarios from different perspectives,
+depending on the actor.
+For example,
+(i) unauthenticated users can only query public data (e.g. Ragn-Sells' service descriptions);
+(ii) customers (e.g. the building owners) can query the details of the buildings they own,
+and general product information from manufacturers (e.g. Lindner Group);
+(iii) manufacturers can read details the buildings from each customer;
+(iv) recyclers (e.g. Ragn-Sells) can read a manufacturer's general product information,
+as well as details (e.g. materials, and material compositions) required for their sorting service.
 
 ## Other documentation resources
+
 - [Overview of actors' WebIDs, emails and passwords](ACTORS_OVERVIEW.md)
 - [Overview of permissions in the demo scenario](PERMISSIONS_OVERVIEW.md)
 - [Testing guide](TESTING.md)
