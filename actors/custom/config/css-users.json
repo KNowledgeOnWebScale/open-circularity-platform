@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "custom",
+    "email": "joe@custom.com",
+    "password": "custom",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "https://css_custom/custom/profile/card#me",
+    "register": true
+  }
+]

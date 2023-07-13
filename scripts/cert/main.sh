@@ -31,6 +31,7 @@ DOMAINS=(
   css2
   css3
   css4
+  css_custom
   webclient
   css-test
 )
