@@ -181,3 +181,4 @@ as well as details (e.g. materials, and material compositions) required for thei
 - [Overview of actors' WebIDs, emails and passwords](ACTORS_OVERVIEW.md)
 - [Overview of permissions in the demo scenario](PERMISSIONS_OVERVIEW.md)
 - [Testing guide](TESTING.md)
+- [Community Solid Server (CSS) configuration](doc/css-setup.md)
