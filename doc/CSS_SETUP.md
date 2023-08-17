@@ -1,4 +1,4 @@
-# CSS configuration
+# Community Solid Server (CSS) configuration
 
 The CSS configuration used by all CSS containers in [`docker-compose.yml`](../docker-compose.yml)
 is [`/common/css-01.json`](../common/css-01.json).
