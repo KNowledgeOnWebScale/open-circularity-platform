@@ -213,7 +213,8 @@ services:
   ##############################################################################
   webclient:
     profiles: [ "frontend"]
-    image: comunica/jquery-widget.js:latest
+    # not image comunica/jquery-widget.js:latest because of https://github.com/comunica/jQuery-Widget.js/issues/152
+    image: mvanbrab/jquery-widget.js:v0.0.1
     ports:
       - 443:443
     volumes:

@@ -5,14 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.1.0
 
 ### Added
 
-- Integrated testing framework, based on [Solid's](https://solidproject.org/) - [Conformance Test Harness (CTH)](https://github.com/solid-contrib/conformance-test-harness) (internal [issue#3](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/3)). 
-- [ACTORS_OVERVIEW.md](ACTORS_OVERVIEW.md): overview of the current actors, including instructions to generate the overview (internal [issue#19](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/19)).
-- [PERMISSIONS_OVERVIEW.md](PERMISSIONS_OVERVIEW.md): overview of the currently assigned permissions, including instructions to generate the overview (internal [issue#20](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/20)).
-- [TESTING.md](TESTING.md): separate and improved readme for testing (internal [issue#21](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/21) and [issue#22](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/22) and [issue#24](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/24)). 
+- Integrated testing framework, based on [Solid's](https://solidproject.org/) - [Conformance Test Harness (CTH)](https://github.com/solid-contrib/conformance-test-harness) (internal [issue#3](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/3)).
+- Documentation files:
+  - [ACTORS_OVERVIEW.md](doc/ACTORS_OVERVIEW.md): overview of the current actors, including instructions to generate the overview (internal [issue#19](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/19)).
+  - [PERMISSIONS_OVERVIEW.md](doc/PERMISSIONS_OVERVIEW.md): overview of the currently assigned permissions, including instructions to generate the overview (internal [issue#20](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/20)).
+  - [TESTING.md](doc/TESTING.md): separate and improved readme for testing (internal [issue#21](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/21) and [issue#22](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/22) and [issue#24](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/24)). 
+  - [CSS_SETUP.md](doc/CSS_SETUP.md): about the setup of Community Solid Servers (CSS) used in the project (internal [issue#26](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/26)).
 
 ### Fixed
 

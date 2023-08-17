@@ -2,6 +2,8 @@
 
 ## Local testing
 
+Execute all local tests in the project root.
+
 ### Prepare testing
 
 Make sure that the **backend** containers are up and running healthy:
@@ -69,11 +71,11 @@ find actors -type d -empty | xargs -n 1 rmdir
 ## CTH Testing Environment
 
 The testing environment is configured in
-[`specification-tests/config/application.yaml`](./specification-tests/config/application.yaml).</br>
+[`/specification-tests/config/application.yaml`](../specification-tests/config/application.yaml).</br>
 In this file, 3 important settings can be configured:
 
 1. `subjects` - The location of the file describing test subjects.
-   For example, [`test-subjects.ttl`](./specification-tests/test-subjects.ttl).
+   For example, [`test-subjects.ttl`](../specification-tests/test-subjects.ttl).
 2. `sources` - The locations of annotated documents that list the test cases to be run.
 3. `mappings` - Maps test cases IRIs to a local file system (there can be multiple mappings).
 
@@ -100,7 +102,7 @@ For more details, check out the section[Test Subject Description](https://github
 
 A source is a path to a manifest file where test cases that need to be tested are defined.
 For example,
-[`./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl`](./specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl)
+[`/specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl`](../specification-tests/access-control-scenarios/construction/web-access-control-test-manifest.ttl)
 
 The prefixes defined in the manifest file get replaced by the defined `mappings`,
 which will be explained in the following subsection.
