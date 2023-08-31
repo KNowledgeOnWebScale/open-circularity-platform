@@ -35,7 +35,7 @@
       "url": "https://css1/lindner-group/data/dt/out/materials.ttl"
     },
     {
-      "name": "Builing owner's buildings",
+      "name": "Building Owner's buildings",
       "url": "https://css2/building-owner/data/dt/out/buildings.ttl"
     },
     {
@@ -45,6 +45,26 @@
     {
       "name": "Ragn-Sells services",
       "url": "https://css4/ragn-sells/data/dt/out/services.ttl"
+    },
+    {
+      "name": "Texon's components",
+      "url": "https://css5/texon/data/dt/out/components.ttl"
+    },
+    {
+      "name": "Texon's bills of materials",
+      "url": "https://css5/texon/data/dt/out/boms.ttl"
+    },
+    {
+      "name": "Texon's materials",
+      "url": "https://css5/texon/data/dt/out/materials.ttl"
+    },
+    {
+      "name": "Manufacturer's products",
+      "url": "https://css6/manufacturer/data/dt/out/products.ttl"
+    },
+    {
+      "name": "Manufacturer's bills of materials",
+      "url": "https://css6/manufacturer/data/dt/out/boms.ttl"
     },
     {
       "name": "WebID Profile Document: Lindner Group",
@@ -61,6 +81,18 @@
     {
       "name": "WebID Profile Document: Ragn-Sells",
       "url": "https://css4/ragn-sells/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Texon",
+      "url": "https://css5/texon/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Manufacturer",
+      "url": "https://css6/manufacturer/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Brand",
+      "url": "https://css7/brand/profile/card#me"
     }
   ],
   "prefixes": {

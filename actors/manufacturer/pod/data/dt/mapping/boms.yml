@@ -1,0 +1,44 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/textile-ont/
+  d: https://www.example/com/textile-data/
+
+sources:
+  boms-source:
+    access: ../in/boms.csv
+    referenceFormulation: csv
+mappings:
+  bom:
+    source:
+    - boms-source
+    s: d:product-bom-$(BoMID)
+    po:
+    - p: a
+      o:
+        value: o:product-bom
+        type: iri
+    - p: o:has-product-component-assoc
+      o:
+        value: d:product-component-assoc-$(BoMID)-$(ComponentID)
+        type: iri
+  bom-assoc:
+    source:
+      - boms-source
+    s: d:product-component-assoc-$(BoMID)-$(ComponentID)
+    po:
+      - p: a
+        o:
+          value: o:product-component-assoc
+          type: iri
+      - p: o:has-component
+        o:
+          value: d:component-$(ComponentID)
+          type: iri
+      - p: o:percentage
+        o:
+          value: $(percentage)
+          datatype: xsd:integer

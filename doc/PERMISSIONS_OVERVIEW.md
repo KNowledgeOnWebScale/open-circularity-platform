@@ -1,4 +1,4 @@
-# Overview of permissions in the demo
+# Overview of permissions
 
 Next overview can be created semi-automatically.
 
@@ -20,3 +20,13 @@ Next overview can be created semi-automatically.
 | https://css3/building-owner2/data/dt/out/buildings.ttl | https://css1/lindner-group/profile/card#me | r |
 | https://css4/ragn-sells/data/dt/out/services.ttl | https://css0/admin/profile/card#me | r |
 | https://css4/ragn-sells/data/dt/out/services.ttl | p | r |
+| https://css5/texon/data/dt/out/boms.ttl | https://css0/admin/profile/card#me | r |
+| https://css5/texon/data/dt/out/components.ttl | https://css0/admin/profile/card#me | r |
+| https://css5/texon/data/dt/out/components.ttl | https://css6/manufacturer/profile/card#me | r |
+| https://css5/texon/data/dt/out/components.ttl | https://css7/brand/profile/card#me | r |
+| https://css5/texon/data/dt/out/materials.ttl | https://css0/admin/profile/card#me | r |
+| https://css6/manufacturer/data/dt/out/boms.ttl | https://css0/admin/profile/card#me | r |
+| https://css6/manufacturer/data/dt/out/boms.ttl | https://css7/brand/profile/card#me | r |
+| https://css6/manufacturer/data/dt/out/products.ttl | https://css0/admin/profile/card#me | r |
+| https://css6/manufacturer/data/dt/out/products.ttl | https://css7/brand/profile/card#me | r |
+
