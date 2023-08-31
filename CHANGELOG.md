@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [unreleased]
 
+- Added textile use case and visualization with generic data viewer (internal [issue#29](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/29)).
+
 ## [0.1.0] - 2023-08-17
 
 ### Added

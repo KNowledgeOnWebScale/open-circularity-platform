@@ -1,0 +1,43 @@
+---
+title: Textile use case
+---
+classDiagram
+	direction TD
+	
+	namespace Actors{
+		class Supplier
+		class Manufacturer
+		class Brand
+	}
+	
+	Manufacturer ..> Product : makesProduct
+	Supplier ..> Component : suppliesComponent
+	Product --> ProductBOM : hasProductBOM
+	ProductBOM --> ProductComponentAssoc : hasProductComponentAssoc
+	ProductComponentAssoc --> Component : hasComponent
+	Component --> ComponentBOM : hasComponentBOM
+	ComponentBOM --> ComponentMaterialAssoc : hasComponentMaterialAssoc
+	ComponentMaterialAssoc --> Material : hasMaterial
+
+	class Product{
+		string name
+	}
+
+	class ProductComponentAssoc{
+		int percentage
+	}
+	
+	class Component{
+		string name
+		int recycledContentPercentage
+	}
+
+	class ComponentMaterialAssoc{
+		int percentage
+	}
+	
+	class Material{
+		string name
+	}
+
+	note for Supplier "Texon"

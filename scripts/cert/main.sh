@@ -31,7 +31,11 @@ DOMAINS=(
   css2
   css3
   css4
+  css5
+  css6
+  css7
   webclient
+  viewer
   css-test
 )
 

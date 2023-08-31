@@ -1,0 +1,11 @@
+[
+  {
+    "podName": "brand",
+    "email": "info@brand.com",
+    "password": "brand123",
+    "createWebId": true,
+    "createPod": true,
+    "webId": "https://css7/brand/profile/card#me",
+    "register": true
+  }
+]

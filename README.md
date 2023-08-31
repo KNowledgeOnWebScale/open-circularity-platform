@@ -6,6 +6,7 @@
 - [Setup](#setup)
   - [General](#general)
   - [Security](#security)
+  - [Rebuilding the data viewer](#rebuilding-the-data-viewer)
   - [Docker infrastructure](#docker-infrastructure)
     - [1. Build locally defined images](#1-build-locally-defined-images)
     - [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
@@ -13,15 +14,16 @@
     - [4. Use it](#4-use-it)
     - [5. Stop and remove containers](#5-stop-and-remove-containers)
 - [Usage](#usage)
-  - [Query](#query)
-- [Demonstration Scenario](#demonstration-scenario)
+  - [Low level querying using a technical Comunica webclient](#low-level-querying-using-a-technical-comunica-webclient)
 - [Other documentation resources](#other-documentation-resources)
 
 ## Introduction
 
 This repository contains the implementation
 of an Open Circularity Platform as part of the Onto-DESIDE Horizon Europe project.</br>
-We demonstrate the Open Circularity Platform through an [example use case within the Construction domain](./doc/construction-use-case.md).
+We demonstrate the Open Circularity Platform through some example use cases:
+- [example use case within the Construction domain](./doc/construction-use-case.md)
+- [example use case within the Textile domain](./doc/textile-use-case.md)
 
 The setup of the Open Circularity Platform is made reproducible by relying on [Docker containers](https://www.docker.com/resources/what-container/) and
 [Docker Compose](https://docs.docker.com/compose/) for setting up the network locally
@@ -79,6 +81,44 @@ cd ./scripts/cert
 cd ../../
 ```
 
+### Rebuilding the data viewer
+The data viewer is a more friendly webapp to query the data of the use cases.
+It consists of static web content.
+This static content is added to version control, so normally no action is required.
+If it is to be rebuilt/upgraded, the following actions are required.
+
+Start in the current directory (root of this clone).
+
+Clone and select tag of the viewer builder (generic-data-viewer-react-admin) and install it:
+```
+# will clone in the parent directory of this clone, an assumption of our scripts
+pushd ..
+git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
+cd generic-data-viewer-react-admin
+git checkout ref2-internal
+npm install
+# come back to the root of this clone
+popd
+```
+
+Prepare the viewer builder, by providing it links to our input:
+```
+cd ./scripts/viewer
+./prepare.sh
+cd ../../
+```
+
+Modify our input files if needed...
+
+Build the static content and copy it to its destination location in our repository:
+```
+cd ./scripts/viewer
+./build-and-harvest.sh
+cd ../../
+```
+
+When finished, the entire generic-data-viewer-react-admin is no longer needed, so you may delete it...
+
 ### Docker infrastructure
 
 #### 1. Build locally defined images
@@ -132,7 +172,7 @@ the Solid network can be browsed securely over HTTPS.
 
 #### 4. Use it
 
-Explore the section [Usage](#usage) and/or follow the [Demonstration Scenario](#demonstration-scenario).
+Explore the section [Usage](#usage).
 
 #### 5. Stop and remove containers
 
@@ -143,42 +183,31 @@ docker compose --profile backend --profile frontend down -t 0
 
 ## Usage
 
-### Query
+### Before continuing
 
-Browse the network through the Firefox container at <http://localhost:5800>.
+Browse the Docker network through the Firefox container, available from your local browser at <http://localhost:5800>.
 
-To query the Solid pods,
-open up a tab within the Firefox browser and navigate to
-<https://webclient>.
+### Low level querying using a technical Comunica webclient
+
+To query the Solid pods, open up a tab within the Firefox container's browser and navigate to <https://webclient>.
 This Comunica webclient allows you to query both
 public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
+
 The following screenshot demonstrates querying the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
 
-## Demonstration Scenario
+### Higher level querying using a more user friendly data viewer
 
-We demonstrate how this Open Circularity Platform copes with multiple existing
-data sources in different serializations,
-and with different actors that have different authorization levels.
-Concretely, the data sharing capabilities of the Open Circularity Platform
-are demonstrated through the Comunica Web client: a jQuery widget to query heterogeneous interfaces using SPARQL.
-This client allows actors to log in to their Solid pod and execute queries on data federated over Solid pods that are connected to the platform.
+To use this data viewer, open up a tab within the Firefox container's browser and navigate to <https://viewer:8443>.
 
-The [screencasts](https://www.youtube.com/playlist?list=PLRjX1hcEWzHCrKURt1XuCoS79I0swX8Bs)
-showcase the access control scenarios from different perspectives,
-depending on the actor.
-For example,
-(i) unauthenticated users can only query public data (e.g. Ragn-Sells' service descriptions);
-(ii) customers (e.g. the building owners) can query the details of the buildings they own,
-and general product information from manufacturers (e.g. Lindner Group);
-(iii) manufacturers can read details the buildings from each customer;
-(iv) recyclers (e.g. Ragn-Sells) can read a manufacturer's general product information,
-as well as details (e.g. materials, and material compositions) required for their sorting service.
+The following screenshot shows the result of a query about Texon's components and materials.
+![View: Texon's components and materials](doc/img/texon-components-materials.png)
+
 
 ## Other documentation resources
 
 - [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md)
-- [Overview of permissions in the demo scenario](doc/PERMISSIONS_OVERVIEW.md)
+- [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
 - [Testing guide](doc/TESTING.md)
 - [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
