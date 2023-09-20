@@ -1,8 +1,0 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix solid: <http://www.w3.org/ns/solid/terms#>.
-@prefix pim: <http://www.w3.org/ns/pim/space#>.
-
-<#me> a foaf:Agent;
-    solid:oidcIssuer <https://css5/>;
-    pim:storage <https://css5/texon/>.
