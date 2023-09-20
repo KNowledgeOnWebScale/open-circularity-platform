@@ -1,6 +1,0 @@
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-
-<#owner> a acl:Authorization;
-    acl:accessTo <./private>;
-    acl:agent <https://css4/ragn-sells/profile/card#me>;
-    acl:mode acl:Read, acl:Write, acl:Control.
