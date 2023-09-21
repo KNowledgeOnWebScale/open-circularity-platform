@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added textile use case and visualization with generic data viewer (internal [issue#29](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/29)).
 - Reduced the number of files that contain CSS baseURLs and WebIDs (internal [issue#33](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/33)).
+- Fixed creation of directories that were git-ignored while fixing internal issue#33 above (internal [issue#34](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/34)).
 
 ## [0.1.0] - 2023-08-17
 
