@@ -6,7 +6,7 @@
 - [Setup](#setup)
   - [General](#general)
   - [Security](#security)
-  - [Rebuilding the data viewer](#rebuilding-the-data-viewer)
+  - [Building the data viewer](#building-the-data-viewer)
   - [Docker infrastructure](#docker-infrastructure)
     - [1. Build locally defined images](#1-build-locally-defined-images)
     - [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
@@ -81,11 +81,10 @@ cd ./scripts/cert
 cd ../../
 ```
 
-### Rebuilding the data viewer
+### Building the data viewer
 The data viewer is a more friendly webapp to query the data of the use cases.
 It consists of static web content.
-This static content is added to version control, so normally no action is required.
-If it is to be rebuilt/upgraded, the following actions are required.
+To build, the following actions are required.
 
 Start in the current directory (root of this clone).
 
@@ -95,6 +94,7 @@ Clone and select tag of the viewer builder (generic-data-viewer-react-admin) and
 pushd ..
 git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
 cd generic-data-viewer-react-admin
+# select tag
 git checkout ref2-internal
 npm install
 # come back to the root of this clone
@@ -117,7 +117,7 @@ cd ./scripts/viewer
 cd ../../
 ```
 
-When finished, the entire generic-data-viewer-react-admin is no longer needed, so you may delete it...
+After this step, the generic-data-viewer-react-admin clone is no longer needed.
 
 ### Docker infrastructure
 
