@@ -8,3 +8,8 @@ module.exports.actors = [
   'manufacturer',
   'texon'
 ];
+
+module.exports.actorsWithoutDT = [
+  'admin',
+  'brand'
+];
