@@ -110,7 +110,7 @@ cd ../../
 
 Modify our input files if needed...
 
-Build the static content and copy it to its destination location in our repository:
+Build the static content and copy it to its destination location:
 ```
 cd ./scripts/viewer
 ./build-and-harvest.sh
