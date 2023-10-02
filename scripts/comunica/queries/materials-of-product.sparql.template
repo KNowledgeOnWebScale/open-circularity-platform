@@ -1,0 +1,16 @@
+# What are the materials of product 0x01?
+# Datasources: ${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl ${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/boms.ttl ${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/materials.ttl ${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl ${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX d: <https://www.example/com/data/>
+PREFIX o: <https://www.example/com/ont/>
+
+SELECT ?material ?name
+WHERE {
+  d:product-0x01 o:has-bom ?bom .
+  ?bom o:has-bom-material-assoc ?assoc .
+  ?assoc o:has-material ?material .
+  OPTIONAL {
+    ?material o:name ?name
+  }
+}

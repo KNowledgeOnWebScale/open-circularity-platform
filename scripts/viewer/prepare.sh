@@ -35,4 +35,4 @@ ln -s ${OUR_ROOT_DIR}/actors/viewer/setup/public/images ${GENERIC_ROOT_DIR}/publ
 
 echo Preparing public/queries
 rm_dir_or_link ${GENERIC_ROOT_DIR}/public/queries
-ln -s ${OUR_ROOT_DIR}/scripts/comunica/queries ${GENERIC_ROOT_DIR}/public
+ln -s ${OUR_ROOT_DIR}/scripts/comunica/outputs/queries ${GENERIC_ROOT_DIR}/public

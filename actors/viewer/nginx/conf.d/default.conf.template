@@ -1,0 +1,13 @@
+server {
+    listen       ${OD_VIEWER_CONTAINER_PORT} ${OD_VIEWER_SSL};
+
+    server_name  ${OD_VIEWER_SERVER_NAME};
+
+    ssl_certificate /etc/ssl/cert/actor.crt;
+    ssl_certificate_key /etc/ssl/cert/actor-private.key;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+}

@@ -5,8 +5,13 @@
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
   - [General](#general)
+    - [Environment variables](#environment-variables)
+    - [File templates](#file-templates)
+    - [Installation](#installation)
   - [Security](#security)
-  - [Building the data viewer](#building-the-data-viewer)
+  - [Mappings](#mappings)
+  - [Building the webclient contents](#building-the-webclient-contents)
+  - [Building the data viewer contents](#building-the-data-viewer-contents)
   - [Docker infrastructure](#docker-infrastructure)
     - [1. Build locally defined images](#1-build-locally-defined-images)
     - [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
@@ -15,7 +20,8 @@
     - [5. Stop and remove containers](#5-stop-and-remove-containers)
 - [Usage](#usage)
   - [Low level querying using a technical Comunica webclient](#low-level-querying-using-a-technical-comunica-webclient)
-- [Other documentation resources](#other-documentation-resources)
+  - [Higher level querying using the data viewer](#higher-level-querying-using-the-data-viewer)
+  - [Other documentation resources](#other-documentation-resources)
 
 ## Introduction
 
@@ -37,10 +43,11 @@ Within the network, we have set up:
  
 During the setup-flow, an administrative user generates and loads all data structured using the Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) into a Solid pod.
 
-During the usage-flow, an end user browses to the emulated Firefox browser (<http://localhost:5800/>)
+During the usage-flow, an end user browses to the emulated Firefox browser
 which provides access to the Solid-based decentralised data-sharing platform.
-Within the emulated browser, the user navigates to the Comunica Webclient (<http://webclient>)
-which provides a set of predefined queries the user can execute over the Solid pods. 
+Within the emulated browser, the user navigates
+either to the rather technical Comunica Webclient which provides a set of predefined queries the user can execute over the Solid pods
+or to the Data viewer, a more user-friendly web application that works with the same underlying predefined queries. 
 
 ## Prerequisites
 
@@ -54,9 +61,25 @@ which provides a set of predefined queries the user can execute over the Solid p
  
 ## Setup
 
-Unless specified otherwise below, execute commands from a bash shell in the repository root.
+Unless specified otherwise below, execute commands from a bash shell in the **repository root**.
 
 ### General
+
+#### Environment variables
+
+In any new bash shell, before executing any of the commands given below (in this Setup section and in the other sections), first execute at the repository root:
+```
+source envvars
+```
+
+#### File templates
+
+Create files from their templates:
+```
+./scripts/templates/apply-templates.sh
+```
+
+#### Installation
 
 ```bash
 # Install dependencies
@@ -64,10 +87,7 @@ yarn install
 # Setup scripts
 # - Download RML Mapper JAR
 # - Setup file structure
-# - Compile comunica queries
 yarn run setup
-# Parse YARRRML Mappings to RML & Execute RML Mappings
-yarn run dt:mapping:pipeline
 ```
 
 ### Security
@@ -76,19 +96,27 @@ To enable HTTPS traffic between every actor within the Docker network,
 we generate a public/private keypair, a local Certificate Authority (CA) and a self-signed certificate.
 
 ```bash
-cd ./scripts/cert
-./main.sh # generate certificates
-cd ../../
+# generate certificates
+cd ./scripts/cert && ./main.sh && cd ../../
 ```
 
-### Building the data viewer
-The data viewer is a more friendly webapp to query the data of the use cases.
-It consists of static web content.
-To build, the following actions are required.
+### Mappings
 
-Start in the current directory (root of this clone).
+```bash
+# Parse YARRRML Mappings to RML & Execute RML Mappings
+yarn run dt:mapping:pipeline
+```
 
-Clone and select tag of the viewer builder (generic-data-viewer-react-admin) and install it:
+### Building the webclient contents
+
+```bash
+# Collect queries
+yarn run comunica:queries:setup
+```
+
+### Building the data viewer contents
+
+Clone and select tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) and install it:
 ```
 # will clone in the parent directory of this clone, an assumption of our scripts
 pushd ..
@@ -101,23 +129,12 @@ npm install
 popd
 ```
 
-Prepare the viewer builder, by providing it links to our input:
+Prepare the viewer builder, by providing it links to our input, build the static content and copy it to its destination location:
 ```
-cd ./scripts/viewer
-./prepare.sh
-cd ../../
+cd ./scripts/viewer && ./prepare.sh && ./build-and-harvest.sh && cd ../../
 ```
 
-Modify our input files if needed...
-
-Build the static content and copy it to its destination location:
-```
-cd ./scripts/viewer
-./build-and-harvest.sh
-cd ../../
-```
-
-After this step, the generic-data-viewer-react-admin clone is no longer needed.
+After this step, `../generic-data-viewer-react-admin` is no longer needed.
 
 ### Docker infrastructure
 
@@ -126,7 +143,7 @@ After this step, the generic-data-viewer-react-admin clone is no longer needed.
 Execute:
 
 ```bash
-docker compose --profile backend --profile frontend build
+yarn run dc:build
 ```
 
 #### 2. Start containers and wait until all's healthy
@@ -134,7 +151,7 @@ docker compose --profile backend --profile frontend build
 Execute:
 
 ```bash
-docker compose --profile backend --profile frontend up --wait
+yarn run dc:up
 ```
 
 Note that the command above may take some time to complete.
@@ -142,7 +159,7 @@ Note that the command above may take some time to complete.
 Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
 
 ```bash
-docker compose --profile backend --profile frontend logs -f
+yarn run dc:logs
 ```
 
 #### 3. Let the Firefox browser trust our self-made Certificate Authority
@@ -162,8 +179,8 @@ open up a browser and navigate to the Firefox container at <http://localhost:580
 2. Import the certificate of our CA as follows:
    1. Click on the "Import..."-button to open up the file manager
    2. Navigate to "Desktop" (left panel)
-   3. Select `ca.cert` and click the "Open"-button (lower right)
-   ![Browser setup: Select `ca.cert`](doc/img/setup-browser-step3.png)
+   3. Select `ca.crt` and click the "Open"-button (lower right)
+   ![Browser setup: Select `ca.crt`](doc/img/setup-browser-step3.png)
    4. Check "Trust this CA to identify websites" and click "OK"
    ![Browser setup: Trust this CA to identify websites](doc/img/setup-browser-step4.png)
 
@@ -178,7 +195,7 @@ Explore the section [Usage](#usage).
 
 To stop and remove the containers, execute:
 ```bash
-docker compose --profile backend --profile frontend down -t 0
+yarn run dc:down
 ```
 
 ## Usage
@@ -189,7 +206,8 @@ Browse the Docker network through the Firefox container, available from your loc
 
 ### Low level querying using a technical Comunica webclient
 
-To query the Solid pods, open up a tab within the Firefox container's browser and navigate to <https://webclient>.
+To query the Solid pods, open up a tab within the Firefox container's browser and navigate to the URL configured for the webclient
+(<https://webclient>, <https://webclient.onto-deside.ilabt.imec.be/> or other...).
 This Comunica webclient allows you to query both
 public and private (if authenticated) data stored within the Solid pods of the
 Solid network.
@@ -197,13 +215,13 @@ Solid network.
 The following screenshot demonstrates querying the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
 
-### Higher level querying using a more user friendly data viewer
+### Higher level querying using the data viewer
 
-To use this data viewer, open up a tab within the Firefox container's browser and navigate to <https://viewer:8443>.
+To use this data viewer, open up a tab within the Firefox container's browser and navigate to the URL configured for the data viewer
+(<https://viewer:8443>, <https://viewer.onto-deside.ilabt.imec.be:8443/> or other...).
 
 The following screenshot shows the result of a query about Texon's components and materials.
 ![View: Texon's components and materials](doc/img/texon-components-materials.png)
-
 
 ## Other documentation resources
 
@@ -211,3 +229,4 @@ The following screenshot shows the result of a query about Texon's components an
 - [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
 - [Testing guide](doc/TESTING.md)
 - [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
+- [Developers documentation](doc/DEVELOPERS.md)

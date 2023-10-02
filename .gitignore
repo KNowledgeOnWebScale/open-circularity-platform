@@ -1,9 +1,23 @@
 # JetBrains IDE
-.idea/
+/.idea/
 
+# generated files
 /volumes
-*.jar
-node_modules
-actors/*/pod/data/dt/out/
+/*.jar
+/node_modules/
+/actors/*/pod/data/dt/out/
+/scripts/comunica/outputs/*
 
-scripts/comunica/outputs/*
+# files now created from a template
+/docker-compose.yml
+/actors/*/config/css-users.json
+/actors/*/nginx/conf.d/default.conf
+/actors/viewer/setup/src/config.json
+/specification-tests/*.env
+/specification-tests/access-control-scenarios/**/*.feature
+/scripts/cert/main.sh
+/scripts/comunica/settings.json
+/scripts/comunica/queries/*.sparql
+/scripts/ac/.actors
+/common/css-01.json
+
