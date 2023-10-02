@@ -1,0 +1,95 @@
+# Source this file first of all.
+#
+# Inspired by https://www.baeldung.com/linux/nginx-config-environment-variables.
+# All specific variables were prefixed with OD_, to avoid clashes with other environment variable names (OD stands for Onto-DESIDE).
+
+# In templates, use ${OD_DOLLAR} as a replacement for the normal $ sign where necessary
+# (as explained in https://www.baeldung.com/linux/nginx-config-environment-variables)
+export OD_DOLLAR="$"
+
+# Values below are valid for CSS v5.1
+# Choose the https version if the CSS has to handle SSL
+export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/https-websockets.json
+#export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/websockets.json
+
+# The Solid Community Servers
+
+export OD_CSS0_HOST_PORT=3000
+export OD_CSS0_CONTAINER_PORT=443
+export OD_CSS0_DOMAIN=css0.onto-deside.ilabt.imec.be
+export OD_CSS0_BASE_URL=https://${OD_CSS0_DOMAIN}
+
+export OD_CSS1_HOST_PORT=3001
+export OD_CSS1_CONTAINER_PORT=443
+export OD_CSS1_DOMAIN=css1.onto-deside.ilabt.imec.be
+export OD_CSS1_BASE_URL=https://${OD_CSS1_DOMAIN}
+
+export OD_CSS2_HOST_PORT=3002
+export OD_CSS2_CONTAINER_PORT=443
+export OD_CSS2_DOMAIN=css2.onto-deside.ilabt.imec.be
+export OD_CSS2_BASE_URL=https://${OD_CSS2_DOMAIN}
+
+export OD_CSS3_HOST_PORT=3003
+export OD_CSS3_CONTAINER_PORT=443
+export OD_CSS3_DOMAIN=css3.onto-deside.ilabt.imec.be
+export OD_CSS3_BASE_URL=https://${OD_CSS3_DOMAIN}
+
+export OD_CSS4_HOST_PORT=3004
+export OD_CSS4_CONTAINER_PORT=443
+export OD_CSS4_DOMAIN=css4.onto-deside.ilabt.imec.be
+export OD_CSS4_BASE_URL=https://${OD_CSS4_DOMAIN}
+
+export OD_CSS5_HOST_PORT=3005
+export OD_CSS5_CONTAINER_PORT=443
+export OD_CSS5_DOMAIN=css5.onto-deside.ilabt.imec.be
+export OD_CSS5_BASE_URL=https://${OD_CSS5_DOMAIN}
+
+export OD_CSS6_HOST_PORT=3006
+export OD_CSS6_CONTAINER_PORT=443
+export OD_CSS6_DOMAIN=css6.onto-deside.ilabt.imec.be
+export OD_CSS6_BASE_URL=https://${OD_CSS6_DOMAIN}
+
+export OD_CSS7_HOST_PORT=3007
+export OD_CSS7_CONTAINER_PORT=443
+export OD_CSS7_DOMAIN=css7.onto-deside.ilabt.imec.be
+export OD_CSS7_BASE_URL=https://${OD_CSS7_DOMAIN}
+
+export OD_CSS_TEST_HOST_PORT=3999
+export OD_CSS_TEST_CONTAINER_PORT=443
+export OD_CSS_TEST_DOMAIN=css-test.onto-deside.ilabt.imec.be
+export OD_CSS_TEST_BASE_URL=https://${OD_CSS_TEST_DOMAIN}
+
+# The webclient
+
+export OD_WEBCLIENT_HOST_PORT=443
+export OD_WEBCLIENT_CONTAINER_PORT=443
+export OD_WEBCLIENT_DOMAIN=webclient.onto-deside.ilabt.imec.be
+export OD_WEBCLIENT_BASE_URL=https://${OD_WEBCLIENT_DOMAIN}
+export OD_WEBCLIENT_SERVER_NAME=webclient
+if [[ "${OD_WEBCLIENT_BASE_URL/%:*}" == "https" ]] ; then
+  export OD_WEBCLIENT_SSL=ssl
+else
+  unset OD_WEBCLIENT_SSL
+fi
+# Each OD_WEBCLIENT_BASE_URL needs a specific OD_WEBCLIENT_IMAGE
+# see https://github.com/comunica/jQuery-Widget.js/issues/152 and https://github.com/mvanbrab/jQuery-Widget.js/
+export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-deside-ilabt-imec-be
+
+# The Generic Viewer
+
+export OD_VIEWER_HOST_PORT=8443
+export OD_VIEWER_CONTAINER_PORT=8443
+export OD_VIEWER_DOMAIN=viewer.onto-deside.ilabt.imec.be
+export OD_VIEWER_BASE_URL=https://${OD_VIEWER_DOMAIN}
+export OD_VIEWER_SERVER_NAME=viewer
+if [[ "${OD_VIEWER_BASE_URL/%:*}" == "https" ]] ; then
+  export OD_VIEWER_SSL=ssl
+else
+  unset OD_VIEWER_SSL
+fi
+
+# The Firefox Browser
+
+export OD_BROWSER_HOST_PORT=5800
+export OD_BROWSER_CONTAINER_PORT=5800
+

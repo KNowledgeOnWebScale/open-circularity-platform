@@ -16,8 +16,12 @@
     "dt:mapping:execute:dev": "nodemon -w ./scripts/rml -e js --exec yarn run dt:mapping:execute",
     "dt:mapping:pipeline": "yarn run dt:mapping:parse && yarn run dt:mapping:execute",
     "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all",
+    "setup": "yarn run dt:setup",
     "comunica:queries:setup": "node ./scripts/comunica/setup.js",
-    "setup": "yarn run dt:setup && yarn run comunica:queries:setup"
+    "dc:build": "docker compose --profile backend --profile frontend build",
+    "dc:up": "docker compose --profile backend --profile frontend up --wait",
+    "dc:logs": "docker compose --profile backend --profile frontend logs -f",
+    "dc:down": "docker compose --profile backend --profile frontend down -t 0"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"

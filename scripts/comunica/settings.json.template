@@ -1,0 +1,117 @@
+{
+  "queryFormats": {
+    "sparql": true,
+    "graphql": false
+  },
+  "branding": {
+    "title": "Query the Open Circularity Platform",
+    "title_href": "https://comunica.dev/",
+    "subtitle": "Live in your browser, powered by Comunica",
+    "subtitle_href": "https://comunica.dev/",
+    "page_title": "Webclient: Open Circularity Platform"
+  },
+  "map": {
+    "url": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+    "attribution": "Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>"
+  },
+  "solidAuth": {
+    "settingsOnly": true,
+    "defaultIdp": "${OD_CSS1_BASE_URL}"
+  },
+  "context": {
+    "lenient" : true
+  },
+  "datasources": [
+    {
+      "name": "Lindner Group's products",
+      "url": "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl"
+    },
+    {
+      "name": "Lindner Group's bills of materials",
+      "url": "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/boms.ttl"
+    },
+    {
+      "name": "Lindner Group's materials",
+      "url": "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/materials.ttl"
+    },
+    {
+      "name": "Building Owner's buildings",
+      "url": "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl"
+    },
+    {
+      "name": "Building Owner 2's buildings",
+      "url": "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+    },
+    {
+      "name": "Ragn-Sells services",
+      "url": "${OD_CSS4_BASE_URL}/ragn-sells/data/dt/out/services.ttl"
+    },
+    {
+      "name": "Texon's components",
+      "url": "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
+    },
+    {
+      "name": "Texon's bills of materials",
+      "url": "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl"
+    },
+    {
+      "name": "Texon's materials",
+      "url": "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+    },
+    {
+      "name": "Manufacturer's products",
+      "url": "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl"
+    },
+    {
+      "name": "Manufacturer's bills of materials",
+      "url": "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl"
+    },
+    {
+      "name": "WebID Profile Document: Lindner Group",
+      "url": "${OD_CSS1_BASE_URL}/lindner-group/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Building Owner",
+      "url": "${OD_CSS2_BASE_URL}/building-owner/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Building Owner 2",
+      "url": "${OD_CSS3_BASE_URL}/building-owner2/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Ragn-Sells",
+      "url": "${OD_CSS4_BASE_URL}/ragn-sells/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Texon",
+      "url": "${OD_CSS5_BASE_URL}/texon/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Manufacturer",
+      "url": "${OD_CSS6_BASE_URL}/manufacturer/profile/card#me"
+    },
+    {
+      "name": "WebID Profile Document: Brand",
+      "url": "${OD_CSS7_BASE_URL}/brand/profile/card#me"
+    }
+  ],
+  "prefixes": {
+    "rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":        "http://www.w3.org/2000/01/rdf-schema#",
+    "owl":         "http://www.w3.org/2002/07/owl#",
+    "skos":        "http://www.w3.org/2004/02/skos/core#",
+    "xsd":         "http://www.w3.org/2001/XMLSchema#",
+    "dc":          "http://purl.org/dc/terms/",
+    "foaf":        "http://xmlns.com/foaf/0.1/",
+    "dbpedia":     "http://dbpedia.org/resource/",
+    "dbpedia-owl": "http://dbpedia.org/ontology/",
+    "dbpprop":     "http://dbpedia.org/property/",
+    "wdprop":      "http://www.wikidata.org/prop/direct/",
+    "ruben":       "https://ruben.verborgh.org/profile/#",
+    "rubent":      "https://www.rubensworks.net/#",
+    "schema":      "http://schema.org/",
+    "bow":         "https://betweenourworlds.org/ontology/",
+    "lc":          "http://semweb.mmlab.be/ns/linkedconnections#"
+  },
+  "queries": "(Will be generated from the 'queries' folder by running the './queries-to-json' script.)"
+}

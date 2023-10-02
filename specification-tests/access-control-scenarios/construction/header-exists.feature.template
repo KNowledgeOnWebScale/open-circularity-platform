@@ -1,0 +1,25 @@
+Feature: Headers
+
+    Scenario: Can get Lindner-Group webId
+    Given url "${OD_CSS1_BASE_URL}/lindner-group/profile/card#me"
+    When method GET
+    Then status 200
+    And match header Content-Type == "text/turtle"
+
+    Scenario: Can get Admin webId
+    Given url "${OD_CSS0_BASE_URL}/admin/profile/card#me"
+    When method GET
+    Then status 200
+    And match header Content-Type == "text/turtle"
+
+    Scenario: Can get Building-Owner 2 webId
+    Given url "${OD_CSS3_BASE_URL}/building-owner2/profile/card#me"
+    When method GET
+    Then status 200
+    And match header Content-Type == "text/turtle"
+
+    Scenario: Can get Building-Owner webId
+    Given url "${OD_CSS2_BASE_URL}/building-owner/profile/card#me"
+    When method GET
+    Then status 200
+    And match header Content-Type == "text/turtle"

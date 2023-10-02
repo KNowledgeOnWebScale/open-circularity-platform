@@ -1,0 +1,18 @@
+# What are the tiles of the building with address: 88 Fairview Street Mount Laurel, NJ 08054?
+# Datasources: ${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl ${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl
+
+PREFIX oo: <http://purl.org/openorg/>
+PREFIX ao: <http://purl.org/ontology/ao/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX d: <https://www.example/com/data/>
+PREFIX o: <https://www.example/com/ont/>
+
+SELECT
+	?tile
+WHERE {
+  ?b a o:Building ;
+    o:address "88 Fairview Street Mount Laurel, NJ 08054";
+    o:has-floor-tile ?tile .
+}
+ORDER BY ?tile
