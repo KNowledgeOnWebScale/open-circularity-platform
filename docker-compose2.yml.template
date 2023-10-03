@@ -13,9 +13,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/admin/pod
@@ -32,9 +29,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css0:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS0_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -53,9 +47,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/lindner-group/pod
@@ -72,9 +63,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css1:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS1_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -93,9 +81,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/building-owner/pod
@@ -112,9 +97,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css2:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS2_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -133,9 +115,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/building-owner2/pod
@@ -152,9 +131,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css3:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS3_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -173,9 +149,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/ragn-sells/pod
@@ -192,9 +165,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css4:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS4_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -213,9 +183,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/texon/pod
@@ -232,9 +199,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css5:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS5_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -253,9 +217,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/manufacturer/pod
@@ -272,9 +233,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css6:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS6_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -293,9 +251,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/brand/pod
@@ -312,9 +267,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css7:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS7_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
@@ -334,7 +286,6 @@ services:
     volumes:
       - ./actors/webclient/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./scripts/comunica/outputs/queries.json:/usr/share/nginx/html/queries.json
-      - ./scripts/cert/outputs/webclient:/etc/ssl/cert:ro
 
   ${OD_VIEWER_SERVICE_NAME}:
     profiles: [ "frontend" ]
@@ -344,22 +295,6 @@ services:
     volumes:
       - ./actors/viewer/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./actors/viewer/html:/usr/share/nginx/html
-      - ./scripts/cert/outputs/viewer:/etc/ssl/cert:ro
-
-  browser:
-    profiles: [ "frontend" ]
-    image: jlesage/firefox:latest
-    shm_size: '2g'
-    ports:
-      - "${OD_BROWSER_HOST_PORT}:${OD_BROWSER_CONTAINER_PORT}"
-    environment:
-      - DISPLAY_WIDTH=1024
-      - DISPLAY_HEIGHT=768
-      - FF_OPEN_URL=${OD_VIEWER_BASE_URL}:${OD_VIEWER_CONTAINER_PORT}
-    volumes:
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
-      - ./volumes/browser-data:/config:rw
-      - ./scripts/cert/outputs/certificate-authority:/config/Desktop:rw
 
   ##############################################################################
   # BASHLIB
@@ -367,10 +302,7 @@ services:
   bashlib:
     profiles: [ "backend", "bashlib" ]
     build: ./bashlib-build
-    environment:
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./scripts/ac:/scripts:rw
     depends_on:
       ${OD_CSS0_SERVICE_NAME}:
@@ -415,9 +347,6 @@ services:
       - CSS_CONFIG=/config/server.json
       - CSS_ROOT_FILE_PATH=/pods
       - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
-      - CSS_HTTPS_KEY=/my-cert/actor-private.key
-      - CSS_HTTPS_CERT=/my-cert/actor.crt
-      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - type: bind
         source: ./actors/test/pod
@@ -434,9 +363,6 @@ services:
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
-      - ./scripts/cert/outputs/css-test:/my-cert:ro
-      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS_TEST_BASE_URL} --spider; then touch healthy.flag; else false; fi"
       interval: 5s
