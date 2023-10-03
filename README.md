@@ -5,9 +5,10 @@
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
   - [General](#general)
+    - [Installation](#installation)
     - [Environment variables](#environment-variables)
     - [File templates](#file-templates)
-    - [Installation](#installation)
+    - [Finalise setup](#finalise-setup)
   - [Security](#security)
   - [Mappings](#mappings)
   - [Building the webclient contents](#building-the-webclient-contents)
@@ -65,12 +66,27 @@ Unless specified otherwise below, execute commands from a bash shell in the **re
 
 ### General
 
+#### Installation
+
+```bash
+# Install dependencies
+yarn install
+```
+
 #### Environment variables
 
-In any new bash shell, before executing any of the commands given below (in this Setup section and in the other sections), first execute at the repository root:
+In any new bash shell, before executing any of the commands given below (in this Setup section and in the other sections),
+first execute `source <environment variables file>` at the repository root, where `<environment variables file>`
+is one of the files listed below.
+- [envvars](envvars): services in Docker compose network support HTTPS internally
+- [envvars2](envvars2): services in Docker compose network rely on external proxy for HTTPS support
+
 ```
-source envvars
+# example for envvars2
+source envvars2
 ```
+
+Developers: see also [Developer documentation](doc/DEVELOPERS.md).
 
 #### File templates
 
@@ -79,11 +95,9 @@ Create files from their templates:
 ./scripts/templates/apply-templates.sh
 ```
 
-#### Installation
+#### Finalise setup
 
 ```bash
-# Install dependencies
-yarn install
 # Setup scripts
 # - Download RML Mapper JAR
 # - Setup file structure
@@ -95,9 +109,11 @@ yarn run setup
 To enable HTTPS traffic between every actor within the Docker network,
 we generate a public/private keypair, a local Certificate Authority (CA) and a self-signed certificate.
 
+> Note: this step is only needed in case of environment variables file *envvars*.
+
 ```bash
 # generate certificates
-cd ./scripts/cert && ./main.sh && cd ../../
+cd ./scripts/cert && bash ./main.sh && cd ../../
 ```
 
 ### Mappings
@@ -164,28 +180,9 @@ yarn run dc:logs
 
 #### 3. Let the Firefox browser trust our self-made Certificate Authority
 
-The certificate of our Certificate Authority (CA) must be added to the Firefox
-browser.
-To do this,
-open up a browser and navigate to the Firefox container at <http://localhost:5800>.
+> Note: this step is only needed in case of environment variables file *envvars*.
 
-1. Open up the Firefox Certificate Manager as follows:
-   1. Click the "Settings"-button (upper right),
-   ![Browser setup (step 1): Settings / Privacy & Security](doc/img/setup-browser-step1.png)
-   2. Click the "Privacy & Security"-tab (left),
-   3. "View Certificates..." (bottom of the page)
-   ![Browser setup: Firefox Certificate Manager](doc/img/setup-browser-step2.png)
-  
-2. Import the certificate of our CA as follows:
-   1. Click on the "Import..."-button to open up the file manager
-   2. Navigate to "Desktop" (left panel)
-   3. Select `ca.crt` and click the "Open"-button (lower right)
-   ![Browser setup: Select `ca.crt`](doc/img/setup-browser-step3.png)
-   4. Check "Trust this CA to identify websites" and click "OK"
-   ![Browser setup: Trust this CA to identify websites](doc/img/setup-browser-step4.png)
-
-At this point,
-the Solid network can be browsed securely over HTTPS.
+Follow the instructions in [the Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
 
 #### 4. Use it
 
@@ -202,23 +199,28 @@ yarn run dc:down
 
 ### Before continuing
 
-Browse the Docker network through the Firefox container, available from your local browser at <http://localhost:5800>.
+In case of environment variables file *envvars*, browse the Docker network through the Firefox container,
+available from your local browser at <http://localhost:5800>.
+
+Otherwise, browse through your favorite local browser.
+
+Below, we'll just mention the selected browser as "your browser".
 
 ### Low level querying using a technical Comunica webclient
 
-To query the Solid pods, open up a tab within the Firefox container's browser and navigate to the URL configured for the webclient
-(<https://webclient>, <https://webclient.onto-deside.ilabt.imec.be/> or other...).
-This Comunica webclient allows you to query both
-public and private (if authenticated) data stored within the Solid pods of the
-Solid network.
+To query the Solid pods, open up a tab within your browser and navigate to the URL configured for the webclient
+(<https://webclient.onto-deside.ilabt.imec.be/> or other, depending on the configuration).
+
+This Comunica webclient allows you to query both public and private (if authenticated) data stored within
+the Solid pods of the Solid network.
 
 The following screenshot demonstrates querying the `foaf:Agent`s over each actor's Solid pod.
 ![Query: FOAF Agents](doc/img/query-agents.png)
 
 ### Higher level querying using the data viewer
 
-To use this data viewer, open up a tab within the Firefox container's browser and navigate to the URL configured for the data viewer
-(<https://viewer:8443>, <https://viewer.onto-deside.ilabt.imec.be:8443/> or other...).
+To use this data viewer, open up a tab within your browser and navigate to the URL configured for the data viewer
+(<https://viewer.onto-deside.ilabt.imec.be:8443/> or other, depending on the configuration).
 
 The following screenshot shows the result of a query about Texon's components and materials.
 ![View: Texon's components and materials](doc/img/texon-components-materials.png)
@@ -229,4 +231,5 @@ The following screenshot shows the result of a query about Texon's components an
 - [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
 - [Testing guide](doc/TESTING.md)
 - [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
-- [Developers documentation](doc/DEVELOPERS.md)
+- [The Firefox container](doc/FIREFOX_CONTAINER.md)
+- [Developer documentation](doc/DEVELOPERS.md)

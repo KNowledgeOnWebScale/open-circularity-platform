@@ -3,8 +3,8 @@ server {
 
     server_name  ${OD_WEBCLIENT_SERVER_NAME};
 
-    ssl_certificate /etc/ssl/cert/actor.crt;
-    ssl_certificate_key /etc/ssl/cert/actor-private.key;
+    ${OD_WEBCLIENT_SSL_CERT_LINE}
+    ${OD_WEBCLIENT_SSL_CERT_KEY_LINE}
 
     location / {
         root   /usr/share/nginx/html;
