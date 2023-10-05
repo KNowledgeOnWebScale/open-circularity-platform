@@ -3,7 +3,7 @@
 # Inspired by https://www.baeldung.com/linux/nginx-config-environment-variables.
 
 # Due to the lack of conditions in Docker compose file, separate docker compose files are needed for separate environments.
-export COMPOSE_FILE=docker-compose.yml
+export COMPOSE_FILE=docker-compose3.yml
 
 # --- All variables below have DO_ prefixes, to avoid clashes with other environment variable names (OD stands for Onto-DESIDE).
 
@@ -12,7 +12,7 @@ export COMPOSE_FILE=docker-compose.yml
 export OD_DOLLAR="$"
 
 # Set to "yes" if self-signed certificates in containers are required, else set to "no".
-export OD_SELF_SIGNED_CERTIFICATES=yes
+export OD_SELF_SIGNED_CERTIFICATES=no
 
 # Values below are valid for CSS v5.1
 if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
@@ -40,75 +40,75 @@ fi
 
 export OD_CSS0=css0
 export OD_CSS0_HOST_PORT=3000
-export OD_CSS0_CONTAINER_PORT=443
-export OD_CSS0_DOMAIN=${OD_CSS0}.onto-deside.ilabt.imec.be
-export OD_CSS0_BASE_URL=https://${OD_CSS0_DOMAIN}
-export OD_CSS0_SERVICE_NAME=${OD_CSS0_DOMAIN}
+export OD_CSS0_CONTAINER_PORT=3000
+export OD_CSS0_DOMAIN=localhost:${OD_CSS0_HOST_PORT}
+export OD_CSS0_BASE_URL=http://${OD_CSS0_DOMAIN}
+export OD_CSS0_SERVICE_NAME=${OD_CSS0}
 
 export OD_CSS1=css1
 export OD_CSS1_HOST_PORT=3001
-export OD_CSS1_CONTAINER_PORT=443
-export OD_CSS1_DOMAIN=${OD_CSS1}.onto-deside.ilabt.imec.be
-export OD_CSS1_BASE_URL=https://${OD_CSS1_DOMAIN}
-export OD_CSS1_SERVICE_NAME=${OD_CSS1_DOMAIN}
+export OD_CSS1_CONTAINER_PORT=3001
+export OD_CSS1_DOMAIN=localhost:${OD_CSS1_HOST_PORT}
+export OD_CSS1_BASE_URL=http://${OD_CSS1_DOMAIN}
+export OD_CSS1_SERVICE_NAME=${OD_CSS1}
 
 export OD_CSS2=css2
 export OD_CSS2_HOST_PORT=3002
-export OD_CSS2_CONTAINER_PORT=443
-export OD_CSS2_DOMAIN=${OD_CSS2}.onto-deside.ilabt.imec.be
-export OD_CSS2_BASE_URL=https://${OD_CSS2_DOMAIN}
-export OD_CSS2_SERVICE_NAME=${OD_CSS2_DOMAIN}
+export OD_CSS2_CONTAINER_PORT=3002
+export OD_CSS2_DOMAIN=localhost:${OD_CSS2_HOST_PORT}
+export OD_CSS2_BASE_URL=http://${OD_CSS2_DOMAIN}
+export OD_CSS2_SERVICE_NAME=${OD_CSS2}
 
 export OD_CSS3=css3
 export OD_CSS3_HOST_PORT=3003
-export OD_CSS3_CONTAINER_PORT=443
-export OD_CSS3_DOMAIN=${OD_CSS3}.onto-deside.ilabt.imec.be
-export OD_CSS3_BASE_URL=https://${OD_CSS3_DOMAIN}
-export OD_CSS3_SERVICE_NAME=${OD_CSS3_DOMAIN}
+export OD_CSS3_CONTAINER_PORT=3003
+export OD_CSS3_DOMAIN=localhost:${OD_CSS3_HOST_PORT}
+export OD_CSS3_BASE_URL=http://${OD_CSS3_DOMAIN}
+export OD_CSS3_SERVICE_NAME=${OD_CSS3}
 
 export OD_CSS4=css4
 export OD_CSS4_HOST_PORT=3004
-export OD_CSS4_CONTAINER_PORT=443
-export OD_CSS4_DOMAIN=${OD_CSS4}.onto-deside.ilabt.imec.be
-export OD_CSS4_BASE_URL=https://${OD_CSS4_DOMAIN}
-export OD_CSS4_SERVICE_NAME=${OD_CSS4_DOMAIN}
+export OD_CSS4_CONTAINER_PORT=3004
+export OD_CSS4_DOMAIN=localhost:${OD_CSS4_HOST_PORT}
+export OD_CSS4_BASE_URL=http://${OD_CSS4_DOMAIN}
+export OD_CSS4_SERVICE_NAME=${OD_CSS4}
 
 export OD_CSS5=css5
 export OD_CSS5_HOST_PORT=3005
-export OD_CSS5_CONTAINER_PORT=443
-export OD_CSS5_DOMAIN=${OD_CSS5}.onto-deside.ilabt.imec.be
-export OD_CSS5_BASE_URL=https://${OD_CSS5_DOMAIN}
-export OD_CSS5_SERVICE_NAME=${OD_CSS5_DOMAIN}
+export OD_CSS5_CONTAINER_PORT=3005
+export OD_CSS5_DOMAIN=localhost:${OD_CSS5_HOST_PORT}
+export OD_CSS5_BASE_URL=http://${OD_CSS5_DOMAIN}
+export OD_CSS5_SERVICE_NAME=${OD_CSS5}
 
 export OD_CSS6=css6
 export OD_CSS6_HOST_PORT=3006
-export OD_CSS6_CONTAINER_PORT=443
-export OD_CSS6_DOMAIN=${OD_CSS6}.onto-deside.ilabt.imec.be
-export OD_CSS6_BASE_URL=https://${OD_CSS6_DOMAIN}
-export OD_CSS6_SERVICE_NAME=${OD_CSS6_DOMAIN}
+export OD_CSS6_CONTAINER_PORT=3006
+export OD_CSS6_DOMAIN=localhost:${OD_CSS6_HOST_PORT}
+export OD_CSS6_BASE_URL=http://${OD_CSS6_DOMAIN}
+export OD_CSS6_SERVICE_NAME=${OD_CSS6}
 
 export OD_CSS7=css7
 export OD_CSS7_HOST_PORT=3007
-export OD_CSS7_CONTAINER_PORT=443
-export OD_CSS7_DOMAIN=${OD_CSS7}.onto-deside.ilabt.imec.be
-export OD_CSS7_BASE_URL=https://${OD_CSS7_DOMAIN}
-export OD_CSS7_SERVICE_NAME=${OD_CSS7_DOMAIN}
+export OD_CSS7_CONTAINER_PORT=3007
+export OD_CSS7_DOMAIN=localhost:${OD_CSS7_HOST_PORT}
+export OD_CSS7_BASE_URL=http://${OD_CSS7_DOMAIN}
+export OD_CSS7_SERVICE_NAME=${OD_CSS7}
 
 export OD_CSS_TEST=css-test
 export OD_CSS_TEST_HOST_PORT=3999
-export OD_CSS_TEST_CONTAINER_PORT=443
-export OD_CSS_TEST_DOMAIN=${OD_CSS_TEST}.onto-deside.ilabt.imec.be
-export OD_CSS_TEST_BASE_URL=https://${OD_CSS_TEST_DOMAIN}
-export OD_CSS_TEST_SERVICE_NAME=${OD_CSS_TEST_DOMAIN}
+export OD_CSS_TEST_CONTAINER_PORT=3999
+export OD_CSS_TEST_DOMAIN=localhost:${OD_CSS_TEST_HOST_PORT}
+export OD_CSS_TEST_BASE_URL=http://${OD_CSS_TEST_DOMAIN}
+export OD_CSS_TEST_SERVICE_NAME=${OD_CSS_TEST}
 
 # The webclient
 
 export OD_WEBCLIENT=webclient
-export OD_WEBCLIENT_HOST_PORT=443
-export OD_WEBCLIENT_CONTAINER_PORT=443
-export OD_WEBCLIENT_DOMAIN=${OD_WEBCLIENT}.onto-deside.ilabt.imec.be
-export OD_WEBCLIENT_BASE_URL=https://${OD_WEBCLIENT_DOMAIN}
-export OD_WEBCLIENT_SERVICE_NAME=${OD_WEBCLIENT_DOMAIN}
+export OD_WEBCLIENT_HOST_PORT=8080
+export OD_WEBCLIENT_CONTAINER_PORT=8080
+export OD_WEBCLIENT_DOMAIN=localhost:${OD_WEBCLIENT_HOST_PORT}
+export OD_WEBCLIENT_BASE_URL=http://${OD_WEBCLIENT_DOMAIN}
+export OD_WEBCLIENT_SERVICE_NAME=${OD_WEBCLIENT}
 export OD_WEBCLIENT_SERVER_NAME=${OD_WEBCLIENT}
 if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
   export OD_WEBCLIENT_SSL=ssl
@@ -121,16 +121,16 @@ else
 fi
 # Each OD_WEBCLIENT_BASE_URL needs a specific OD_WEBCLIENT_IMAGE
 # see https://github.com/comunica/jQuery-Widget.js/issues/152 and https://github.com/mvanbrab/jQuery-Widget.js/
-export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-deside-ilabt-imec-be
+export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.http-localhost-8080
 
 # The Generic Viewer
 
 export OD_VIEWER=viewer
-export OD_VIEWER_HOST_PORT=8443
-export OD_VIEWER_CONTAINER_PORT=8443
-export OD_VIEWER_DOMAIN=${OD_VIEWER}.onto-deside.ilabt.imec.be
-export OD_VIEWER_BASE_URL=https://${OD_VIEWER_DOMAIN}
-export OD_VIEWER_SERVICE_NAME=${OD_VIEWER_DOMAIN}
+export OD_VIEWER_HOST_PORT=8081
+export OD_VIEWER_CONTAINER_PORT=8081
+export OD_VIEWER_DOMAIN=localhost:${OD_VIEWER_HOST_PORT}
+export OD_VIEWER_BASE_URL=http://${OD_VIEWER_DOMAIN}
+export OD_VIEWER_SERVICE_NAME=${OD_VIEWER}
 export OD_VIEWER_SERVER_NAME=${OD_VIEWER}
 if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
   export OD_VIEWER_SSL=ssl
@@ -141,9 +141,3 @@ else
   unset OD_VIEWER_SSL_CERT_LINE
   unset OD_VIEWER_SSL_CERT_KEY_LINE
 fi
-
-# The Firefox Browser
-
-export OD_BROWSER_HOST_PORT=5800
-export OD_BROWSER_CONTAINER_PORT=5800
-

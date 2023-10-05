@@ -5,8 +5,7 @@ services:
   ${OD_CSS0_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS0_HOST_PORT}:${OD_CSS0_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS0_BASE_URL}
       - CSS_PORT=${OD_CSS0_CONTAINER_PORT}
@@ -39,8 +38,7 @@ services:
   ${OD_CSS1_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS1_HOST_PORT}:${OD_CSS1_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS1_BASE_URL}
       - CSS_PORT=${OD_CSS1_CONTAINER_PORT}
@@ -73,8 +71,7 @@ services:
   ${OD_CSS2_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS2_HOST_PORT}:${OD_CSS2_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS2_BASE_URL}
       - CSS_PORT=${OD_CSS2_CONTAINER_PORT}
@@ -107,8 +104,7 @@ services:
   ${OD_CSS3_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS3_HOST_PORT}:${OD_CSS3_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS3_BASE_URL}
       - CSS_PORT=${OD_CSS3_CONTAINER_PORT}
@@ -141,8 +137,7 @@ services:
   ${OD_CSS4_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS4_HOST_PORT}:${OD_CSS4_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS4_BASE_URL}
       - CSS_PORT=${OD_CSS4_CONTAINER_PORT}
@@ -175,8 +170,7 @@ services:
   ${OD_CSS5_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS5_HOST_PORT}:${OD_CSS5_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS5_BASE_URL}
       - CSS_PORT=${OD_CSS5_CONTAINER_PORT}
@@ -209,8 +203,7 @@ services:
   ${OD_CSS6_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS6_HOST_PORT}:${OD_CSS6_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS6_BASE_URL}
       - CSS_PORT=${OD_CSS6_CONTAINER_PORT}
@@ -243,8 +236,7 @@ services:
   ${OD_CSS7_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS7_HOST_PORT}:${OD_CSS7_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS7_BASE_URL}
       - CSS_PORT=${OD_CSS7_CONTAINER_PORT}
@@ -281,8 +273,7 @@ services:
     profiles: [ "frontend" ]
     # not image comunica/jquery-widget.js:latest because of https://github.com/comunica/jQuery-Widget.js/issues/152
     image: ${OD_WEBCLIENT_IMAGE}
-    ports:
-      - "${OD_WEBCLIENT_HOST_PORT}:${OD_WEBCLIENT_CONTAINER_PORT}"
+    network_mode: "host"
     volumes:
       - ./actors/webclient/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./scripts/comunica/outputs/queries.json:/usr/share/nginx/html/queries.json
@@ -290,8 +281,7 @@ services:
   ${OD_VIEWER_SERVICE_NAME}:
     profiles: [ "frontend" ]
     image: nginx:1.25.2-alpine
-    ports:
-      - "${OD_VIEWER_HOST_PORT}:${OD_VIEWER_CONTAINER_PORT}"
+    network_mode: "host"
     volumes:
       - ./actors/viewer/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./actors/viewer/html:/usr/share/nginx/html
@@ -302,6 +292,7 @@ services:
   bashlib:
     profiles: [ "backend", "bashlib" ]
     build: ./bashlib-build
+    network_mode: "host"
     environment:
       - OD_SELF_SIGNED_CERTIFICATES=${OD_SELF_SIGNED_CERTIFICATES}
     volumes:
@@ -341,8 +332,7 @@ services:
   ${OD_CSS_TEST_SERVICE_NAME}:
     profiles: [ "test" ]
     image: gddmulde/community-solid-server:latest
-    ports:
-      - "${OD_CSS_TEST_HOST_PORT}:${OD_CSS_TEST_CONTAINER_PORT}"
+    network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS_TEST_BASE_URL}
       - CSS_PORT=${OD_CSS_TEST_CONTAINER_PORT}

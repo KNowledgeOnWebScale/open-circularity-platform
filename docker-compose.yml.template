@@ -368,6 +368,7 @@ services:
     profiles: [ "backend", "bashlib" ]
     build: ./bashlib-build
     environment:
+      - OD_SELF_SIGNED_CERTIFICATES=${OD_SELF_SIGNED_CERTIFICATES}
       - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
     volumes:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
