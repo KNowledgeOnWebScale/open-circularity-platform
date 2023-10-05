@@ -1,5 +1,0 @@
-shopt -s expand_aliases
-#
-export NODE_EXTRA_CA_CERTS="/shared-certs/ca.crt"
-PATH_BASHLIB="/work/bashlib/bin/solid.js"
-alias sld="export NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt && node $PATH_BASHLIB"

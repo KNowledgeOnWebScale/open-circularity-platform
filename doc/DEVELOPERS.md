@@ -2,17 +2,75 @@
 
 ## Environment variables
 
-Environment variables files are listed in [the Environment variables section of README.md](../README.md#environment-variables).
-Below some additional developer info.
+Environment variables files are listed in [Implementation details below](#implementation-details).
 
 After **changing** an environment variables file or **switching** to a new environment variables file,
 close your bash shells and open new ones and in each, execute `source <applicable environment variables file>`.
-Next, in one bash shell, delete persisted output of previous runs from any of the involved containers.
-These files are git-ignored in the repo, so we can remove them with the following command:
+
+Next, in one bash shell, delete git-ignored files created using previous environment variables contents.
+These files are located in a few repo directories, so we can remove them as follows:
 ```
-for d in actors volumes ; do cd $d ; git ls-files --others --ignored --exclude-standard | xargs -r -n 1 sudo rm -v ; cd .. ; done
+# show them (in cause you're doubting)
+for d in actors scripts volumes ; do cd $d ; git ls-files --others --ignored --exclude-standard ; cd .. ; done
+# delete them
+for d in actors scripts volumes ; do cd $d ; git ls-files --others --ignored --exclude-standard | xargs -r -n 1 sudo rm ; cd .. ; done
 ```
 
+Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
+
+> Note:
+> When in a new environment variables file the need appears to **add** one or more environment variables,
+> revisit the **existing** environment variable files and sync them (perhaps with a different value for the involved environment variables).
+> Also, apply the new environment variables in the existing templates.
+
+### Implementation details
+
+Environment variables files are listed in the table in [the Environment variables section of README.md](../README.md#environment-variables).
+Below some detailed info.
+
+#### envvars
+- Service names are set to their domain name, e.g. `css1.onto-deside.ilabt.imec.be` for css1, whose baseURL is defined as `https://css1.onto-deside.ilabt.imec.be/`.
+- Services can be addressed (and can address each other) using their defined baseURL, inside the default Docker compose network, because it resolves the addresses using the service names.
+- Services cannot be addressed from the host using their defined baseURL.
+- As a consequence, a Firefox container in the Docker compose network is needed to address webclients and CSSs.
+- As a second consequence, webclients must be located in a container inside the Docker compose network.
+ - The technical Comunica webclient is at <https://webclient.onto-deside.ilabt.imec.be/>.
+ - The data viewer webclient is at <https://viewer.onto-deside.ilabt.imec.be:8443/>.
+- Services have their own self-signed SSL certificates, based on a custom certification authority, to be trusted by the Firefox container.
+
+#### envvars2
+- Service names are set to something else but their domain name, e.g. `css1` for css1, whose baseURL is `https://css1.onto-deside.ilabt.imec.be/`.
+- Services can be addressed (and can address each other) using their defined baseURL, from everywhere, **if and only if** an external proxy takes care of this.
+- As a consequence, there is no need for a Firefox container; the host's local browser will do.
+- Webclients are still available in containers inside the Docker compose network.
+ - The technical Comunica webclient is at <https://webclient.onto-deside.ilabt.imec.be/>.
+ - The data viewer webclient is at <https://viewer.onto-deside.ilabt.imec.be:8443/>.
+- External webclients can work as well.
+- Services do not have their own SSL certificates, external certificates must be provided (Let's encrypt is your friend).
+
+#### envvars3
+- Service names are set to something else but their domain name, e.g. `css1` for css1, whose baseURL is `http://localhost:3001/`.
+- Services use the **host** network mode ([which seems to be available on Linux hosts only)](https://docs.docker.com/network/network-tutorial-host/#prerequisites)).
+- Services can be addressed (and can address each other) using their defined baseURL, from the **host network**.
+- As a consequence, there is no need for a Firefox container; the host's local browser will do.
+- Webclients are still available in containers inside the Docker compose network.
+ - The technical Comunica webclient is at <http://localhost:8080>.
+ - The data viewer webclient is at <http://localhost:8081>.
+- External webclients can work as well, **if and only if** they are available from the host network.
+- Services do not need SSL certificates. Note that only baseURLs of the format `http://localhost*` can work over http.
+
+This environment is well suited for further development of webclients, using our data.
+
+As an example, test this in the `../generic-data-viewer-react-admin` as follows:
+```
+# we should have that directory already and in it, we should have links to our input files already, if we followed the procedure in README.md. 
+pushd ../generic-data-viewer-react-admin/
+# same as npm run dev there, but use a free port (we're using the default port 8080 already):
+npx vite --port 8082
+# now browse http://localhost:8082 and test here...
+# finally, press Ctrl-C and come back:
+popd
+```
 ## Templates
 
 A lot of files in this repository have contents that should be configurable, e.g. to adapt the baseURL of one or more Solid pods.
@@ -21,11 +79,13 @@ Unfortunately, not all the tools that read these files can read environment vari
 To overcome this:
 - files to be adapted have a companion file, whose name ends with the `.template` suffix (e.g. `docker-compose.yml.template`, `common/css-01.json.template`);
 - the original files are now git-ignored (e.g. `docker-compose.yml`, `common/css-01.json`);
+- the template files use the environment variables, set by sourcing the appropriate environment variables file;
 - a script is provided to generate new file contents from the templates.
 
-After changing or adding one or more template files, delete persisted output of previous runs from any of the involved containers, as instructed in [section Environment variables](#environment-variables).
+After changing or adding one or more templates, delete git-ignored files created using previous templates.
+These files are located in a few repo directories, so we can remove them with the same command as shown in [section Environment variables above](#environment-variables).
 
-Next repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
+Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
 
 ### Making a new template
 

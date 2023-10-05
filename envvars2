@@ -11,10 +11,15 @@ export COMPOSE_FILE=docker-compose2.yml
 # (as explained in https://www.baeldung.com/linux/nginx-config-environment-variables)
 export OD_DOLLAR="$"
 
+# Set to "yes" if self-signed certificates in containers are required, else set to "no".
+export OD_SELF_SIGNED_CERTIFICATES=no
+
 # Values below are valid for CSS v5.1
-# Choose the https version if the CSS has to handle SSL
-#export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/https-websockets.json
-export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/websockets.json
+if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
+  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/https-websockets.json
+else
+  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/websockets.json
+fi
 
 # --- for all services XXX below:
 # OD_XXX:                the short name (used in other variables)
@@ -105,12 +110,15 @@ export OD_WEBCLIENT_DOMAIN=${OD_WEBCLIENT}.onto-deside.ilabt.imec.be
 export OD_WEBCLIENT_BASE_URL=https://${OD_WEBCLIENT_DOMAIN}
 export OD_WEBCLIENT_SERVICE_NAME=${OD_WEBCLIENT}
 export OD_WEBCLIENT_SERVER_NAME=${OD_WEBCLIENT}
-#export OD_WEBCLIENT_SSL=ssl
-unset OD_WEBCLIENT_SSL
-#export OD_WEBCLIENT_SSL_CERT_LINE="ssl_certificate /etc/ssl/cert/actor.crt;"
-unset OD_WEBCLIENT_SSL_CERT_LINE
-#export OD_WEBCLIENT_SSL_CERT_KEY_LINE="ssl_certificate_key /etc/ssl/cert/actor-private.key;"
-unset OD_WEBCLIENT_SSL_CERT_KEY_LINE
+if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
+  export OD_WEBCLIENT_SSL=ssl
+  export OD_WEBCLIENT_SSL_CERT_LINE="ssl_certificate /etc/ssl/cert/actor.crt;"
+  export OD_WEBCLIENT_SSL_CERT_KEY_LINE="ssl_certificate_key /etc/ssl/cert/actor-private.key;"
+else
+  unset OD_WEBCLIENT_SSL
+  unset OD_WEBCLIENT_SSL_CERT_LINE
+  unset OD_WEBCLIENT_SSL_CERT_KEY_LINE
+fi
 # Each OD_WEBCLIENT_BASE_URL needs a specific OD_WEBCLIENT_IMAGE
 # see https://github.com/comunica/jQuery-Widget.js/issues/152 and https://github.com/mvanbrab/jQuery-Widget.js/
 export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-deside-ilabt-imec-be
@@ -124,9 +132,12 @@ export OD_VIEWER_DOMAIN=${OD_VIEWER}.onto-deside.ilabt.imec.be
 export OD_VIEWER_BASE_URL=https://${OD_VIEWER_DOMAIN}
 export OD_VIEWER_SERVICE_NAME=${OD_VIEWER}
 export OD_VIEWER_SERVER_NAME=${OD_VIEWER}
-#export OD_VIEWER_SSL=ssl
-unset OD_VIEWER_SSL
-#export OD_VIEWER_SSL_CERT_LINE="ssl_certificate /etc/ssl/cert/actor.crt;"
-unset OD_VIEWER_SSL_CERT_LINE
-#export OD_VIEWER_SSL_CERT_KEY_LINE="ssl_certificate_key /etc/ssl/cert/actor-private.key;"
-unset OD_VIEWER_SSL_CERT_KEY_LINE
+if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
+  export OD_VIEWER_SSL=ssl
+  export OD_VIEWER_SSL_CERT_LINE="ssl_certificate /etc/ssl/cert/actor.crt;"
+  export OD_VIEWER_SSL_CERT_KEY_LINE="ssl_certificate_key /etc/ssl/cert/actor-private.key;"
+else
+  unset OD_VIEWER_SSL
+  unset OD_VIEWER_SSL_CERT_LINE
+  unset OD_VIEWER_SSL_CERT_KEY_LINE
+fi

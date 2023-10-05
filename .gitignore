@@ -19,5 +19,6 @@
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
 /scripts/ac/.actors
+/scripts/ac/.aliases
 /common/css-01.json
 

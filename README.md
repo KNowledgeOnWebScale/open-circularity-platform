@@ -78,15 +78,19 @@ yarn install
 In any new bash shell, before executing any of the commands given below (in this Setup section and in the other sections),
 first execute `source <environment variables file>` at the repository root, where `<environment variables file>`
 is one of the files listed below.
-- [envvars](envvars): services in Docker compose network support HTTPS internally
-- [envvars2](envvars2): services in Docker compose network rely on external proxy for HTTPS support
+
+| file                 | baseURL example                           | Typical application                            |
+|----------------------|-------------------------------------------|------------------------------------------------|
+| [envvars](envvars)   | `https://css1.onto-deside.ilabt.imec.be/` | Stand alone demo, everything in containers     |
+| [envvars2](envvars2) | `https://css1.onto-deside.ilabt.imec.be/` | Deployed application, behind a proxy           |
+| [envvars3](envvars3) | `http://localhost:3001/`                  | Local development of webclients using our data |
+
+For implementation details, see [the Environment variables section in the Developer documentation](doc/DEVELOPERS.md#environment-variables).
 
 ```
-# example for envvars2
-source envvars2
+# example for file 'envvars'
+source envvars
 ```
-
-Developers: see also [Developer documentation](doc/DEVELOPERS.md).
 
 #### File templates
 
@@ -150,7 +154,7 @@ Prepare the viewer builder, by providing it links to our input, build the static
 cd ./scripts/viewer && ./prepare.sh && ./build-and-harvest.sh && cd ../../
 ```
 
-After this step, `../generic-data-viewer-react-admin` is no longer needed.
+After this step, `../generic-data-viewer-react-admin` is no longer needed. You may keep it there when developing, to avoid cloning it again later.
 
 ### Docker infrastructure
 
