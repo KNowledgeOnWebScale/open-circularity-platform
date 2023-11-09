@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed shebang line from scripts/cert/main.sh.template (internal [issue#38](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/38)).
 - Avoided GitHub's download limit for rmlmapper.jar (internal [issue#39](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/39)).
 - Added configuration to run with `http://localhost:<portnr>` baseURLs (internal [issue#31](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/31)).
+- Documentation update (internal [issue#40](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/40)).
+- Fixed a bug that caused all query results to be empty after switching envirnment variables files (internal [issue#41](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/41)).
 
 ## [0.1.0] - 2023-08-17
 
