@@ -7,7 +7,10 @@ Next overview can be created semi-automatically.
 
 ## Note on baseURLs
 
-In the tables below, baseURLs are of the form `https://css*.onto-deside.ilabt.imec.be/`. Actual baseURLs can be different.
+In the table below, baseURLs are of the form `https://css*.onto-deside.ilabt.imec.be/`.
+These are valid for the selected setups *Development and stand-alone demo* and *Public deployment*.
+For other selected setups, replace the baseURLs with the values from the corresponding [environment variables file](../README.md#environment-variables).
+
 
 | Resource                                                                                          | WebID granted the permission (p = public)                            | permission |
 |---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|------------|

@@ -1,28 +1,32 @@
 <!-- omit in toc -->
 # Architecture
 
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-  - [General](#general)
-    - [Installation](#installation)
-    - [Environment variables](#environment-variables)
-    - [File templates](#file-templates)
-    - [Finalise setup](#finalise-setup)
-  - [Security](#security)
-  - [Mappings](#mappings)
-  - [Building the webclient contents](#building-the-webclient-contents)
-  - [Building the data viewer contents](#building-the-data-viewer-contents)
-  - [Docker infrastructure](#docker-infrastructure)
-    - [1. Build locally defined images](#1-build-locally-defined-images)
-    - [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
-    - [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
-    - [4. Use it](#4-use-it)
-    - [5. Stop and remove containers](#5-stop-and-remove-containers)
-- [Usage](#usage)
-  - [Low level querying using a technical Comunica webclient](#low-level-querying-using-a-technical-comunica-webclient)
-  - [Higher level querying using the data viewer](#higher-level-querying-using-the-data-viewer)
-  - [Other documentation resources](#other-documentation-resources)
+<!-- TOC -->
+* [Introduction](#introduction)
+* [Prerequisites](#prerequisites)
+* [Setup](#setup)
+  * [General](#general)
+    * [Installation](#installation)
+    * [Environment variables](#environment-variables)
+    * [File templates](#file-templates)
+    * [Finalise setup](#finalise-setup)
+  * [Security](#security)
+  * [Mappings](#mappings)
+  * [Building the webclient contents](#building-the-webclient-contents)
+  * [Building the data viewer contents](#building-the-data-viewer-contents)
+  * [Docker infrastructure](#docker-infrastructure)
+    * [1. Build locally defined images](#1-build-locally-defined-images)
+    * [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
+    * [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
+    * [4. Use it](#4-use-it)
+    * [5. Stop and remove containers](#5-stop-and-remove-containers)
+* [Usage](#usage)
+  * [Before continuing](#before-continuing)
+  * [Low level querying using the included technical Comunica webclient](#low-level-querying-using-the-included-technical-comunica-webclient)
+    * [Add a Solid pod to the list of datasources for a query](#add-a-solid-pod-to-the-list-of-datasources-for-a-query)
+  * [Higher level querying using the included data viewer](#higher-level-querying-using-the-included-data-viewer)
+* [Other documentation resources](#other-documentation-resources)
+<!-- TOC -->
 
 ## Introduction
 
@@ -44,11 +48,11 @@ Within the network, we have set up:
  
 During the setup-flow, an administrative user generates and loads all data structured using the Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) into a Solid pod.
 
-During the usage-flow, an end user browses to the emulated Firefox browser
-which provides access to the Solid-based decentralised data-sharing platform.
-Within the emulated browser, the user navigates
-either to the rather technical Comunica Webclient which provides a set of predefined queries the user can execute over the Solid pods
-or to the Data viewer, a more user-friendly web application that works with the same underlying predefined queries. 
+During the usage-flow, an end user navigates either to the rather technical Comunica Webclient
+which provides a set of predefined queries the user can execute over the Solid pods
+or to the generic data viewer, a more user-friendly web application that works with the same underlying predefined queries. 
+
+> A **public deployment** is available. To use it as is, no further setup is needed, so continue reading at [Usage](#usage) and choose *Selected setup = Public deployment*.
 
 ## Prerequisites
 
@@ -75,22 +79,27 @@ yarn install
 
 #### Environment variables
 
-In any new bash shell, before executing any of the commands given below (in this Setup section and in the other sections),
-first execute `source <environment variables file>` at the repository root, where `<environment variables file>`
-is one of the files listed below.
+The files in this repository were prepared to generate output for three different selected setups.
+The selection of a selected setup is done by means of environment variables.
+These environment variables are assigned in *environment variables files*.
 
-| file                 | baseURL example                           | Typical application                            |
-|----------------------|-------------------------------------------|------------------------------------------------|
-| [envvars](envvars)   | `https://css1.onto-deside.ilabt.imec.be/` | Stand alone demo, everything in containers     |
-| [envvars2](envvars2) | `https://css1.onto-deside.ilabt.imec.be/` | Deployed application, behind a proxy           |
-| [envvars3](envvars3) | `http://localhost:3001/`                  | Local development of webclients using our data |
+An overview:
 
-For implementation details, see [the Environment variables section in the Developer documentation](doc/DEVELOPERS.md#environment-variables).
+| Selected setup                                   | Details                                                                                                                             | Environment variables file |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
+| Development and stand-alone demo                 | URLS `https://...` and same as in [envvars2](envvars2), but nothing publicly accessible (use included webapps via included browser) | [envvars](envvars)         |
+| Public deployment                                | URLS `https://...`, publicly accessible pods and included webapps, open for external webapps                                        | [envvars2](envvars2)       |
+| Simplified development using Docker host network | URLs `http://localhost:...`, pods and included webapps accessible from the host, open for webapps running on the host               | [envvars3](envvars3)       |
+
+In any new bash shell, before executing any of the commands in this Setup section and in the other sections,
+first assign the environment variables using the appropriate environment variables file:
 
 ```
-# example for file 'envvars'
-source envvars
+# example for file 'envvars2'
+source envvars2
 ```
+
+For a closer look at the different selected setups, see [here](doc/SELECTED_SETUPS.md).
 
 #### File templates
 
@@ -203,36 +212,67 @@ yarn run dc:down
 
 ### Before continuing
 
-In case of environment variables file *envvars*, browse the Docker network through the Firefox container,
-available from your local browser at <http://localhost:5800>.
+Some queries may require you to login as one of the actors, described in the use cases. Find actors' email addresses and passwords in the [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md).
 
-Otherwise, browse through your favorite local browser.
+### Low level querying using the included technical Comunica webclient
 
-Below, we'll just mention the selected browser as "your browser".
+To query the Solid pods, navigate to the URL configured for the webclient:
 
-### Low level querying using a technical Comunica webclient
-
-To query the Solid pods, open up a tab within your browser and navigate to the URL configured for the webclient
-(<https://webclient.onto-deside.ilabt.imec.be/> or other, depending on the configuration).
+| Selected setup                                   | Included technical Comunica webclient URL      | Browse via                                           |
+|--------------------------------------------------|------------------------------------------------|-------------------------------------------------------|
+| Development and stand-alone demo                 | <https://webclient.onto-deside.ilabt.imec.be/> | Included Firefox container at <http://localhost:5800> |
+| Public deployment                                | <https://webclient.onto-deside.ilabt.imec.be/> | Your local browser                                    |
+| Simplified development using Docker host network | <http://localhost:8080>                        | Your local browser                                    |
 
 This Comunica webclient allows you to query both public and private (if authenticated) data stored within
 the Solid pods of the Solid network.
 
-The following screenshot demonstrates querying the `foaf:Agent`s over each actor's Solid pod.
-![Query: FOAF Agents](doc/img/query-agents.png)
+The following screenshot demonstrates querying Lindner Group's products. The result shown was obtained when logged in to identity provider `https://css1.onto-deside.ilabt.imec.be` as `info@lindner-group.com`.
 
-### Higher level querying using the data viewer
+![Query: Lindner Group's products](doc/img/query-lindner-group-products.png)
 
-To use this data viewer, open up a tab within your browser and navigate to the URL configured for the data viewer
-(<https://viewer.onto-deside.ilabt.imec.be:8443/> or other, depending on the configuration).
+#### Add a Solid pod to the list of datasources for a query
 
-The following screenshot shows the result of a query about Texon's components and materials.
-![View: Texon's components and materials](doc/img/texon-components-materials.png)
+All queries are configured to work on a predefined list of datasources (Solid pods in our case). Selecting a query preloads the *Choose datasources:* dialogue.
+
+In the public deployment setup case, it is possible to your Solid pod to the list.
+See also [Public deployment with additional external Solid pods](doc/SELECTED_SETUPS.md#public-deployment-with-additional-external-solid-pods).
+
+If you don't have a pod yet:
+- you can obtain one following the [Solid project instructions](https://solidproject.org/users/get-a-pod)
+- or [try out Solid pods with the SolidLab Pod Playground](https://solidlabresearch.github.io/documentation-center/getting-started/#try-out-solid-pods-with-the-solidlab-pod-playground)
+  (be warned for this one: *"The pods and data on the instance is removed daily and there are no guarantees regarding uptime."*).
+
+To add an external Solid pod to the list of datasources in the Comunica webclient, place the cursor in that dialogue:
+
+![Query: Add a pod part 1](doc/img/add-pod-to-webclient-1.png)
+
+Next type the baseURL of an additional Solid pod and confirm with the `<Return>` key:
+
+![Query: Add a pod part 2](doc/img/add-pod-to-webclient-2.png)
+
+The additional datasource will be taken into account when the query is executed, and the datasource will be available as a *preset datasource* from here on.
+
+
+### Higher level querying using the included data viewer
+
+To use this data viewer, navigate to the URL configured for the data viewer:
+
+| Selected setup                                   | Included data viewer URL                    | Browse via                                            |
+|--------------------------------------------------|---------------------------------------------|-------------------------------------------------------|
+| Development and stand-alone demo                 | <https://viewer.onto-deside.ilabt.imec.be/> | Included Firefox container at <http://localhost:5800> |
+| Public deployment                                | <https://viewer.onto-deside.ilabt.imec.be/> | Your local browser                                    |
+| Simplified development using Docker host network | <http://localhost:8081>                     | Your local browser                                    |
+
+The following screenshot shows the result of a query about Texon's components and materials. The result shown was obtained when logged in to identity provider `https://css5.onto-deside.ilabt.imec.be` as `info@texon.com`.
+
+![Viewer: Texon's components and materials](doc/img/texon-components-materials.png)
 
 ## Other documentation resources
 
 - [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md)
 - [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
+- [About the different selected setups](doc/SELECTED_SETUPS.md)
 - [Testing guide](doc/TESTING.md)
 - [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
 - [The Firefox container](doc/FIREFOX_CONTAINER.md)

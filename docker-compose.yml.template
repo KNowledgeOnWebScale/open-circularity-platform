@@ -355,7 +355,7 @@ services:
     environment:
       - DISPLAY_WIDTH=1024
       - DISPLAY_HEIGHT=768
-      - FF_OPEN_URL=${OD_VIEWER_BASE_URL}:${OD_VIEWER_CONTAINER_PORT}
+      - FF_OPEN_URL=${OD_VIEWER_BASE_URL}
     volumes:
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
       - ./volumes/browser-data:/config:rw

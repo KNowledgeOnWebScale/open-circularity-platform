@@ -127,7 +127,7 @@ export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-
 
 export OD_VIEWER=viewer
 export OD_VIEWER_HOST_PORT=8443
-export OD_VIEWER_CONTAINER_PORT=8443
+export OD_VIEWER_CONTAINER_PORT=443
 export OD_VIEWER_DOMAIN=${OD_VIEWER}.onto-deside.ilabt.imec.be
 export OD_VIEWER_BASE_URL=https://${OD_VIEWER_DOMAIN}
 export OD_VIEWER_SERVICE_NAME=${OD_VIEWER_DOMAIN}
