@@ -1,0 +1,17 @@
+Feature: Lindner-Group Access
+
+  @alice-lindner
+  Scenario: Lindner-Group can read Building-Owner 2 data
+    * def buildingOwnerUrl = "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+    Given url buildingOwnerUrl
+    And headers clients.alice.getAuthHeaders('GET', buildingOwnerUrl)
+    When method GET
+    Then status 200
+
+  @alice-lindner
+  Scenario: Lindner-Group can read Building-Owner data
+  * def buildingOwnerUrl = "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl"
+  Given url buildingOwnerUrl
+  And headers clients.alice.getAuthHeaders('GET', buildingOwnerUrl)
+  When method Get 
+  Then status 200

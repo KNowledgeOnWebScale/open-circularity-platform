@@ -1,8 +1,16 @@
 module.exports.dirActors = './actors'; // Relative to package.json
 
-module.exports.actors =[
+module.exports.actors = [
   'building-owner',
   'lindner-group',
   'building-owner2',
-  'ragn-sells'
+  'ragn-sells',
+  'manufacturer',
+  'texon'
+];
+
+module.exports.actorsWithoutDT = [
+  'admin',
+  'brand',
+  'test'
 ];

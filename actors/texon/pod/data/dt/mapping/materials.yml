@@ -1,0 +1,25 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+  o: https://www.example/com/textile-ont/
+  d: https://www.example/com/textile-data/
+
+sources:
+  materials-source:
+    access: ../in/materials.csv
+    referenceFormulation: csv
+mappings:
+  material:
+    source:
+    - materials-source
+    s: d:material-$(MaterialID)
+    po:
+    - p: a
+      o:
+        value: o:Component
+        type: iri
+    - p: o:name
+      o:
+        value: $(name)

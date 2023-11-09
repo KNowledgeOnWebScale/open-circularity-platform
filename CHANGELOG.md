@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [unreleased]
 
+### Added
+
+### Fixed
+
+### Changed
+
+## [0.2.0] - 2023-11-09
+
+### Added
+
+- Added textile use case and visualization with generic data viewer (internal [issue#29](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/29)).
+- Added configuration to run with `http://localhost:<portnr>` baseURLs (internal [issue#31](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/31)).
+- Added configuration to run behind a proxy (internal [issue#36](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/36)).
+- Added documentation topics (internal [issue#40](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/40)).
+
+### Fixed
+
+- Fixed creation of directories that were git-ignored while fixing internal issue#33 above (internal [issue#34](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/34)).
+- Removed shebang line from scripts/cert/main.sh.template (internal [issue#38](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/38)).
+- Avoided GitHub's download limit for rmlmapper.jar (internal [issue#39](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/39)).
+- Fixed a bug that caused all query results to be empty after switching envirnment variables files (internal [issue#41](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/41)).
+
+### Changed
+
+- Reduced the number of files that contain CSS baseURLs and WebIDs (internal [issue#33](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/33)).
+- Easy baseURLs changes using environment variables and template files (internal [issue#35](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/35)).
+
 ## [0.1.0] - 2023-08-17
 
 ### Added
@@ -42,3 +69,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
+[0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0

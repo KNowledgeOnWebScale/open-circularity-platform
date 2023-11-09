@@ -164,3 +164,24 @@ Applied to the construction example use case, this comes down to
 [bashlib]: https://github.com/SolidLabResearch/Bashlib
 [rmlmapper]: https://github.com/RMLio/rmlmapper-java
 [yarrrml-parser]: https://github.com/RMLio/yarrrml-parser/tree/development/lib
+
+## Demonstration Scenario
+
+We demonstrate how this Open Circularity Platform copes with multiple existing
+data sources in different serializations,
+and with different actors that have different authorization levels.
+Concretely, the data sharing capabilities of the Open Circularity Platform
+are demonstrated through the Comunica Web client: a jQuery widget to query heterogeneous interfaces using SPARQL.
+This client allows actors to log in to their Solid pod and execute queries on data federated over Solid pods that are connected to the platform.
+
+The [screencasts](https://www.youtube.com/playlist?list=PLRjX1hcEWzHCrKURt1XuCoS79I0swX8Bs)
+showcase the access control scenarios from different perspectives,
+depending on the actor.
+For example,
+(i) unauthenticated users can only query public data (e.g. Ragn-Sells' service descriptions);
+(ii) customers (e.g. the building owners) can query the details of the buildings they own,
+and general product information from manufacturers (e.g. Lindner Group);
+(iii) manufacturers can read details the buildings from each customer;
+(iv) recyclers (e.g. Ragn-Sells) can read a manufacturer's general product information,
+as well as details (e.g. materials, and material compositions) required for their sorting service.
+

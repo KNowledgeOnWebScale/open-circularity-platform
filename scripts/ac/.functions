@@ -1,0 +1,47 @@
+# For a given WebID, get the idp and the pod
+# Parameters:
+#   $1: webid
+# Returns
+#   idp pod (both with trailing /; "unknown" if not found)
+function get_idp_pod_from_webid() {
+  local webid=$1
+  sld query $webid 'SELECT ?idp ?pod WHERE {
+    ?s	<http://www.w3.org/ns/solid/terms#oidcIssuer> ?idp ;
+        <http://www.w3.org/ns/pim/space#storage> ?pod .
+  }' | awk 'BEGIN { idp = "unknown"; pod = "unknown" } $1 == "idp:" { idp = $2 } $1 == "pod:" { pod = $2 } END { print idp, pod }'
+}
+
+# Create an authentication token for a WebID and use it to authenticate
+# Parameters:
+#   $1: identity provider
+#   $2: email address
+#   $3: password
+#   $4: token name
+#   $5: webid
+function authenticate() {
+  local idp=$1
+  local email=$2
+  local pw=$3
+  local token_name=$4
+  local webid=$5
+  echo "🧹 Clearing currently authenticated WebID if any"
+  sld auth clear
+  echo "🔑 Creating token $token_name"
+  sld auth create-token -v -b $idp -e $email -p $pw -n $token_name
+  echo "🔐 Authenticating as $webid"
+  sld auth set $webid
+}
+
+# Edit the permissions of a resource for a WebID
+# Parameters:
+#   $1: resource (url)
+#   $2: webid (or p for public, u for currently authenticated user)
+#   $3: permissions ([d][g][a][c][r][w], see bashlib's perms edit command)
+function edit_permissions() {
+  local resource=$1
+  local webid=$2
+  local perms=$3
+  echo "Editing permissions of 💾 $resource => 👨‍💻 $webid has permission(s): $perms"
+  sld perms edit $resource $webid=$perms
+}
+

@@ -1,7 +1,0 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix o: <https://www.example/com/ont/> .
-
-<#smth> 
-  a o:PrivateData ;
-  o:address "Private data about building owner 2 (Bob from RealEstate.com)"
-.

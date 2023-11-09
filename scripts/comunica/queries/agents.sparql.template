@@ -1,0 +1,14 @@
+# Query the actors having storage
+# Datasources: ${OD_CSS1_BASE_URL}/lindner-group/profile/card#me ${OD_CSS2_BASE_URL}/building-owner/profile/card#me ${OD_CSS3_BASE_URL}/building-owner2/profile/card#me ${OD_CSS4_BASE_URL}/ragn-sells/profile/card#me ${OD_CSS5_BASE_URL}/texon/profile/card#me ${OD_CSS6_BASE_URL}/manufacturer/profile/card#me
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX pim: <http://www.w3.org/ns/pim/space#>
+PREFIX solid: <http://www.w3.org/ns/solid/terms#>
+
+SELECT *
+WHERE {
+  ?agent
+    a foaf:Agent;
+    solid:oidcIssuer ?IDP;
+    pim:storage ?storage;
+  .
+}

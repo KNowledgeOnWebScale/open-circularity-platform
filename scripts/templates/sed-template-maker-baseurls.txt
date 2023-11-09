@@ -1,0 +1,12 @@
+# Usage: sed -f <this filename> <legacy filename> > <template filename>
+s|https://css0.onto-deside.ilabt.imec.be|${OD_CSS0_BASE_URL}|g
+s|https://css1.onto-deside.ilabt.imec.be|${OD_CSS1_BASE_URL}|g
+s|https://css2.onto-deside.ilabt.imec.be|${OD_CSS2_BASE_URL}|g
+s|https://css3.onto-deside.ilabt.imec.be|${OD_CSS3_BASE_URL}|g
+s|https://css4.onto-deside.ilabt.imec.be|${OD_CSS4_BASE_URL}|g
+s|https://css5.onto-deside.ilabt.imec.be|${OD_CSS5_BASE_URL}|g
+s|https://css6.onto-deside.ilabt.imec.be|${OD_CSS6_BASE_URL}|g
+s|https://css7.onto-deside.ilabt.imec.be|${OD_CSS7_BASE_URL}|g
+s|https://css-test.onto-deside.ilabt.imec.be|${OD_CSS_TEST_BASE_URL}|g
+s|https://viewer.onto-deside.ilabt.imec.be|${OD_VIEWER_BASE_URL}|g
+s|https://webclient.onto-deside.ilabt.imec.be|${OD_WEBCLIENT_BASE_URL}|g

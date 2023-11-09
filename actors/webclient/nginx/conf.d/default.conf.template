@@ -1,0 +1,13 @@
+server {
+    listen       ${OD_WEBCLIENT_CONTAINER_PORT} ${OD_WEBCLIENT_SSL};
+
+    server_name  ${OD_WEBCLIENT_SERVER_NAME};
+
+    ${OD_WEBCLIENT_SSL_CERT_LINE}
+    ${OD_WEBCLIENT_SSL_CERT_KEY_LINE}
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+}
