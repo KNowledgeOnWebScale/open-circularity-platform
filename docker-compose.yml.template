@@ -4,7 +4,7 @@ services:
   ##############################################################################
   ${OD_CSS0_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS0_HOST_PORT}:${OD_CSS0_CONTAINER_PORT}"
     environment:
@@ -44,7 +44,7 @@ services:
 
   ${OD_CSS1_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS1_HOST_PORT}:${OD_CSS1_CONTAINER_PORT}"
     environment:
@@ -84,7 +84,7 @@ services:
 
   ${OD_CSS2_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS2_HOST_PORT}:${OD_CSS2_CONTAINER_PORT}"
     environment:
@@ -124,7 +124,7 @@ services:
 
   ${OD_CSS3_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS3_HOST_PORT}:${OD_CSS3_CONTAINER_PORT}"
     environment:
@@ -164,7 +164,7 @@ services:
 
   ${OD_CSS4_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS4_HOST_PORT}:${OD_CSS4_CONTAINER_PORT}"
     environment:
@@ -204,7 +204,7 @@ services:
 
   ${OD_CSS5_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS5_HOST_PORT}:${OD_CSS5_CONTAINER_PORT}"
     environment:
@@ -244,7 +244,7 @@ services:
 
   ${OD_CSS6_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS6_HOST_PORT}:${OD_CSS6_CONTAINER_PORT}"
     environment:
@@ -284,7 +284,7 @@ services:
 
   ${OD_CSS7_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS7_HOST_PORT}:${OD_CSS7_CONTAINER_PORT}"
     environment:
@@ -407,7 +407,7 @@ services:
   ##############################################################################
   ${OD_CSS_TEST_SERVICE_NAME}:
     profiles: [ "test" ]
-    image: gddmulde/community-solid-server:latest
+    image: solidproject/community-server:6
     ports:
       - "${OD_CSS_TEST_HOST_PORT}:${OD_CSS_TEST_CONTAINER_PORT}"
     environment:

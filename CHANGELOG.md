@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Changed from private CSS image to solidproject/community-server:6 image (internal [issue#32](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/32)).
+
 ## [0.2.0] - 2023-11-09
 
 ### Added
