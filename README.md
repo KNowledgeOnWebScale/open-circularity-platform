@@ -167,15 +167,7 @@ After this step, `../generic-data-viewer-react-admin` is no longer needed. You m
 
 ### Docker infrastructure
 
-#### 1. Build locally defined images
-
-Execute:
-
-```bash
-yarn run dc:build
-```
-
-#### 2. Start containers and wait until all's healthy
+#### 1. Start containers and wait until all's healthy
 
 Execute:
 
@@ -191,17 +183,17 @@ Optional: if you're interested in what's happening while the previous command ex
 yarn run dc:logs
 ```
 
-#### 3. Let the Firefox browser trust our self-made Certificate Authority
+#### 2. Let the Firefox browser trust our self-made Certificate Authority
 
 > Note: this step is only needed in case of environment variables file *envvars*.
 
 Follow the instructions in [the Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
 
-#### 4. Use it
+#### 3. Use it
 
 Explore the section [Usage](#usage).
 
-#### 5. Stop and remove containers
+#### 4. Stop and remove containers
 
 To stop and remove the containers, execute:
 ```bash
@@ -212,7 +204,9 @@ yarn run dc:down
 
 ### Before continuing
 
-Some queries may require you to login as one of the actors, described in the use cases. Find actors' email addresses and passwords in the [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md).
+Some queries may require you to login as one of the actors, described in the use cases.
+That is because read permissions to resources may be restricted to specific actors, as can be seen in the [overview of permissions](doc/PERMISSIONS_OVERVIEW.md).  
+Find actors' email addresses and passwords in the [overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md).
 
 ### Low level querying using the included technical Comunica webclient
 

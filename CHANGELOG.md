@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [0.2.1] - 2024-01-02
+
+### Added
+
+### Fixed
+
+### Changed
+
+- Changed from private CSS image to solidproject/community-server:7 image (internal [issue#32](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/32) and [issue#42](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/42)).
+
 ## [0.2.0] - 2023-11-09
 
 ### Added
@@ -55,8 +65,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - More efficient start_period/interval/retries combination in health checks (internal [issue#13](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/13)).
-- [bashlib-build/Dockerfile](bashlib-build/Dockerfile) changed to become stand-alone (internal [issue#14](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/14) and [issue#15](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/15)).
-- [scripts/ac/set_perms.sh](scripts/ac/set_perms.sh) cleaned up and improved (internal [issue#16](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/16)).
+- `bashlib-build/Dockerfile` changed to become stand-alone (internal [issue#14](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/14) and [issue#15](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/15)).
+- `scripts/ac/set_perms.sh` cleaned up and improved (internal [issue#16](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/16)).
 - Every actor’s pod contents is now put into a '/pod' parent directory (internal [issue#17](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/17)).
 - Extended and improved [README.md](README.md) (internal [issue#18](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/18) and [issue#21](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/21)).
 
@@ -70,3 +80,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
 [0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0
+[0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1

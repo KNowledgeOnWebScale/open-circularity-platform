@@ -5,12 +5,12 @@
 /volumes
 /*.jar
 /node_modules/
-/actors/*/pod/data/dt/out/
+/actors/*/pod-template/base/data/dt/out/
+/actors/*/pod-template/wac/data/dt/out/*.acl.hbs
 /scripts/comunica/outputs/*
 
 # files now created from a template
 /docker-compose*.yml
-/actors/*/config/css-users.json
 /actors/*/nginx/conf.d/default.conf
 /actors/viewer/setup/src/config.json
 /specification-tests/*.env

@@ -14,11 +14,11 @@ export OD_DOLLAR="$"
 # Set to "yes" if self-signed certificates in containers are required, else set to "no".
 export OD_SELF_SIGNED_CERTIFICATES=no
 
-# Values below are valid for CSS v5.1
+# Values below are valid for CSS version >= v6.0
 if [[ "$OD_SELF_SIGNED_CERTIFICATES" == "yes" ]] ; then
-  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/https-websockets.json
+  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/https.json
 else
-  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/websockets.json
+  export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/http.json
 fi
 
 # --- for all services XXX below:

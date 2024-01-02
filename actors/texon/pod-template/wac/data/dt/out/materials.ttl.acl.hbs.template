@@ -1,0 +1,11 @@
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#owner> a acl:Authorization;
+    acl:agent <{{webId}}>;
+    acl:mode acl:Read, acl:Write, acl:Control;
+    acl:accessTo <./materials.ttl>.
+<#admin> a acl:Authorization;
+    acl:agent <${OD_CSS0_BASE_URL}/admin/profile/card#me>;
+    acl:mode acl:Read;
+    acl:accessTo <./materials.ttl>.

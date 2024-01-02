@@ -1,0 +1,9 @@
+[
+  {
+    "email": "mikael@ragn-sells.se",
+    "password": "mikael123",
+    "pods": [
+      { "name": "ragn-sells" }
+    ]
+  }
+]

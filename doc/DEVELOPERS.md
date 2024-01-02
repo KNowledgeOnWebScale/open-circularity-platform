@@ -8,12 +8,12 @@ After **changing** an environment variables file or **switching** to a new envir
 close your bash shells and open new ones and in each, execute `source <applicable environment variables file>`.
 
 Next, in one bash shell, delete git-ignored files created using previous environment variables contents.
-These files are located in a few repo directories, so we can remove them as follows:
+In the repository root:
 ```
 # show them (in cause you're doubting)
-for d in actors scripts volumes ; do cd $d ; git ls-files --others --ignored --exclude-standard ; cd .. ; done
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
 # delete them
-for d in actors scripts volumes ; do cd $d ; git ls-files --others --ignored --exclude-standard | xargs -r -n 1 sudo rm ; cd .. ; done
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -n 1 sudo rm
 ```
 
 Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
