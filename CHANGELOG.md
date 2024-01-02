@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [0.2.1] - 2024-01-02
+
+### Added
+
+### Fixed
+
+### Changed
+
 - Changed from private CSS image to solidproject/community-server:7 image (internal [issue#32](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/32) and [issue#42](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/42)).
 
 ## [0.2.0] - 2023-11-09
@@ -72,3 +80,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
 [0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0
+[0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1
