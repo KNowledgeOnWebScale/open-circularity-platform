@@ -1,0 +1,9 @@
+[
+  {
+    "email": "info@building-owner.com",
+    "password": "building123",
+    "pods": [
+      { "name": "building-owner" }
+    ]
+  }
+]

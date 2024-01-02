@@ -8,7 +8,7 @@ const { actors, dirActors } = require('../config.js')
  */
 actors
   .forEach(a => {
-    const dirDT = path.resolve(dirActors, a, 'pod', 'data', 'dt');
+    const dirDT = path.resolve(dirActors, a, 'pod-template', 'base', 'data', 'dt');
     const dirMapping = path.resolve(dirDT, 'mapping');
     const fpathsYARRRMLMappings =
       fs.readdirSync(dirMapping)

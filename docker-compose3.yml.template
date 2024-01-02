@@ -4,264 +4,232 @@ services:
   ##############################################################################
   ${OD_CSS0_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS0_BASE_URL}
       - CSS_PORT=${OD_CSS0_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/admin/pod
-        target: /pods/admin
+        source: ./actors/admin/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/admin/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS0_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS1_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS1_BASE_URL}
       - CSS_PORT=${OD_CSS1_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/lindner-group/pod
-        target: /pods/lindner-group
+        source: ./actors/lindner-group/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/lindner-group/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS1_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS2_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS2_BASE_URL}
       - CSS_PORT=${OD_CSS2_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/building-owner/pod
-        target: /pods/building-owner
+        source: ./actors/building-owner/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/building-owner/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS2_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS3_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS3_BASE_URL}
       - CSS_PORT=${OD_CSS3_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/building-owner2/pod
-        target: /pods/building-owner2
+        source: ./actors/building-owner2/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/building-owner2/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS3_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS4_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS4_BASE_URL}
       - CSS_PORT=${OD_CSS4_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/ragn-sells/pod
-        target: /pods/ragn-sells
+        source: ./actors/ragn-sells/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/ragn-sells/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS4_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS5_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS5_BASE_URL}
       - CSS_PORT=${OD_CSS5_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/texon/pod
-        target: /pods/texon
+        source: ./actors/texon/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/texon/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS5_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS6_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS6_BASE_URL}
       - CSS_PORT=${OD_CSS6_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/manufacturer/pod
-        target: /pods/manufacturer
+        source: ./actors/manufacturer/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/manufacturer/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS6_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
   ${OD_CSS7_SERVICE_NAME}:
     profiles: [ "pod", "backend" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS7_BASE_URL}
       - CSS_PORT=${OD_CSS7_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/brand/pod
-        target: /pods/brand
+        source: ./actors/brand/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/brand/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS7_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
@@ -287,77 +255,33 @@ services:
       - ./actors/viewer/html:/usr/share/nginx/html
 
   ##############################################################################
-  # BASHLIB
-  ##############################################################################
-  bashlib:
-    profiles: [ "backend", "bashlib" ]
-    build: ./bashlib-build
-    network_mode: "host"
-    environment:
-      - OD_SELF_SIGNED_CERTIFICATES=${OD_SELF_SIGNED_CERTIFICATES}
-    volumes:
-      - ./scripts/ac:/scripts:rw
-    depends_on:
-      ${OD_CSS0_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS1_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS2_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS3_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS4_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS5_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS6_SERVICE_NAME}:
-        condition: service_healthy
-      ${OD_CSS7_SERVICE_NAME}:
-        condition: service_healthy
-    stdin_open: true
-    tty: true
-    # the script in command must end with 'touch /healthy.flag' and then 'sleep infinity` for the health check to work!
-    # you may visit bashlib interactively with `docker compose [--profile ...] exec -it bashlib bash'; very useful for script debugging
-    command: ["./set_perms.sh"]
-    healthcheck:
-      test: "[ -e /healthy.flag ]"
-      interval: 5s
-      timeout: 10s
-      retries: 65
-      start_period: 30s
-
-  ##############################################################################
   # TESTING
   ##############################################################################
   ${OD_CSS_TEST_SERVICE_NAME}:
     profiles: [ "test" ]
-    image: solidproject/community-server:6
+    image: solidproject/community-server:7
     network_mode: "host"
     environment:
       - CSS_BASE_URL=${OD_CSS_TEST_BASE_URL}
       - CSS_PORT=${OD_CSS_TEST_CONTAINER_PORT}
       - CSS_CONFIG=/config/server.json
-      - CSS_ROOT_FILE_PATH=/pods
-      - CSS_SEEDED_POD_CONFIG_JSON=/config/pods.json
+      - CSS_SEED_CONFIG=/config/css-users.json
     volumes:
       - type: bind
-        source: ./actors/test/pod
-        target: /pods/test
+        source: ./actors/test/pod-template
+        target: /config/pod-template
       - type: bind
         source: ./actors/test/config/css-users.json
-        target: /config/pods.json
+        target: /config/css-users.json
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
-      - type: bind
-        source: ./common/templatepod
-        target: /config/templatepod
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS_TEST_BASE_URL} --spider; then touch healthy.flag; else false; fi"
-      interval: 5s
+      interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
