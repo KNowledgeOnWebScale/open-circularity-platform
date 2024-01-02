@@ -34,10 +34,10 @@ We map the source data to Linked Data using the [YARRRML parser][yarrrml-parser]
 and the [RMLMapper][rmlmapper].
 As a result, every actor's source data will be transformed to RDF, serialized as Turtle.
 
-Every actors has their a pod, hosted by their own [Community Solid server][css].
+Every actor has its pod, hosted by its own [Community Solid server][css].
 Each pod contains the Turtle files of the actor owning the pod.</br>
-To operate on the Solid pods (e.g. specifying access control),
-we use of [Bashlib][bashlib]: a Command-Line Interface to interact with actors in a Solid.</br>
+Access control on the Turtle files is preset;
+
 To query the distributed data, we use the [Comunica Webclient][comunica-webclient]:
 a jQuery widget to query heterogeneous interfaces using Comunica SPARQL.
 
@@ -161,7 +161,6 @@ Applied to the construction example use case, this comes down to
 <!-- Refs -->
 [comunica-webclient]: https://github.com/comunica/jQuery-Widget.js
 [css]: https://github.com/CommunitySolidServer/CommunitySolidServer
-[bashlib]: https://github.com/SolidLabResearch/Bashlib
 [rmlmapper]: https://github.com/RMLio/rmlmapper-java
 [yarrrml-parser]: https://github.com/RMLio/yarrrml-parser/tree/development/lib
 

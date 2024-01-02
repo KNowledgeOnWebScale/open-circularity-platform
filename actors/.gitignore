@@ -1,7 +1,0 @@
-.meta
-.acl
-*.acl
-README$.markdown
-private$.ttl
-public$.ttl
-card$.ttl

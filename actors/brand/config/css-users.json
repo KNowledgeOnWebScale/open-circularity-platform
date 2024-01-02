@@ -1,0 +1,9 @@
+[
+  {
+    "email": "info@brand.com",
+    "password": "brand123",
+    "pods": [
+      { "name": "brand" }
+    ]
+  }
+]

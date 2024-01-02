@@ -1,0 +1,9 @@
+[
+  {
+    "email": "admin@ocp.com",
+    "password": "admin123",
+    "pods": [
+      { "name": "admin" }
+    ]
+  }
+]
