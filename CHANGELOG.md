@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Use correct replacement for `{{podBaseUrl}}` in CSS7 (internal [issue#43](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/43)).
+
 ### Changed
 
 ## [0.2.1] - 2024-01-02

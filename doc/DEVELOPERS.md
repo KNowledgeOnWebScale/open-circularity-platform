@@ -13,7 +13,7 @@ In the repository root:
 # show them (in cause you're doubting)
 git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
 # delete them
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -n 1 sudo rm
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % sudo rm %
 ```
 
 Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
