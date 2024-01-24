@@ -12,5 +12,8 @@ module.exports.actors = [
 module.exports.actorsWithoutDT = [
   'admin',
   'brand',
-  'test'
+  'test',
+  'recycler',
+  'retailer',
+  'sorter'
 ];

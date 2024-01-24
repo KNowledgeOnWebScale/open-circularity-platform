@@ -147,3 +147,25 @@ fi
 export OD_BROWSER_HOST_PORT=5800
 export OD_BROWSER_CONTAINER_PORT=5800
 
+# Extra pods
+
+export OD_CSS8=css8
+export OD_CSS8_HOST_PORT=3008
+export OD_CSS8_CONTAINER_PORT=443
+export OD_CSS8_DOMAIN=${OD_CSS8}.onto-deside.ilabt.imec.be
+export OD_CSS8_BASE_URL=https://${OD_CSS8_DOMAIN}
+export OD_CSS8_SERVICE_NAME=${OD_CSS8_DOMAIN}
+
+export OD_CSS9=css9
+export OD_CSS9_HOST_PORT=3009
+export OD_CSS9_CONTAINER_PORT=443
+export OD_CSS9_DOMAIN=${OD_CSS9}.onto-deside.ilabt.imec.be
+export OD_CSS9_BASE_URL=https://${OD_CSS9_DOMAIN}
+export OD_CSS9_SERVICE_NAME=${OD_CSS9_DOMAIN}
+
+export OD_CSS10=css10
+export OD_CSS10_HOST_PORT=3010
+export OD_CSS10_CONTAINER_PORT=443
+export OD_CSS10_DOMAIN=${OD_CSS10}.onto-deside.ilabt.imec.be
+export OD_CSS10_BASE_URL=https://${OD_CSS10_DOMAIN}
+export OD_CSS10_SERVICE_NAME=${OD_CSS10_DOMAIN}
