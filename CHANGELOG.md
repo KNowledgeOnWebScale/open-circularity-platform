@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Added extra pods for further developments (internal [issue#44](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/44)).
+
 ### Fixed
 
 - Use correct replacement for `{{podBaseUrl}}` in CSS7 (internal [issue#43](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/43)).

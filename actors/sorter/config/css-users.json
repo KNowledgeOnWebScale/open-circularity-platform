@@ -1,0 +1,9 @@
+[
+  {
+    "email": "info@sorter.com",
+    "password": "sorter123",
+    "pods": [
+      { "name": "sorter" }
+    ]
+  }
+]

@@ -172,7 +172,10 @@ After this step, `../generic-data-viewer-react-admin` is no longer needed. You m
 Execute:
 
 ```bash
+# Either:
 yarn run dc:up
+# Or (including the extra pods):
+yarn run dc:upx
 ```
 
 Note that the command above may take some time to complete.
@@ -180,7 +183,10 @@ Note that the command above may take some time to complete.
 Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
 
 ```bash
+# Either:
 yarn run dc:logs
+# Or (including the extra pods):
+yarn run dc:logsx
 ```
 
 #### 2. Let the Firefox browser trust our self-made Certificate Authority
@@ -197,7 +203,10 @@ Explore the section [Usage](#usage).
 
 To stop and remove the containers, execute:
 ```bash
+# Either:
 yarn run dc:down
+# Or (including the extra pods):
+yarn run dc:downx
 ```
 
 ## Usage

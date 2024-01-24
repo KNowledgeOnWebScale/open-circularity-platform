@@ -296,3 +296,97 @@ services:
       timeout: 10s
       retries: 65
       start_period: 30s
+
+  ##############################################################################
+  # EXTRA PODS
+  ##############################################################################
+  ${OD_CSS8_SERVICE_NAME}:
+    profiles: [ "extra-pod" ]
+    image: solidproject/community-server:7
+    ports:
+      - "${OD_CSS8_HOST_PORT}:${OD_CSS8_CONTAINER_PORT}"
+    environment:
+      - CSS_BASE_URL=${OD_CSS8_BASE_URL}
+      - CSS_PORT=${OD_CSS8_CONTAINER_PORT}
+      - CSS_CONFIG=/config/server.json
+      - CSS_SEED_CONFIG=/config/css-users.json
+    volumes:
+      - type: bind
+        source: ./actors/recycler/pod-template
+        target: /config/pod-template
+      - type: bind
+        source: ./actors/recycler/config/css-users.json
+        target: /config/css-users.json
+      - type: bind
+        source: ./common/css-01.json
+        target: /config/server.json
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS8_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      interval: 15s
+      timeout: 10s
+      retries: 65
+      start_period: 30s
+
+  ${OD_CSS9_SERVICE_NAME}:
+    profiles: [ "extra-pod" ]
+    image: solidproject/community-server:7
+    ports:
+      - "${OD_CSS9_HOST_PORT}:${OD_CSS9_CONTAINER_PORT}"
+    environment:
+      - CSS_BASE_URL=${OD_CSS9_BASE_URL}
+      - CSS_PORT=${OD_CSS9_CONTAINER_PORT}
+      - CSS_CONFIG=/config/server.json
+      - CSS_SEED_CONFIG=/config/css-users.json
+    volumes:
+      - type: bind
+        source: ./actors/retailer/pod-template
+        target: /config/pod-template
+      - type: bind
+        source: ./actors/retailer/config/css-users.json
+        target: /config/css-users.json
+      - type: bind
+        source: ./common/css-01.json
+        target: /config/server.json
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS9_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      interval: 15s
+      timeout: 10s
+      retries: 65
+      start_period: 30s
+
+  ${OD_CSS10_SERVICE_NAME}:
+    profiles: [ "extra-pod" ]
+    image: solidproject/community-server:7
+    ports:
+      - "${OD_CSS10_HOST_PORT}:${OD_CSS10_CONTAINER_PORT}"
+    environment:
+      - CSS_BASE_URL=${OD_CSS10_BASE_URL}
+      - CSS_PORT=${OD_CSS10_CONTAINER_PORT}
+      - CSS_CONFIG=/config/server.json
+      - CSS_SEED_CONFIG=/config/css-users.json
+    volumes:
+      - type: bind
+        source: ./actors/sorter/pod-template
+        target: /config/pod-template
+      - type: bind
+        source: ./actors/sorter/config/css-users.json
+        target: /config/css-users.json
+      - type: bind
+        source: ./common/css-01.json
+        target: /config/server.json
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS10_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      interval: 15s
+      timeout: 10s
+      retries: 65
+      start_period: 30s
+
