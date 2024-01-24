@@ -103,7 +103,15 @@ For a closer look at the different selected setups, see [here](doc/SELECTED_SETU
 
 #### File templates
 
-Create files from their templates:
+Unless you just started from a freshly cloned repo, get rid of previous derived files:
+```
+# show them (in cause you're doubting)
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
+# delete them
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % rm %
+```
+
+Create derived files from their templates:
 ```
 ./scripts/templates/apply-templates.sh
 ```
@@ -149,6 +157,7 @@ Clone and select tag of the [Generic data viewer builder](<https://github.com/So
 ```
 # will clone in the parent directory of this clone, an assumption of our scripts
 pushd ..
+rm -rf generic-data-viewer-react-admin
 git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
 cd generic-data-viewer-react-admin
 # select tag
@@ -158,12 +167,10 @@ npm install
 popd
 ```
 
-Prepare the viewer builder, by providing it links to our input, build the static content and copy it to its destination location:
+Prepare the viewer builder, by providing it our input, build the static content and copy it to its destination location:
 ```
 cd ./scripts/viewer && ./prepare.sh && ./build-and-harvest.sh && cd ../../
 ```
-
-After this step, `../generic-data-viewer-react-admin` is no longer needed. You may keep it there when developing, to avoid cloning it again later.
 
 ### Docker infrastructure
 

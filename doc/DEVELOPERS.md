@@ -4,20 +4,6 @@
 
 Environment variables files are listed in [Implementation details below](#implementation-details).
 
-After **changing** an environment variables file or **switching** to a new environment variables file,
-close your bash shells and open new ones and in each, execute `source <applicable environment variables file>`.
-
-Next, in one bash shell, delete git-ignored files created using previous environment variables contents.
-In the repository root:
-```
-# show them (in cause you're doubting)
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
-# delete them
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % sudo rm %
-```
-
-Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
-
 > Note:
 > When in a new environment variables file the need appears to **add** one or more environment variables,
 > revisit the **existing** environment variable files and sync them (perhaps with a different value for the involved environment variables).
@@ -57,7 +43,7 @@ This environment is well suited for further development of webclients, using dat
 
 As an example, test this in the `../generic-data-viewer-react-admin` as follows:
 ```
-# we should have that directory already and in it, we should have links to our input files already, if we followed the procedure in README.md. 
+# we should have that directory already and in it, we should have our input files already, if we followed the procedure in README.md. 
 pushd ../generic-data-viewer-react-admin/
 # same as npm run dev there, but use a free port (we're using the default port 8080 already):
 npx vite --port 8082
@@ -65,6 +51,7 @@ npx vite --port 8082
 # finally, press Ctrl-C and come back:
 popd
 ```
+
 ## Templates
 
 A lot of files in this repository have contents that should be configurable, e.g. to adapt the baseURL of one or more Solid pods.
@@ -76,10 +63,7 @@ To overcome this:
 - the template files use the environment variables, set by sourcing the appropriate environment variables file;
 - a script is provided to generate new file contents from the templates.
 
-After changing or adding one or more templates, delete git-ignored files created using previous templates.
-These files are located in a few repo directories, so we can remove them with the same command as shown in [section Environment variables above](#environment-variables).
-
-Finally, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
+After changing or adding one or more templates, repeat all steps starting at [section File templates (in README.md)](../README.md#file-templates).
 
 ### Making a new template
 
@@ -90,6 +74,12 @@ For each new template file:
 - remove the original file from version control;
 - add the original file to [.gitignore](../.gitignore);
 - add the new template file to version control. 
+
+### Updating templates
+
+> Some template files have alternatives for the different environment variables files.
+> An example: `docker-compose.yml.template`, `docker-compose2.yml.template`, `docker-compose2.yml.template`.
+> When updating one of these files, update the other ones too.
 
 ## Webclient Docker image
 

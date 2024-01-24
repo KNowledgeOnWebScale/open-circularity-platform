@@ -12,27 +12,14 @@ set -euo pipefail
 GENERIC_ROOT_DIR=$(pwd)/../../../generic-data-viewer-react-admin
 OUR_ROOT_DIR=$(pwd)/../..
 
-# delete directory (in case of a softlink, delete the softlink, not the linked contents!)
-# parameters
-#   $1: the directory
-rm_dir_or_link() {
-  if [[ -e "$1" ]] ; then
-    if [[ -L "$1" ]] ; then
-      rm $1
-    else
-      rm -r $1
-    fi
-  fi
-}
-
 echo Preparing src/config.json
 rm -f ${GENERIC_ROOT_DIR}/src/config.json
-ln -s ${OUR_ROOT_DIR}/actors/viewer/setup/src/config.json ${GENERIC_ROOT_DIR}/src
+cp ${OUR_ROOT_DIR}/actors/viewer/setup/src/config.json ${GENERIC_ROOT_DIR}/src/
 
 echo Preparing public/images
-rm_dir_or_link ${GENERIC_ROOT_DIR}/public/images
-ln -s ${OUR_ROOT_DIR}/actors/viewer/setup/public/images ${GENERIC_ROOT_DIR}/public
+rm -f ${GENERIC_ROOT_DIR}/public/images/*
+cp ${OUR_ROOT_DIR}/actors/viewer/setup/public/images/* ${GENERIC_ROOT_DIR}/public/images/
 
 echo Preparing public/queries
-rm_dir_or_link ${GENERIC_ROOT_DIR}/public/queries
-ln -s ${OUR_ROOT_DIR}/scripts/comunica/outputs/queries ${GENERIC_ROOT_DIR}/public
+rm -f ${GENERIC_ROOT_DIR}/public/queries/*
+cp ${OUR_ROOT_DIR}/scripts/comunica/outputs/queries/* ${GENERIC_ROOT_DIR}/public/queries/
