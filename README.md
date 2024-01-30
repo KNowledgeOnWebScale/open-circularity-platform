@@ -161,7 +161,7 @@ rm -rf generic-data-viewer-react-admin
 git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
 cd generic-data-viewer-react-admin
 # select tag
-git checkout ref2-internal
+git checkout v1.1.1
 npm install
 # come back to the root of this clone
 popd
