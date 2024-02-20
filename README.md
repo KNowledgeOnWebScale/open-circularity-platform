@@ -15,8 +15,8 @@
   * [Building the webclient contents](#building-the-webclient-contents)
   * [Building the data viewer contents](#building-the-data-viewer-contents)
   * [Docker infrastructure](#docker-infrastructure)
-    * [1. Build locally defined images](#1-build-locally-defined-images)
-    * [2. Start containers and wait until all's healthy](#2-start-containers-and-wait-until-alls-healthy)
+    * [1. Start containers and wait until all's healthy](#1-start-containers-and-wait-until-alls-healthy)
+    * [2. Make sure the containers survive a system reboot](#2-make-sure-the-containers-survive-a-system-reboot)
     * [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
     * [4. Use it](#4-use-it)
     * [5. Stop and remove containers](#5-stop-and-remove-containers)
@@ -196,17 +196,38 @@ yarn run dc:logs
 yarn run dc:logsx
 ```
 
-#### 2. Let the Firefox browser trust our self-made Certificate Authority
+#### 2. Make sure the containers survive a system reboot
+
+This step is optional; you may want to do this on a server deployment.
+
+Execute:
+```bash
+# see below for crontab file contents to be added
+crontab -e
+```
+
+Crontab contents to be added:
+```
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+@reboot sleep 60 && cd /full/path/to/your/cloned/architecture/ && source envvarsx && docker compose --profile backend --profile frontend --profile extra-pod restart
+```
+where:
+- you replace `/full/path/to/your/cloned/architecture/` with the full path to where you cloned this repository
+- you replace `envvarsx` with the applicable environment variables file 
+- you adapt the docker compose command `--profile` options in line with your chosen `yarn run ...` command in step 1; the example shown is valid for `yarn run dc:upx` 
+
+#### 3. Let the Firefox browser trust our self-made Certificate Authority
 
 > Note: this step is only needed in case of environment variables file *envvars*.
 
 Follow the instructions in [the Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
 
-#### 3. Use it
+#### 4. Use it
 
 Explore the section [Usage](#usage).
 
-#### 4. Stop and remove containers
+#### 5. Stop and remove containers
 
 To stop and remove the containers, execute:
 ```bash
@@ -215,6 +236,8 @@ yarn run dc:down
 # Or (including the extra pods):
 yarn run dc:downx
 ```
+
+If you added crontab lines in step 2, remove them now.
 
 ## Usage
 
