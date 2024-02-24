@@ -89,7 +89,7 @@ An overview:
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
 | Development and stand-alone demo                 | URLS `https://...` and same as in [envvars2](envvars2), but nothing publicly accessible (use included webapps via included browser) | [envvars](envvars)         |
 | Public deployment                                | URLS `https://...`, publicly accessible pods and included webapps, open for external webapps                                        | [envvars2](envvars2)       |
-| Simplified development using Docker host network | URLs `http://localhost:...`, pods and included webapps accessible from the host, open for webapps running on the host               | [envvars3](envvars3)       |
+| Simplified development using Docker host network **([works on Linux hosts only](https://docs.docker.com/network/network-tutorial-host/#prerequisites))** | URLs `http://localhost:...`, pods and included webapps accessible from the host, open for webapps running on the host               | [envvars3](envvars3)       |
 
 In any new bash shell, before executing any of the commands in this Setup section and in the other sections,
 first assign the environment variables using the appropriate environment variables file:
