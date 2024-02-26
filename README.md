@@ -1,7 +1,5 @@
-<!-- omit in toc -->
 # Architecture
 
-<!-- TOC -->
 * [Introduction](#introduction)
 * [Prerequisites](#prerequisites)
 * [Setup](#setup)
@@ -26,15 +24,15 @@
     * [Add a Solid pod to the list of datasources for a query](#add-a-solid-pod-to-the-list-of-datasources-for-a-query)
   * [Higher level querying using the included data viewer](#higher-level-querying-using-the-included-data-viewer)
 * [Other documentation resources](#other-documentation-resources)
-<!-- TOC -->
 
 ## Introduction
 
 This repository contains the implementation
 of an Open Circularity Platform as part of the Onto-DESIDE Horizon Europe project.</br>
 We demonstrate the Open Circularity Platform through some example use cases:
-- [example use case within the Construction domain](./doc/construction-use-case.md)
-- [example use case within the Textile domain](./doc/textile-use-case.md)
+
+* [example use case within the Construction domain](./doc/construction-use-case.md)
+* [example use case within the Textile domain](./doc/textile-use-case.md)
 
 The setup of the Open Circularity Platform is made reproducible by relying on [Docker containers](https://www.docker.com/resources/what-container/) and
 [Docker Compose](https://docs.docker.com/compose/) for setting up the network locally
@@ -42,28 +40,28 @@ that represents the Solid-based decentralized data sharing platform.
 
 Within the network, we have set up:
 
-- multiple data providers each publishing their data behind a secure access layer using Solid pods,
-- a webclient providing a Web UI to execute queries on these Solid pods, and
-- a Firefox container providing a means to browse the Solid-based data-sharing platform.
- 
+* multiple data providers each publishing their data behind a secure access layer using Solid pods,
+* a webclient providing a Web UI to execute queries on these Solid pods, and
+* a Firefox container providing a means to browse the Solid-based data-sharing platform.
+
 During the setup-flow, an administrative user generates and loads all data structured using the Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) into a Solid pod.
 
 During the usage-flow, an end user navigates either to the rather technical Comunica Webclient
 which provides a set of predefined queries the user can execute over the Solid pods
-or to the generic data viewer, a more user-friendly web application that works with the same underlying predefined queries. 
+or to the generic data viewer, a more user-friendly web application that works with the same underlying predefined queries.
 
 > A **public deployment** is available. To use it as is, no further setup is needed, so continue reading at [Usage](#usage) and choose *Selected setup = Public deployment*.
 
 ## Prerequisites
 
-- a bash shell
-- Node >= 16 with npm
-- [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
-    - Depending on your platform, different installation guides are available from the above links.
-- [OpenSSL](https://www.openssl.org/source/)
-    - Installation depends on your platform. On Linux (especially on Ubuntu 20.04 LTS), if it is not yet installed, execute `sudo apt install openssl`.
-- [yarn classic](https://classic.yarnpkg.com/lang/en/)
- 
+* a bash shell
+* Node >= 16 with npm
+* [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
+  * Depending on your platform, different installation guides are available from the above links.
+* [OpenSSL](https://www.openssl.org/source/)
+  * Installation depends on your platform. On Linux (especially on Ubuntu 20.04 LTS), if it is not yet installed, execute `sudo apt install openssl`.
+* [yarn classic](https://classic.yarnpkg.com/lang/en/)
+
 ## Setup
 
 Unless specified otherwise below, execute commands from a bash shell in the **repository root**.
@@ -94,7 +92,7 @@ An overview:
 In any new bash shell, before executing any of the commands in this Setup section and in the other sections,
 first assign the environment variables using the appropriate environment variables file:
 
-```
+```bash
 # example for file 'envvars2'
 source envvars2
 ```
@@ -104,24 +102,31 @@ For a closer look at the different selected setups, see [here](doc/SELECTED_SETU
 #### File templates
 
 Unless you just started from a freshly cloned repo, get rid of previous derived files:
-```
+
+```bash
 # show them (in cause you're doubting)
 git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
+```
+
+```bash
 # delete them
 git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % rm %
 ```
 
 Create derived files from their templates:
-```
+
+```bash
 ./scripts/templates/apply-templates.sh
 ```
 
 #### Finalise setup
 
+Next setup script executes:
+
+* download RML Mapper JAR
+* setup file structure.
+
 ```bash
-# Setup scripts
-# - Download RML Mapper JAR
-# - Setup file structure
 yarn run setup
 ```
 
@@ -133,66 +138,73 @@ we generate a public/private keypair, a local Certificate Authority (CA) and a s
 > Note: this step is only needed in case of environment variables file *envvars*.
 
 ```bash
-# generate certificates
 cd ./scripts/cert && bash ./main.sh && cd ../../
 ```
 
 ### Mappings
 
+Parse YARRRML Mappings to RML & Execute RML Mappings:
+
 ```bash
-# Parse YARRRML Mappings to RML & Execute RML Mappings
 yarn run dt:mapping:pipeline
 ```
 
 ### Building the webclient contents
 
+Collect queries:
+
 ```bash
-# Collect queries
 yarn run comunica:queries:setup
 ```
 
 ### Building the data viewer contents
 
-Clone and select tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) and install it:
-```
-# will clone in the parent directory of this clone, an assumption of our scripts
-pushd ..
-rm -rf generic-data-viewer-react-admin
-git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
-cd generic-data-viewer-react-admin
-# select tag
-git checkout v1.1.1
-npm install
-# come back to the root of this clone
-popd
-```
+The following command will:
 
-Prepare the viewer builder, by providing it our input, build the static content and copy it to its destination location:
-```
-cd ./scripts/viewer && ./prepare.sh && ./build-and-harvest.sh && cd ../../
+* clone and select the appropriate tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) and install it;
+* prepare the viewer's static content builder by providing it our input;
+* build the static content;
+* harvest the static content into our directory structure.
+
+You may need to give your ssh private key password during next:
+
+```bash
+cd ./scripts/viewer && ./build-webclient-contents.sh && cd ../../
 ```
 
 ### Docker infrastructure
 
 #### 1. Start containers and wait until all's healthy
 
-Execute:
+Execute...
+
+either:
 
 ```bash
-# Either:
 yarn run dc:up
-# Or (including the extra pods):
+```
+
+or (including the extra pods):
+
+```bash
 yarn run dc:upx
 ```
 
-Note that the command above may take some time to complete.
+Note that the commands above may take some time to complete.
 
 Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
 
+Execute...
+
+either:
+
 ```bash
-# Either:
 yarn run dc:logs
-# Or (including the extra pods):
+```
+
+or (including the extra pods):
+
+```bash
 yarn run dc:logsx
 ```
 
@@ -200,22 +212,25 @@ yarn run dc:logsx
 
 This step is optional; you may want to do this on a server deployment.
 
-Execute:
+Execute (see below for crontab file contents to be added):
+
 ```bash
-# see below for crontab file contents to be added
 crontab -e
 ```
 
 Crontab contents to be added:
-```
+
+```bash
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 @reboot sleep 60 && cd /full/path/to/your/cloned/architecture/ && source envvarsx && docker compose --profile backend --profile frontend --profile extra-pod restart
 ```
+
 where:
-- you replace `/full/path/to/your/cloned/architecture/` with the full path to where you cloned this repository
-- you replace `envvarsx` with the applicable environment variables file 
-- you adapt the docker compose command `--profile` options in line with your chosen `yarn run ...` command in step 1; the example shown is valid for `yarn run dc:upx` 
+
+* you replace `/full/path/to/your/cloned/architecture/` with the full path to where you cloned this repository
+* you replace `envvarsx` with the applicable environment variables file
+* you adapt the docker compose command `--profile` options in line with your chosen `yarn run ...` command in step 1; the example shown is valid for `yarn run dc:upx`
 
 #### 3. Let the Firefox browser trust our self-made Certificate Authority
 
@@ -230,10 +245,16 @@ Explore the section [Usage](#usage).
 #### 5. Stop and remove containers
 
 To stop and remove the containers, execute:
+
+either:
+
 ```bash
-# Either:
 yarn run dc:down
-# Or (including the extra pods):
+```
+
+or (including the extra pods):
+
+```bash
 yarn run dc:downx
 ```
 
@@ -272,8 +293,9 @@ In the public deployment setup case, it is possible to your Solid pod to the lis
 See also [Public deployment with additional external Solid pods](doc/SELECTED_SETUPS.md#public-deployment-with-additional-external-solid-pods).
 
 If you don't have a pod yet:
-- you can obtain one following the [Solid project instructions](https://solidproject.org/users/get-a-pod)
-- or [try out Solid pods with the SolidLab Pod Playground](https://solidlabresearch.github.io/documentation-center/getting-started/#try-out-solid-pods-with-the-solidlab-pod-playground)
+
+* you can obtain one following the [Solid project instructions](https://solidproject.org/users/get-a-pod)
+* or [try out Solid pods with the SolidLab Pod Playground](https://solidlabresearch.github.io/documentation-center/getting-started/#try-out-solid-pods-with-the-solidlab-pod-playground)
   (be warned for this one: *"The pods and data on the instance is removed daily and there are no guarantees regarding uptime."*).
 
 To add an external Solid pod to the list of datasources in the Comunica webclient, place the cursor in that dialogue:
@@ -285,7 +307,6 @@ Next type the baseURL of an additional Solid pod and confirm with the `<Return>`
 ![Query: Add a pod part 2](doc/img/add-pod-to-webclient-2.png)
 
 The additional datasource will be taken into account when the query is executed, and the datasource will be available as a *preset datasource* from here on.
-
 
 ### Higher level querying using the included data viewer
 
@@ -303,10 +324,10 @@ The following screenshot shows the result of a query about Texon's components an
 
 ## Other documentation resources
 
-- [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md)
-- [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
-- [About the different selected setups](doc/SELECTED_SETUPS.md)
-- [Testing guide](doc/TESTING.md)
-- [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
-- [The Firefox container](doc/FIREFOX_CONTAINER.md)
-- [Developer documentation](doc/DEVELOPERS.md)
+* [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md)
+* [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
+* [About the different selected setups](doc/SELECTED_SETUPS.md)
+* [Testing guide](doc/TESTING.md)
+* [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
+* [The Firefox container](doc/FIREFOX_CONTAINER.md)
+* [Developer documentation](doc/DEVELOPERS.md)
