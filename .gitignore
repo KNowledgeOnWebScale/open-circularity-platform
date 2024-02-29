@@ -22,3 +22,5 @@
 /scripts/ac/.aliases
 /common/css-01.json
 
+# CSS data directories when running locally
+/local-run

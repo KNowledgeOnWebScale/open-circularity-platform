@@ -18,6 +18,10 @@
     * [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
     * [4. Use it](#4-use-it)
     * [5. Stop and remove containers](#5-stop-and-remove-containers)
+  * [Local development infrastructure](#local-development-infrastructure)
+    * [1. Start pods](#1-start-pods)
+    * [2. Use it](#2-use-it)
+    * [3. Stop pods](#3-stop-pods)
 * [Usage](#usage)
   * [Before continuing](#before-continuing)
   * [Low level querying using the included technical Comunica webclient](#low-level-querying-using-the-included-technical-comunica-webclient)
@@ -83,11 +87,11 @@ These environment variables are assigned in *environment variables files*.
 
 An overview:
 
-| Selected setup                                   | Details                                                                                                                             | Environment variables file |
-|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
-| Development and stand-alone demo                 | URLS `https://...` and same as in [envvars2](envvars2), but nothing publicly accessible (use included webapps via included browser) | [envvars](envvars)         |
-| Public deployment                                | URLS `https://...`, publicly accessible pods and included webapps, open for external webapps                                        | [envvars2](envvars2)       |
-| Simplified development using Docker host network **([works on Linux hosts only](https://docs.docker.com/network/network-tutorial-host/#prerequisites))** | URLs `http://localhost:...`, pods and included webapps accessible from the host, open for webapps running on the host               | [envvars3](envvars3)       |
+| Selected setup                                   | Details                                                                                                                             | Environment variables file | Docker based |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|----------------------------|--------------|
+| Development and stand-alone demo                 | URLS `https://...`, same as in [envvars2](envvars2), but nothing publicly accessible (use included webapps via included browser)    | [envvars](envvars)         | yes          |
+| Public deployment                                | URLS `https://...`, publicly accessible pods and included webapps, open for external webapps                                        | [envvars2](envvars2)       | yes          |
+| Local development                                | URLs `http://localhost:...`, pods running on the local host, webapps not included, open for local webapps                           | [envvars3](envvars3)       | no           |
 
 In any new bash shell, before executing any of the commands in this Setup section and in the other sections,
 first assign the environment variables using the appropriate environment variables file:
@@ -173,6 +177,8 @@ cd ./scripts/viewer && ./build-webclient-contents.sh && cd ../../
 ```
 
 ### Docker infrastructure
+
+> Skip this section if not in a Docker based setup.
 
 #### 1. Start containers and wait until all's healthy
 
@@ -260,6 +266,35 @@ yarn run dc:downx
 
 If you added crontab lines in step 2, remove them now.
 
+### Local development infrastructure
+
+> Skip this section if in a Docker based setup.
+
+#### 1. Start pods
+
+Execute...
+
+```bash
+./scripts/local-run/start-csss.sh
+```
+
+Note that the command above starts the pods in the background. This takes some time to complete.
+The pods are listening as soon as they report so in their respective logfiles at `./local-run/*.log`.
+
+The pods data can be sniffed at `./local-run/data/css*/`.
+
+#### 2. Use it
+
+Explore the section [Usage](#usage).
+
+#### 3. Stop pods
+
+Execute:
+
+```bash
+yarn run dc:down
+```
+
 ## Usage
 
 ### Before continuing
@@ -272,11 +307,13 @@ Find actors' email addresses and passwords in the [overview of actors' WebIDs, e
 
 To query the Solid pods, navigate to the URL configured for the webclient:
 
-| Selected setup                                   | Included technical Comunica webclient URL      | Browse via                                           |
+| Selected setup                                   | Included technical Comunica webclient URL      | Browse via                                            |
 |--------------------------------------------------|------------------------------------------------|-------------------------------------------------------|
 | Development and stand-alone demo                 | <https://webclient.onto-deside.ilabt.imec.be/> | Included Firefox container at <http://localhost:5800> |
 | Public deployment                                | <https://webclient.onto-deside.ilabt.imec.be/> | Your local browser                                    |
-| Simplified development using Docker host network | <http://localhost:8080>                        | Your local browser                                    |
+| Local development                                | Not available; do it yourself if needed (1)    | Your local browser                                    |
+
+(1) The queries as used in other setups are prepared for you in `./scripts/comunica/outputs/queriesgi/`.
 
 This Comunica webclient allows you to query both public and private (if authenticated) data stored within
 the Solid pods of the Solid network.
@@ -316,7 +353,10 @@ To use this data viewer, navigate to the URL configured for the data viewer:
 |--------------------------------------------------|---------------------------------------------|-------------------------------------------------------|
 | Development and stand-alone demo                 | <https://viewer.onto-deside.ilabt.imec.be/> | Included Firefox container at <http://localhost:5800> |
 | Public deployment                                | <https://viewer.onto-deside.ilabt.imec.be/> | Your local browser                                    |
-| Simplified development using Docker host network | <http://localhost:8081>                     | Your local browser                                    |
+| Local development                                | Not available; do it yourself if needed (1) | Your local browser                                    |
+
+(1) A version as used in the other setups is ready for you in `../generic-data-viewer-react-admin/` as a result of [building the data viewer contents](#building-the-data-viewer-contents).
+Go to that directory, spin it up with `npm run dev` and browse the URL it reports to use it.
 
 The following screenshot shows the result of a query about Texon's components and materials. The result shown was obtained when logged in to identity provider `https://css5.onto-deside.ilabt.imec.be` as `info@texon.com`.
 
