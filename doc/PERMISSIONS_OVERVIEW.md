@@ -1,33 +1,37 @@
 # Overview of permissions
 
-We consider the permissions **read**, **write** and **control**.
+We consider the permissions **read** (r), **write** (w) and **control** (c).
 
-Obvious permissions
-- Owners have *read*, *write* and *control* permissions on their own resources.
-- The *admin* actor has *read* permission on all resources.
-
-Use case specific permissions
-- Specific permissions are shown in the tables below.
- 
 ## Construction use case
 
-| Owner:Resource                                 | lindner-group | building-owner | building-owner2 | ragn-sells | any other actor (public) |
-|------------------------------------------------|---------------|----------------|-----------------|------------|--------------------------|
-| lindner-group:boms.ttl                         |               |                |                 | read       |                          |
-| lindner-group:materials.ttl                    |               |                |                 | read       |                          |
-| lindner-group:products.ttl                     |               |                |                 |            | read                     |
-| building-owner:buildings.ttl                   | read          |                |                 |            |                          |
-| building-owner2:buildings.ttl                  | read          |                |                 |            |                          |
-| building-owner2:building-owner-2-buildings.ttl |               |                |                 |            |                          |
-| ragn-sells:services.ttl                        |               |                |                 |            | read                     |
+| Pod:Resource                                               | lindner-group | building-owner | building-owner2 | ragn-sells | admin | any other actor (public) |
+|------------------------------------------------------------|---------------|----------------|-----------------|------------|-------|--------------------------|
+| lindner-group:data/dt/out/boms.ttl                         | rwc           |                |                 | r          | r     |                          |
+| lindner-group:data/dt/out/materials.ttl                    | rwc           |                |                 | r          | r     |                          |
+| lindner-group:data/dt/out/products.ttl                     | rwc           |                |                 |            | r     | r                        |
+| building-owner:data/dt/out/buildings.ttl                   | r             | rwc            |                 |            | r     |                          |
+| building-owner2:data/dt/out/buildings.ttl                  | r             |                | rwc             |            | r     |                          |
+| building-owner2:data/dt/out/building-owner-2-buildings.ttl |               |                | rwc             |            | r     |                          |
+| ragn-sells:data/dt/out/services.ttl                        |               |                |                 | rwc        | r     | r                        |
 
-## Textile use case
+## Textile use case 1
 
-| Owner:Resource            | texon | manufacturer | brand | any other actor (public)  |
-|---------------------------|-------|--------------|-------|---------------------------|
-| texon:boms.ttl            |       |              |       |                           |
-| texon:components.ttl      |       | read         | read  |                           |
-| texon:materials.ttl       |       |              |       |                           |
-| manufacturer:boms.ttl     |       |              | read  |                           |
-| manufacturer:products.ttl |       |              | read  |                           |
+*Resources built automatically when following the README instructions in this repo.*
 
+| Pod:Resource                          | texon | manufacturer | brand | admin |
+|---------------------------------------|-------|--------------|-------|-------|
+| texon:data/dt/out/boms.ttl            | rwc   |              |       | r     |
+| texon:data/dt/out/components.ttl      | rwc   | r            | r     | r     |
+| texon:data/dt/out/materials.ttl       | rwc   |              |       | r     |
+| manufacturer:data/dt/out/boms.ttl     |       | rwc          | r     | r     |
+| manufacturer:data/dt/out/products.ttl |       | rwc          | r     | r     |
+
+## Textile use case 2
+
+*Indicative; additional resources not automatically built in this repo.*
+
+| Pod:Resource              | texon | brand | recycler | sorter |
+|---------------------------|-------|-------|----------|--------|
+| texon:ceon/manuf1_1.ttl   | rwc   |       |          |        |
+| texon:ceon/manuf1_2.ttl   | rwc   | r     |          |        |
+| texon:ceon/manuf1_3.ttl   | rwc   | r     | r        | r      |

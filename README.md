@@ -165,7 +165,7 @@ yarn run comunica:queries:setup
 
 The following command will:
 
-* clone and select the appropriate tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) and install it;
+* clone and select the appropriate tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) in `../applied-in-architecture-generic-data-viewer-react-admin` and install it;
 * prepare the viewer's static content builder by providing it our input;
 * build the static content;
 * harvest the static content into our directory structure.
@@ -178,7 +178,8 @@ cd ./scripts/viewer && ./build-webclient-contents.sh && cd ../../
 
 ### Docker infrastructure
 
-> Skip this section if not in a Docker based setup.
+> Skip this section if not in a Docker based setup
+> or if you just want to use [the modified data viewer](doc/DEVELOPERS.md#the-modified-data-viewer) for developing queries on the data in the public pods.
 
 #### 1. Start containers and wait until all's healthy
 
@@ -305,6 +306,9 @@ Find actors' email addresses and passwords in the [overview of actors' WebIDs, e
 
 ### Low level querying using the included technical Comunica webclient
 
+> Skip this section in favor of [higher level querying using the included data viewer](#higher-level-querying-using-the-included-data-viewer),
+> unless if you really need to see low level details.
+
 To query the Solid pods, navigate to the URL configured for the webclient:
 
 | Selected setup                                   | Included technical Comunica webclient URL      | Browse via                                            |
@@ -313,14 +317,12 @@ To query the Solid pods, navigate to the URL configured for the webclient:
 | Public deployment                                | <https://webclient.onto-deside.ilabt.imec.be/> | Your local browser                                    |
 | Local development                                | Not available; do it yourself if needed (1)    | Your local browser                                    |
 
-(1) The queries as used in other setups are prepared for you in `./scripts/comunica/outputs/queriesgi/`.
+(1) The queries as used in other setups are prepared for you in `./scripts/comunica/outputs/queries/`.
 
 This Comunica webclient allows you to query both public and private (if authenticated) data stored within
 the Solid pods of the Solid network.
 
-The following screenshot demonstrates querying Lindner Group's products. The result shown was obtained when logged in to identity provider `https://css1.onto-deside.ilabt.imec.be` as `info@lindner-group.com`.
-
-![Query: Lindner Group's products](doc/img/query-lindner-group-products.png)
+[This screenshot](doc/img/query-lindner-group-products.png) demonstrates querying Lindner Group's products. The result shown was obtained when logged in to identity provider `https://css1.onto-deside.ilabt.imec.be` as `info@lindner-group.com`.
 
 #### Add a Solid pod to the list of datasources for a query
 
@@ -335,13 +337,10 @@ If you don't have a pod yet:
 * or [try out Solid pods with the SolidLab Pod Playground](https://solidlabresearch.github.io/documentation-center/getting-started/#try-out-solid-pods-with-the-solidlab-pod-playground)
   (be warned for this one: *"The pods and data on the instance is removed daily and there are no guarantees regarding uptime."*).
 
-To add an external Solid pod to the list of datasources in the Comunica webclient, place the cursor in that dialogue:
+To add an external Solid pod to the list of datasources in the Comunica webclient, place the cursor in
+[the field 'Choose datasources'](doc/img/add-pod-to-webclient-1.png).
 
-![Query: Add a pod part 1](doc/img/add-pod-to-webclient-1.png)
-
-Next type the baseURL of an additional Solid pod and confirm with the `<Return>` key:
-
-![Query: Add a pod part 2](doc/img/add-pod-to-webclient-2.png)
+Next [type the baseURL of an additional Solid pod](doc/img/add-pod-to-webclient-2.png) and confirm with the `<Return>` key.
 
 The additional datasource will be taken into account when the query is executed, and the datasource will be available as a *preset datasource* from here on.
 
@@ -349,18 +348,18 @@ The additional datasource will be taken into account when the query is executed,
 
 To use this data viewer, navigate to the URL configured for the data viewer:
 
-| Selected setup                                   | Included data viewer URL                    | Browse via                                            |
-|--------------------------------------------------|---------------------------------------------|-------------------------------------------------------|
-| Development and stand-alone demo                 | <https://viewer.onto-deside.ilabt.imec.be/> | Included Firefox container at <http://localhost:5800> |
-| Public deployment                                | <https://viewer.onto-deside.ilabt.imec.be/> | Your local browser                                    |
-| Local development                                | Not available; do it yourself if needed (1) | Your local browser                                    |
+| Selected setup                                   | Included data viewer URL                           | Browse via                                            |
+|--------------------------------------------------|----------------------------------------------------|-------------------------------------------------------|
+| Development and stand-alone demo                 | <https://viewer.onto-deside.ilabt.imec.be/>        | Included Firefox container at <http://localhost:5800> |
+| Public deployment                                | <https://viewer.onto-deside.ilabt.imec.be/> (2)    | Your local browser                                    |
+| Local development                                | <http://localhost:port-nr> (1)(2)                  | Your local browser                                    |
 
-(1) A version as used in the other setups is ready for you in `../generic-data-viewer-react-admin/` as a result of [building the data viewer contents](#building-the-data-viewer-contents).
-Go to that directory, spin it up with `npm run dev` and browse the URL it reports to use it.
+(1) Go to `../applied-in-architecture-generic-data-viewer-react-admin`, spin up the viewer with `npm run dev` and browse the localhost at the port reported by this command.
 
-The following screenshot shows the result of a query about Texon's components and materials. The result shown was obtained when logged in to identity provider `https://css5.onto-deside.ilabt.imec.be` as `info@texon.com`.
+(2) More about how to use `../applied-in-architecture-generic-data-viewer-react-admin` for local query development: see [The modified data viewer in the developer documentation](doc/DEVELOPERS.md#the-modified-data-viewer).
 
-![Viewer: Texon's components and materials](doc/img/texon-components-materials.png)
+[This screenshot](doc/img/texon-components-materials.png) shows the result of a query about Texon's components and materials.
+The result shown was obtained when logged in to identity provider `https://css5.onto-deside.ilabt.imec.be` as `info@texon.com`.
 
 ## Other documentation resources
 

@@ -9,7 +9,9 @@
   * [Making a new template](#making-a-new-template)
   * [Updating templates](#updating-templates)
 * [Webclient Docker image](#webclient-docker-image)
-* [Rebuilding the data viewer service](#rebuilding-the-data-viewer-service)
+* [The modified data viewer](#the-modified-data-viewer)
+  * [How the modified data viewer is built](#how-the-modified-data-viewer-is-built)
+  * [Using the modified data viewer for query development](#using-the-modified-data-viewer-for-query-development)
 
 ## Environment variables
 
@@ -86,15 +88,29 @@ Note that until [this issue](https://github.com/comunica/jQuery-Widget.js/issues
 
 These images are currently supplied from [this GitHub repository](https://github.com/mvanbrab/jQuery-Widget.js/).
 
-## Rebuilding the data viewer service
+## The modified data viewer
 
-This project includes a service based on <https://github.com/SolidLabResearch/generic-data-viewer-react-admin>.
+This project includes a service based on a modified build of <https://github.com/SolidLabResearch/generic-data-viewer-react-admin>.
 
-These contents for this service are built into `actors/viewer/html`, when following the build instructions given in [the appropriate section in README.md](README.md#building-the-data-viewer-contents).
+### How the modified data viewer is built
 
-That build instruction must be repeated when its input has changed.
-The input files are:
+When following the setup instruction in the [main README](../README.md)
 
-* `actors/viewer/setup/src/config.json` (the configuration file)
-* `actors/viewer/setup/public/**/*` (the public files)
-* `scripts/comunica/queries-filtered/*.sparql` (the queries, also used by the webclient)
+* a clone of that repo is made in `../applied-in-architecture-generic-data-viewer-react-admin`;
+* a known good version of it is checked out;
+* the software is built;
+* the contents of its `src/config.json` file and its `public` directory are replaced with alternatives found in our directory `actors/viewer/setup`;
+* static files are generated from this modified contents and brought back to our directory `actors/viewer/html`, ready for further packaging into a service.
+
+### Using the modified data viewer for query development
+
+We can use the modified build of the data viewer to develop queries in the context of our project.
+
+This will obviously work in the case of environment variables file *envvars3* ("Local development"),
+but also in the case of *envvars2* ("Public deployment").
+The latter case is interesting to make experiments with data available in the public pods.
+Proceed as follows:
+
+* go to `../applied-in-architecture-generic-data-viewer-react-admin`;
+* modify the configuration file and modifiy/add queries in the public directory;
+* test by running `npm run dev` and browsing the localhost port this command reports.
