@@ -1,8 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix o: <https://www.example/com/ont/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <#smth>
   a o:PublicData ;
   foaf:maker <{{webId}}>;
-  o:value "Public data in {{oidcIssuer}}manufacturer/data/"
+  o:value "Public data in {{base.path}}data/"
 .

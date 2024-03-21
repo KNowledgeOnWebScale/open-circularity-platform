@@ -1,103 +1,289 @@
 {
-    "title": "Query the Open Circularity Platform",
-    "logoLocation": "images/IDLab-logo.png",
-    "logoRedirectURL": "https://idlab.technology/",
-    "mainAppColor": "lightgray",
-    "backgroundColor": "#fff",
-    "titleColor": "black",
-    "textColor": "#1976D2",
-    "queryFolder": "queries",
-    "httpProxy": "http://localhost:8000/",
-    "showMilliseconds": false,
-    "defaultIDP": "${OD_CSS1_BASE_URL}/",
-    "footer": "<p><a href='https://idlab.technology/'>IDLab</a> - <a href='https://www.imec.be/nl'>imec</a> - <a href='https://www.ugent.be/'>UGent</a></p>",
-    "introductionText": "Please log in as the appropriate actor and select a query from the menu on the left.",
-    "queries": [
-        {
-            "queryLocation": "texon-components.sparql",
-            "name": "Texon's components",
-            "description": "Query Texon's components (no details about materials)",
-            "id": "501",
-            "comunicaContext": {
-                "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "texon-component-materials.sparql",
-            "name": "Texon's components and their materials",
-            "description": "Query Texon's components (including details about materials)",
-            "id": "502",
-            "comunicaContext": {
-                "sources": [
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
-                ],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "texon-average-recycled-content-of-components.sparql",
-            "name": "Texon's average recycled content",
-            "description": "What is the average recycled content (weight percentage) of Texon's components?",
-            "id": "503",
-            "comunicaContext": {
-                "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "manufacturer-products.sparql",
-            "name": "Manufacturer's products",
-            "description": "Query Manufacturer's products (no details about components)",
-            "id": "601",
-            "comunicaContext": {
-                "sources": ["${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl"],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "manufacturer-product-components.sparql",
-            "name": "Manufacturer's products and their components",
-            "description": "Query Manufacturer's products (including details about components)",
-            "id": "602",
-            "comunicaContext": {
-                "sources": [
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
-                ],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "manufacturer-average-recycled-content-of-products.sparql",
-            "name": "Manufacturer's average recycled content",
-            "description": "What is the average recycled content (weight percentage) of Manufacturer's products?",
-            "id": "603",
-            "comunicaContext": {
-                "sources": [
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
-                ],
-                "lenient": true
-            }
-        },
-        {
-            "queryLocation": "brand-recycled-content-of-product.sparql",
-            "name": "Recycled content of product p01",
-            "description": "What is the recycled content (weight percentage) of product p01?",
-            "id": "701",
-            "comunicaContext": {
-                "sources": [
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
-                    "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
-                    "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
-                ],
-                "lenient": true
-            }
-        }
-    ]
+  "title": "Query the Open Circularity Platform",
+  "logoLocation": "images/IDLab-logo.png",
+  "logoRedirectURL": "https://idlab.technology/",
+  "mainAppColor": "lightgray",
+  "backgroundColor": "#fff",
+  "titleColor": "black",
+  "textColor": "#1976D2",
+  "queryFolder": "queries",
+  "showMilliseconds": false,
+  "defaultIDP": "${OD_CSS1_BASE_URL}/",
+  "footer": "<p><a href='https://idlab.technology/'>IDLab</a> - <a href='https://www.imec.be/nl'>imec</a> - <a href='https://www.ugent.be/'>UGent</a></p>",
+  "introductionText": "Please log in as the appropriate actor and select a query from the menu on the left.",
+  "queries": [
+    {
+      "queryLocation": "c-lindner-group-products.rq",
+      "name": "(C) Query Lindner Group's products",
+      "description": "(C) Query Lindner Group's products",
+      "id": "101",
+      "comunicaContext": {
+        "sources": ["${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-lindner-group-products-details.rq",
+      "name": "(C) Query Lindner Group's products details",
+      "description": "(C) Query Lindner Group's products details",
+      "id": "102",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl",
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/materials.ttl",
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/boms.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-materials-of-product.rq",
+      "name": "(C) What are the materials of a given product?",
+      "description": "(C) What are the materials of a given product?",
+      "id": "103",
+      "variables": {
+        "product": [
+          "<https://www.example/com/data/product-0x01>",
+          "<https://www.example/com/data/product-0x02>",
+          "<https://www.example/com/data/product-0x03>",
+          "<https://www.example/com/data/product-0x04>",
+          "<https://www.example/com/data/product-0x05>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl",
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/materials.ttl",
+          "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/boms.ttl",
+          "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl",
+          "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-tiles-of-buildings.rq",
+      "name": "(C) Which tiles are present in buildings?",
+      "description": "(C) Which tiles are present in buildings?",
+      "id": "104",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl",
+          "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-tiles-of-building.rq",
+      "name": "(C) What are the tiles of a given building?",
+      "description": "(C) What are the tiles of a given building?",
+      "id": "105",
+      "variables": {
+        "building": [
+          "<https://www.example/com/data/building-B0>",
+          "<https://www.example/com/data/building-fsml88>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl",
+          "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-tiles-of-building-with-address.rq",
+      "name": "(C) What are the tiles of a building with a given address?",
+      "description": "(C) What are the tiles of a building with a given address?",
+      "id": "106",
+      "variables": {
+        "address": ["\"88 Fairview Street Mount Laurel, NJ 08054\""]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl",
+          "${OD_CSS3_BASE_URL}/building-owner2/data/dt/out/buildings.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-ragn-sells-services.rq",
+      "name": "(C) Which services does Ragn-Sells provide?",
+      "description": "(C) Which services does Ragn-Sells provide?",
+      "id": "107",
+      "comunicaContext": {
+        "sources": ["${OD_CSS4_BASE_URL}/ragn-sells/data/dt/out/services.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "c-ragn-sells-wastestreams.rq",
+      "name": "(C) Which waste streams does Ragn-Sells accept?",
+      "description": "(C) Which waste streams does Ragn-Sells accept?",
+      "id": "108",
+      "comunicaContext": {
+        "sources": ["${OD_CSS4_BASE_URL}/ragn-sells/data/dt/out/services.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-texon-components.rq",
+      "name": "(T1) Query Texon's components",
+      "description": "(T1) Query Texon's components",
+      "id": "501",
+      "comunicaContext": {
+        "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-texon-component-materials.rq",
+      "name": "(T1) Query Texon's components and their materials",
+      "description": "(T1) Query Texon's components and their materials",
+      "id": "502",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-texon-average-recycled-content-of-components.rq",
+      "name": "(T1) What is the average recycled content (weight percentage) of Texon's components?",
+      "description": "(T1) What is the average recycled content (weight percentage) of Texon's components?",
+      "id": "503",
+      "comunicaContext": {
+        "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-manufacturer-products.rq",
+      "name": "(T1) Query Manufacturer's products",
+      "description": "(T1) Query Manufacturer's products",
+      "id": "601",
+      "comunicaContext": {
+        "sources": ["${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl"],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-manufacturer-product-components.rq",
+      "name": "(T1) Query Manufacturer's products and their components",
+      "description": "(T1) Query Manufacturer's products and their components",
+      "id": "602",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-manufacturer-average-recycled-content-of-products.rq",
+      "name": "(T1) What is the average recycled content (weight percentage) of Manufacturer's products?",
+      "description": "(T1) What is the average recycled content (weight percentage) of Manufacturer's products?",
+      "id": "603",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx1-brand-recycled-content-of-product.rq",
+      "name": "(T1) What is the recycled content (weight percentage) of a given product?",
+      "description": "(T1) What is the recycled content (weight percentage) of a given product?",
+      "id": "701",
+      "variables": {
+        "product": [
+          "<https://www.example/com/textile-data/product-p01>",
+          "<https://www.example/com/textile-data/product-p02>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
+          "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx2-products.rq",
+      "name": "(T2) Products",
+      "description": "(T2) Products",
+      "id": "801",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx2-product-datasheet-variables.rq",
+      "name": "(T2) Product datasheets",
+      "description": "(T2) Product datasheets",
+      "id": "802",
+      "variables": {
+        "product": [
+          "<http://example.com/product/texon_uid-product1>",
+          "<http://example.com/product/texon_uid-product2>",
+          "<http://example.com/product/texon_uid-product3>",
+          "<http://example.com/product/texon_uid-product4>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx2-water-property.rq",
+      "name": "(T2) Water properties",
+      "description": "(T2) Water properties",
+      "id": "803",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "queryLocation": "tx2-design-for-reuse.rq",
+      "name": "(T2) Design for reuse",
+      "description": "(T2) Design for reuse",
+      "id": "804",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2",
+          "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    }
+  ]
 }

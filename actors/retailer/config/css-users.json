@@ -1,0 +1,9 @@
+[
+  {
+    "email": "info@retailer.com",
+    "password": "retailer123",
+    "pods": [
+      { "name": "retailer" }
+    ]
+  }
+]
