@@ -9,11 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+### Fixed
+
+### Changed
+
+## [0.2.2] - 2024-03-21
+
+### Added
+
 - Added extra pods for further developments (internal [issue#44](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/44)).
+- Added local development option (internal [issue#46](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/46)).
+- Extra queries in the viewer (internal [issue#47](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/47)).
 
 ### Fixed
 
 - Use correct replacement for `{{podBaseUrl}}` in CSS7 (internal [issue#43](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/43)).
+- For the online version: documented how to make the Docker compose setup survive a system reboot (internal [issue#45](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/45)).
 
 ### Changed
 
@@ -79,9 +90,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - manufacturer1 (internal [issue#6](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/6)).
 - wait-for-container.sh (internal [issue#25](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/25)).
 
-
-
-[unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.2...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
 [0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0
 [0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1
+[0.2.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2

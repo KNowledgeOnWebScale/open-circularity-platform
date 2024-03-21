@@ -1,33 +1,32 @@
 #!/bin/bash
 # (1) Clone and select the appropriate tag of https://github.com/SolidLabResearch/generic-data-viewer-react-admin
-#     in subdirectory generic-data-viewer-react-admin of the parent directory of this clone.
+#     in subdirectory applied-in-architecture-generic-data-viewer-react-admin of the parent directory of this clone.
 #
 # Note: this script assumes:
 #   - to run it the directory where it is located
 
 set -euo pipefail
 
-# absolute dirs
-OUR_ROOT_DIR=$(pwd)/../..
-PARENT_DIR=${OUR_ROOT_DIR}/..
-GENERIC_ROOT_DIR=${PARENT_DIR}/generic-data-viewer-react-admin
+VIEWER_REPO=generic-data-viewer-react-admin
+VIEWER_CLONE=applied-in-architecture-generic-data-viewer-react-admin
 
-pushd ${PARENT_DIR}
+# absolute dir
+OUR_ROOT_DIR=$(pwd)/../..
+
+pushd ${OUR_ROOT_DIR}/..
 
 echo Cloning, selecting tag, installing...
-rm -rf generic-data-viewer-react-admin
-git clone git@github.com:SolidLabResearch/generic-data-viewer-react-admin.git
-cd ${GENERIC_ROOT_DIR}
-git checkout v1.1.1
+rm -rf ${VIEWER_CLONE}
+git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git ${VIEWER_CLONE}
+cd ${VIEWER_CLONE}
+git checkout v1.1.2
 npm install
 
 echo Preparing input...
 rm -f ./src/config.json
 cp ${OUR_ROOT_DIR}/actors/viewer/setup/src/config.json ./src/
-rm -f ./public/images/*
-cp ${OUR_ROOT_DIR}/actors/viewer/setup/public/images/* ./public/images/
-rm -f ./public/queries/*
-cp ${OUR_ROOT_DIR}/scripts/comunica/outputs/queries/* ./public/queries/
+rm -rf ./public
+cp -r ${OUR_ROOT_DIR}/actors/viewer/setup/public .
 
 echo Rebuilding static content...
 rm -rf dist
