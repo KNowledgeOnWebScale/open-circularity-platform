@@ -4,6 +4,8 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 
 ## Construction use case
 
+*Next resources are set available as pre-built pod contents.*
+
 | Pod:Resource                                               | lindner-group | building-owner | building-owner2 | ragn-sells | admin | any other actor (public) |
 |------------------------------------------------------------|---------------|----------------|-----------------|------------|-------|--------------------------|
 | lindner-group:data/dt/out/boms.ttl                         | rwc           |                |                 | r          | r     |                          |
@@ -16,7 +18,7 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 
 ## Textile use case 1
 
-*Resources built automatically when following the README instructions in this repo.*
+*Next resources are set available as pre-built pod contents.*
 
 | Pod:Resource                          | texon | manufacturer | brand | admin |
 |---------------------------------------|-------|--------------|-------|-------|
@@ -28,7 +30,7 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 
 ## Textile use case 2
 
-*Indicative; additional resources not automatically built in this repo.*
+*Next resources are NOT set available as pre-built pod contents.*
 
 | Pod:Resource              | texon | brand | recycler | sorter |
 |---------------------------|-------|-------|----------|--------|

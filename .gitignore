@@ -10,17 +10,19 @@
 /scripts/comunica/outputs/*
 
 # files now created from a template
-/docker-compose*.yml
 /actors/*/nginx/conf.d/default.conf
 /actors/viewer/setup/src/config.json
-/specification-tests/*.env
-/specification-tests/access-control-scenarios/**/*.feature
+/common/css-01.json
+/docker-compose*.yml
 /scripts/cert/main.sh
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
-/scripts/ac/.actors
-/scripts/ac/.aliases
-/common/css-01.json
+/scripts/stuff-pods/mapping_turtle-rml.ttl
+/scripts/stuff-pods/data/acl_manuf1.csv
+/specification-tests/*.env
+/specification-tests/access-control-scenarios/**/*.feature
 
-# CSS data directories when running locally
+# temporary files and directories
 /local-run
+/scripts/stuff-pods/helper.log
+/scripts/stuff-pods/helper.pid

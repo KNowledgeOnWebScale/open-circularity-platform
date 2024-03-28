@@ -7,20 +7,14 @@
     * [Installation](#installation)
     * [Environment variables](#environment-variables)
     * [File templates](#file-templates)
-    * [Finalise setup](#finalise-setup)
-  * [Security](#security)
-  * [Mappings](#mappings)
-  * [Building the webclient contents](#building-the-webclient-contents)
-  * [Building the data viewer contents](#building-the-data-viewer-contents)
+    * [Finalize setup](#finalize-setup)
   * [Docker infrastructure](#docker-infrastructure)
-    * [1. Start containers and wait until all's healthy](#1-start-containers-and-wait-until-alls-healthy)
-    * [2. Make sure the containers survive a system reboot](#2-make-sure-the-containers-survive-a-system-reboot)
-    * [3. Let the Firefox browser trust our self-made Certificate Authority](#3-let-the-firefox-browser-trust-our-self-made-certificate-authority)
-    * [4. Use it](#4-use-it)
-    * [5. Stop and remove containers](#5-stop-and-remove-containers)
+    * [1. Start containers](#1-start-containers)
+    * [2. Use it](#2-use-it)
+    * [3. Stop and remove containers](#3-stop-and-remove-containers)
   * [Local development infrastructure](#local-development-infrastructure)
     * [1. Start pods](#1-start-pods)
-    * [2. Use it](#2-use-it)
+    * [2. Use it](#2-use-it-1)
     * [3. Stop pods](#3-stop-pods)
 * [Usage](#usage)
   * [Before continuing](#before-continuing)
@@ -45,10 +39,10 @@ that represents the Solid-based decentralized data sharing platform.
 Within the network, we have set up:
 
 * multiple data providers each publishing their data behind a secure access layer using Solid pods,
-* a webclient providing a Web UI to execute queries on these Solid pods, and
-* a Firefox container providing a means to browse the Solid-based data-sharing platform.
+* a (technical) webclient providing a Web UI to execute queries on these Solid pods, and
+* a (more user friendly) data viewer providing an easier to use Web UI to execute queries on these Solid pods.
 
-During the setup-flow, an administrative user generates and loads all data structured using the Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) into a Solid pod.
+During the setup-flow, Solid pods are created and prefilled with example WebIDs and other Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) formatted data.
 
 During the usage-flow, an end user navigates either to the rather technical Comunica Webclient
 which provides a set of predefined queries the user can execute over the Solid pods
@@ -59,7 +53,7 @@ or to the generic data viewer, a more user-friendly web application that works w
 ## Prerequisites
 
 * a bash shell
-* Node >= 16 with npm
+* Node >= 18 with npm
 * [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
   * Depending on your platform, different installation guides are available from the above links.
 * [OpenSSL](https://www.openssl.org/source/)
@@ -105,171 +99,59 @@ For a closer look at the different selected setups, see [here](doc/SELECTED_SETU
 
 #### File templates
 
-Unless you just started from a freshly cloned repo, get rid of previous derived files:
+This repository contains template files `*.template`.
+When following the instructions below, from every template file `x.template` a file `x` will be derived with contents
+depending on the environment variables file sourced above. The files `x` themselves are git-ignored.
+
+#### Finalize setup
+
+The list of actions to be executed here is managed in a script.
+The script takes into account the sourced environment variables file.
+Execute:
 
 ```bash
-# show them (in cause you're doubting)
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar'
-```
-
-```bash
-# delete them
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % rm %
-```
-
-Create derived files from their templates:
-
-```bash
-./scripts/templates/apply-templates.sh
-```
-
-#### Finalise setup
-
-Next setup script executes:
-
-* download RML Mapper JAR
-* setup file structure.
-
-```bash
-yarn run setup
-```
-
-### Security
-
-To enable HTTPS traffic between every actor within the Docker network,
-we generate a public/private keypair, a local Certificate Authority (CA) and a self-signed certificate.
-
-> Note: this step is only needed in case of environment variables file *envvars*.
-
-```bash
-cd ./scripts/cert && bash ./main.sh && cd ../../
-```
-
-### Mappings
-
-Parse YARRRML Mappings to RML & Execute RML Mappings:
-
-```bash
-yarn run dt:mapping:pipeline
-```
-
-### Building the webclient contents
-
-Collect queries:
-
-```bash
-yarn run comunica:queries:setup
-```
-
-### Building the data viewer contents
-
-The following command will:
-
-* clone and select the appropriate tag of the [Generic data viewer builder](<https://github.com/SolidLabResearch/generic-data-viewer-react-admin>) in `../applied-in-architecture-generic-data-viewer-react-admin` and install it;
-* prepare the viewer's static content builder by providing it our input;
-* build the static content;
-* harvest the static content into our directory structure.
-
-You may need to give your ssh private key password during next:
-
-```bash
-cd ./scripts/viewer && ./build-webclient-contents.sh && cd ../../
+./scripts/setup/finalize-setup.sh
 ```
 
 ### Docker infrastructure
 
-> Skip this section if not in a Docker based setup
-> or if you just want to use [the modified data viewer](doc/DEVELOPERS.md#the-modified-data-viewer) for developing queries on the data in the public pods.
+> This section applies to Docker based setups only.
 
-#### 1. Start containers and wait until all's healthy
+#### 1. Start containers
 
 Execute...
 
-either:
-
 ```bash
-yarn run dc:up
+# if you are on a server where previous versions still are running:
+docker compose --profile backend --profile frontend --profile extra-pod down -t 0
+# and then:
+docker compose --profile backend --profile frontend --profile extra-pod up --wait
 ```
 
-or (including the extra pods):
-
-```bash
-yarn run dc:upx
-```
-
-Note that the commands above may take some time to complete.
+The command above starts all services in a Docker environment and and waits until they are all ready (listening).
+This takes some time to complete.
 
 Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
 
-Execute...
-
-either:
-
 ```bash
-yarn run dc:logs
+docker compose --profile backend --profile frontend --profile extra-pod logs -f
 ```
 
-or (including the extra pods):
-
-```bash
-yarn run dc:logsx
-```
-
-#### 2. Make sure the containers survive a system reboot
-
-This step is optional; you may want to do this on a server deployment.
-
-Execute (see below for crontab file contents to be added):
-
-```bash
-crontab -e
-```
-
-Crontab contents to be added:
-
-```bash
-SHELL=/bin/bash
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-@reboot sleep 60 && cd /full/path/to/your/cloned/architecture/ && source envvarsx && docker compose --profile backend --profile frontend --profile extra-pod restart
-```
-
-where:
-
-* you replace `/full/path/to/your/cloned/architecture/` with the full path to where you cloned this repository
-* you replace `envvarsx` with the applicable environment variables file
-* you adapt the docker compose command `--profile` options in line with your chosen `yarn run ...` command in step 1; the example shown is valid for `yarn run dc:upx`
-
-#### 3. Let the Firefox browser trust our self-made Certificate Authority
-
-> Note: this step is only needed in case of environment variables file *envvars*.
-
-Follow the instructions in [the Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
-
-#### 4. Use it
+#### 2. Use it
 
 Explore the section [Usage](#usage).
 
-#### 5. Stop and remove containers
+#### 3. Stop and remove containers
 
 To stop and remove the containers, execute:
 
-either:
-
 ```bash
-yarn run dc:down
+docker compose --profile backend --profile frontend --profile extra-pod down -t 0
 ```
-
-or (including the extra pods):
-
-```bash
-yarn run dc:downx
-```
-
-If you added crontab lines in step 2, remove them now.
 
 ### Local development infrastructure
 
-> Skip this section if in a Docker based setup.
+> This section applies to the local development setup only.
 
 #### 1. Start pods
 
@@ -279,10 +161,12 @@ Execute...
 ./scripts/local-run/start-csss.sh
 ```
 
-Note that the command above starts the pods in the background. This takes some time to complete.
-The pods are listening as soon as they report so in their respective logfiles at `./local-run/*.log`.
+The command above starts the pods in the background and waits until they are all ready (listening).
+This takes some time to complete.
 
-The pods data can be sniffed at `./local-run/data/css*/`.
+The pods log files can be consulted at `./local-run/*.log`.
+
+The pods data can be viewed at `./local-run/data/css*/`.
 
 #### 2. Use it
 
@@ -293,16 +177,26 @@ Explore the section [Usage](#usage).
 Execute:
 
 ```bash
-yarn run dc:down
+./scripts/local-run/stop-csss.sh
 ```
 
 ## Usage
 
 ### Before continuing
 
+In case of environment variables file *envvars*, you need to let the Firefox browser trust our self-made Certificate Authority.
+Follow the instructions in [the Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
+
 Some queries may require you to login as one of the actors, described in the use cases.
 That is because read permissions to resources may be restricted to specific actors, as can be seen in the [overview of permissions](doc/PERMISSIONS_OVERVIEW.md).  
 Find actors' email addresses and passwords in the [overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md).
+
+The queries acting on the resources described as "Textile use case 2" in the [overview of permissions](doc/PERMISSIONS_OVERVIEW.md) give results only if
+these resources are added to the involved pod(s) after the pods are running. If not done before, you may add them now by executing:
+
+```bash
+./scripts/stuff-pods/stuff-pods.sh
+```
 
 ### Low level querying using the included technical Comunica webclient
 
@@ -328,7 +222,7 @@ the Solid pods of the Solid network.
 
 All queries are configured to work on a predefined list of datasources (Solid pods in our case). Selecting a query preloads the *Choose datasources:* dialogue.
 
-In the public deployment setup case, it is possible to your Solid pod to the list.
+In the public deployment setup case, it is possible to add your own Solid pod to the list.
 See also [Public deployment with additional external Solid pods](doc/SELECTED_SETUPS.md#public-deployment-with-additional-external-solid-pods).
 
 If you don't have a pod yet:
