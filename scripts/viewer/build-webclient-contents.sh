@@ -1,6 +1,4 @@
 #!/bin/bash
-# (1) Clone and select the appropriate tag of https://github.com/SolidLabResearch/generic-data-viewer-react-admin
-#     in subdirectory applied-in-architecture-generic-data-viewer-react-admin of the parent directory of this clone.
 #
 # Note: this script assumes:
 #   - to run it the directory where it is located
@@ -13,13 +11,12 @@ VIEWER_CLONE=applied-in-architecture-generic-data-viewer-react-admin
 # absolute dir
 OUR_ROOT_DIR=$(pwd)/../..
 
-pushd ${OUR_ROOT_DIR}/..
+pushd ${OUR_ROOT_DIR}/.. > /dev/null
 
 echo Cloning, selecting tag, installing...
 rm -rf ${VIEWER_CLONE}
-git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git ${VIEWER_CLONE}
+git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b v1.1.2 ${VIEWER_CLONE}
 cd ${VIEWER_CLONE}
-git checkout v1.1.2
 npm install
 
 echo Preparing input...
@@ -36,4 +33,4 @@ echo Harvesting the static content into our file structure...
 rm -rf ${OUR_ROOT_DIR}/actors/viewer/html
 cp -r dist ${OUR_ROOT_DIR}/actors/viewer/html
 
-popd
+popd > /dev/null

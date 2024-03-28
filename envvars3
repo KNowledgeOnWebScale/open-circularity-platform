@@ -3,13 +3,16 @@
 # Inspired by https://www.baeldung.com/linux/nginx-config-environment-variables.
 
 # Due to the lack of conditions in Docker compose file, separate docker compose files are needed for separate environments.
-export COMPOSE_FILE=docker-compose3.yml
+export COMPOSE_FILE=none
 
-# --- All variables below have DO_ prefixes, to avoid clashes with other environment variable names (OD stands for Onto-DESIDE).
+# --- All variables below have OD_ prefixes, to avoid clashes with other environment variable names (OD stands for Onto-DESIDE).
 
 # In templates, use ${OD_DOLLAR} as a replacement for the normal $ sign where necessary
 # (as explained in https://www.baeldung.com/linux/nginx-config-environment-variables)
 export OD_DOLLAR="$"
+
+# Filename of last sourced environment variables file
+export OD_ENVVARS_FILE=envvars3
 
 # Set to "yes" if self-signed certificates in containers are required, else set to "no".
 export OD_SELF_SIGNED_CERTIFICATES=no

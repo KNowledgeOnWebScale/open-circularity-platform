@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [0.2.3] - 2024-03-28
+
+### Added
+
+- Integrated upload of data for project demo March 2024 (internal [issue#48](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/48)).
+
+### Fixed
+
+### Changed
+
 ## [0.2.2] - 2024-03-21
 
 ### Added
@@ -90,8 +100,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - manufacturer1 (internal [issue#6](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/6)).
 - wait-for-container.sh (internal [issue#25](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/25)).
 
-[unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.2...HEAD
+[unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.3...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
 [0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0
 [0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1
 [0.2.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2
+[0.2.3]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2
