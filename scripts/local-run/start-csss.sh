@@ -1,5 +1,5 @@
 #!/bin/bash
-# Execute this script to start LOCALLY the CSS's in this project (no Docker!)
+# Execute this script to start the CSS's in this project (no Docker)
 # Assumptions:
 #   - this script is run from the repository root
 
@@ -12,6 +12,8 @@ source envvars3
 LOCAL_RUN_DIR=./local-run
 rm -rf $LOCAL_RUN_DIR
 mkdir -p $LOCAL_RUN_DIR
+
+WAITING_COUNT=1
 
 # Start one CSS in the background as a separate process
 # Parameters
@@ -34,48 +36,48 @@ function start_css {
     # Start CSSX with its specific configuration
     case "$CSSX" in
         "css0")
-            actor=admin
-            port=$OD_CSS0_HOST_PORT
+            local ACTOR=admin
+            local PORT=$OD_CSS0_HOST_PORT
             ;;
         "css1")
-            actor=lindner-group
-            port=$OD_CSS1_HOST_PORT
+            local ACTOR=lindner-group
+            local PORT=$OD_CSS1_HOST_PORT
             ;;
         "css2")
-            actor=building-owner
-            port=$OD_CSS2_HOST_PORT
+            local ACTOR=building-owner
+            local PORT=$OD_CSS2_HOST_PORT
             ;;
         "css3")
-            actor=building-owner2
-            port=$OD_CSS3_HOST_PORT
+            local ACTOR=building-owner2
+            local PORT=$OD_CSS3_HOST_PORT
             ;;
         "css4")
-            actor=ragn-sells
-            port=$OD_CSS4_HOST_PORT
+            local ACTOR=ragn-sells
+            local PORT=$OD_CSS4_HOST_PORT
             ;;
         "css5")
-            actor=texon
-            port=$OD_CSS5_HOST_PORT
+            local ACTOR=texon
+            local PORT=$OD_CSS5_HOST_PORT
             ;;
         "css6")
-            actor=manufacturer
-            port=$OD_CSS6_HOST_PORT
+            local ACTOR=manufacturer
+            local PORT=$OD_CSS6_HOST_PORT
             ;;
         "css7")
-            actor=brand
-            port=$OD_CSS7_HOST_PORT
+            local ACTOR=brand
+            local PORT=$OD_CSS7_HOST_PORT
             ;;
         "css8")
-            actor=recycler
-            port=$OD_CSS8_HOST_PORT
+            local ACTOR=recycler
+            local PORT=$OD_CSS8_HOST_PORT
             ;;
         "css9")
-            actor=retailer
-            port=$OD_CSS9_HOST_PORT
+            local ACTOR=retailer
+            local PORT=$OD_CSS9_HOST_PORT
             ;;
         "css10")
-            actor=sorter
-            port=$OD_CSS10_HOST_PORT
+            local ACTOR=sorter
+            local PORT=$OD_CSS10_HOST_PORT
             ;;
         *)
             echo "Unknown CSSX: $CSSX"
@@ -84,22 +86,37 @@ function start_css {
     esac
 
     # Make a specific config file
-    sed "s|/config/pod-template|./actors/$actor/pod-template|g" ./common/css-01.json > $CONFIG_FILE
+    sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g" ./common/css-01.json > $CONFIG_FILE
     # And... go as a background process
-    nohup npx community-solid-server --port $port --config $CONFIG_FILE --seedConfig ./actors/$actor/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
-    PID=$!
-    echo "$PID" > $PID_FILE
-    echo "Started $CSSX with PID $PID"
+    nohup npx community-solid-server --port $PORT --config $CONFIG_FILE --seedConfig ./actors/$ACTOR/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
+    # Remember the port and not the process id, because killing based on the process id does not work for node child processes
+    echo "$PORT" > $PID_FILE
+    echo "Started $CSSX on port $PORT."
 }
 
-start_css css0
-start_css css1
-start_css css2
-start_css css3
-start_css css4
-start_css css5
-start_css css6
-start_css css7
-start_css css8
-start_css css9
-start_css css10
+# Check whether one CSS is listening
+# Parameters
+# - $1: the name of the file containing the port the CSS is listening to
+function check_css {
+    local PID_FILE="$1"
+    local PORT=$(< $PID_FILE)
+    if ! curl http://localhost:$PORT > /dev/null 2>&1 ; then
+        echo "Waiting for $PORT to start listening..."
+        WAITING_COUNT=$((WAITING_COUNT+1))
+    fi
+}
+
+for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 ; do
+    start_css $css
+done
+
+while [[ $WAITING_COUNT > 0 ]] ; do
+    WAITING_COUNT=0
+    for f in ./local-run/*.pid ; do
+        check_css $f
+    done
+    if [[ $WAITING_COUNT > 0 ]] ; then
+        sleep 5
+    fi
+done
+echo "All CSS's listening."

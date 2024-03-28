@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Integrated upload of data for project demo March 2024 (internal [issue#48](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/48)).
+
 ### Fixed
 
 ### Changed
