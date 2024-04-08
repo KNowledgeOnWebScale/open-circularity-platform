@@ -1,5 +1,5 @@
 title: |md
-  # Open Circularity Platform - Local development with local Webclients
+  # Open Circularity Platform - Localhost
 | {near: top-center}
 
 host: "Host computer" {
@@ -24,24 +24,14 @@ host: "Host computer" {
     shape: image
     icon: https://icons.terrastruct.com/essentials%2F117-database.svg
   }
-  qldf: "Optional local\nComunica Webclient" {
-    shape: image
-    icon: https://query.linkeddatafragments.org/images/logo.svg
-  }
-  gdv: "Optional local\nGeneric Data Viewer" {
+  gdv: "Generic Data Viewer" {
     shape: image
     icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
-  }
-  awc: "Any local\nWebclient" {
-    shape: image
-    icon: https://icons.terrastruct.com/azure%2FIntune%20Service%20Color%2FClient%20Apps.svg
   }
 
   browser -- host_network
   host_network -- css_0: "http://localhost:3000"
   host_network -- css_i: "http://localhost:3000+i"
   host_network -- css_n: "http://localhost:3000+n"
-  host_network -- qldf: "http://localhost:<port-x>"
-  host_network -- gdv: "http://localhost:<port-y>"
-  host_network -- awc: "http://localhost:<port-z>"
+  host_network -- gdv: "http://localhost:<port-x>"
 }

@@ -2,7 +2,7 @@
 
 ## Note on webIds
 
-In the tables below, webId alternatives are given for all possible setups provided in the supported [environment variables files](../README.md#environment-variables).
+In the tables below, webId alternatives are given for all possible setups provided in the supported setup cases.
 
 ## Construction use case
 
@@ -23,7 +23,7 @@ In the tables below, webId alternatives are given for all possible setups provid
 | manufacturer | https://css6.onto-deside.ilabt.imec.be/manufacturer/profile/card#me <br/> http://localhost:3006/manufacturer/profile/card#me | info@manufacturer.com | manufacturer123 |
 | brand        | https://css7.onto-deside.ilabt.imec.be/brand/profile/card#me <br/> http://localhost:3007/brand/profile/card#me               | info@brand.com        | brand123        |
 
-## Extra pods
+## Extended textile use case
 
 | **actor**    | **webId**                                                                                                                    | **email**             | **password**    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------|

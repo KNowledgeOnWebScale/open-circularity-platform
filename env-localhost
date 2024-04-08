@@ -12,7 +12,7 @@ export COMPOSE_FILE=none
 export OD_DOLLAR="$"
 
 # Filename of last sourced environment variables file
-export OD_ENVVARS_FILE=envvars3
+export OD_ENVVARS_FILE=env-localhost
 
 # Set to "yes" if self-signed certificates in containers are required, else set to "no".
 export OD_SELF_SIGNED_CERTIFICATES=no
@@ -104,7 +104,7 @@ export OD_CSS_TEST_DOMAIN=localhost:${OD_CSS_TEST_HOST_PORT}
 export OD_CSS_TEST_BASE_URL=http://${OD_CSS_TEST_DOMAIN}
 export OD_CSS_TEST_SERVICE_NAME=${OD_CSS_TEST}
 
-# The webclient
+# The Comunica Weblient
 
 export OD_WEBCLIENT=webclient
 export OD_WEBCLIENT_HOST_PORT=8080
@@ -126,7 +126,7 @@ fi
 # see https://github.com/comunica/jQuery-Widget.js/issues/152 and https://github.com/mvanbrab/jQuery-Widget.js/
 export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.http-localhost-8080
 
-# The Generic Viewer
+# The Generic Data Viewer
 
 export OD_VIEWER=viewer
 export OD_VIEWER_HOST_PORT=8081

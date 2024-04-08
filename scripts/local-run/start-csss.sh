@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-# Source the environment variables for local development
-source envvars3
+# Source the environment variables for localhost
+source env-localhost
 
 # this directory should be git-ignored
 LOCAL_RUN_DIR=./local-run

@@ -1,14 +1,14 @@
 # The Firefox container
 
-A firefox browser in a container is added to Docker compose environments that are not suited to be accessed from an external browser.
+A firefox browser in a container is added to Docker compose environments whose resources are not accessible from the Docker compose network.
 
-## Setup 
+## Setup
 
 The certificate of our Certificate Authority (CA) must be added to the Firefox
 browser. To do this, open up a browser and navigate to the Firefox container at <http://localhost:5800>.
 
 1. Open up the Firefox Certificate Manager as follows:
-    1. Click the "Settings"-button (upper right),
+    1. Click the "Settings"-button (upper right corner of the *inner* browser window),
        ![Browser setup (step 1): Settings / Privacy & Security](img/setup-browser-step1.png)
     2. Click the "Privacy & Security"-tab (left),
     3. "View Certificates..." (bottom of the page)

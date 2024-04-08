@@ -1,5 +1,5 @@
 title: |md
-# Open Circularity Platform - Development and stand-alone demo
+# Open Circularity Platform - Private Docker based
 | { near: top-center }
 
 host: "Host computer" {
@@ -23,13 +23,13 @@ host: "Host computer" {
       shape: image
       icon: https://icons.terrastruct.com/essentials%2F117-database.svg
     }
-    qldf: "Int. Comunica Webclient" {
-      shape: image
-      icon: https://query.linkeddatafragments.org/images/logo.svg
-    }
-    gdv: "Int. Generic Data Viewer" {
+    gdv: "Generic Data Viewer" {
       shape: image
       icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+    }
+    qldf: "Comunica Webclient" {
+      shape: image
+      icon: https://query.linkeddatafragments.org/images/logo.svg
     }
     docker_network: "Docker network" {
       shape: image
@@ -44,8 +44,8 @@ host: "Host computer" {
     docker_network -- css_0: "https://css0.onto-deside.ilabt.imec.be"
     docker_network -- css_i: "https://cssi.onto-deside.ilabt.imec.be"
     docker_network -- css_n: "https://cssn.onto-deside.ilabt.imec.be"
-    docker_network -- qldf: "https://webclient.onto-deside.ilabt.imec.be"
     docker_network -- gdv: "https://viewer.onto-deside.ilabt.imec.be"
+    docker_network -- qldf: "https://webclient.onto-deside.ilabt.imec.be"
   }
 
   browser -- docker.ff: "http://localhost:5800"

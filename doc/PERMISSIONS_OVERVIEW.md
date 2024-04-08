@@ -16,7 +16,7 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | building-owner2:data/dt/out/building-owner-2-buildings.ttl |               |                | rwc             |            | r     |                          |
 | ragn-sells:data/dt/out/services.ttl                        |               |                |                 | rwc        | r     | r                        |
 
-## Textile use case 1
+## Textile use case
 
 *Next resources are set available as pre-built pod contents.*
 
@@ -28,9 +28,9 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | manufacturer:data/dt/out/boms.ttl     |       | rwc          | r     | r     |
 | manufacturer:data/dt/out/products.ttl |       | rwc          | r     | r     |
 
-## Textile use case 2
+## Extended textile use case
 
-*Next resources are NOT set available as pre-built pod contents.*
+*Next resources are NOT set available as pre-built pod contents, hence the information provided here is indicative only.*
 
 | Pod:Resource              | texon | brand | recycler | sorter |
 |---------------------------|-------|-------|----------|--------|
