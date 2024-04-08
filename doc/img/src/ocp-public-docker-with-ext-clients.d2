@@ -1,5 +1,5 @@
 title: |md
-# Open Circularity Platform - Public deployment (with additional external Solid pod)
+# Open Circularity Platform - Public Docker based (with external webclients)
 | { near: top-center }
 
 vars: {
@@ -40,29 +40,37 @@ VW1: "imec Virtual Wall" {
         shape: image
         icon: https://icons.terrastruct.com/essentials%2F117-database.svg
       }
-      qldf: "Int. Comunica Webclient" {
-        shape: image
-        icon: https://query.linkeddatafragments.org/images/logo.svg
-      }
-      gdv: "Int. Generic Data Viewer" {
+      gdv: "Generic Data Viewer" {
         shape: image
         icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+      }
+      qldf: "Comunica Webclient" {
+        shape: image
+        icon: https://query.linkeddatafragments.org/images/logo.svg
       }
     }
 
     nginx -> docker
   }
 
-  public_ip -> node.nginx: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be"
+  public_ip -> node.nginx: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
 }
-additional-server: "Any Solid server" {
-  additional-pod: "Any additional Solid pod" {
-    shape: image
-    icon: https://icons.terrastruct.com/essentials%2F117-database.svg
-  }
+gdv2: "Ext. Generic Data Viewer" {
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+}
+qldf2: "Ext. Comunica Webclient" {
+  shape: image
+  icon: https://query.linkeddatafragments.org/images/logo.svg
+}
+awc: "Any Webclient" {
+  shape: image
+  icon: https://icons.terrastruct.com/azure%2FIntune%20Service%20Color%2FClient%20Apps.svg
 }
 
 browser -- www
 www -> VW1.public_ip: "https://*.onto-deside.ilabt.imec.be"
-VW1.node.docker -> www: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://some-solid-pod.example.com"
-www --> additional-server.additional-pod: "https://some-solid-pod.example.com"
+VW1.node.docker -> www: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
+gdv2 -- www
+qldf2 -- www
+awc -- www

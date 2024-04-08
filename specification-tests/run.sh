@@ -16,7 +16,7 @@
 display_usage() {
   cat << EOF
 Usage: ./run.sh [-d testdir] [-l] [-e <envfile>] [-t <list>] <subject> [args]
-  -d <testdir> Use local development version of tests in specified location
+  -d <testdir> Use localhost version of tests in specified location
   -l           Use local docker image of test harness (called testharness)
   -e <envfile> Use this env file instead of <subject>.env
   -t <file>    Tolerate failures of the scenarios in this file

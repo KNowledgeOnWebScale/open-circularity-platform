@@ -11,11 +11,11 @@ if [[ -z $OD_ENVVARS_FILE ]] ; then
   exit 2
 fi
 case "$OD_ENVVARS_FILE" in
-  "envvars")
+  "env-docker-private")
     ;;
-  "envvars2")
+  "env-docker-public")
     ;;
-  "envvars3")
+  "env-localhost")
     ;;
   *)
     echo "⚠️ Unknown environment variables file $OD_ENVVARS_FILE"
@@ -36,7 +36,7 @@ echo "➡️ Creating derived files from their templates..."
 echo "➡️ Downloading the RML Mapper JAR and creating the directory structure..."
 yarn run setup
 
-if [[ "$OD_ENVVARS_FILE" == "envvars" ]] ; then
+if [[ "$OD_ENVVARS_FILE" == "env-docker-private" ]] ; then
   echo "➡️ Generating self-signed certificates..."
   cd ./scripts/cert && ./main.sh && cd ../../
 fi
@@ -44,10 +44,10 @@ fi
 echo "➡️ Parsing YARRRML Mappings to RML and executing RML Mappings..."
 yarn run dt:mapping:pipeline
 
-echo "➡️ Building the webclient contents..."
+echo "➡️ Building the Comunica Webclient contents..."
 yarn run comunica:queries:setup
 
-echo "➡️ Building the data viewer contents..."
+echo "➡️ Building the Generic Data Viewer contents..."
 cd ./scripts/viewer && ./build-webclient-contents.sh && cd ../../
 
 echo "👉 Setup finalized..."
