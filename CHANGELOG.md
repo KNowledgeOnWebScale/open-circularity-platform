@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [0.2.4] - 2024-04-08
+
+### Added
+
+### Fixed
+
+### Changed
+
 - In response to Onto-DESIDE project review:
   - Changed names of environment variable files, docker compose files, setup cases (internal [issue#49](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/49)).
   - Restructed documentation to first explain online resources and next provide separate build instructions per setup case (internal [issue#50](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/50)).
@@ -109,4 +117,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1
 [0.2.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2
 [0.2.3]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.3
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.3...HEAD
+[0.2.4]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.4
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.4...HEAD
