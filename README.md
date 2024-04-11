@@ -136,6 +136,7 @@ Some files cannot read environment variables. In these cases derived files are c
 * a bash shell
 * Node >= 18 with npm
 * [yarn classic](https://classic.yarnpkg.com/lang/en/)
+* Java version 17, e.g. 17.0.10-tem
 
 #### Environment variables for the localhost setup case
 
@@ -201,6 +202,7 @@ Using the localhost setup case is similar to [using the final setup](#using-the-
 * a bash shell
 * Node >= 18 with npm
 * [yarn classic](https://classic.yarnpkg.com/lang/en/)
+* Java version 17, e.g. 17.0.10-tem
 * [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
   * Depending on your platform, different installation guides are available from the above links.
 
@@ -272,6 +274,7 @@ docker compose --profile backend --profile frontend --profile extra-pod down -t 
 * a bash shell
 * Node >= 18 with npm
 * [yarn classic](https://classic.yarnpkg.com/lang/en/)
+* Java version 17, e.g. 17.0.10-tem
 * [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
   * Depending on your platform, different installation guides are available from the above links.
 * [OpenSSL](https://www.openssl.org/source/)
