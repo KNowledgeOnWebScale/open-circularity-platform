@@ -22,6 +22,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS0}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -52,6 +56,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS1}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -82,6 +90,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS2}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -112,6 +124,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS3}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -142,6 +158,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS4}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -172,6 +192,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS5}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -202,6 +226,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS6}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -232,6 +260,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS7}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -287,6 +319,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS_TEST}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -320,6 +356,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS8}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -350,6 +390,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS9}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
@@ -380,6 +424,10 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS10}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro

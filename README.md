@@ -67,11 +67,7 @@ The final setup is available online and needs no further action prior to usage.
 
 To use this Generic Data Viewer, navigate to <https://viewer.onto-deside.ilabt.imec.be/>.
 
-The list of predefined queries is shown in the dashboard at the left side.
-
-* Queries for the construction use case start with `(C)`.
-* Queries for the textile use case start with `(T1)`.
-* Queries for the extended textile use case start with `(T2)`.
+The list of predefined queries is shown in expandible groups at the left side.
 
 Some queries may require you to login as one of the actors, described in the use cases.
 That is because read permissions to resources may be restricted to specific actors, as can be seen in the [overview of permissions](doc/PERMISSIONS_OVERVIEW.md).  
@@ -308,7 +304,7 @@ Using the private Docker based setup case is similar to [using the final setup](
 * Navigate to <http://localhost:5800>, to reach the integrated Firefox container, which has access to the resources in the Docker network.
 * Let the integrated Firefox browser trust our self-made Certificate Authority: follow the instructions in the [Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
 * All further navigation is to be done from the integrated Firefox browser, with URLs identical to the those in the final setup.
-* The queries for the extended textile use case (whose names start with `(T2)`) won't work here, because there is no solution to add pod contents for this use case.
+* The queries for the extended textile use case won't work here, because there is no solution to add pod contents for this use case.
 
 #### Stopping the private Docker based setup case
 

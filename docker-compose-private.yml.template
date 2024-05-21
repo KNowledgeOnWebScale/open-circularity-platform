@@ -25,10 +25,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS0}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css0:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -61,10 +65,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS1}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css1:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -97,10 +105,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS2}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css2:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -133,10 +145,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS3}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css3:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -169,10 +185,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS4}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css4:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -205,10 +225,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS5}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css5:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -241,10 +265,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS6}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css6:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -277,10 +305,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS7}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css7:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -353,10 +385,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS_TEST}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css-test:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -392,10 +428,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS8}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css8:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -428,10 +468,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS9}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css9:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:
@@ -464,10 +508,14 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS10}
+        target: /data
       # these lines make the current computer's users and groups available in the container
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
-      # Certificates (todo: refactor cert resources from ./scripts to more appropriate location)
+      # Certificates
       - ./scripts/cert/outputs/css10:/my-cert:ro
       - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
     healthcheck:

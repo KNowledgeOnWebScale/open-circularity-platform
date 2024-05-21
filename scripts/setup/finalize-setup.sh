@@ -25,7 +25,10 @@ esac
 
 echo "👉 Finalizing setup with environment variables file $OD_ENVVARS_FILE..."
 
-echo "➡️ Getting rid of previous derived files..."
+echo "➡️ Getting rid of previous derived and temp files..."
+rm -rf ./local-run
+# files in here are owned by root, hence sudo
+sudo rm -rf ./docker-run
 set +o pipefail # avoid exit in case of no previous derived files
 git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % rm %
 set -o pipefail

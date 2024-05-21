@@ -24,5 +24,6 @@
 
 # temporary files and directories
 /local-run
+/docker-run
 /scripts/stuff-pods/helper.log
 /scripts/stuff-pods/helper.pid
