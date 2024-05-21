@@ -11,22 +11,40 @@
   "defaultIDP": "${OD_CSS1_BASE_URL}/",
   "footer": "<p><a href='https://idlab.technology/'>IDLab</a> - <a href='https://www.imec.be/nl'>imec</a> - <a href='https://www.ugent.be/'>UGent</a></p>",
   "introductionText": "Please log in as the appropriate actor and select a query from the menu on the left.",
+  "queryGroups": [
+    {
+      "id": "a-constr",
+      "name": "Construction use case",
+      "icon": "ConstructionIcon"
+    },
+    {
+      "id": "b-txtl",
+      "name": "Textile use case",
+      "icon": "FactoryIcon"
+
+    },
+    {
+      "id": "c-txtlext",
+      "name": "Extended textile use case",
+      "icon": "FactoryIcon"
+    }
+  ],
   "queries": [
     {
-      "queryLocation": "c-lindner-group-products.rq",
-      "name": "(C) Query Lindner Group's products",
-      "description": "(C) Query Lindner Group's products",
       "id": "101",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-lindner-group-products.rq",
+      "name": "Query Lindner Group's products",
       "comunicaContext": {
         "sources": ["${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl"],
         "lenient": true
       }
     },
     {
-      "queryLocation": "c-lindner-group-products-details.rq",
-      "name": "(C) Query Lindner Group's products details",
-      "description": "(C) Query Lindner Group's products details",
       "id": "102",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-lindner-group-products-details.rq",
+      "name": "Query Lindner Group's products details",
       "comunicaContext": {
         "sources": [
           "${OD_CSS1_BASE_URL}/lindner-group/data/dt/out/products.ttl",
@@ -37,10 +55,10 @@
       }
     },
     {
-      "queryLocation": "c-materials-of-product.rq",
-      "name": "(C) What are the materials of a given product?",
-      "description": "(C) What are the materials of a given product?",
       "id": "103",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-materials-of-product.rq",
+      "name": "What are the materials of a given product?",
       "variables": {
         "product": [
           "<https://www.example/com/data/product-0x01>",
@@ -62,10 +80,10 @@
       }
     },
     {
-      "queryLocation": "c-tiles-of-buildings.rq",
-      "name": "(C) Which tiles are present in buildings?",
-      "description": "(C) Which tiles are present in buildings?",
       "id": "104",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-tiles-of-buildings.rq",
+      "name": "Which tiles are present in buildings?",
       "comunicaContext": {
         "sources": [
           "${OD_CSS2_BASE_URL}/building-owner/data/dt/out/buildings.ttl",
@@ -75,10 +93,10 @@
       }
     },
     {
-      "queryLocation": "c-tiles-of-building.rq",
-      "name": "(C) What are the tiles of a given building?",
-      "description": "(C) What are the tiles of a given building?",
       "id": "105",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-tiles-of-building.rq",
+      "name": "What are the tiles of a given building?",
       "variables": {
         "building": [
           "<https://www.example/com/data/building-B0>",
@@ -94,10 +112,10 @@
       }
     },
     {
-      "queryLocation": "c-tiles-of-building-with-address.rq",
-      "name": "(C) What are the tiles of a building with a given address?",
-      "description": "(C) What are the tiles of a building with a given address?",
       "id": "106",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-tiles-of-building-with-address.rq",
+      "name": "What are the tiles of a building with a given address?",
       "variables": {
         "address": ["\"88 Fairview Street Mount Laurel, NJ 08054\""]
       },
@@ -110,40 +128,40 @@
       }
     },
     {
-      "queryLocation": "c-ragn-sells-services.rq",
-      "name": "(C) Which services does Ragn-Sells provide?",
-      "description": "(C) Which services does Ragn-Sells provide?",
       "id": "107",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-ragn-sells-services.rq",
+      "name": "Which services does Ragn-Sells provide?",
       "comunicaContext": {
         "sources": ["${OD_CSS4_BASE_URL}/ragn-sells/data/dt/out/services.ttl"],
         "lenient": true
       }
     },
     {
-      "queryLocation": "c-ragn-sells-wastestreams.rq",
-      "name": "(C) Which waste streams does Ragn-Sells accept?",
-      "description": "(C) Which waste streams does Ragn-Sells accept?",
       "id": "108",
+      "queryGroupId": "a-constr",
+      "queryLocation": "c-ragn-sells-wastestreams.rq",
+      "name": "Which waste streams does Ragn-Sells accept?",
       "comunicaContext": {
         "sources": ["${OD_CSS4_BASE_URL}/ragn-sells/data/dt/out/services.ttl"],
         "lenient": true
       }
     },
     {
+      "id": "201",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-texon-components.rq",
-      "name": "(T1) Query Texon's components",
-      "description": "(T1) Query Texon's components",
-      "id": "501",
+      "name": "Query Texon's components",
       "comunicaContext": {
         "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
         "lenient": true
       }
     },
     {
+      "id": "202",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-texon-component-materials.rq",
-      "name": "(T1) Query Texon's components and their materials",
-      "description": "(T1) Query Texon's components and their materials",
-      "id": "502",
+      "name": "Query Texon's components and their materials",
       "comunicaContext": {
         "sources": [
           "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
@@ -154,30 +172,30 @@
       }
     },
     {
+      "id": "203",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-texon-average-recycled-content-of-components.rq",
-      "name": "(T1) What is the average recycled content (weight percentage) of Texon's components?",
-      "description": "(T1) What is the average recycled content (weight percentage) of Texon's components?",
-      "id": "503",
+      "name": "What is the average recycled content (weight percentage) of Texon's components?",
       "comunicaContext": {
         "sources": ["${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl"],
         "lenient": true
       }
     },
     {
+      "id": "204",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-manufacturer-products.rq",
-      "name": "(T1) Query Manufacturer's products",
-      "description": "(T1) Query Manufacturer's products",
-      "id": "601",
+      "name": "Query Manufacturer's products",
       "comunicaContext": {
         "sources": ["${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl"],
         "lenient": true
       }
     },
     {
+      "id": "205",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-manufacturer-product-components.rq",
-      "name": "(T1) Query Manufacturer's products and their components",
-      "description": "(T1) Query Manufacturer's products and their components",
-      "id": "602",
+      "name": "Query Manufacturer's products and their components",
       "comunicaContext": {
         "sources": [
           "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
@@ -188,10 +206,10 @@
       }
     },
     {
+      "id": "206",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-manufacturer-average-recycled-content-of-products.rq",
-      "name": "(T1) What is the average recycled content (weight percentage) of Manufacturer's products?",
-      "description": "(T1) What is the average recycled content (weight percentage) of Manufacturer's products?",
-      "id": "603",
+      "name": "What is the average recycled content (weight percentage) of Manufacturer's products?",
       "comunicaContext": {
         "sources": [
           "${OD_CSS6_BASE_URL}/manufacturer/data/dt/out/products.ttl",
@@ -202,10 +220,10 @@
       }
     },
     {
+      "id": "207",
+      "queryGroupId": "b-txtl",
       "queryLocation": "tx1-brand-recycled-content-of-product.rq",
-      "name": "(T1) What is the recycled content (weight percentage) of a given product?",
-      "description": "(T1) What is the recycled content (weight percentage) of a given product?",
-      "id": "701",
+      "name": "What is the recycled content (weight percentage) of a given product?",
       "variables": {
         "product": [
           "<https://www.example/com/textile-data/product-p01>",
@@ -222,10 +240,10 @@
       }
     },
     {
+      "id": "301",
+      "queryGroupId": "c-txtlext",
       "queryLocation": "tx2-products.rq",
-      "name": "(T2) Products",
-      "description": "(T2) Products",
-      "id": "801",
+      "name": "Products",
       "comunicaContext": {
         "sources": [
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
@@ -236,10 +254,10 @@
       }
     },
     {
+      "id": "302",
+      "queryGroupId": "c-txtlext",
       "queryLocation": "tx2-product-datasheet-variables.rq",
-      "name": "(T2) Product datasheets",
-      "description": "(T2) Product datasheets",
-      "id": "802",
+      "name": "Product datasheets",
       "variables": {
         "product": [
           "<http://example.com/product/texon_uid-product1>",
@@ -258,10 +276,10 @@
       }
     },
     {
+      "id": "303",
+      "queryGroupId": "c-txtlext",
       "queryLocation": "tx2-water-property.rq",
-      "name": "(T2) Water properties",
-      "description": "(T2) Water properties",
-      "id": "803",
+      "name": "Water properties",
       "comunicaContext": {
         "sources": [
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
@@ -272,10 +290,10 @@
       }
     },
     {
+      "id": "304",
+      "queryGroupId": "c-txtlext",
       "queryLocation": "tx2-design-for-reuse.rq",
-      "name": "(T2) Design for reuse",
-      "description": "(T2) Design for reuse",
-      "id": "804",
+      "name": "Design for reuse",
       "comunicaContext": {
         "sources": [
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",

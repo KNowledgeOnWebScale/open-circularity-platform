@@ -128,13 +128,23 @@ For development and debugging purposes, access the file system of `css<x>` as fo
     ```
 
 * Docker based setup cases
-  * Execute:
+  * Real direct access (the difficult way)
+    * Execute:
 
-    ```bash
-    source <appropriate-environment-variables-file>
-    docker compose --profile backend --profile frontend --profile extra-pod exec -it css<x> sh
-    cd /data
-    ls -al
-    # etc...
-    exit
-    ```
+      ```bash
+      source <appropriate-environment-variables-file>
+      docker compose --profile backend --profile frontend --profile extra-pod exec -it css<x> sh
+      cd /data
+      ls -al
+      # etc...
+      exit
+      ```
+
+  * Via the volume mapped to the local file system (the easy way)
+    * Execute:
+
+      ```bash
+      cd <project-root>/docker-run/data/css<x>
+      ls -al
+      # etc...
+      ```

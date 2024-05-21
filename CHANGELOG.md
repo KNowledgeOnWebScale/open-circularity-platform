@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Eased viewing files in pods in containers using volume mapping (internal [issue#52](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/52)).
+- Upgraded to Generic Viewer v1.2.0 (internal [issue#53](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/53)).
+
 ## [0.2.4] - 2024-04-08
 
 ### Added
