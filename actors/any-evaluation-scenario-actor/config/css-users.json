@@ -1,0 +1,245 @@
+[
+  {
+    "email": "construction_user1@example.com",
+    "password": "construction_user1",
+    "pods": [
+      {
+         "name": "construction_user1"
+      }
+    ]
+  },
+  {
+    "email": "construction_user2@example.com",
+    "password": "construction_user2",
+    "pods": [
+      {
+        "name": "construction_user2"
+      }
+    ]
+  },
+  {
+    "email": "construction_user3@example.com",
+    "password": "construction_user3",
+    "pods": [
+      {
+        "name": "construction_user3"
+      }
+    ]
+  },
+  {
+    "email": "construction_user4@example.com",
+    "password": "construction_user4",
+    "pods": [
+      {
+        "name": "construction_user4"
+      }
+    ]
+  },
+  {
+    "email": "construction_user5@example.com",
+    "password": "construction_user5",
+    "pods": [
+      {
+        "name": "construction_user5"
+      }
+    ]
+  },
+  {
+    "email": "construction_user6@example.com",
+    "password": "construction_user6",
+    "pods": [
+      {
+        "name": "construction_user6"
+      }
+    ]
+  },
+  {
+    "email": "construction_user7@example.com",
+    "password": "construction_user7",
+    "pods": [
+      {
+        "name": "construction_user7"
+      }
+    ]
+  },
+  {
+    "email": "construction_user8@example.com",
+    "password": "construction_user8",
+    "pods": [
+      {
+        "name": "construction_user8"
+      }
+    ]
+  },
+  {
+    "email": "construction_user9@example.com",
+    "password": "construction_user9",
+    "pods": [
+      {
+        "name": "construction_user9"
+      }
+    ]
+  },
+  {
+    "email": "textile_user1@example.com",
+    "password": "textile_user1",
+    "pods": [
+      {
+        "name": "textile_user1"
+      }
+    ]
+  },
+  {
+    "email": "textile_user2@example.com",
+    "password": "textile_user2",
+    "pods": [
+      {
+        "name": "textile_user2"
+      }
+    ]
+  },
+  {
+    "email": "textile_user3@example.com",
+    "password": "textile_user3",
+    "pods": [
+      {
+        "name": "textile_user3"
+      }
+    ]
+  },
+  {
+    "email": "textile_user4@example.com",
+    "password": "textile_user4",
+    "pods": [
+      {
+        "name": "textile_user4"
+      }
+    ]
+  },
+  {
+    "email": "textile_user5@example.com",
+    "password": "textile_user5",
+    "pods": [
+      {
+        "name": "textile_user5"
+      }
+    ]
+  },
+  {
+    "email": "textile_user6@example.com",
+    "password": "textile_user6",
+    "pods": [
+      {
+        "name": "textile_user6"
+      }
+    ]
+  },
+  {
+    "email": "textile_user7@example.com",
+    "password": "textile_user7",
+    "pods": [
+      {
+        "name": "textile_user7"
+      }
+    ]
+  },
+  {
+    "email": "textile_user8@example.com",
+    "password": "textile_user8",
+    "pods": [
+      {
+        "name": "textile_user8"
+      }
+    ]
+  },
+  {
+    "email": "textile_user9@example.com",
+    "password": "textile_user9",
+    "pods": [
+      {
+        "name": "textile_user9"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user1@example.com",
+    "password": "electronics_user1",
+    "pods": [
+      {
+        "name": "electronics_user1"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user2@example.com",
+    "password": "electronics_user2",
+    "pods": [
+      {
+        "name": "electronics_user2"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user3@example.com",
+    "password": "electronics_user3",
+    "pods": [
+      {
+        "name": "electronics_user3"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user4@example.com",
+    "password": "electronics_user4",
+    "pods": [
+      {
+        "name": "electronics_user4"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user5@example.com",
+    "password": "electronics_user5",
+    "pods": [
+      {
+        "name": "electronics_user5"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user6@example.com",
+    "password": "electronics_user6",
+    "pods": [
+      {
+        "name": "electronics_user6"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user7@example.com",
+    "password": "electronics_user7",
+    "pods": [
+      {
+        "name": "electronics_user7"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user8@example.com",
+    "password": "electronics_user8",
+    "pods": [
+      {
+        "name": "electronics_user8"
+      }
+    ]
+  },
+  {
+    "email": "electronics_user9@example.com",
+    "password": "electronics_user9",
+    "pods": [
+      {
+        "name": "electronics_user9"
+      }
+    ]
+  }
+]

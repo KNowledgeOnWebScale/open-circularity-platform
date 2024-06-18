@@ -525,3 +525,46 @@ services:
       retries: 65
       start_period: 30s
 
+  ##############################################################################
+  # MORE EXTRA PODS FOR EVALUATION SCENARIOS (ALL PODS IN ONE CSS)
+  ##############################################################################
+
+  ${OD_CSS11_SERVICE_NAME}:
+    profiles: [ "extra-pod" ]
+    image: solidproject/community-server:7
+    ports:
+      - "${OD_CSS11_HOST_PORT}:${OD_CSS11_CONTAINER_PORT}"
+    environment:
+      - CSS_BASE_URL=${OD_CSS11_BASE_URL}
+      - CSS_PORT=${OD_CSS11_CONTAINER_PORT}
+      - CSS_CONFIG=/config/server.json
+      - CSS_SEED_CONFIG=/config/css-users.json
+      - CSS_HTTPS_KEY=/my-cert/actor-private.key
+      - CSS_HTTPS_CERT=/my-cert/actor.crt
+      - NODE_EXTRA_CA_CERTS=/shared-certs/ca.crt
+    volumes:
+      - type: bind
+        source: ./actors/any-evaluation-scenario-actor/pod-template
+        target: /config/pod-template
+      - type: bind
+        source: ./actors/any-evaluation-scenario-actor/config/css-users.json
+        target: /config/css-users.json
+      - type: bind
+        source: ./common/css-01.json
+        target: /config/server.json
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS11}
+        target: /data
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      # Certificates
+      - ./scripts/cert/outputs/css11:/my-cert:ro
+      - ./scripts/cert/outputs/certificate-authority:/shared-certs:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS11_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      interval: 15s
+      timeout: 10s
+      retries: 65
+      start_period: 30s
