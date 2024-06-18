@@ -17,13 +17,14 @@
 /scripts/cert/main.sh
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
-/scripts/stuff-pods/mapping_turtle-rml.ttl
-/scripts/stuff-pods/data/acl_manuf1.csv
+/scripts/stuff-pods/setup_texon.mjs
+/scripts/stuff-pods/data/mapping.yml
+/scripts/stuff-pods/data/data/acl_manuf1.csv
 /specification-tests/*.env
 /specification-tests/access-control-scenarios/**/*.feature
 
 # temporary files and directories
 /local-run
 /docker-run
-/scripts/stuff-pods/helper.log
-/scripts/stuff-pods/helper.pid
+/scripts/stuff-pods/demo.tar.gz
+/scripts/stuff-pods/data/mapping.rml.ttl

@@ -1,0 +1,1369 @@
+prefixes:
+  ceon: http://w3id.org/CEON/ontology/
+  voc: http://example.com/voc/
+  product: http://example.com/product/
+  company: http://example.com/company/
+  pcds: http://example.com/pcds/
+  ceonproduct: http://w3id.org/CEON/ontology/product/
+  ceonactor: http://w3id.org/CEON/ontology/actorODP/
+  idlab-fn: http://example.com/idlab/function/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  acl: http://www.w3.org/ns/auth/acl#
+  foaf: http://xmlns.com/foaf/0.1/
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  rmli: https://w3id.org/imec/rml/
+  ex: http://example.com/
+  rml: http://semweb.mmlab.be/ns/rml#
+  rmlt: http://semweb.mmlab.be/ns/rml-target#
+  formats: http://www.w3.org/ns/formats/
+  LT: http://knows.base/logical_target/
+  T: http://knows.base/target/
+  textile: http://w3id.org/CEON/ontology/textile/
+  missing: http://example.com/missing/
+  owl: http://www.w3.org/2002/07/owl#
+base: http://knows.com/base/
+sources:
+  source1:
+    access: ./data/data_cleaned.csv
+    referenceFormulation: csv
+    delimiter: ;
+    'null':
+    - NA
+    - ''
+  source2:
+    access: ./data/acl_manuf1.csv
+    referenceFormulation: csv
+    delimiter: ','
+  source3:
+    access: ./data/empty_source.csv
+    referenceFormulation: csv
+  source4:
+    access: ./data/translation_table.csv
+    referenceFormulation: csv
+    delimiter: ;
+targets:
+  manuf1_1:
+    type: solid_resource
+    access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1
+    serialization: jsonld
+    authentication: auth_manufacturer
+  manuf1_2:
+    type: solid_resource
+    access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2
+    serialization: jsonld
+    authentication: auth_manufacturer
+  manuf1_3:
+    type: solid_resource
+    access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3
+    serialization: jsonld
+    authentication: auth_manufacturer
+authentications:
+  auth_manufacturer:
+    username: info@texon.com
+    password: texon123
+    oidc_issuer: ${OD_CSS5_BASE_URL}/
+    web_id: ${OD_CSS5_BASE_URL}/texon/profile/card#me
+mappings:
+  TextileProduct_0:
+    sources: source1
+    s:
+      value: product:$(1207)-$(1103)
+    po:
+    - p: voc:1100
+      o:
+        value: $(1100)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1101
+      o:
+        value: $(1101)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1102
+      o:
+        value: $(1102)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1103
+      o:
+        value: $(1103)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1104
+      o:
+        value: $(1104)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF100
+      o:
+        value: $(CF100)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF101
+      o:
+        value: $(CF101)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: a
+      o:
+        value: textile:TextileProduct
+        type: iri
+        targets: manuf1_3
+  Actor_0:
+    sources: source1
+    s:
+      value: company:$(1205)
+    po:
+    - p: voc:1200
+      o:
+        value: $(1200)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1201
+      o:
+        value: $(1201)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1202
+      o:
+        value: $(1202)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1203
+      o:
+        value: $(1203)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1204
+      o:
+        value: $(1204)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1205
+      o:
+        value: $(1205)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1206
+      o:
+        value: $(1206)
+        datatype: xsd:string
+        targets: manuf1_3
+  Actor_1:
+    sources: source1
+    s:
+      value: company:$(1300)
+    po:
+    - p: voc:1301
+      o:
+        value: $(1301)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1302
+      o:
+        value: $(1302)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1303
+      o:
+        value: $(1303)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1304
+      o:
+        value: $(1304)
+        datatype: xsd:string
+        targets: manuf1_3
+  TextileDataSheet_0:
+    sources: source1
+    s:
+      value: pcds:$(1207)-$(1103)-$(1400)
+    po:
+    - p: voc:1400
+      o:
+        value: $(1400)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1401
+      o:
+        value: $(1401)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1402
+      o:
+        value: $(1402)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1403
+      o:
+        value: $(1403)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1404
+      o:
+        value: $(1404)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1405
+      o:
+        value: $(1405)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1501
+      o:
+        value: $(1501)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1502
+      o:
+        value: $(1502)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1503
+      o:
+        value: $(1503)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1504
+      o:
+        value: $(1504)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:1505
+      o:
+        value: $(1505)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: textile:chemicalSubstanceDisclosureThreshold
+      o:
+        value: pcds:$(1207)-$(1103)-$(1400)-TextileProductCompositionDisclosureStatement
+        type: iri
+        targets: manuf1_1
+    - p: textile:productCompositionDisclosureAvailability
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2100)]
+      o:
+        value: textile:public
+        type: iri
+        targets: manuf1_1
+    - p: textile:productCompositionDisclosureAvailability
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2101)]
+      o:
+        value: textile:secrecyAgreement
+        type: iri
+        targets: manuf1_1
+    - p: textile:productCompositionDisclosureValidation
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2110)]
+      o:
+        value: textile:validatedByThirdParty
+        type: iri
+        targets: manuf1_1
+    - p: textile:productCompositionDisclosureValidation
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2120)]
+      o:
+        value: textile:certified
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2200)]
+      o:
+        value: textile:0perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2201)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2202)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2203)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2204)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2205)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2206)]
+      o:
+        value: textile:_95to99Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:weightFractionOfDisclosedSubstances
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2207)]
+      o:
+        value: textile:above99Perc
+        type: iri
+        targets: manuf1_1
+    - p: voc:CF200
+      o:
+        value: $(CF200)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF201
+      o:
+        value: $(CF201)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF202
+      o:
+        value: $(CF202)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF203
+      o:
+        value: $(CF203)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF204
+      o:
+        value: $(CF204)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF205
+      o:
+        value: $(CF205)
+        datatype: xsd:string
+        targets: manuf1_3
+    - p: voc:CF206
+      o:
+        value: $(CF206)
+        datatype: xsd:string
+        targets: manuf1_1
+    - p: voc:CF200b
+      o:
+        value: $(CF200b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:CF201b
+      o:
+        value: $(CF201b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:CF202b
+      o:
+        value: $(CF202b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:CF203b
+      o:
+        value: $(CF203b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:CF204b
+      o:
+        value: $(CF204b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:CF205b
+      o:
+        value: $(CF205b)
+        datatype: xsd:decimal
+        targets: manuf1_3
+    - p: voc:2300
+      o:
+        value: $(2300)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2301
+      o:
+        value: $(2301)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2310
+      o:
+        value: $(2310)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2311
+      o:
+        value: $(2311)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2320
+      o:
+        value: $(2320)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2321
+      o:
+        value: $(2321)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2330
+      o:
+        value: $(2330)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: voc:2331
+      o:
+        value: $(2331)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2400)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2401)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2402)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2403)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2404)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2405)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPreConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2406)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: voc:2410
+      o:
+        value: $(2410)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:2411
+      o:
+        value: $(2411)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:2420
+      o:
+        value: $(2420)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2500)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2501)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2502)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2503)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2504)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2505)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPostConsumerRecycledContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2506)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: voc:2510
+      o:
+        value: $(2510)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:2511
+      o:
+        value: $(2511)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:2520
+      o:
+        value: $(2520)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2600)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2601)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2602)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2603)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2604)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2605)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductRenewableContentAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2606)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: voc:2610
+      o:
+        value: $(2610)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3000
+      o:
+        value: $(3000)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3001
+      o:
+        value: $(3001)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3002
+      o:
+        value: $(3002)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3003
+      o:
+        value: $(3003)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3010
+      o:
+        value: $(3010)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3020
+      o:
+        value: $(3020)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3100
+      o:
+        value: $(3100)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:3200
+      o:
+        value: $(3200)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: voc:4000
+      o:
+        value: $(4000)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4100)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4101)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4102)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4103)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4104)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4105)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeCleanlyRemovedAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4106)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4100)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4101)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4102)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4103)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4104)]
+      o:
+        value: textile:_50to75Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4105)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: missing:hasTextileProductDesignToBeDismantledAmount
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(4106)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:designedForReuseWMinimalMod
+      o:
+        value: $(5000)
+        datatype: xsd:boolean
+        targets: manuf1_2
+    - p: textile:CEmark
+      o:
+        value: $(5001)
+        datatype: xsd:boolean
+        targets: manuf1_2
+    - p: textile:designedForRefurbishment
+      o:
+        value: $(5010)
+        datatype: xsd:boolean
+        targets: manuf1_2
+    - p: textile:designedForRemanufacturing
+      o:
+        value: $(5020)
+        datatype: xsd:boolean
+        targets: manuf1_2
+    - p: textile:designedForRecyclingAtSameQuality
+      o:
+        value: pcds:$(1207)-$(1103)-$(1400)-TextileProductDesignForRecycling
+        type: iri
+        targets: manuf1_3
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5040)]
+      o:
+        value: textile:lessThan1Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5041)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5042)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5043)]
+      o:
+        value: textile:_25-50Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5044)]
+      o:
+        value: textile:_50-75Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5045)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:anticipatedLeakageDuringUse
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5046)]
+      o:
+        value: textile:above95Perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:collectionSystem
+      o:
+        value: $(5050)
+        datatype: xsd:boolean
+        targets: manuf1_3
+    - p: textile:emissionByDesign
+      o:
+        value: $(5060)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:textileProductDesignForRecycling
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5070)]
+      o:
+        value: textile:biosphereCascading
+        type: iri
+        targets: manuf1_1
+    - p: textile:textileProductDesignForRecycling
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5080)]
+      o:
+        value: textile:industrialComposting
+        type: iri
+        targets: manuf1_1
+    - p: textile:textileProductDesignForRecycling
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5081)]
+      o:
+        value: textile:homeComposting
+        type: iri
+        targets: manuf1_1
+    - p: textile:textileProductDesignForRecycling
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5090)]
+      o:
+        value: textile:biosdigestion
+        type: iri
+        targets: manuf1_1
+    - p: textile:textileProductDesignForRecycling
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5091)]
+      o:
+        value: textile:incineration
+        type: iri
+        targets: manuf1_1
+    - p: textile:technicalDataSheetAvailable
+      o:
+        value: $(CF600)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:materialSafetyDataSheetForDyeingAvailable
+      o:
+        value: $(CF601)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:materialSafetyDataSheetForFinishingAvailable
+      o:
+        value: $(CF602)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:materialSafetyDataSheetAvailable
+      o:
+        value: $(CF603)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:biodegradabilityTestAvailable
+      o:
+        value: $(CF604)
+        datatype: xsd:boolean
+        targets: manuf1_1
+    - p: textile:hasDyeMethod
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF700)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasDyeStuff
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF701)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPrintMethod
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF702)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasPrintStuff
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF703)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:hasFinishingStep
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF704)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:finishingSteps
+      o:
+        value: $(CF705)
+        datatype: xsd:string
+        targets: manuf1_1
+    - p: textile:hasWaterProperty
+      o:
+        function: idlab-fn:lookupWithDelimiter
+        parameters:
+        - [idlab-fn:str, $(CF706)]
+        - [idlab-fn:inputFile, ./data/translation_table.csv]
+        - [idlab-fn:fromColumn, 0]
+        - [idlab-fn:toColumn, 1]
+        - [idlab-fn:delimiter, ;]
+        type: iri
+        targets: manuf1_1
+    - p: textile:chemicalCompliance
+      o:
+        value: $(CF707)
+        datatype: xsd:string
+        targets: manuf1_1
+    - p: http://w3id.org/CEON/ontology/resourceODP/isAbout
+      o:
+        value: product:$(1207)-$(1103)
+        type: iri
+        targets: manuf1_3
+    - p: a
+      o:
+        value: textile:TextileDataSheet
+        type: iri
+        targets: manuf1_3
+  TextileProductCompositionDisclosureStatement_0:
+    sources: source1
+    s:
+      value: pcds:$(1207)-$(1103)-$(1400)-TextileProductCompositionDisclosureStatement
+    po:
+    - p: textile:disclosureValue
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2000)]
+      o:
+        value: textile:_1perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:disclosureValue
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2001)]
+      o:
+        value: textile:_0.1perc
+        type: iri
+        targets: manuf1_1
+    - p: textile:disclosureValue
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(2002)]
+      o:
+        value: textile:_0.01perc
+        type: iri
+        targets: manuf1_1
+  TextileProductDesignForRecycling_0:
+    sources: source1
+    s:
+      value: pcds:$(1207)-$(1103)-$(1400)-TextileProductDesignForRecycling
+    po:
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5030)]
+      o:
+        value: textile:_0perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5031)]
+      o:
+        value: textile:_0to10Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5032)]
+      o:
+        value: textile:_10to25Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5033)]
+      o:
+        value: textile:_25to50Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5034)]
+      o:
+        value: textile:_50-75Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5035)]
+      o:
+        value: textile:_75to95Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5036)]
+      o:
+        value: textile:_95to99Perc
+        type: iri
+        targets: manuf1_3
+    - p: textile:recyclingAtSameQualityRange
+      condition:
+        function: idlab-fn:equal
+        parameters:
+        - [grel:valueParameter, true]
+        - [grel:valueParameter2, $(5037)]
+      o:
+        value: textile:above99Perc
+        type: iri
+        targets: manuf1_3
+  LogicalTarget_0:
+    sources: source2
+    s:
+      value: LT:$(target_id)_acl
+      targets: ThisMapping
+    po:
+    - p: a
+      o:
+        value: rml:LogicalTarget
+        type: iri
+    - p: rmlt:serialization
+      o:
+        value: formats:Turtle
+        type: iri
+    - p: rmlt:target
+      o:
+        value: T:$(target_id)_acl
+        type: iri
+  Target_0:
+    sources: source2
+    s:
+      value: T:$(target_id)_acl
+      targets: ThisMapping
+    po:
+    - p: a
+      o:
+        value: rmlt:Target
+        type: iri
+    - p: a
+      o:
+        value: rmli:SolidAclTarget
+        type: iri
+    - p: rmli:forResource
+      o:
+        value: $(access_to)
+        type: iri
+    - p: idsa:userAuthentication
+      o:
+        value: ex:authentication/manufacturer
+        type: iri
+  Authorization_0:
+    sources: source2
+    s:
+      value: ex:$(agent)_acl
+      targets: LT:$(target_id)_acl
+    po:
+    - p: a
+      o:
+        value: acl:Authorization
+        type: iri
+    - p: acl:agent
+      o:
+        value: $(agent_webid)
+        type: iri
+    - p: acl:mode
+      o:
+        value: acl:$(mode)
+        type: iri
+    - p: acl:accessTo
+      o:
+        value: $(access_to)
+        type: iri
+  UserAuthentication_0:
+    sources: source3
+    s:
+      value: ex:authentication/manufacturer
+      targets: ThisMapping
+    po:
+    - p: a
+      o:
+        value: idsa:UserAuthentication
+        type: iri
+    - p: idsa:authUsername
+      o:
+        value: info@texon.com
+    - p: idsa:authPassword
+      o:
+        value: texon123
+    - p: solid:oidcIssuer
+      o:
+        value: ${OD_CSS5_BASE_URL}/
+        type: iri
+    - p: rmli:webId
+      o:
+        value: ${OD_CSS5_BASE_URL}/texon/profile/card#me
+        type: iri

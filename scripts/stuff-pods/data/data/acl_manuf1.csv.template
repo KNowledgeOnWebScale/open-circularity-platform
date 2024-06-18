@@ -1,0 +1,14 @@
+﻿target_id,access_to,agent,mode,agent_webid
+manuf1_1,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1,manufacturer,Control,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_1,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1,manufacturer,Write,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_2,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2,brand,Read,${OD_CSS7_BASE_URL}/brand/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,brand,Read,${OD_CSS7_BASE_URL}/brand/profile/card#me
+manuf1_2,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2,manufacturer,Control,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_2,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2,manufacturer,Write,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_1,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_2,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Control,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Write,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,recycler,Read,https://css8.onto-deside.ilabt.imec.be/recycler/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,sorter,Read,https://css10.onto-deside.ilabt.imec.be/sorter/profile/card#me

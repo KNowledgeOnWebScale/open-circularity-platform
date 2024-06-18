@@ -3,46 +3,41 @@
 # Assumptions:
 #   - this script is run from the repository root
 #   - this script is located in reporoot/scripts/stuff-pods
+#
+# See also https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/docker-demo
 
 set -euo pipefail
 
 # absolute dir of script
 MY_DIR=$(pwd)/scripts/stuff-pods
 
-HELPER_REPO=solid-target-helper-and-testpods
-HELPER_CLONE=applied-in-architecture-solid-target-helper-and-testpods
-HELPER_LOG_FILE=$MY_DIR/helper.log
-HELPER_PID_FILE=$MY_DIR/helper.pid
+DOCKER_IMAGE_NAME=demo
+DOCKER_IMAGE_NAME_COMPRESSED=demo.tar.gz
+DOCKER_IMAGE_DOWNLOAD_LINK=https://cloud.ilabt.imec.be/index.php/s/8ZRmNkknQH7oEc5/download/${DOCKER_IMAGE_NAME_COMPRESSED}
 
-pushd .. > /dev/null
+echo "👉 Adding extra pod contents."
+pushd ${MY_DIR} > /dev/null
+echo $(pwd)
 
-echo Cloning, selecting tag, installing helper...
-rm -rf ${HELPER_CLONE}
-git clone https://gitlab.ilabt.imec.be/rml/util/${HELPER_REPO}.git -b v0.0.1 ${HELPER_CLONE}
-cd ${HELPER_CLONE}
-npm install
+if [[ -e "${DOCKER_IMAGE_NAME_COMPRESSED}" ]] ; then
+  echo "➡️ Reusing existing ${DOCKER_IMAGE_NAME_COMPRESSED}"
+else
+  echo "➡️ Downloading ${DOCKER_IMAGE_NAME_COMPRESSED}"
+  wget ${DOCKER_IMAGE_DOWNLOAD_LINK}
+fi
 
-echo Finding a free port to run helper...
-HELPER_PORT=3000
-while (ss -nl | grep -sq ":$HELPER_PORT\s") ; do
-    HELPER_PORT=$((HELPER_PORT+1))
-done 
+echo "➡️ Loading ${DOCKER_IMAGE_NAME} image into Docker"
+gunzip -c ${DOCKER_IMAGE_NAME_COMPRESSED} | docker load
 
-echo "Running helper on port $HELPER_PORT (see $HELPER_LOG_FILE for logs)."
-nohup node index.js $HELPER_PORT > $HELPER_LOG_FILE 2>&1 &
-PID=$!
-echo "$PID" > $HELPER_PID_FILE
-echo "Started helper with PID $PID"
-
-popd > /dev/null
-pushd $MY_DIR > /dev/null
-
-echo "Updating remote resources (ignore the errors saying searchString \"null\" is not found...')"
-java -jar rmlmapper.jar -shu http://localhost:$HELPER_PORT/ -m mapping_turtle-rml.ttl
-
-echo Stopping helper with PID $PID
-kill $PID || true
-rm $HELPER_PID_FILE
+echo "➡️ Using the RML mapper in the Docker container to upload pod contents"
+if [[ "$OD_ENVVARS_FILE" == "env-localhost" ]] ; then
+  # the only way to reach pods at http://localhost from the a Docker container is to use the Docker host network...
+  # ... which is not available from Docker for all platforms. Check availability here: https://docs.docker.com/network/network-tutorial-host/
+  docker run --rm --net=host -v $(pwd)/data:/runtime/data ${DOCKER_IMAGE_NAME} -m mapping.yml
+else
+  docker run --rm            -v $(pwd)/data:/runtime/data ${DOCKER_IMAGE_NAME} -m mapping.yml
+fi
 
 popd > /dev/null
-echo Done.
+echo "👉 Done."
+

@@ -30,7 +30,7 @@ rm -rf ./local-run
 # files in here are owned by root, hence sudo
 sudo rm -rf ./docker-run
 set +o pipefail # avoid exit in case of no previous derived files
-git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' | xargs -r -I % rm %
+git ls-files --others --ignored --exclude-standard | grep -v -e '^node_modules/' -e '^\.idea' -e '^rmlmapper.jar' -e 'demo.tar.gz' | xargs -r -I % rm %
 set -o pipefail
 
 echo "➡️ Creating derived files from their templates..."

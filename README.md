@@ -40,9 +40,9 @@ We demonstrate the Open Circularity Platform through some example use cases:
 
 * [example use case within the Construction domain](./doc/construction-use-case.md);
 * [example use case within the Textile domain](./doc/textile-use-case.md);
-* extended example use case within the Textile domain, with data using the CEON ontology.
+* extended example use case within the Textile domain, with data using the CEON ontology and with verifiable credentials.
 
-This repository supports different setup cases.
+This repository supports [different setup cases](doc/SETUP_CASES.md).
 Some are only valid during development.
 The final and publicly available setup of the Open Circularity Platform relies on [Docker containers](https://www.docker.com/resources/what-container/) and
 [Docker Compose](https://docs.docker.com/compose/) and illustrates the decentralized nature of the Solid-based data sharing platform.
@@ -56,8 +56,6 @@ Within the platform, we have set up:
 During the setup-flow, Solid pods are created and prefilled with example WebIDs and other Resource Description Framework ([RDF](https://www.w3.org/TR/rdf11-primer/)) formatted data.
 
 During the usage-flow, an end user navigates to one of the Web UIs to query the data.
-
-A situational overview of the final setup is available [here](./doc/SETUP_CASES.md#public-docker-based).
 
 ## Using the final setup
 
@@ -144,6 +142,10 @@ source env-localhost
 
 #### Building the localhost setup case
 
+Before continuing, make sure the result of a previous build isn't running. See [Stopping the localhost setup case](#stopping-the-localhost-setup-case).
+
+Next, execute:
+
 ```bash
 # install node dependencies
 yarn install
@@ -165,6 +167,13 @@ The pods log files can be consulted at `./local-run/*.log`.
 The pods data can be viewed at `./local-run/data/css*/`.
 
 #### Adding pod contents for the extended textile use case to the localhost setup case
+
+> This assumes the following additional prerequisites to the localhost setup case:
+>
+> * [Docker Engine](https://docs.docker.com/engine/) was installed.
+> * Docker host networking is available. See also [here](https://docs.docker.com/network/network-tutorial-host/).
+
+Execute:
 
 ```bash
 ./scripts/stuff-pods/stuff-pods.sh
@@ -212,6 +221,10 @@ source env-docker-public
 
 #### Building the public Docker based setup case
 
+Before continuing, make sure the result of a previous build isn't running. See [Stopping the public Docker based setup case](#stopping-the-public-docker-based-setup-case).
+
+Next, execute:
+
 ```bash
 # install node dependencies
 yarn install
@@ -222,9 +235,6 @@ yarn install
 #### Running the public Docker based setup case
 
 ```bash
-# just to be safe, stop any pending previous resources:
-docker compose --profile backend --profile frontend --profile extra-pod down -t 0
-# start:
 docker compose --profile backend --profile frontend --profile extra-pod up --wait
 ```
 
@@ -239,7 +249,9 @@ docker compose --profile backend --profile frontend --profile extra-pod logs -f
 
 #### Adding pod contents for the extended textile use case to the public Docker based setup case
 
-The following command may be executed on the server or on any other computer that has access to the public pods, if all above steps where executed before.
+The following command may be executed on the server or on any other computer fulfilling the prerequisites and having access to the public pods, if all above steps where executed before.
+
+Execute:
 
 ```bash
 ./scripts/stuff-pods/stuff-pods.sh
@@ -285,6 +297,10 @@ source env-docker-private
 ```
 
 #### Building the private Docker based setup case
+
+Before continuing, make sure the result of a previous build isn't running. See [Stopping the private Docker based setup case](#stopping-the-private-docker-based-setup-case).
+
+Next, execute:
 
 ```bash
 # install node dependencies
