@@ -10,6 +10,7 @@
 
 <{{webId}}>
     {{#if name}}foaf:name "{{name}}";{{/if}}
+    foaf:name "Info Lindner-Group";
     {{#if oidcIssuer}}solid:oidcIssuer <{{oidcIssuer}}>;{{/if}}
     a foaf:Agent;
     pim:storage <{{base.path}}>.
