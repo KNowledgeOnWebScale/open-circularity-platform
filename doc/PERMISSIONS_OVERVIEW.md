@@ -28,12 +28,18 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | manufacturer:data/dt/out/boms.ttl     |       | rwc          | r     | r     |
 | manufacturer:data/dt/out/products.ttl |       | rwc          | r     | r     |
 
-## Extended textile use case
+## Additional use cases
 
 *Next resources are NOT set available as pre-built pod contents, hence the information provided here is indicative only.*
 
-| Pod:Resource              | texon | brand | recycler | sorter |
-|---------------------------|-------|-------|----------|--------|
-| texon:ceon/manuf1_1.ttl   | rwc   |       |          |        |
-| texon:ceon/manuf1_2.ttl   | rwc   | r     |          |        |
-| texon:ceon/manuf1_3.ttl   | rwc   | r     | r        | r      |
+### Extended textile use case
+
+| Pod:Resource          | texon | brand | recycler | sorter |
+|-----------------------|-------|-------|----------|--------|
+| texon:ceon/manuf1_1   | rwc   |       |          |        |
+| texon:ceon/manuf1_2   | rwc   | r     |          |        |
+| texon:ceon/manuf1_3   | rwc   | r     | r        | r      |
+
+### Evaluation use cases June 2024
+
+TODO

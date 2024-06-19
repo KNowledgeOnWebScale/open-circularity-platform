@@ -11,7 +11,7 @@
     * [Environment variables for the localhost setup case](#environment-variables-for-the-localhost-setup-case)
     * [Building the localhost setup case](#building-the-localhost-setup-case)
     * [Running the localhost setup case](#running-the-localhost-setup-case)
-    * [Adding pod contents for the extended textile use case to the localhost setup case](#adding-pod-contents-for-the-extended-textile-use-case-to-the-localhost-setup-case)
+    * [Adding pod contents for the additional use cases to the localhost setup case](#adding-pod-contents-for-the-additional-use-cases-to-the-localhost-setup-case)
     * [Using the localhost setup case](#using-the-localhost-setup-case)
     * [Stopping the localhost setup case](#stopping-the-localhost-setup-case)
   * [The public Docker based setup case](#the-public-docker-based-setup-case)
@@ -19,7 +19,7 @@
     * [Environment variables for the public Docker based setup case](#environment-variables-for-the-public-docker-based-setup-case)
     * [Building the public Docker based setup case](#building-the-public-docker-based-setup-case)
     * [Running the public Docker based setup case](#running-the-public-docker-based-setup-case)
-    * [Adding pod contents for the extended textile use case to the public Docker based setup case](#adding-pod-contents-for-the-extended-textile-use-case-to-the-public-docker-based-setup-case)
+    * [Adding pod contents for the additional use cases to the public Docker based setup case](#adding-pod-contents-for-the-additional-use-cases-to-the-public-docker-based-setup-case)
     * [Using the public Docker based setup case](#using-the-public-docker-based-setup-case)
     * [Bonus: local Generic Data Viewer for querying public pods](#bonus-local-generic-data-viewer-for-querying-public-pods)
     * [Stopping the public Docker based setup case](#stopping-the-public-docker-based-setup-case)
@@ -40,7 +40,9 @@ We demonstrate the Open Circularity Platform through some example use cases:
 
 * [example use case within the Construction domain](./doc/construction-use-case.md);
 * [example use case within the Textile domain](./doc/textile-use-case.md);
-* extended example use case within the Textile domain, with data using the CEON ontology and with verifiable credentials.
+* some additional use cases:
+  * extended example use case within the Textile domain, with data using the CEON ontology and with verifiable credentials;
+  * evaluation use cases within different domains.
 
 This repository supports [different setup cases](doc/SETUP_CASES.md).
 Some are only valid during development.
@@ -166,7 +168,7 @@ The pods log files can be consulted at `./local-run/*.log`.
 
 The pods data can be viewed at `./local-run/data/css*/`.
 
-#### Adding pod contents for the extended textile use case to the localhost setup case
+#### Adding pod contents for the additional use cases to the localhost setup case
 
 > This assumes the following additional prerequisites to the localhost setup case:
 >
@@ -176,7 +178,10 @@ The pods data can be viewed at `./local-run/data/css*/`.
 Execute:
 
 ```bash
+# this is to add the actual data:
 ./scripts/stuff-pods/stuff-pods.sh
+# this is to add convenient user names to the involved actors:
+./scripts/stuff-pods/stuff-names.sh
 ```
 
 #### Using the localhost setup case
@@ -247,14 +252,17 @@ Optional: if you're interested in what's happening while the previous command ex
 docker compose --profile backend --profile frontend --profile extra-pod logs -f
 ```
 
-#### Adding pod contents for the extended textile use case to the public Docker based setup case
+#### Adding pod contents for the additional use cases to the public Docker based setup case
 
 The following command may be executed on the server or on any other computer fulfilling the prerequisites and having access to the public pods, if all above steps where executed before.
 
 Execute:
 
 ```bash
+# this is to add the actual data:
 ./scripts/stuff-pods/stuff-pods.sh
+# this is to add convenient user names to the involved actors:
+./scripts/stuff-pods/stuff-names.sh
 ```
 
 #### Using the public Docker based setup case
@@ -320,7 +328,7 @@ Using the private Docker based setup case is similar to [using the final setup](
 * Navigate to <http://localhost:5800>, to reach the integrated Firefox container, which has access to the resources in the Docker network.
 * Let the integrated Firefox browser trust our self-made Certificate Authority: follow the instructions in the [Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
 * All further navigation is to be done from the integrated Firefox browser, with URLs identical to the those in the final setup.
-* The queries for the extended textile use case won't work here, because there is no solution to add pod contents for this use case.
+* The queries for the additional use cases won't work here, because there is no solution to add pod contents for these use cases.
 
 #### Stopping the private Docker based setup case
 
