@@ -178,10 +178,7 @@ The pods data can be viewed at `./local-run/data/css*/`.
 Execute:
 
 ```bash
-# this is to add the actual data:
 ./scripts/stuff-pods/stuff-pods.sh
-# this is to add convenient user names to the involved actors:
-./scripts/stuff-pods/stuff-names.sh
 ```
 
 #### Using the localhost setup case
@@ -259,10 +256,7 @@ The following command may be executed on the server or on any other computer ful
 Execute:
 
 ```bash
-# this is to add the actual data:
 ./scripts/stuff-pods/stuff-pods.sh
-# this is to add convenient user names to the involved actors:
-./scripts/stuff-pods/stuff-names.sh
 ```
 
 #### Using the public Docker based setup case

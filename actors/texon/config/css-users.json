@@ -3,7 +3,11 @@
     "email": "info@texon.com",
     "password": "texon123",
     "pods": [
-      { "name": "texon" }
+      { "name": "texon",
+        "settings": {
+          "name": "Info Texon"
+        }
+      }
     ]
   }
 ]

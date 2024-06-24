@@ -4,7 +4,10 @@
     "password": "construction_user1",
     "pods": [
       {
-         "name": "construction_user1"
+        "name": "construction_user1",
+        "settings": {
+          "name": "Construction User1"
+         }
       }
     ]
   },
@@ -13,7 +16,10 @@
     "password": "construction_user2",
     "pods": [
       {
-        "name": "construction_user2"
+        "name": "construction_user2",
+        "settings": {
+          "name": "Construction User2"
+        }
       }
     ]
   },
@@ -22,7 +28,10 @@
     "password": "construction_user3",
     "pods": [
       {
-        "name": "construction_user3"
+        "name": "construction_user3",
+        "settings": {
+          "name": "Construction User3"
+        }
       }
     ]
   },
@@ -31,7 +40,10 @@
     "password": "construction_user4",
     "pods": [
       {
-        "name": "construction_user4"
+        "name": "construction_user4",
+        "settings": {
+          "name": "Construction User4"
+        }
       }
     ]
   },
@@ -40,7 +52,10 @@
     "password": "construction_user5",
     "pods": [
       {
-        "name": "construction_user5"
+        "name": "construction_user5",
+        "settings": {
+          "name": "Construction User5"
+        }
       }
     ]
   },
@@ -49,7 +64,10 @@
     "password": "construction_user6",
     "pods": [
       {
-        "name": "construction_user6"
+        "name": "construction_user6",
+        "settings": {
+          "name": "Construction User6"
+        }
       }
     ]
   },
@@ -58,7 +76,10 @@
     "password": "construction_user7",
     "pods": [
       {
-        "name": "construction_user7"
+        "name": "construction_user7",
+        "settings": {
+          "name": "Construction User7"
+        }
       }
     ]
   },
@@ -67,7 +88,10 @@
     "password": "construction_user8",
     "pods": [
       {
-        "name": "construction_user8"
+        "name": "construction_user8",
+        "settings": {
+          "name": "Construction User8"
+        }
       }
     ]
   },
@@ -76,7 +100,10 @@
     "password": "construction_user9",
     "pods": [
       {
-        "name": "construction_user9"
+        "name": "construction_user9",
+        "settings": {
+          "name": "Construction User9"
+        }
       }
     ]
   },
@@ -85,7 +112,10 @@
     "password": "textile_user1",
     "pods": [
       {
-        "name": "textile_user1"
+        "name": "textile_user1",
+        "settings": {
+          "name": "Textile User1"
+        }
       }
     ]
   },
@@ -94,7 +124,10 @@
     "password": "textile_user2",
     "pods": [
       {
-        "name": "textile_user2"
+        "name": "textile_user2",
+        "settings": {
+          "name": "Textile User2"
+        }
       }
     ]
   },
@@ -103,7 +136,10 @@
     "password": "textile_user3",
     "pods": [
       {
-        "name": "textile_user3"
+        "name": "textile_user3",
+        "settings": {
+          "name": "Textile User3"
+        }
       }
     ]
   },
@@ -112,7 +148,10 @@
     "password": "textile_user4",
     "pods": [
       {
-        "name": "textile_user4"
+        "name": "textile_user4",
+        "settings": {
+          "name": "Textile User4"
+        }
       }
     ]
   },
@@ -121,7 +160,10 @@
     "password": "textile_user5",
     "pods": [
       {
-        "name": "textile_user5"
+        "name": "textile_user5",
+        "settings": {
+          "name": "Textile User5"
+        }
       }
     ]
   },
@@ -130,7 +172,10 @@
     "password": "textile_user6",
     "pods": [
       {
-        "name": "textile_user6"
+        "name": "textile_user6",
+        "settings": {
+          "name": "Textile User6"
+        }
       }
     ]
   },
@@ -139,7 +184,10 @@
     "password": "textile_user7",
     "pods": [
       {
-        "name": "textile_user7"
+        "name": "textile_user7",
+        "settings": {
+          "name": "Textile User7"
+        }
       }
     ]
   },
@@ -148,7 +196,10 @@
     "password": "textile_user8",
     "pods": [
       {
-        "name": "textile_user8"
+        "name": "textile_user8",
+        "settings": {
+          "name": "Textile User8"
+        }
       }
     ]
   },
@@ -157,7 +208,10 @@
     "password": "textile_user9",
     "pods": [
       {
-        "name": "textile_user9"
+        "name": "textile_user9",
+        "settings": {
+          "name": "Textile User9"
+        }
       }
     ]
   },
@@ -166,7 +220,10 @@
     "password": "electronics_user1",
     "pods": [
       {
-        "name": "electronics_user1"
+        "name": "electronics_user1",
+        "settings": {
+          "name": "Electronics User1"
+        }
       }
     ]
   },
@@ -175,7 +232,10 @@
     "password": "electronics_user2",
     "pods": [
       {
-        "name": "electronics_user2"
+        "name": "electronics_user2",
+        "settings": {
+          "name": "Electronics User2"
+        }
       }
     ]
   },
@@ -184,7 +244,10 @@
     "password": "electronics_user3",
     "pods": [
       {
-        "name": "electronics_user3"
+        "name": "electronics_user3",
+        "settings": {
+          "name": "Electronics User3"
+        }
       }
     ]
   },
@@ -193,7 +256,10 @@
     "password": "electronics_user4",
     "pods": [
       {
-        "name": "electronics_user4"
+        "name": "electronics_user4",
+        "settings": {
+          "name": "Electronics User4"
+        }
       }
     ]
   },
@@ -202,7 +268,10 @@
     "password": "electronics_user5",
     "pods": [
       {
-        "name": "electronics_user5"
+        "name": "electronics_user5",
+        "settings": {
+          "name": "Electronics User5"
+        }
       }
     ]
   },
@@ -211,7 +280,10 @@
     "password": "electronics_user6",
     "pods": [
       {
-        "name": "electronics_user6"
+        "name": "electronics_user6",
+        "settings": {
+          "name": "Electronics User6"
+        }
       }
     ]
   },
@@ -220,7 +292,10 @@
     "password": "electronics_user7",
     "pods": [
       {
-        "name": "electronics_user7"
+        "name": "electronics_user7",
+        "settings": {
+          "name": "Electronics User7"
+        }
       }
     ]
   },
@@ -229,7 +304,10 @@
     "password": "electronics_user8",
     "pods": [
       {
-        "name": "electronics_user8"
+        "name": "electronics_user8",
+        "settings": {
+          "name": "Electronics User8"
+        }
       }
     ]
   },
@@ -238,7 +316,10 @@
     "password": "electronics_user9",
     "pods": [
       {
-        "name": "electronics_user9"
+        "name": "electronics_user9",
+        "settings": {
+          "name": "Electronics User9"
+        }
       }
     ]
   }

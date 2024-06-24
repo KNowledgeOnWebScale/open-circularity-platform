@@ -3,7 +3,11 @@
     "email": "info@recycler.com",
     "password": "recycler123",
     "pods": [
-      { "name": "recycler" }
+      { "name": "recycler",
+        "settings": {
+          "name": "Info Recycler"
+        }
+      }
     ]
   }
 ]

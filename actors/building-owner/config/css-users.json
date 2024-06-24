@@ -3,7 +3,11 @@
     "email": "info@building-owner.com",
     "password": "building123",
     "pods": [
-      { "name": "building-owner" }
+      { "name": "building-owner",
+        "settings": {
+          "name": "Info Building-Owner"
+        }
+      }
     ]
   }
 ]

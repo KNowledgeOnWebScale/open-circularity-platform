@@ -10,7 +10,6 @@
 
 <{{webId}}>
     {{#if name}}foaf:name "{{name}}";{{/if}}
-    foaf:name "Info Brand";
     {{#if oidcIssuer}}solid:oidcIssuer <{{oidcIssuer}}>;{{/if}}
     a foaf:Agent;
     pim:storage <{{base.path}}>.
