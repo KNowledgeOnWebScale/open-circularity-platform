@@ -27,6 +27,11 @@
       "id": "c-txtlext",
       "name": "Extended textile use case",
       "icon": "FactoryIcon"
+    },
+    {
+      "id": "d-osoctxtlext",
+      "name": "Extended textile use case for osoc0",
+      "icon": "FactoryIcon"
     }
   ],
   "queries": [
@@ -299,6 +304,70 @@
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1",
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2",
           "${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10301",
+      "queryGroupId": "d-osoctxtlext",
+      "queryLocation": "tx2-products.rq",
+      "name": "Products",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_1",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_2",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10302",
+      "queryGroupId": "d-osoctxtlext",
+      "queryLocation": "tx2-product-datasheet-variables.rq",
+      "name": "Product datasheets",
+      "variables": {
+        "product": [
+          "<http://example.com/product/texon_uid-product1>",
+          "<http://example.com/product/texon_uid-product2>",
+          "<http://example.com/product/texon_uid-product3>",
+          "<http://example.com/product/texon_uid-product4>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_1",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_2",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10303",
+      "queryGroupId": "d-osoctxtlext",
+      "queryLocation": "tx2-water-property.rq",
+      "name": "Water properties",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_1",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_2",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10304",
+      "queryGroupId": "d-osoctxtlext",
+      "queryLocation": "tx2-design-for-reuse.rq",
+      "name": "Design for reuse",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_1",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_2",
+          "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_3"
         ],
         "lenient": true
       }

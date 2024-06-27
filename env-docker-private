@@ -184,3 +184,12 @@ export OD_CSS11_CONTAINER_PORT=443
 export OD_CSS11_DOMAIN=${OD_CSS11}.onto-deside.ilabt.imec.be
 export OD_CSS11_BASE_URL=https://${OD_CSS11_DOMAIN}
 export OD_CSS11_SERVICE_NAME=${OD_CSS11_DOMAIN}
+
+# More extra pods for Open Summer Of Code (all pods in one CSS)
+
+export OD_CSS12=css12
+export OD_CSS12_HOST_PORT=3012
+export OD_CSS12_CONTAINER_PORT=443
+export OD_CSS12_DOMAIN=${OD_CSS12}.onto-deside.ilabt.imec.be
+export OD_CSS12_BASE_URL=https://${OD_CSS12_DOMAIN}
+export OD_CSS12_SERVICE_NAME=${OD_CSS12_DOMAIN}

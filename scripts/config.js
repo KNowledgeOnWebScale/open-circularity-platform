@@ -16,7 +16,8 @@ module.exports.actorsWithoutDT = [
   'recycler',
   'retailer',
   'sorter',
-  'any-evaluation-scenario-actor'
+  'any-evaluation-scenario-actor',
+  'any-osoc-actor'
 ];
 
 // next should be in line with env-... OD_CSS... variables
@@ -33,5 +34,6 @@ module.exports.csss = [
   'css8',
   'css9',
   'css10',
-  'css11'
+  'css11',
+  'css12'
 ];

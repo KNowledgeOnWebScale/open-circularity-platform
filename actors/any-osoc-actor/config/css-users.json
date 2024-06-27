@@ -1,0 +1,122 @@
+[
+  {
+    "email": "osoc0@example.com",
+    "password": "osoc0",
+    "pods": [
+      {
+        "name": "osoc0",
+        "settings": {
+          "name": "Osoc0"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc1@example.com",
+    "password": "osoc1",
+    "pods": [
+      {
+        "name": "osoc1",
+        "settings": {
+          "name": "Osoc1"
+         }
+      }
+    ]
+  },
+  {
+    "email": "osoc2@example.com",
+    "password": "osoc2",
+    "pods": [
+      {
+        "name": "osoc2",
+        "settings": {
+          "name": "Osoc2"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc3@example.com",
+    "password": "osoc3",
+    "pods": [
+      {
+        "name": "osoc3",
+        "settings": {
+          "name": "Osoc3"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc4@example.com",
+    "password": "osoc4",
+    "pods": [
+      {
+        "name": "osoc4",
+        "settings": {
+          "name": "Osoc4"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc5@example.com",
+    "password": "osoc5",
+    "pods": [
+      {
+        "name": "osoc5",
+        "settings": {
+          "name": "Osoc5"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc6@example.com",
+    "password": "osoc6",
+    "pods": [
+      {
+        "name": "osoc6",
+        "settings": {
+          "name": "Osoc6"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc7@example.com",
+    "password": "osoc7",
+    "pods": [
+      {
+        "name": "osoc7",
+        "settings": {
+          "name": "Osoc7"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc8@example.com",
+    "password": "osoc8",
+    "pods": [
+      {
+        "name": "osoc8",
+        "settings": {
+          "name": "Osoc8"
+        }
+      }
+    ]
+  },
+  {
+    "email": "osoc9@example.com",
+    "password": "osoc9",
+    "pods": [
+      {
+        "name": "osoc9",
+        "settings": {
+          "name": "Osoc9"
+        }
+      }
+    ]
+  }
+]

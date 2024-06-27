@@ -179,3 +179,12 @@ export OD_CSS11_CONTAINER_PORT=3011
 export OD_CSS11_DOMAIN=localhost:${OD_CSS11_HOST_PORT}
 export OD_CSS11_BASE_URL=http://${OD_CSS11_DOMAIN}
 export OD_CSS11_SERVICE_NAME=${OD_CSS11}
+
+# More extra pods for Open Summer Of Code (all pods in one CSS)
+
+export OD_CSS12=css12
+export OD_CSS12_HOST_PORT=3012
+export OD_CSS12_CONTAINER_PORT=3012
+export OD_CSS12_DOMAIN=localhost:${OD_CSS12_HOST_PORT}
+export OD_CSS12_BASE_URL=http://${OD_CSS12_DOMAIN}
+export OD_CSS12_SERVICE_NAME=${OD_CSS12}

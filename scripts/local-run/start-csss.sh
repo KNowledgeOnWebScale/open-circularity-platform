@@ -83,6 +83,10 @@ function start_css {
             local ACTOR=any-evaluation-scenario-actor
             local PORT=$OD_CSS11_HOST_PORT
             ;;
+        "css12")
+            local ACTOR=any-osoc-actor
+            local PORT=$OD_CSS12_HOST_PORT
+            ;;
         *)
             echo "Unknown CSSX: $CSSX"
             exit 2
@@ -110,7 +114,7 @@ function check_css {
     fi
 }
 
-for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 css11 ; do
+for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 css11 css12; do
     start_css $css
 done
 
