@@ -17,7 +17,7 @@ function backup {
 # Transpose mapping file and data file(s) from backup to effective file for actor osocX
 # Parameters
 #   $1: actor number
-function transpose_data {
+function transpose {
   local i=$1
   echo " ⏭️ Making a mapping.yml file for osoc$i."
   sed "s|${OD_CSS5_BASE_URL}|${OD_CSS12_BASE_URL}|g ; s|info@texon.com|osoc$i@example.com|g ; s|texon123|osoc$i|g ; s|texon|osoc$i|g" mapping.yml.orig > mapping.yml
@@ -35,7 +35,7 @@ backup
 
 echo "➡️ Using the RML mapper in the Docker container to upload pod contents for the extended textile use case (OSOC duplicates)."
 for i in {0..9} ; do
-  transpose_data $i
+  transpose $i
   echo " ⏭️ Uploading to osoc$i"
   docker run --rm $EXTRA_DOCKER_ARGS -v $(pwd):/runtime/data $DOCKER_IMAGE_NAME -m mapping.yml
 done
