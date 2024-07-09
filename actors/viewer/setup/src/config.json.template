@@ -32,6 +32,21 @@
       "id": "d-osoctxtlext",
       "name": "Extended textile use case for osoc0",
       "icon": "FactoryIcon"
+    },
+    {
+      "id": "e-evaluation-electronics",
+      "name": "Evaluation June 2024 - Electronics",
+      "icon": "FactoryIcon"
+    },
+    {
+      "id": "f-evaluation-textile",
+      "name": "Evaluation June 2024 - Textile",
+      "icon": "FactoryIcon"
+    },
+    {
+      "id": "g-evaluation-construction",
+      "name": "Evaluation June 2024 - Construction",
+      "icon": "FactoryIcon"
     }
   ],
   "queries": [
@@ -368,6 +383,319 @@
           "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_1",
           "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_2",
           "${OD_CSS12_BASE_URL}/osoc0/ceon/manuf1_3"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "420",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "electronics_products.rq",
+      "name": "Overview",
+      "description": "All products with the data points selected for this evaluation",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "421",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "electronics_resilience.rq",
+      "name": "Resilience of the supply chain of a product",
+      "description": "How resilient is the supply chain of a product, based on the origin of the materials?",
+      "variables": {
+        "ProductLabel": [
+          "\"Speaker\"",
+          "\"Electrical structure\"",
+          "\"Magnet\"",
+          "\"Aluminum basket\"",
+          "\"Coil\"",
+          "\"Cone\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "422",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "electronics_REACH.rq",
+      "name": "REACH compliance of product components",
+      "description": "Is my product REACH compliant?",
+      "variables": {
+        "ProductLabel": [
+          "\"Speaker\"",
+          "\"Electrical structure\"",
+          "\"Magnet\"",
+          "\"Aluminum basket\"",
+          "\"Coil\"",
+          "\"Cone\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "423",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "electronics_rare_earth.rq",
+      "name": "Rare Earth content on product components",
+      "description": "Does my product contain rare earth materials?",
+      "variables": {
+        "ProductLabel": [
+          "\"Speaker\"",
+          "\"Electrical structure\"",
+          "\"Magnet\"",
+          "\"Aluminum basket\"",
+          "\"Coil\"",
+          "\"Cone\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "424",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "electronics_recycled.rq",
+      "name": "Recycled content of product components",
+      "description": "Does my product contain recycled materials?",
+      "variables": {
+        "ProductLabel": [
+          "\"Speaker\"",
+          "\"Electrical structure\"",
+          "\"Magnet\"",
+          "\"Aluminum basket\"",
+          "\"Coil\"",
+          "\"Cone\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "426",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "spo.rq",
+      "name": "All accessible data",
+      "description": "All data accessible for the logged in user",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "427",
+      "queryGroupId": "e-evaluation-electronics",
+      "queryLocation": "sourceQueries/seeAlso.rq",
+      "name": "Sources in construction network",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "430",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "spo.rq",
+      "name": "All accessible data",
+      "description": "All data accessible for the logged in user",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "431",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "textile_products.rq",
+      "name": "Product overview",
+      "description": "Selected data per product",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "432",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "textile_product_composition.rq",
+      "name": "Product components data",
+      "description": "Selected data of the components of product",
+      "variables": {
+        "ProductLabel": [
+          "\"Super Shoe\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "433",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "textile_matter_composition.rq",
+      "name": "Product matter composition",
+      "description": "Matter composition of a product",
+      "variables": {
+        "ProductLabel": [
+          "\"Verde\"",
+          "\"Ecostrobe\"",
+          "\"Laces\"",
+          "\"Vogue\"",
+          "\"Kabru\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "434",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "textile_disassembly.rq",
+      "name": "Product disassembly",
+      "description": "Disassembly method of a product and the original input products",
+      "variables": {
+        "ProductLabel": [
+          "\"Super Shoe\"",
+          "\"Soled and Insoled Shoe\"",
+          "\"Soled Shoe\"",
+          "\"Vogue\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "436",
+      "queryGroupId": "f-evaluation-textile",
+      "queryLocation": "sourceQueries/seeAlso.rq",
+      "name": "Source in textile index",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS11_BASE_URL}/textile_user9/ceon/index"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "440",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "spo.rq",
+      "name": "All accessible data",
+      "description": "All data accessible for the logged in user",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "441",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_products.rq",
+      "name": "Products",
+      "description": "Products with selected details",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "442",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_product_composition.rq",
+      "name": "Product components data",
+      "description": "Selected data of the components of a product",
+      "variables": {
+        "ProductLabel": [
+          "\"Nortec\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "443",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_matter_composition.rq",
+      "name": "Product matter composition",
+      "description": "Matter composition of a product",
+      "variables": {
+        "ProductLabel": [
+          "\"Calcium sulfate panel\"",
+          "\"Pedestal\"",
+          "\"Pedestal glue\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "444",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_buildings.rq",
+      "name": "Buildings",
+      "description": "Overview of buildings",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "445",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_end_of_life.rq",
+      "name": "End of life scenarios",
+      "description": "End of life scenarios for products in buildings",
+      "variables": {
+        "BuildingLabel": [
+          "\"Quarter K4321\""
+        ]
+      },
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "446",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "construction_marketplace.rq",
+      "name": "Marketplace",
+      "description": "Batches for sale in the Marketplace",
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
+      }
+    },
+    {
+      "id": "447",
+      "queryGroupId": "g-evaluation-construction",
+      "queryLocation": "sourceQueries/seeAlso.rq",
+      "name": "Sources in construction network",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS11_BASE_URL}/construction_user9/ceon/index"
         ],
         "lenient": true
       }

@@ -1,0 +1,4 @@
+﻿space_id,space_label,element_id,element_label,element_installation_date,element_area_M2,element_model,component_of
+room_1,office room no. 325,building_1-storey_3-room_1-nortec,used Nortec,2005-03-14,9000,Nortec_1234,
+room_1,office room no. 325,building_1-storey_3-room_1-nortec-tiles,used Nortec tiles,2005-03-14,9000,tile_1234,building_1-storey_3-room_1-nortec
+room_1,office room no. 325,building_1-storey_3-room_1-nortec-pedestals,used Nortec pedestals,2005-03-14,9000,pedestal_1234,building_1-storey_3-room_1-nortec

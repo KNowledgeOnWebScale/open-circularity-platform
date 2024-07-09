@@ -41,10 +41,24 @@ fi
 export DOCKER_IMAGE_NAME
 export EXTRA_DOCKER_ARGS
 
+# Below, stuff pods for one use case at time...
+
 cd extended-textile
 ./stuff-pods.sh
 # next one is very temporary
 ./stuff-pods-osoc.sh
+cd ..
+
+cd eval-2024-06-construction
+./stuff-pods.sh
+cd ..
+
+cd eval-2024-06-electronics
+./stuff-pods.sh
+cd ..
+
+cd eval-2024-06-textile
+./stuff-pods.sh
 cd ..
 
 popd > /dev/null
