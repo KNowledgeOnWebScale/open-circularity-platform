@@ -8,51 +8,55 @@
   "textColor": "#1976D2",
   "queryFolder": "queries",
   "showMilliseconds": false,
-  "defaultIDP": "${OD_CSS1_BASE_URL}/",
+  "defaultIDP": "${OD_CSS5_BASE_URL}/",
   "footer": "<p><a href='https://idlab.technology/'>IDLab</a> - <a href='https://www.imec.be/nl'>imec</a> - <a href='https://www.ugent.be/'>UGent</a></p>",
   "introductionText": "Please log in as the appropriate actor and select a query from the menu on the left.",
   "queryGroups": [
     {
-      "id": "a-constr",
+      "id": "gqx",
+      "name": "Generic query examples",
+      "icon": "InfoIcon"
+    },
+    {
+      "id": "constr",
       "name": "Construction use case",
       "icon": "ConstructionIcon"
     },
     {
-      "id": "b-txtl",
+      "id": "txtl",
       "name": "Textile use case",
-      "icon": "FactoryIcon"
-
+      "icon": "CheckroomIcon"
     },
     {
-      "id": "c-txtlext",
+      "id": "txtlext",
       "name": "Extended textile use case",
-      "icon": "FactoryIcon"
+      "icon": "CheckroomIcon"
     },
     {
-      "id": "d-osoctxtlext",
-      "name": "Extended textile use case for osoc0",
-      "icon": "FactoryIcon"
+      "id": "txtlext-exp",
+      "name": "Extended textile use case (a copy for experimental use)",
+      "icon": "CheckroomIcon"
     },
     {
-      "id": "e-evaluation-electronics",
+      "id": "evaluation-electronics",
       "name": "Evaluation June 2024 - Electronics",
-      "icon": "FactoryIcon"
+      "icon": "ElectricBoltIcon"
     },
     {
-      "id": "f-evaluation-textile",
+      "id": "evaluation-textile",
       "name": "Evaluation June 2024 - Textile",
-      "icon": "FactoryIcon"
+      "icon": "CheckroomIcon"
     },
     {
-      "id": "g-evaluation-construction",
+      "id": "evaluation-construction",
       "name": "Evaluation June 2024 - Construction",
-      "icon": "FactoryIcon"
+      "icon": "ConstructionIcon"
     }
   ],
   "queries": [
     {
       "id": "101",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-lindner-group-products.rq",
       "name": "Query Lindner Group's products",
       "comunicaContext": {
@@ -62,7 +66,7 @@
     },
     {
       "id": "102",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-lindner-group-products-details.rq",
       "name": "Query Lindner Group's products details",
       "comunicaContext": {
@@ -76,16 +80,16 @@
     },
     {
       "id": "103",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-materials-of-product.rq",
       "name": "What are the materials of a given product?",
       "variables": {
         "product": [
-          "<https://www.example/com/data/product-0x01>",
-          "<https://www.example/com/data/product-0x02>",
-          "<https://www.example/com/data/product-0x03>",
-          "<https://www.example/com/data/product-0x04>",
-          "<https://www.example/com/data/product-0x05>"
+          "<https://www.example.com/data/product-0x01>",
+          "<https://www.example.com/data/product-0x02>",
+          "<https://www.example.com/data/product-0x03>",
+          "<https://www.example.com/data/product-0x04>",
+          "<https://www.example.com/data/product-0x05>"
         ]
       },
       "comunicaContext": {
@@ -101,7 +105,7 @@
     },
     {
       "id": "104",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-tiles-of-buildings.rq",
       "name": "Which tiles are present in buildings?",
       "comunicaContext": {
@@ -114,13 +118,13 @@
     },
     {
       "id": "105",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-tiles-of-building.rq",
       "name": "What are the tiles of a given building?",
       "variables": {
         "building": [
-          "<https://www.example/com/data/building-B0>",
-          "<https://www.example/com/data/building-fsml88>"
+          "<https://www.example.com/data/building-B0>",
+          "<https://www.example.com/data/building-fsml88>"
         ]
       },
       "comunicaContext": {
@@ -133,7 +137,7 @@
     },
     {
       "id": "106",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-tiles-of-building-with-address.rq",
       "name": "What are the tiles of a building with a given address?",
       "variables": {
@@ -149,7 +153,7 @@
     },
     {
       "id": "107",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-ragn-sells-services.rq",
       "name": "Which services does Ragn-Sells provide?",
       "comunicaContext": {
@@ -159,7 +163,7 @@
     },
     {
       "id": "108",
-      "queryGroupId": "a-constr",
+      "queryGroupId": "constr",
       "queryLocation": "c-ragn-sells-wastestreams.rq",
       "name": "Which waste streams does Ragn-Sells accept?",
       "comunicaContext": {
@@ -169,7 +173,7 @@
     },
     {
       "id": "201",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-texon-components.rq",
       "name": "Query Texon's components",
       "comunicaContext": {
@@ -179,7 +183,7 @@
     },
     {
       "id": "202",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-texon-component-materials.rq",
       "name": "Query Texon's components and their materials",
       "comunicaContext": {
@@ -193,7 +197,7 @@
     },
     {
       "id": "203",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-texon-average-recycled-content-of-components.rq",
       "name": "What is the average recycled content (weight percentage) of Texon's components?",
       "comunicaContext": {
@@ -203,7 +207,7 @@
     },
     {
       "id": "204",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-manufacturer-products.rq",
       "name": "Query Manufacturer's products",
       "comunicaContext": {
@@ -213,7 +217,7 @@
     },
     {
       "id": "205",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-manufacturer-product-components.rq",
       "name": "Query Manufacturer's products and their components",
       "comunicaContext": {
@@ -227,7 +231,7 @@
     },
     {
       "id": "206",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-manufacturer-average-recycled-content-of-products.rq",
       "name": "What is the average recycled content (weight percentage) of Manufacturer's products?",
       "comunicaContext": {
@@ -241,13 +245,13 @@
     },
     {
       "id": "207",
-      "queryGroupId": "b-txtl",
+      "queryGroupId": "txtl",
       "queryLocation": "tx1-brand-recycled-content-of-product.rq",
       "name": "What is the recycled content (weight percentage) of a given product?",
       "variables": {
         "product": [
-          "<https://www.example/com/textile-data/product-p01>",
-          "<https://www.example/com/textile-data/product-p02>"
+          "<https://www.example.com/textile-data/product-p01>",
+          "<https://www.example.com/textile-data/product-p02>"
         ]
       },
       "comunicaContext": {
@@ -261,7 +265,7 @@
     },
     {
       "id": "301",
-      "queryGroupId": "c-txtlext",
+      "queryGroupId": "txtlext",
       "queryLocation": "tx2-products.rq",
       "name": "Products",
       "comunicaContext": {
@@ -275,7 +279,7 @@
     },
     {
       "id": "302",
-      "queryGroupId": "c-txtlext",
+      "queryGroupId": "txtlext",
       "queryLocation": "tx2-product-datasheet-variables.rq",
       "name": "Product datasheets",
       "variables": {
@@ -297,7 +301,7 @@
     },
     {
       "id": "303",
-      "queryGroupId": "c-txtlext",
+      "queryGroupId": "txtlext",
       "queryLocation": "tx2-water-property.rq",
       "name": "Water properties",
       "comunicaContext": {
@@ -311,7 +315,7 @@
     },
     {
       "id": "304",
-      "queryGroupId": "c-txtlext",
+      "queryGroupId": "txtlext",
       "queryLocation": "tx2-design-for-reuse.rq",
       "name": "Design for reuse",
       "comunicaContext": {
@@ -324,8 +328,8 @@
       }
     },
     {
-      "id": "10301",
-      "queryGroupId": "d-osoctxtlext",
+      "id": "311",
+      "queryGroupId": "txtlext-exp",
       "queryLocation": "tx2-products.rq",
       "name": "Products",
       "comunicaContext": {
@@ -338,8 +342,8 @@
       }
     },
     {
-      "id": "10302",
-      "queryGroupId": "d-osoctxtlext",
+      "id": "312",
+      "queryGroupId": "txtlext-exp",
       "queryLocation": "tx2-product-datasheet-variables.rq",
       "name": "Product datasheets",
       "variables": {
@@ -360,8 +364,8 @@
       }
     },
     {
-      "id": "10303",
-      "queryGroupId": "d-osoctxtlext",
+      "id": "313",
+      "queryGroupId": "txtlext-exp",
       "queryLocation": "tx2-water-property.rq",
       "name": "Water properties",
       "comunicaContext": {
@@ -374,8 +378,8 @@
       }
     },
     {
-      "id": "10304",
-      "queryGroupId": "d-osoctxtlext",
+      "id": "314",
+      "queryGroupId": "txtlext-exp",
       "queryLocation": "tx2-design-for-reuse.rq",
       "name": "Design for reuse",
       "comunicaContext": {
@@ -389,7 +393,7 @@
     },
     {
       "id": "420",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "electronics_products.rq",
       "name": "Overview",
       "description": "All products with the data points selected for this evaluation",
@@ -400,7 +404,7 @@
     },
     {
       "id": "421",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "electronics_resilience.rq",
       "name": "Resilience of the supply chain of a product",
       "description": "How resilient is the supply chain of a product, based on the origin of the materials?",
@@ -421,7 +425,7 @@
     },
     {
       "id": "422",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "electronics_REACH.rq",
       "name": "REACH compliance of product components",
       "description": "Is my product REACH compliant?",
@@ -442,7 +446,7 @@
     },
     {
       "id": "423",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "electronics_rare_earth.rq",
       "name": "Rare Earth content on product components",
       "description": "Does my product contain rare earth materials?",
@@ -463,7 +467,7 @@
     },
     {
       "id": "424",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "electronics_recycled.rq",
       "name": "Recycled content of product components",
       "description": "Does my product contain recycled materials?",
@@ -484,7 +488,7 @@
     },
     {
       "id": "426",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "spo.rq",
       "name": "All accessible data",
       "description": "All data accessible for the logged in user",
@@ -495,7 +499,7 @@
     },
     {
       "id": "427",
-      "queryGroupId": "e-evaluation-electronics",
+      "queryGroupId": "evaluation-electronics",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Sources in construction network",
       "comunicaContext": {
@@ -507,7 +511,7 @@
     },
     {
       "id": "430",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "spo.rq",
       "name": "All accessible data",
       "description": "All data accessible for the logged in user",
@@ -518,7 +522,7 @@
     },
     {
       "id": "431",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "textile_products.rq",
       "name": "Product overview",
       "description": "Selected data per product",
@@ -529,7 +533,7 @@
     },
     {
       "id": "432",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "textile_product_composition.rq",
       "name": "Product components data",
       "description": "Selected data of the components of product",
@@ -545,7 +549,7 @@
     },
     {
       "id": "433",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "textile_matter_composition.rq",
       "name": "Product matter composition",
       "description": "Matter composition of a product",
@@ -565,7 +569,7 @@
     },
     {
       "id": "434",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "textile_disassembly.rq",
       "name": "Product disassembly",
       "description": "Disassembly method of a product and the original input products",
@@ -584,7 +588,7 @@
     },
     {
       "id": "436",
-      "queryGroupId": "f-evaluation-textile",
+      "queryGroupId": "evaluation-textile",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Source in textile index",
       "comunicaContext": {
@@ -596,7 +600,7 @@
     },
     {
       "id": "440",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "spo.rq",
       "name": "All accessible data",
       "description": "All data accessible for the logged in user",
@@ -607,7 +611,7 @@
     },
     {
       "id": "441",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_products.rq",
       "name": "Products",
       "description": "Products with selected details",
@@ -618,7 +622,7 @@
     },
     {
       "id": "442",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_product_composition.rq",
       "name": "Product components data",
       "description": "Selected data of the components of a product",
@@ -634,7 +638,7 @@
     },
     {
       "id": "443",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_matter_composition.rq",
       "name": "Product matter composition",
       "description": "Matter composition of a product",
@@ -652,7 +656,7 @@
     },
     {
       "id": "444",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_buildings.rq",
       "name": "Buildings",
       "description": "Overview of buildings",
@@ -663,7 +667,7 @@
     },
     {
       "id": "445",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_end_of_life.rq",
       "name": "End of life scenarios",
       "description": "End of life scenarios for products in buildings",
@@ -679,7 +683,7 @@
     },
     {
       "id": "446",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "construction_marketplace.rq",
       "name": "Marketplace",
       "description": "Batches for sale in the Marketplace",
@@ -690,12 +694,187 @@
     },
     {
       "id": "447",
-      "queryGroupId": "g-evaluation-construction",
+      "queryGroupId": "evaluation-construction",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Sources in construction network",
       "comunicaContext": {
         "sources": [
           "${OD_CSS11_BASE_URL}/construction_user9/ceon/index"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10000",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_count_spo.rq",
+      "name": "Count",
+      "description": "Gives the count of triples in the indicated datasources - login as texon to explore",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10001",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_spo.rq",
+      "name": "Triples",
+      "description": "Gives at most 50 triples in the indicated datasources - login as texon to explore",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10002",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_s.rq",
+      "name": "Subjects",
+      "description": "Gives at most 50 subjects in the indicated datasources - login as texon to explore",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10003",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_p.rq",
+      "name": "Predicates",
+      "description": "Gives at most 50 predicates in the indicated datasources - login as texon to explore",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10004",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_o.rq",
+      "name": "Objects",
+      "description": "Gives at most 50 objects in the indicated datasources - login as texon to explore",
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10005",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_sxpo.rq",
+      "name": "Triples with subject",
+      "description": "Gives at most 50 triples with a given subject in the indicated datasources - login as texon to explore",
+      "variables": {
+        "subject": [
+          "<https://www.example.com/textile-data/component-bom-b01>",
+          "<https://www.example.com/textile-data/component-c01>",
+          "<https://www.example.com/textile-data/component-material-assoc-b01-m01>",
+          "<https://www.example.com/textile-data/material-m01>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10006",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_spxo.rq",
+      "name": "Triples with predicate",
+      "description": "Gives at most 50 triples with a given predicate in the indicated datasources - login as texon to explore",
+      "variables": {
+        "predicate": [
+          "<https://www.example.com/textile-ont/has-component-bom>",
+          "<https://www.example.com/textile-ont/has-component-material-assoc>",
+          "<https://www.example.com/textile-ont/has-material>",
+          "<https://www.example.com/textile-ont/name>",
+          "<https://www.example.com/textile-ont/percentage>",
+          "<https://www.example.com/textile-ont/recycled-content-percentage>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10007",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_spox.rq",
+      "name": "Triples with object",
+      "description": "Gives at most 50 triples with a given object in the indicated datasources - login as texon to explore",
+      "variables": {
+        "object": [
+          "<https://www.example.com/textile-data/component-bom-b01>",
+          "<https://www.example.com/textile-data/component-material-assoc-b01-m01>",
+          "<https://www.example.com/textile-data/material-m01>",
+          "<https://www.example.com/textile-ont/Component>",
+          "<https://www.example.com/textile-ont/component-bom>",
+          "<https://www.example.com/textile-ont/component-material-assoc>",
+          "0",
+          "20",
+          "80",
+          "\"SPO Bio\"",
+          "\"bio derived EVA\""
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
+        ],
+        "lenient": true
+      }
+    },
+    {
+      "id": "10008",
+      "queryGroupId": "gqx",
+      "queryLocation": "example_type.rq",
+      "name": "Terms of type",
+      "description": "Gives at most 50 terms of a given rdf:type in the indicated datasources - login as texon to explore",
+      "variables": {
+        "type": [
+          "<https://www.example.com/textile-ont/component-bom>",
+          "<https://www.example.com/textile-ont/Component>",
+          "<https://www.example.com/textile-ont/component-material-assoc>"
+        ]
+      },
+      "comunicaContext": {
+        "sources": [
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/components.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/boms.ttl",
+          "${OD_CSS5_BASE_URL}/texon/data/dt/out/materials.ttl"
         ],
         "lenient": true
       }

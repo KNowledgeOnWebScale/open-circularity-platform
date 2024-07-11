@@ -3,8 +3,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
   idlab-fn: http://example.com/idlab/function/
-  o: https://www.example/com/textile-ont/
-  d: https://www.example/com/textile-data/
+  o: https://www.example.com/textile-ont/
+  d: https://www.example.com/textile-data/
 
 sources:
   products-source:
