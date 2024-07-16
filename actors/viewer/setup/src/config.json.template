@@ -590,7 +590,7 @@
       "id": "436",
       "queryGroupId": "evaluation-textile",
       "queryLocation": "sourceQueries/seeAlso.rq",
-      "name": "Sources in textile index",
+      "name": "Sources in textile network",
       "comunicaContext": {
         "sources": [
           "${OD_CSS11_BASE_URL}/textile_user9/ceon/index"
@@ -696,7 +696,7 @@
       "id": "447",
       "queryGroupId": "evaluation-construction",
       "queryLocation": "sourceQueries/seeAlso.rq",
-      "name": "Sources in electronics network",
+      "name": "Sources in construction network",
       "comunicaContext": {
         "sources": [
           "${OD_CSS11_BASE_URL}/construction_user9/ceon/index"
