@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Eased viewing files in pods in containers using volume mapping (internal [issue#52](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/52)).
 - Upgraded to Generic Viewer v1.2.2.
 - Automated stuffing pod contents with verifiable credentials (internal [issue#54](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/54)).
+- Integrated templated queries with indirect variables (internal [issue#56](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/56)).
 
 ## [0.2.4] - 2024-04-08
 
