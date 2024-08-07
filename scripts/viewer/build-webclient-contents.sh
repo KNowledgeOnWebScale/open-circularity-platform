@@ -15,7 +15,7 @@ pushd ${OUR_ROOT_DIR}/.. > /dev/null
 
 echo Cloning, selecting tag, installing...
 rm -rf ${VIEWER_CLONE}
-git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b fix/78-inderectTemplate-after-BigUpdate ${VIEWER_CLONE}
+git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b fix/78-indirect-variables-custom-feature ${VIEWER_CLONE}
 cd ${VIEWER_CLONE}
 npm install
 
