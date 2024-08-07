@@ -409,7 +409,7 @@
       "name": "Resilience of the supply chain of a product",
       "description": "How resilient is the supply chain of a product, based on the origin of the materials?",
       "indirectVariables": {
-        "queryLocations": ["electronics_product_labels.rq"]
+        "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
@@ -423,7 +423,7 @@
       "name": "REACH compliance of product components",
       "description": "Is my product REACH compliant?",
       "indirectVariables": {
-        "queryLocations": ["electronics_product_labels.rq"]
+        "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
@@ -437,7 +437,7 @@
       "name": "Rare Earth content on product components",
       "description": "Does my product contain rare earth materials?",
       "indirectVariables": {
-        "queryLocations": ["electronics_product_labels.rq"]
+        "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
@@ -451,7 +451,7 @@
       "name": "Recycled content of product components",
       "description": "Does my product contain recycled materials?",
       "indirectVariables": {
-        "queryLocations": ["electronics_product_labels.rq"]
+        "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
@@ -510,7 +510,7 @@
       "name": "Product components data",
       "description": "Selected data of the components of product",
       "indirectVariables": {
-        "queryLocations": ["textile_product_labels.rq"]
+        "queryLocations": ["variableQueries/textile_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
@@ -524,7 +524,7 @@
       "name": "Product matter composition",
       "description": "Matter composition of a product",
       "indirectVariables": {
-        "queryLocations": ["textile_product_labels.rq"]
+        "queryLocations": ["variableQueries/textile_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
@@ -538,7 +538,7 @@
       "name": "Product disassembly",
       "description": "Disassembly method of a product and the original input products",
       "indirectVariables": {
-        "queryLocations": ["textile_product_labels.rq"]
+        "queryLocations": ["variableQueries/textile_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
@@ -586,7 +586,7 @@
       "name": "Product components data",
       "description": "Selected data of the components of a product",
       "indirectVariables": {
-        "queryLocations": ["construction_product_labels.rq"]
+        "queryLocations": ["variableQueries/construction_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
@@ -600,7 +600,7 @@
       "name": "Product matter composition",
       "description": "Matter composition of a product",
       "indirectVariables": {
-        "queryLocations": ["construction_product_labels.rq"]
+        "queryLocations": ["variableQueries/construction_product_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
@@ -625,7 +625,7 @@
       "name": "End of life scenarios",
       "description": "End of life scenarios for products in buildings",
       "indirectVariables": {
-        "queryLocations": ["construction_building_labels.rq"]
+        "queryLocations": ["variableQueries/construction_building_labels.rq"]
       },
       "sourcesIndex": {
         "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
@@ -688,7 +688,7 @@
     {
       "id": "10002",
       "queryGroupId": "gqx",
-      "queryLocation": "example_s.rq",
+      "queryLocation": "variableQueries/example_s.rq",
       "name": "Subjects",
       "description": "Gives at most 50 subjects in the indicated datasources - login as texon to explore",
       "comunicaContext": {
@@ -703,7 +703,7 @@
     {
       "id": "10003",
       "queryGroupId": "gqx",
-      "queryLocation": "example_p.rq",
+      "queryLocation": "variableQueries/example_p.rq",
       "name": "Predicates",
       "description": "Gives at most 50 predicates in the indicated datasources - login as texon to explore",
       "comunicaContext": {
@@ -718,7 +718,7 @@
     {
       "id": "10004",
       "queryGroupId": "gqx",
-      "queryLocation": "example_o.rq",
+      "queryLocation": "variableQueries/example_o.rq",
       "name": "Objects",
       "description": "Gives at most 50 objects in the indicated datasources - login as texon to explore",
       "comunicaContext": {
@@ -737,7 +737,7 @@
       "name": "Triples with subject",
       "description": "Gives at most 50 triples with a given subject in the indicated datasources - login as texon to explore",
       "indirectVariables": {
-        "queryLocations": ["example_s.rq"]
+        "queryLocations": ["variableQueries/example_s.rq"]
       },
       "comunicaContext": {
         "sources": [
@@ -755,7 +755,7 @@
       "name": "Triples with predicate",
       "description": "Gives at most 50 triples with a given predicate in the indicated datasources - login as texon to explore",
       "indirectVariables": {
-        "queryLocations": ["example_p.rq"]
+        "queryLocations": ["variableQueries/example_p.rq"]
       },
       "comunicaContext": {
         "sources": [
@@ -773,7 +773,7 @@
       "name": "Triples with object",
       "description": "Gives at most 50 triples with a given object in the indicated datasources - login as texon to explore",
       "indirectVariables": {
-        "queryLocations": ["example_o.rq"]
+        "queryLocations": ["variableQueries/example_o.rq"]
       },
       "comunicaContext": {
         "sources": [
@@ -791,7 +791,7 @@
       "name": "Terms of type",
       "description": "Gives at most 50 terms of a given rdf:type in the indicated datasources - login as texon to explore",
       "indirectVariables": {
-        "queryLocations": ["example_types.rq"]
+        "queryLocations": ["variableQueries/example_types.rq"]
       },
       "comunicaContext": {
         "sources": [
