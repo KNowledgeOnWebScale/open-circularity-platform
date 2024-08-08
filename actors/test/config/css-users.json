@@ -3,7 +3,11 @@
     "email": "test@ocp.com",
     "password": "test123",
     "pods": [
-      { "name": "test" }
+      { "name": "test",
+        "settings": {
+          "name": "Test OCP"
+        }
+      }
     ]
   }
 ]

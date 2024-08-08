@@ -3,7 +3,11 @@
     "email": "info@lindner-group.com",
     "password": "lindner123",
     "pods": [
-      { "name": "lindner-group" }
+      { "name": "lindner-group",
+        "settings": {
+          "name": "Info Lindner-Group"
+        }
+      }
     ]
   }
 ]

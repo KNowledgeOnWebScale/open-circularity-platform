@@ -1,0 +1,81 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  ex: http://example.com/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  foaf: http://xmlns.com/foaf/0.1/
+  idlab-fn: http://example.com/idlab/function/
+base: http://knows.com/base/
+sources:
+  index_source:
+    access: ./electronics_user9_index.csv
+    referenceFormulation: csv
+  index_acl_source:
+    access: ./electronics_user9_acl.csv
+    referenceFormulation: csv
+targets:
+  index_target:
+    type: solid_resource
+    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index
+    serialization: jsonld
+    authentication: auth
+  index_acl_target:
+    type: solid_acl
+    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index
+    serialization: ntriples
+    authentication: auth
+authentications:
+  auth:
+    username: electronics_user9@example.com
+    password: electronics_user9
+    oidc_issuer: ${OD_CSS11_BASE_URL}/
+    web_id: ${OD_CSS11_BASE_URL}/electronics_user9/profile/card#me
+mappings:
+  index:
+    sources: index_source
+    s:
+      value: ex:index
+      targets: index_target
+    po:
+    - p: rdfs:seeAlso
+      o:
+        value: $(included_source)
+        type: iri
+  acl:
+    sources: index_acl_source
+    s:
+      targets: index_acl_target
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:agent, $(agent_webid)~iri ]
+      - [ acl:accessTo, $(access_to)~iri ]
+      - p: acl:mode
+        o:
+          value: acl:Read
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Write
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Control
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+

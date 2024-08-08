@@ -24,6 +24,9 @@ else
   export OD_CSS_SERVER_FACTORY=css:config/http/server-factory/http.json
 fi
 
+# Location of the parent directory of the CSS's mirrored root directories
+export OD_MIRRORED_ROOTS_PARENT_DIR=$(pwd)/docker-run/data 
+
 # --- for all services XXX below:
 # OD_XXX:                the short name (used in other variables)
 # OD_XXX_HOST_PORT:      the port used in the host network
@@ -172,3 +175,12 @@ export OD_CSS10_CONTAINER_PORT=443
 export OD_CSS10_DOMAIN=${OD_CSS10}.onto-deside.ilabt.imec.be
 export OD_CSS10_BASE_URL=https://${OD_CSS10_DOMAIN}
 export OD_CSS10_SERVICE_NAME=${OD_CSS10_DOMAIN}
+
+# More extra pods for evaluation scenarios (all pods in one CSS)
+
+export OD_CSS11=css11
+export OD_CSS11_HOST_PORT=3011
+export OD_CSS11_CONTAINER_PORT=443
+export OD_CSS11_DOMAIN=${OD_CSS11}.onto-deside.ilabt.imec.be
+export OD_CSS11_BASE_URL=https://${OD_CSS11_DOMAIN}
+export OD_CSS11_SERVICE_NAME=${OD_CSS11_DOMAIN}

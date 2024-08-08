@@ -1,0 +1,4 @@
+﻿access_to,agent_webid,read_access,write_access,control_access
+${OD_CSS11_BASE_URL}/textile_user3/ceon/data,${OD_CSS11_BASE_URL}/textile_user3/profile/card#me,Yes,Yes,Yes
+${OD_CSS11_BASE_URL}/textile_user3/ceon/data,${OD_CSS11_BASE_URL}/textile_user6/profile/card#me,Yes,No,No
+${OD_CSS11_BASE_URL}/textile_user3/ceon/data,${OD_CSS11_BASE_URL}/textile_user7/profile/card#me,Yes,No,No

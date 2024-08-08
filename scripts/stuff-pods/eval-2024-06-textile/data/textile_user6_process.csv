@@ -1,0 +1,5 @@
+﻿step,nextStep,assemblyMethod,disassemblyMethod,output
+01_Upper part,02_AddSole,stiched_with_Resortec_thermo-dissolvable_stitch,heat separation,1dd5a6ed-2fd3-4f60-96fc-e03c56bea324-C005
+02_AddSole,03_AddInSole,Stiched (regular),Cut stitches,SoledShoe
+03_AddInSole,04_AddLaces,Manual,Manual,SoledAndInsoledShoe
+04_AddLaces,"",Manual,Manual,a338eb8f-d13d-42c2-85e1-3974f756949a-P001

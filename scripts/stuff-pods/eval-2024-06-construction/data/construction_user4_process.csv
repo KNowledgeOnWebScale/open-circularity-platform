@@ -1,0 +1,3 @@
+﻿company_id,role,resource,process,cost_type,euro
+Dismantler_7890,dismantler,building_1-storey_3-room_1-nortec-tiles,DismantlingPlan,DismantlingCost,3000
+Dismantler_7890,dismantler,building_1-storey_3-room_1-nortec-pedestals,DismantlingPlan,DismantlingCost,300

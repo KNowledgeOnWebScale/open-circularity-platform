@@ -3,7 +3,11 @@
     "email": "info@brand.com",
     "password": "brand123",
     "pods": [
-      { "name": "brand" }
+      { "name": "brand",
+        "settings": {
+          "name": "Info Brand"
+        }
+      }
     ]
   }
 ]

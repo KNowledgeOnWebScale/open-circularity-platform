@@ -14,7 +14,7 @@ actors
 // Iterate over actors without DT & set up the file structure.
 actorsWithoutDT
   .forEach(a => {
-    fse.ensureDirSync(path.resolve(dirActors, a, 'pod-template', 'base', 'data'))
+    fse.ensureDirSync(path.resolve(dirActors, a))
   })
 
 // Iterate over Solid Community Servers.
