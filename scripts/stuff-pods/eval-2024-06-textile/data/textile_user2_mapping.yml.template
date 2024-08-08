@@ -1,0 +1,231 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: http://example.com/idlab/function/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+
+base: http://knows.com/base/
+sources:
+  products:
+    access: ./textile_user2_products.csv
+    referenceFormulation: csv
+    delimiter: ','
+    'null':
+      - ''
+  matter_composition:
+    access: ./textile_user2_matter_composition.csv
+    referenceFormulation: csv
+  acl:
+    access: ./textile_user2_acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: solid_resource
+    access: ${OD_CSS11_BASE_URL}/textile_user2/ceon/data
+    serialization: jsonld
+    authentication: auth
+  ceon_data_acl:
+    type: solid_acl
+    access: ${OD_CSS11_BASE_URL}/textile_user2/ceon/data
+    serialization: turtle
+    authentication: auth
+authentications:
+  auth:
+    username: textile_user2@example.com
+    password: textile_user2
+    oidc_issuer: ${OD_CSS11_BASE_URL}/
+    web_id: ${OD_CSS11_BASE_URL}/textile_user2/profile/card#me
+mappings:
+  products:
+    sources: products
+    s:
+      value: ex:$(Company ID 1207)-$(Product Code 1103)
+      targets: ceon_data
+    po:
+      - [ a, textile:TextileProduct~iri ]
+      - [ rdfs:label, $(Product Name 1100) ]
+      - [ textile:hasOrigin, $(Origin) ]
+      - [ textile:hasType, $(Type CF100) ]
+      - [ textile:hasColor, ex:$(Colors CF101)~iri ]
+      - [ textile:hasDyeMethod, textile:$(Dye method CF700)~iri ]
+      - [ textile:hasDyeStuff, textile:$(Dye stuff CF701)~iri ]
+      - [ textile:hasFinishingStep,textile:$(Finishing steps CF704)~iri ]
+      - [ textile:hasWaterProperty, textile:$(Water properties CF706)~iri ]
+      - [ textile:chemicalCompliance, $(Chemical compliance CF707)]
+      - p: textile:includesTrims
+        o:
+          function: idlab-fn:equal
+          parameters:
+          - [ grel:valueParameter, $(Includes Trims CF709) ]
+          - [ grel:valueParameter2, Yes ]
+          datatype: xsd:boolean
+      - p: textile:containsMetal
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Contains Metal CF708) ]
+            - [ grel:valueParameter2, Yes ]
+          datatype: xsd:boolean
+      - p: textile:textileProductDesignForRecycling
+        o: textile:industrialComposting~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Is Industrially Compostable 5080) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: textile:textileProductDesignForRecycling
+        o: textile:homeComposting~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Is Home Compostable 5081) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: textile:textileProductDesignForRecycling
+        o: textile:bioDegradable~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Is Biodegradable 5090) ]
+            - [ grel:valueParameter2, Yes ]
+  actor:
+    sources: products
+    s:
+      value: ex:$(Company ID 1207)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri]
+      - [ rdfs:label, $(Brand 1101)]
+  brand_of_resource:
+    sources: products
+    s:
+      value: ex:$(Company ID 1207)-$(Product Code 1103)-brand
+      targets: ceon_data
+    po:
+      - [ a, textile:BrandOfResource ]
+      - [ ceon-actorODP:participantRole, textile:brand~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(Company ID 1207)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(Company ID 1207)-$(Product Code 1103)~iri ]
+      - [ textile:productionSite, $(Producer 1300) ]
+  reach_compliance:
+    sources: products
+    s:
+      targets: ceon_data
+      function: grel:controls_if
+      parameters:
+      - parameter: grel:bool_b
+        value:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(SVHC REACH 2300) ]
+            - [ grel:valueParameter2, No ]
+      - [ grel:any_true, ex:$(Company ID 1207)-$(Product Code 1103)-REACH_compliance]
+    po:
+      - [ a, [ ceon-product:Compliance~iri, ceon-provenance:Statement~iri ] ]
+      - [ ceon-product:complianceWith, textile:REACH~iri ]
+      - [ ceon-product:hasCertificate, $(SVHC REACH 2300)~iri ]
+      - [ ceon-provenance:statementAbout, ex:$(Company ID 1207)-$(Product Code 1103)~iri ]
+  msds_compliance:
+    sources: products
+    s:
+      targets: ceon_data
+      function: grel:controls_if
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:notEqual
+            parameters:
+              - [ grel:valueParameter, $(MSDS available CF603) ]
+              - [ grel:valueParameter2, No ]
+        - [ grel:any_true, ex:$(Company ID 1207)-$(Product Code 1103)-MSDS_compliance ]
+    po:
+      - [ a, [ ceon-product:Compliance~iri, ceon-provenance:Statement~iri ] ]
+      - [ ceon-product:complianceWith, textile:MSDS~iri ]
+      - [ ceon-product:hasCertificate, $(MSDS available CF603)~iri ]
+      - [ ceon-provenance:statementAbout, ex:$(Company ID 1207)-$(Product Code 1103)~iri ]
+  test_compliance:
+    sources: products
+    s:
+      value: ex:$(Company ID 1207)-$(Product Code 1103)-test_compliance
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:Compliance~iri, ceon-provenance:Statement~iri ] ]
+      - p: textile:biodegradabilityTestAvailable
+        o:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(Biodegradability test is available CF604) ]
+            - [ grel:valueParameter2, No ]
+          datatype: xsd:boolean
+      - p: ceon-product:hasCertificate
+        o:
+          value: $(Biodegradability test is available CF604)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(Biodegradability test is available CF604) ]
+            - [ grel:valueParameter2, No ]
+      - [ ceon-provenance:statementAbout, ex:$(Company ID 1207)-$(Product Code 1103)~iri ]
+  matter_composition:
+    sources: matter_composition
+    s:
+      value: ex:$(product)-$(component)-composition
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:MatterComposition~iri, ceon-provenance:Statement~iri ] ]
+      - [ ceon-product:associatedWithMatter, ex:$(component)~iri ]
+      - [ qudt:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ qudt:numericValue, $(Mass percentage), xsd:double ]
+      - [ ceon-product:compositionOf, ex:$(product)~iri ]
+  acl:
+    sources: acl
+    s:
+      targets: ceon_data_acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:agent, $(agent_webid)~iri ]
+      - [ acl:accessTo, $(access_to)~iri ]
+      - p: acl:mode
+        o:
+          value: acl:Read
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Write
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Control
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]

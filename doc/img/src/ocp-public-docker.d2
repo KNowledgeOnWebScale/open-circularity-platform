@@ -1,0 +1,62 @@
+title: |md
+# Open Circularity Platform - Public Docker based
+| { near: top-center }
+
+vars: {
+  pool_address: "193.190.127.161"
+}
+
+browser: "User's Browser" {
+  icon: https://icons.terrastruct.com/tech%2Fbrowser-2.svg
+  shape: image
+}
+
+www: "WWW" {
+  shape: cloud
+}
+
+VW1: "imec Virtual Wall" {
+  public_ip: Pool address example: ${pool_address} {
+    icon: https://icons.terrastruct.com/azure%2FNetworking%20Service%20Color%2FPublic%20IP%20Addresses.svg
+    shape: image
+  }
+  node: "Ubuntu 20.04 LTS" {
+    icon: https://icons.terrastruct.com/essentials%2F112-server.svg
+    nginx: "" {
+      icon: https://icons.terrastruct.com/dev%2Fnginx.svg
+      shape: image
+    }
+    docker: "" {
+      icon: https://icons.terrastruct.com/azure%2F_Companies%2FLogo-docker.svg
+      css_0: css0 {
+        shape: image
+        icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+      }
+      css_i: cssi {
+        shape: image
+        icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+      }
+      css_n: cssN {
+        shape: image
+        icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+      }
+      gdv: "Generic Data Viewer" {
+        shape: image
+        icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+      }
+      qldf: "Comunica Webclient" {
+        shape: image
+        icon: https://query.linkeddatafragments.org/images/logo.svg
+      }
+    }
+
+    nginx -> docker
+  }
+
+  public_ip -> node.nginx: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
+}
+
+browser -- www
+www -> VW1.public_ip: "https://*.onto-deside.ilabt.imec.be"
+VW1.node.docker -> www: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
+

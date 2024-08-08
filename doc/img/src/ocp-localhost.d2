@@ -1,0 +1,37 @@
+title: |md
+  # Open Circularity Platform - Localhost
+| {near: top-center}
+
+host: "Host computer" {
+  icon: https://icons.terrastruct.com/tech%2Fdesktop.svg
+  browser: "User's Browser" {
+    icon: https://icons.terrastruct.com/tech%2Fbrowser-2.svg
+    shape: image
+  }
+  host_network: "Host network" {
+    icon: https://icons.terrastruct.com/infra%2F014-network.svg
+    shape: image
+  }
+  css_0: "css0" {
+    shape: image
+    icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+  }
+  css_i: "cssi" {
+    shape: image
+    icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+  }
+  css_n: "cssN" {
+    shape: image
+    icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+  }
+  gdv: "Generic Data Viewer" {
+    shape: image
+    icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+  }
+
+  browser -- host_network
+  host_network -- css_0: "http://localhost:3000"
+  host_network -- css_i: "http://localhost:3000+i"
+  host_network -- css_n: "http://localhost:3000+n"
+  host_network -- gdv: "http://localhost:<port-x>"
+}

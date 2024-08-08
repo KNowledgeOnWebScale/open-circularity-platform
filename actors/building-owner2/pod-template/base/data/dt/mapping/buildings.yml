@@ -6,8 +6,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
   idlab-fn: http://example.com/idlab/function/
-  o: https://www.example/com/ont/
-  d: https://www.example/com/data/
+  o: https://www.example.com/ont/
+  d: https://www.example.com/data/
 
 sources:
   buildings-source:

@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-# Source the environment variables for local development
-source envvars3
+# Source the environment variables for localhost
+source env-localhost
 
 # this directory should be git-ignored
 LOCAL_RUN_DIR=./local-run
@@ -79,6 +79,10 @@ function start_css {
             local ACTOR=sorter
             local PORT=$OD_CSS10_HOST_PORT
             ;;
+        "css11")
+            local ACTOR=any-evaluation-scenario-actor
+            local PORT=$OD_CSS11_HOST_PORT
+            ;;
         *)
             echo "Unknown CSSX: $CSSX"
             exit 2
@@ -106,7 +110,7 @@ function check_css {
     fi
 }
 
-for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 ; do
+for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 css11; do
     start_css $css
 done
 

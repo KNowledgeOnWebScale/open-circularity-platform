@@ -1,0 +1,123 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: http://example.com/idlab/function/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+
+base: http://knows.com/base/
+sources:
+  company:
+    access: ./construction_user5_company.csv
+    referenceFormulation: csv
+  process:
+    access: ./construction_user5_process.csv
+    referenceFormulation: csv
+  acl:
+    access: ./construction_user5_acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: solid_resource
+    access: ${OD_CSS11_BASE_URL}/construction_user5/ceon/data
+    serialization: jsonld
+    authentication: auth
+  ceon_data_acl:
+    type: solid_acl
+    access: ${OD_CSS11_BASE_URL}/construction_user5/ceon/data
+    serialization: turtle
+    authentication: auth
+authentications:
+  auth:
+    username: construction_user5@example.com
+    password: construction_user5
+    oidc_issuer: ${OD_CSS11_BASE_URL}/
+    web_id: ${OD_CSS11_BASE_URL}/construction_user5/profile/card#me
+mappings:
+  company:
+    sources: company
+    s:
+      value: ex:$(company_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(company_label) ]
+  process:
+    sources: process
+    s:
+      value: ex:$(company_id)-$(resource)-process
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:ProcessParticipation~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:$(role)~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(company_id)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(resource)~iri ]
+      - [ ceon-actorODP:ParticipatingProcess, ex:$(process)~iri ]
+      - [ ceon-quantity:has$(cost_type), ex:$(company_id)-$(resource)-process-cost~iri ]
+  process_cost:
+    sources: process
+    s:
+      value: ex:$(company_id)-$(resource)-process-cost
+      targets: ceon_data
+    po:
+      - [ a, qudt-quantitykind:Asset~iri ]
+      - [ qudt:numericValue, $(euro), xsd:double ]
+      - [ qudt:hasUnit, ex:EUR~iri ]
+  acl:
+    sources: acl
+    s:
+      targets: ceon_data_acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:agent, $(agent_webid)~iri ]
+      - [ acl:accessTo, $(access_to)~iri ]
+      - p: acl:mode
+        o:
+          value: acl:Read
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Write
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Control
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]

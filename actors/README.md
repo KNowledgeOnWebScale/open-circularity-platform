@@ -14,9 +14,15 @@ These directories connect to Docker services corresponding to an actor described
 - manufacturer
 - texon
 
+## Extended textile use case actors
+These directories connect to Docker services corresponding to an actor described in the *extended textile* use case, in addition to those of the normal *textile* use case/
+- recycler
+- retailer
+- sorter
+
 ## Semi-actors
 These directories connect Docker services not corresponding to an actor described in the use cases:
-- webclient: contains files mapped to the webclient service.
-- viewer: contains files mapped to the viewer service.
+- webclient: contains files mapped to the Comunica Webclient service.
+- viewer: contains files mapped to the Generic Data Viewer service.
 - test: contains files mapped to the test service.
 

@@ -3,7 +3,11 @@
     "email": "mikael@ragn-sells.se",
     "password": "mikael123",
     "pods": [
-      { "name": "ragn-sells" }
+      { "name": "ragn-sells",
+        "settings": {
+          "name": "Mikael Ragn-Sells"
+        }
+      }
     ]
   }
 ]

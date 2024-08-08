@@ -16,7 +16,7 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | building-owner2:data/dt/out/building-owner-2-buildings.ttl |               |                | rwc             |            | r     |                          |
 | ragn-sells:data/dt/out/services.ttl                        |               |                |                 | rwc        | r     | r                        |
 
-## Textile use case 1
+## Textile use case
 
 *Next resources are set available as pre-built pod contents.*
 
@@ -28,12 +28,56 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | manufacturer:data/dt/out/boms.ttl     |       | rwc          | r     | r     |
 | manufacturer:data/dt/out/products.ttl |       | rwc          | r     | r     |
 
-## Textile use case 2
+## Additional use cases
 
-*Next resources are NOT set available as pre-built pod contents.*
+*Next resources are NOT set available as pre-built pod contents, hence the information provided here is indicative only.*
 
-| Pod:Resource              | texon | brand | recycler | sorter |
-|---------------------------|-------|-------|----------|--------|
-| texon:ceon/manuf1_1.ttl   | rwc   |       |          |        |
-| texon:ceon/manuf1_2.ttl   | rwc   | r     |          |        |
-| texon:ceon/manuf1_3.ttl   | rwc   | r     | r        | r      |
+### Extended textile use case
+
+| Pod:Resource          | texon | brand | recycler | sorter |
+|-----------------------|-------|-------|----------|--------|
+| texon:ceon/manuf1_1   | rwc   |       |          |        |
+| texon:ceon/manuf1_2   | rwc   | r     |          |        |
+| texon:ceon/manuf1_3   | rwc   | r     | r        | r      |
+
+### Evaluation use cases June 2024: Electronics
+
+(All users `electronics_userX` abbreviated to `userX`)
+
+| Pod:Resource                    | user1 | user2 | user3 | user4 | user5 | user6 | user7 | user8 | user9 |
+|---------------------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| user1:ceon-electronics/products | rwc   |       |       |       |       | r     |       |       |       |
+| user2:ceon-electronics/products |       | rwc   |       |       |       | r     |       |       |       |
+| user3:ceon-electronics/products |       |       | rwc   |       |       | r     |       |       |       |
+| user4:ceon-electronics/products |       |       |       | rwc   |       | r     |       |       |       |
+| user5:ceon-electronics/products |       |       |       |       | rwc   | r     |       |       |       |
+| user6:ceon-electronics/products |       |       |       |       |       | rwc   | r     |       |       |
+| user9:ceon-electronics/index    | r     | r     | r     | r     | r     | r     | r     |       | rwc   |
+
+### Evaluation use cases June 2024: Textile
+
+(All users `textile_userX` abbreviated to `userX`)
+
+| Pod:Resource     | user1 | user2 | user3 | user4 | user5 | user6 | user7 | user8 | user9 |
+|------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| user1:ceon/data  | rwc   |       |       |       |       | r     | r     |       |       |
+| user2:ceon/data  |       | rwc   |       |       |       | r     | r     |       |       |
+| user3:ceon/data  |       |       | rwc   |       |       | r     | r     |       |       |
+| user4:ceon/data  |       |       |       | rwc   |       | r     | r     |       |       |
+| user6:ceon/data  |       |       |       |       |       | rwc   | r     |       |       |
+| user7:ceon/data  |       |       |       |       |       | r     | rwc   |       |       |
+| user9:ceon/index | r     | r     | r     | r     | r     | r     | r     | r     | rwc   |
+
+### Evaluation use cases June 2024: Construction
+
+(All users `construction_userX` abbreviated to `userX`)
+
+| Pod:Resource     | user1 | user2 | user3 | user4 | user5 | user6 | user7 | user8 | user9 |
+|------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| user1:ceon/data  | rwc   | r     | r     | r     | r     | r     |       |       |       |
+| user2:ceon/data  |       | rwc   | r     | r     | r     |       |       |       |       |
+| user3:ceon/data  |       | r     | rwc   | r     | r     | r     |       |       |       |
+| user4:ceon/data  |       | r     |       | rwc   |       |       |       |       |       |
+| user5:ceon/data  |       | r     |       |       | rwc   |       |       |       |       |
+| user6:ceon/data  |       | r     |       |       |       | rwc   |       |       |       |
+| user9:ceon/index | r     | r     | r     | r     | r     |       |       |       | rwc   |

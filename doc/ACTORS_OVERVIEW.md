@@ -2,7 +2,7 @@
 
 ## Note on webIds
 
-In the tables below, webId alternatives are given for all possible setups provided in the supported [environment variables files](../README.md#environment-variables).
+In the tables below, webId alternatives are given for all possible setups provided in the supported setup cases.
 
 ## Construction use case
 
@@ -23,13 +23,23 @@ In the tables below, webId alternatives are given for all possible setups provid
 | manufacturer | https://css6.onto-deside.ilabt.imec.be/manufacturer/profile/card#me <br/> http://localhost:3006/manufacturer/profile/card#me | info@manufacturer.com | manufacturer123 |
 | brand        | https://css7.onto-deside.ilabt.imec.be/brand/profile/card#me <br/> http://localhost:3007/brand/profile/card#me               | info@brand.com        | brand123        |
 
-## Extra pods
+## Extended textile use case
 
 | **actor**    | **webId**                                                                                                                    | **email**             | **password**    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------|
 | recycler     | https://css8.onto-deside.ilabt.imec.be/recycler/profile/card#me <br/> http://localhost:3008/recycler/profile/card#me         | info@recycler.com     | recycler123     |
 | retailer     | https://css9.onto-deside.ilabt.imec.be/retailer/profile/card#me <br/> http://localhost:3009/retailer/profile/card#me         | info@retailer.com     | retailer123     |
 | sorter       | https://css10.onto-deside.ilabt.imec.be/sorter/profile/card#me <br/> http://localhost:3010/sorter/profile/card#me            | info@sorter.com       | sorter123       |
+
+## Evaluation use cases June 2024
+
+Note: in the next table, `X` stands for a positive integer number. As many actors exist as needed per use case.
+
+| **actor**          | **webId**                                                                                                                                 | **email**                      | **password**       |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|--------------------|
+| construction_userX | https://css11.onto-deside.ilabt.imec.be/construction_userX/profile/card#me <br/> http://localhost:3011/construction_userX/card#me         | construction_userX@example.com | construction_userX |
+| textile_userX      | https://css11.onto-deside.ilabt.imec.be/textile_userX/profile/card#me <br/> http://localhost:3011/textile_userX/card#me                   | textile_userX@example.com      | textile_userX      |
+| electronics_userX  | https://css11.onto-deside.ilabt.imec.be/electronics_userX/profile/card#me <br/> http://localhost:3011/electronics_userX/card#me           | electronics_userX@example.com  | electronics_userX  |
 
 ## Testing
 

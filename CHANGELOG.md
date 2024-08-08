@@ -5,13 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [Unreleased]
+
+## [0.3.0] - 2024-08-08
+
+### Added
+
+- The June 2024 evaluation cases (internal [issue#55](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/55)).
+- Templated queries with indirect variables in the *Generic query examples* group and in all *Evaluation June 2024* groups (internal [issue#56](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/56)).
+
+### Fixed
+
+### Changed
+
+- Eased viewing files in pods in containers using volume mapping (internal [issue#52](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/52)).
+- Automated stuffing pod contents with verifiable credentials (internal [issue#54](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/54)).
+- Upgraded the viewer to [its v1.3.0](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.3.0).
+
+## [0.2.4] - 2024-04-08
 
 ### Added
 
 ### Fixed
 
 ### Changed
+
+- In response to Onto-DESIDE project review:
+  - Changed names of environment variable files, docker compose files, setup cases (internal [issue#49](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/49)).
+  - Restructed documentation to first explain online resources and next provide separate build instructions per setup case (internal [issue#50](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/50)).
 
 ## [0.2.3] - 2024-03-28
 
@@ -28,8 +49,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added extra pods for further developments (internal [issue#44](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/44)).
-- Added local development option (internal [issue#46](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/46)).
-- Extra queries in the viewer (internal [issue#47](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/47)).
+- Added localhost option (internal [issue#46](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/46)).
+- Extra queries in the Generic Data Viewer (internal [issue#47](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/47)).
 
 ### Fixed
 
@@ -52,7 +73,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Added textile use case and visualization with generic data viewer (internal [issue#29](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/29)).
+- Added textile use case and visualization with Generic Data Viewer (internal [issue#29](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/29)).
 - Added configuration to run with `http://localhost:<portnr>` baseURLs (internal [issue#31](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/31)).
 - Added configuration to run behind a proxy (internal [issue#36](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/36)).
 - Added documentation topics (internal [issue#40](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/40)).
@@ -100,9 +121,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - manufacturer1 (internal [issue#6](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/6)).
 - wait-for-container.sh (internal [issue#25](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/25)).
 
-[unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.3...HEAD
 [0.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.1.0
 [0.2.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.0
 [0.2.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.1
 [0.2.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2
 [0.2.3]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.3
+[0.2.4]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.4
+[0.3.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.0
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.3.0...HEAD
