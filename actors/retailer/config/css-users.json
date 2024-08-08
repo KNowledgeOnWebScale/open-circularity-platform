@@ -3,7 +3,11 @@
     "email": "info@retailer.com",
     "password": "retailer123",
     "pods": [
-      { "name": "retailer" }
+      { "name": "retailer",
+        "settings": {
+          "name": "Info Retailer"
+        }
+      }
     ]
   }
 ]

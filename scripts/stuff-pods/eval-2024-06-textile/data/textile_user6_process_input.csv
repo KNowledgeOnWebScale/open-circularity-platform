@@ -1,0 +1,9 @@
+﻿step,input,input_label
+01_Upper part,TextileA,Textile A
+01_Upper part,TextileB,Textile B
+02_AddSole,1dd5a6ed-2fd3-4f60-96fc-e03c56bea324-C005,
+02_AddSole,1dd5a6ed-2fd3-4f60-96fc-e03c56bea325-C002,
+03_AddInSole,SoledShoe,Soled Shoe
+03_AddInSole,1dd5a6ed-2fd3-4f60-96fc-e03c56bea326-C003,
+04_AddLaces,SoledAndInsoledShoe,Soled and Insoled Shoe
+04_AddLaces,1dd5a6ed-2fd3-4f60-96fc-e03c56bea327-C004,

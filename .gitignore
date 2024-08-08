@@ -9,7 +9,7 @@
 /actors/*/pod-template/wac/data/dt/out/*.acl.hbs
 /scripts/comunica/outputs/*
 
-# files now created from a template
+# files created from a template
 /actors/*/nginx/conf.d/default.conf
 /actors/viewer/setup/src/config.json
 /common/css-01.json
@@ -17,9 +17,17 @@
 /scripts/cert/main.sh
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
-/scripts/stuff-pods/setup_texon.mjs
-/scripts/stuff-pods/data/mapping.yml
-/scripts/stuff-pods/data/data/acl_manuf1.csv
+/scripts/stuff-pods/extended-textile/mapping.yml
+/scripts/stuff-pods/extended-textile/data/acl_*.csv
+/scripts/stuff-pods/eval-2024-06-construction/data/*_mapping.yml
+/scripts/stuff-pods/eval-2024-06-construction/data/*_acl.csv
+/scripts/stuff-pods/eval-2024-06-construction/data/*_index.csv
+/scripts/stuff-pods/eval-2024-06-electronics/data/*_mapping.yml
+/scripts/stuff-pods/eval-2024-06-electronics/data/*_acl.csv
+/scripts/stuff-pods/eval-2024-06-electronics/data/*_index.csv
+/scripts/stuff-pods/eval-2024-06-textile/data/*_mapping.yml
+/scripts/stuff-pods/eval-2024-06-textile/data/*_acl.csv
+/scripts/stuff-pods/eval-2024-06-textile/data/*_index.csv
 /specification-tests/*.env
 /specification-tests/access-control-scenarios/**/*.feature
 
@@ -27,4 +35,4 @@
 /local-run
 /docker-run
 /scripts/stuff-pods/demo.tar.gz
-/scripts/stuff-pods/data/mapping.rml.ttl
+/scripts/stuff-pods/**/mapping.rml.ttl

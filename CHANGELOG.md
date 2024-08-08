@@ -7,15 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-08-08
+
 ### Added
+
+- The June 2024 evaluation cases (internal [issue#55](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/55)).
+- Templated queries with indirect variables in the *Generic query examples* group and in all *Evaluation June 2024* groups (internal [issue#56](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/56)).
 
 ### Fixed
 
 ### Changed
 
 - Eased viewing files in pods in containers using volume mapping (internal [issue#52](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/52)).
-- Upgraded to Generic Viewer v1.2.1 (internal [issue#53](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/53)).
 - Automated stuffing pod contents with verifiable credentials (internal [issue#54](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/54)).
+- Upgraded the viewer to [its v1.3.0](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.3.0).
 
 ## [0.2.4] - 2024-04-08
 
@@ -122,4 +127,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.2.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.2
 [0.2.3]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.3
 [0.2.4]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.4
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.2.4...HEAD
+[0.3.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.0
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.3.0...HEAD

@@ -13,6 +13,10 @@
   * [How the modified Generic Data Viewer is built](#how-the-modified-generic-data-viewer-is-built)
   * [Using the modified Generic Data Viewer for query development](#using-the-modified-generic-data-viewer-for-query-development)
 * [Direct access to the file system of a CSS](#direct-access-to-the-file-system-of-a-css)
+* [How to supporting additional use cases](#how-to-supporting-additional-use-cases)
+  * [Adapting the data and mapping files](#adapting-the-data-and-mapping-files)
+  * [Merging viewer files](#merging-viewer-files)
+  * [Finally](#finally)
 
 ## Environment variables
 
@@ -66,7 +70,7 @@ After changing or adding one or more templates, repeat all build steps.
 
 ### Making a new template
 
-File [sed-template-maker-baseurls.txt](../scripts/templates/sed-template-maker-baseurls.txt) is an example command file for `sed`, for creating a new template from an existing file.
+Script [create-templates.sh](../scripts/templates/create-templates.sh) creates new templates from existing files in the current working directory and its subdirectories.
 Note that it only substitutes the core baseURLs with the corresponding environment variables, which is enough to make templates from queries.
 
 For each new template file:
@@ -103,7 +107,7 @@ When following the setup instructions in the [main README](../README.md):
 
 ### Using the modified Generic Data Viewer for query development
 
-We can use the modified build of the generi data viewer to develop queries in the context of our project.
+We can use the modified build of the generic data viewer to develop queries in the context of our project.
 
 This will obviously work in the case of environment variables file *env-localhost*,
 but also in the case of *env-docker-public*.
@@ -148,3 +152,43 @@ For development and debugging purposes, access the file system of `css<x>` as fo
       ls -al
       # etc...
       ```
+
+## How to supporting additional use cases
+
+As described in the [main README](../README.md), pod contents for the additional use case can be added, once you have the necessary CSSs running,
+by executing [stuff-pods.sh](../scripts/stuff-pods/stuff-pods.sh) from the project root.
+
+These additional use cases often come with additional queries for the viewer.
+
+To support an additional use case, proceed as follows.
+
+### Adapting the data and mapping files
+
+* Obtain data and mapping files and put these in a new subdirectory of `project-root/scripts/stuff-pods`, for example  `project-root/scripts/stuff-pods/example`.
+* Cd to `project-root/scripts/stuff-pods/example`.
+* The obtained data and mapping files are normally hardcoded for using on the CSSs in the domain `onto-deside.ilabt.imec.be`, so we need to create templates for using these in our various setups:
+  * Execute `../../templates/create-templates.sh`.
+  * Add all original files that now have a ´*.template` alternative to [.gitignore](../.gitignore).
+* Add a script named `stuff-pods.sh` to your directory. Start from script with the same name in a sibling directory and adapt to your needs.
+* Modify the script `stuff-pods.sh` in the parent directory, so that it calls your new `stuff-pods.sh`, as is already the case for previous additional use cases.
+
+### Merging viewer files
+
+* Obtain additional queries and other resource files and put them in the `project-root/actors/viewer/setup/public` directory structure.
+  Take care not to overwrite existing files.
+* Obtain additional contents for the viewer's `config.json`.
+  These contents are normally hardcoded for using on the CSSs in the domain `onto-deside.ilabt.imec.be`, so a convenient procedure to merge these contents is:
+  * Cd to the project root and execute `source env-docker-public`.
+  * Cd to `project-root/actors/viewer/setup/src`.
+  * Execute `../../../../scripts/templates/apply-templates.sh`: this makes a `project-root/actors/viewer/setup/src/config.json` suitable for the merge.
+  * Now merge the additional contents into `project-root/actors/viewer/setup/src/config.json`.
+    Avoid conflicts with existing IDs, e.g. for queries and query groups.
+  * Delete (!) the existing `project-root/actors/viewer/setup/src/config.json.template`. Don't worry, a new one will be created below...
+* Make new templates where needed:
+  * Cd to `project-root/actors/viewer/setup`.
+  * Execute `../../../scripts/templates/create-templates.sh`.
+  * Add all original files that now have a ´*.template` alternative to [.gitignore](../.gitignore).
+
+### Finally
+
+Execute everything (again) as described in [building and running in the main README](../README.md#building-and-running).

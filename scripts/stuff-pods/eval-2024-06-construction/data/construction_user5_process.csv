@@ -1,0 +1,3 @@
+﻿company_id,role,resource,process,cost_type,euro
+Recycler_7890,recycler,building_1-storey_3-room_1-nortec-tiles,RecyclePlan,RecyclingCost,2000
+Recycler_7890,recycler,building_1-storey_3-room_1-nortec-pedestals,RecyclePlan,RecyclingCost,200

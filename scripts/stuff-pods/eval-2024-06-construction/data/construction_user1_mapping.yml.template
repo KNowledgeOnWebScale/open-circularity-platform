@@ -1,0 +1,248 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: http://example.com/idlab/function/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+
+base: http://knows.com/base/
+sources:
+  products:
+    access: ./construction_user1_products.csv
+    referenceFormulation: csv
+    delimiter: ','
+    'null':
+      - ''
+  product_composition:
+    access: ./construction_user1_product_composition.csv
+    referenceFormulation: csv
+  product_matter_composition:
+    access: ./construction_user1_product_matter_composition.csv
+    referenceFormulation: csv
+  company:
+    access: ./construction_user1_company.csv
+    referenceFormulation: csv
+  acl:
+    access: ./construction_user1_acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: solid_resource
+    access: ${OD_CSS11_BASE_URL}/construction_user1/ceon/data
+    serialization: jsonld
+    authentication: auth
+  ceon_data_acl:
+    type: solid_acl
+    access: ${OD_CSS11_BASE_URL}/construction_user1/ceon/data
+    serialization: turtle
+    authentication: auth
+authentications:
+  auth:
+    username: construction_user1@example.com
+    password: construction_user1
+    oidc_issuer: ${OD_CSS11_BASE_URL}/
+    web_id: ${OD_CSS11_BASE_URL}/construction_user1/profile/card#me
+mappings:
+  products:
+    sources: products
+    s:
+      value: ex:$(Product id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-product:Product~iri ]
+      - [ a, construction:$(ProductType)~iri ]
+      - [ rdfs:label, $(Product Name) ]
+      - [ construction:hasProductDescription, $(Product description)]
+      - [ construction:hasProductQuality, construction:$(Product quality)~iri]
+      - [ construction:hasDimensionalDeviation, ex:$(Product id)-dimensionalDeviation~iri ]
+      - [ construction:hasSystemWeight, ex:$(Product id)-systemWeight~iri ]
+      - [ construction:hasThickness, ex:$(Product id)-thinkness~iri ]
+      - [ construction:hasResistanceToEarth, ex:$(Product id)-resistanceToEarth~iri ]
+      - p: construction:hasTakeBackProgramFromOriginalManufacturer
+        o:
+          function: idlab-fn:equal
+          parameters:
+          - [ grel:valueParameter, $(Take back program original manufacturer) ]
+          - [ grel:valueParameter2, YES ]
+          datatype: xsd:boolean
+      - [ ex:hasReusePotential, $(Reuse potential) ]
+      - [ construction:hasAccessories, $(Accessories)]
+      - [ construction:hasDismantlingInstruction, $(Dismantling Instruction)~iri]
+      - [ construction:hasCompliance, ex:$(Product id)-C2C_silver_compliance~iri]
+      - [ construction:dimension, ex:$(Product id)-length-$(Length)~iri ]
+      - [ construction:dimension, ex:$(Product id)-width-$(Width)~iri ]
+      - [ construction:dimension, ex:$(Product id)-height-$(Height)~iri ]
+  dimensional_deviation:
+    sources: products
+    s:
+      value: ex:$(Product id)-dimensionalDeviation
+      targets: ceon_data
+    po:
+      - [ ceon-quantity:hasObjectValue, ex:$(Dimensional deviation according to EN 12825) ]
+      - [ qudt:hasQuantityKind, ex:EN_12825~iri ]
+  system_weight:
+    sources: products
+    s:
+      value: ex:$(Product id)-systemWeight
+      targets: ceon_data
+    po:
+    - [ ceon-quantity:numericalMaxValue,  $(System weight max), xsd:double ]
+    - [ ceon-quantity:numericalMinValue,  $(System weight min), xsd:double ]
+    - [ qudt:hasUnit, qudt-unit:KiloGM-PER-M2~iri ]
+  resistance_to-earth:
+    sources: products
+    s:
+      value: ex:$(Product id)-resistanceToEarth
+      targets: ceon_data
+    po:
+    - [ ceon-quantity:numericalMinValue, $(Resistance to earth min), xsd:double ]
+    - [ qudt:hasUnit, qudt-unit:OHM~iri ]
+  thinkness:
+    sources: products
+    s:
+      value: ex:$(Product id)-thinkness
+      targets: ceon_data
+    po:
+      - [ ceon-quantity:numericalMaxValue,  $(Thickness max), xsd:double ]
+      - [ ceon-quantity:numericalMinValue,  $(Thickness min), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  C2C_MH-SIlver_compliance:
+    sources: products
+    s:
+      value: ex:$(Product id)-C2C_silver_compliance
+      targets: ceon_data
+    po:
+      - [ a, [ceon-product:Compliance~iri, ceon-provenance:Statement~iri]]
+      - [ ceon-product:Compliance, construction:C2C_MH_Silver~iri ]
+      - [ ceon-product:hasCertificate,  $(C2C_MH_Silver_Certificate)~iri ]
+      - [ ceon-provenance:statementAbout, ex:$(Product id)~iri ]
+  product_length:
+    sources: products
+    s:
+      value: ex:$(Product id)-length-$(Length)
+      targets: ceon_data
+    po:
+      - [ a, qudt-quantitykind:Length~iri ]
+      - [ qudt:numericValue, $(Length), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_width:
+    sources: products
+    s:
+      value: ex:$(Product id)-width-$(Width)
+      targets: ceon_data
+    po:
+      - [ a, qudt-quantitykind:Width~iri ]
+      - [ qudt:numericValue, $(Width), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_height:
+    sources: products
+    s:
+      value: ex:$(Product id)-height-$(Height)
+      targets: ceon_data
+    po:
+      - [ a, qudt-quantitykind:Height~iri ]
+      - [ qudt:numericValue, $(Height), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_component:
+    sources: product_composition
+    s:
+      value: ex:$(product)
+      targets: ceon_data
+    po:
+      - [ ceon-product:hasProductComponent, ex:$(component)~iri ]
+  product_composition:
+    sources: product_composition
+    s:
+      value: ex:$(product)-prodcomp-$(component)
+      targets: ceon_data
+    po:
+      - [ a, [ceon-product:ProductComposition, ceon-provenance:Statement]]
+      - [ ceon-product:associatedWithProductModel, ex:$(component)~iri ]
+      - [ qudt:hasUnit, qudt-unit:PERCENT~iri ]
+      - [ qudt:numericValue, $(percentage), xsd:double ]
+      - [ ceon-product:compositionOf, ex:$(product)~iri ]
+  company:
+    sources: company
+    s:
+      value: ex:$(company_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(company_label) ]
+  manufacturer_relation:
+    sources: products
+    s:
+      value: ex:$(Product id)-$(Manufacturer id)-manufacturer-relation
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:ResourceRelation~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:manufacturer~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(Manufacturer id)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(Product id)~iri ]
+  product_matter:
+    sources: product_matter_composition
+    s:
+      value: ex:$(product_id)-matter_composition
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:MatterComposition~iri, ceon-provenance:Statement~iri ] ]
+      - [ ceon-product:associatedWithMatter, ex:$(matter)~iri ]
+      - [ ceon-product:compositionOf, ex:$(product_id)~iri ]
+  acl:
+    sources: acl
+    s:
+      targets: ceon_data_acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:agent, $(agent_webid)~iri ]
+      - [ acl:accessTo, $(access_to)~iri ]
+      - p: acl:mode
+        o:
+          value: acl:Read
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Write
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o:
+          value: acl:Control
+          type: iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]

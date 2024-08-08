@@ -20,7 +20,7 @@
     <http://www.w3.org/2000/01/rdf-schema#label> "building".
 <http://mapping.example.com/s_000> a <http://www.w3.org/ns/r2rml#SubjectMap>.
 <http://mapping.example.com/map_building_000> <http://www.w3.org/ns/r2rml#subjectMap> <http://mapping.example.com/s_000>.
-<http://mapping.example.com/s_000> <http://www.w3.org/ns/r2rml#template> "https://www.example/com/data/building-{id}".
+<http://mapping.example.com/s_000> <http://www.w3.org/ns/r2rml#template> "https://www.example.com/data/building-{id}".
 <http://mapping.example.com/pom_000> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_building_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_000>.
 <http://mapping.example.com/pm_000> a <http://www.w3.org/ns/r2rml#PredicateMap>.
@@ -28,13 +28,13 @@
 <http://mapping.example.com/pm_000> <http://www.w3.org/ns/r2rml#constant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>.
 <http://mapping.example.com/pom_000> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_000>.
 <http://mapping.example.com/om_000> a <http://www.w3.org/ns/r2rml#ObjectMap>;
-    <http://www.w3.org/ns/r2rml#constant> "https://www.example/com/ont/Building";
+    <http://www.w3.org/ns/r2rml#constant> "https://www.example.com/ont/Building";
     <http://www.w3.org/ns/r2rml#termType> <http://www.w3.org/ns/r2rml#IRI>.
 <http://mapping.example.com/pom_001> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_building_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_001>.
 <http://mapping.example.com/pm_001> a <http://www.w3.org/ns/r2rml#PredicateMap>.
 <http://mapping.example.com/pom_001> <http://www.w3.org/ns/r2rml#predicateMap> <http://mapping.example.com/pm_001>.
-<http://mapping.example.com/pm_001> <http://www.w3.org/ns/r2rml#constant> <https://www.example/com/ont/address>.
+<http://mapping.example.com/pm_001> <http://www.w3.org/ns/r2rml#constant> <https://www.example.com/ont/address>.
 <http://mapping.example.com/pom_001> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_001>.
 <http://mapping.example.com/om_001> a <http://www.w3.org/ns/r2rml#ObjectMap>;
     <http://semweb.mmlab.be/ns/rml#reference> "address";
@@ -43,10 +43,10 @@
 <http://mapping.example.com/map_building_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_002>.
 <http://mapping.example.com/pm_002> a <http://www.w3.org/ns/r2rml#PredicateMap>.
 <http://mapping.example.com/pom_002> <http://www.w3.org/ns/r2rml#predicateMap> <http://mapping.example.com/pm_002>.
-<http://mapping.example.com/pm_002> <http://www.w3.org/ns/r2rml#constant> <https://www.example/com/ont/has-floor-tile>.
+<http://mapping.example.com/pm_002> <http://www.w3.org/ns/r2rml#constant> <https://www.example.com/ont/has-floor-tile>.
 <http://mapping.example.com/pom_002> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_002>.
 <http://mapping.example.com/om_002> a <http://www.w3.org/ns/r2rml#ObjectMap>;
-    <http://www.w3.org/ns/r2rml#template> "https://www.example/com/data/tile-{building-storey.[*].tiles[*].id}";
+    <http://www.w3.org/ns/r2rml#template> "https://www.example.com/data/tile-{building-storey.[*].tiles[*].id}";
     <http://www.w3.org/ns/r2rml#termType> <http://www.w3.org/ns/r2rml#IRI>.
 <http://mapping.example.com/rules_000> <http://rdfs.org/ns/void#exampleResource> <http://mapping.example.com/map_floors_000>.
 <http://mapping.example.com/map_floors_000> <http://semweb.mmlab.be/ns/rml#logicalSource> <http://mapping.example.com/source_001>;
@@ -54,7 +54,7 @@
     <http://www.w3.org/2000/01/rdf-schema#label> "floors".
 <http://mapping.example.com/s_001> a <http://www.w3.org/ns/r2rml#SubjectMap>.
 <http://mapping.example.com/map_floors_000> <http://www.w3.org/ns/r2rml#subjectMap> <http://mapping.example.com/s_001>.
-<http://mapping.example.com/s_001> <http://www.w3.org/ns/r2rml#template> "https://www.example/com/data/floor-{name}".
+<http://mapping.example.com/s_001> <http://www.w3.org/ns/r2rml#template> "https://www.example.com/data/floor-{name}".
 <http://mapping.example.com/pom_003> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_floors_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_003>.
 <http://mapping.example.com/pm_003> a <http://www.w3.org/ns/r2rml#PredicateMap>.
@@ -62,16 +62,16 @@
 <http://mapping.example.com/pm_003> <http://www.w3.org/ns/r2rml#constant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>.
 <http://mapping.example.com/pom_003> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_003>.
 <http://mapping.example.com/om_003> a <http://www.w3.org/ns/r2rml#ObjectMap>;
-    <http://www.w3.org/ns/r2rml#constant> "https://www.example/com/ont/Floor";
+    <http://www.w3.org/ns/r2rml#constant> "https://www.example.com/ont/Floor";
     <http://www.w3.org/ns/r2rml#termType> <http://www.w3.org/ns/r2rml#IRI>.
 <http://mapping.example.com/pom_004> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_floors_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_004>.
 <http://mapping.example.com/pm_004> a <http://www.w3.org/ns/r2rml#PredicateMap>.
 <http://mapping.example.com/pom_004> <http://www.w3.org/ns/r2rml#predicateMap> <http://mapping.example.com/pm_004>.
-<http://mapping.example.com/pm_004> <http://www.w3.org/ns/r2rml#constant> <https://www.example/com/ont/has-floor-tile>.
+<http://mapping.example.com/pm_004> <http://www.w3.org/ns/r2rml#constant> <https://www.example.com/ont/has-floor-tile>.
 <http://mapping.example.com/pom_004> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_004>.
 <http://mapping.example.com/om_004> a <http://www.w3.org/ns/r2rml#ObjectMap>;
-    <http://www.w3.org/ns/r2rml#template> "https://www.example/com/data/tile-{tiles[*].id}";
+    <http://www.w3.org/ns/r2rml#template> "https://www.example.com/data/tile-{tiles[*].id}";
     <http://www.w3.org/ns/r2rml#termType> <http://www.w3.org/ns/r2rml#IRI>.
 <http://mapping.example.com/rules_000> <http://rdfs.org/ns/void#exampleResource> <http://mapping.example.com/map_tiles_000>.
 <http://mapping.example.com/map_tiles_000> <http://semweb.mmlab.be/ns/rml#logicalSource> <http://mapping.example.com/source_002>;
@@ -79,7 +79,7 @@
     <http://www.w3.org/2000/01/rdf-schema#label> "tiles".
 <http://mapping.example.com/s_002> a <http://www.w3.org/ns/r2rml#SubjectMap>.
 <http://mapping.example.com/map_tiles_000> <http://www.w3.org/ns/r2rml#subjectMap> <http://mapping.example.com/s_002>.
-<http://mapping.example.com/s_002> <http://www.w3.org/ns/r2rml#template> "https://www.example/com/data/tile-{id}".
+<http://mapping.example.com/s_002> <http://www.w3.org/ns/r2rml#template> "https://www.example.com/data/tile-{id}".
 <http://mapping.example.com/pom_005> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_tiles_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_005>.
 <http://mapping.example.com/pm_005> a <http://www.w3.org/ns/r2rml#PredicateMap>.
@@ -87,13 +87,13 @@
 <http://mapping.example.com/pm_005> <http://www.w3.org/ns/r2rml#constant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>.
 <http://mapping.example.com/pom_005> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_005>.
 <http://mapping.example.com/om_005> a <http://www.w3.org/ns/r2rml#ObjectMap>;
-    <http://www.w3.org/ns/r2rml#constant> "https://www.example/com/ont/Tile";
+    <http://www.w3.org/ns/r2rml#constant> "https://www.example.com/ont/Tile";
     <http://www.w3.org/ns/r2rml#termType> <http://www.w3.org/ns/r2rml#IRI>.
 <http://mapping.example.com/pom_006> a <http://www.w3.org/ns/r2rml#PredicateObjectMap>.
 <http://mapping.example.com/map_tiles_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_006>.
 <http://mapping.example.com/pm_006> a <http://www.w3.org/ns/r2rml#PredicateMap>.
 <http://mapping.example.com/pom_006> <http://www.w3.org/ns/r2rml#predicateMap> <http://mapping.example.com/pm_006>.
-<http://mapping.example.com/pm_006> <http://www.w3.org/ns/r2rml#constant> <https://www.example/com/data/coordinate-x>.
+<http://mapping.example.com/pm_006> <http://www.w3.org/ns/r2rml#constant> <https://www.example.com/data/coordinate-x>.
 <http://mapping.example.com/pom_006> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_006>.
 <http://mapping.example.com/om_006> a <http://www.w3.org/ns/r2rml#ObjectMap>;
     <http://semweb.mmlab.be/ns/rml#reference> "x";
@@ -102,7 +102,7 @@
 <http://mapping.example.com/map_tiles_000> <http://www.w3.org/ns/r2rml#predicateObjectMap> <http://mapping.example.com/pom_007>.
 <http://mapping.example.com/pm_007> a <http://www.w3.org/ns/r2rml#PredicateMap>.
 <http://mapping.example.com/pom_007> <http://www.w3.org/ns/r2rml#predicateMap> <http://mapping.example.com/pm_007>.
-<http://mapping.example.com/pm_007> <http://www.w3.org/ns/r2rml#constant> <https://www.example/com/data/coordinate-y>.
+<http://mapping.example.com/pm_007> <http://www.w3.org/ns/r2rml#constant> <https://www.example.com/data/coordinate-y>.
 <http://mapping.example.com/pom_007> <http://www.w3.org/ns/r2rml#objectMap> <http://mapping.example.com/om_007>.
 <http://mapping.example.com/om_007> a <http://www.w3.org/ns/r2rml#ObjectMap>;
     <http://semweb.mmlab.be/ns/rml#reference> "y";

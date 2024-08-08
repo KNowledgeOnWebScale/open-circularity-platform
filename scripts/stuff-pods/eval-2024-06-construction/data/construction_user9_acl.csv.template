@@ -1,0 +1,7 @@
+﻿access_to,mode,agent_webid,read_access,write_access,control_access
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Control,${OD_CSS11_BASE_URL}/construction_user9/profile/card#me,Yes,Yes,Yes
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Read,${OD_CSS11_BASE_URL}/construction_user1/profile/card#me,Yes,No,No
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Read,${OD_CSS11_BASE_URL}/construction_user2/profile/card#me,Yes,No,No
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Read,${OD_CSS11_BASE_URL}/construction_user3/profile/card#me,Yes,No,No
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Read,${OD_CSS11_BASE_URL}/construction_user4/profile/card#me,Yes,No,No
+${OD_CSS11_BASE_URL}/construction_user9/ceon/index,Read,${OD_CSS11_BASE_URL}/construction_user5/profile/card#me,Yes,No,No
