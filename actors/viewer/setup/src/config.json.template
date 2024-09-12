@@ -329,7 +329,7 @@
       "name": "Overview",
       "description": "All products with the data points selected for this evaluation",
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -343,7 +343,7 @@
         "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -357,7 +357,7 @@
         "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -371,7 +371,7 @@
         "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -385,7 +385,7 @@
         "queryLocations": ["variableQueries/electronics_product_labels.rq"]
       },
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -396,7 +396,7 @@
       "name": "All accessible data",
       "description": "All data accessible for the logged in user",
       "sourcesIndex": {
-        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index",
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
         "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
@@ -405,11 +405,9 @@
       "queryGroupId": "evaluation-electronics",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Sources in electronics network",
-      "comunicaContext": {
-        "sources": [
-          "${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index"
-        ],
-        "lenient": true
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/electronics_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
     {
@@ -481,11 +479,9 @@
       "queryGroupId": "evaluation-textile",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Sources in textile network",
-      "comunicaContext": {
-        "sources": [
-          "${OD_CSS11_BASE_URL}/textile_user9/ceon/index"
-        ],
-        "lenient": true
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/textile_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
     {
@@ -579,11 +575,9 @@
       "queryGroupId": "evaluation-construction",
       "queryLocation": "sourceQueries/seeAlso.rq",
       "name": "Sources in construction network",
-      "comunicaContext": {
-        "sources": [
-          "${OD_CSS11_BASE_URL}/construction_user9/ceon/index"
-        ],
-        "lenient": true
+      "sourcesIndex": {
+        "url": "${OD_CSS11_BASE_URL}/construction_user9/ceon/index",
+        "queryLocation": "sourceQueries/seeAlso.rq"
       }
     },
     {

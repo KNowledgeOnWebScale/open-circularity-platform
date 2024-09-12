@@ -189,7 +189,7 @@ Using the localhost setup case is similar to [using the final setup](#using-the-
   * needs to be started as follows in a separate terminal window:
 
     ```bash
-    cd ../applied-in-architecture-generic-data-viewer-react-admin
+    cd ../applied-in-architecture-generic-data-viewer-react-admin/main
     npm run dev
     ```
   
