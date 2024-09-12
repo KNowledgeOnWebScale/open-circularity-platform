@@ -18,12 +18,12 @@ sources:
 targets:
   index_target:
     type: solid_resource
-    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index
+    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon/index
     serialization: jsonld
     authentication: auth
   index_acl_target:
     type: solid_acl
-    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon-electronics/index
+    access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon/index
     serialization: ntriples
     authentication: auth
 authentications:

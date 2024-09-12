@@ -101,7 +101,7 @@ When following the setup instructions in the [main README](../README.md):
 
 * a clone of that repo is made in `../applied-in-architecture-generic-data-viewer-react-admin`;
 * a known good version of it is checked out; the known good version is selected with the `-b` option of the `git clone` command in [this script](../scripts/viewer/build-webclient-contents.sh).
-* the software is built;
+* the software is built in the clone's `main` directory;
 * the contents of its `src/config.json` file and its `public` directory are replaced with alternatives found in our directory `actors/viewer/setup`;
 * static files are generated from this modified contents and brought back to our directory `actors/viewer/html`, ready for further packaging into a service.
 
@@ -114,8 +114,8 @@ but also in the case of *env-docker-public*.
 The latter case is interesting to make experiments with data available in the public pods.
 Proceed as follows:
 
-* go to `../applied-in-architecture-generic-data-viewer-react-admin`;
-* modify the configuration file and modifiy/add queries in the public directory;
+* go to `../applied-in-architecture-generic-data-viewer-react-admin/main`;
+* modify the configuration file and modify/add queries in the public directory;
 * test by running `npm run dev` and browsing the localhost port this command reports.
 
 ## Direct access to the file system of a CSS
