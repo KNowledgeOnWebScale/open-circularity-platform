@@ -7,13 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.3.0] - 2024-08-08
-
 ### Added
 
-- The June 2024 evaluation cases (internal [issue#55](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/55)).
-- Templated queries with indirect variables in the *Generic query examples* group and in all *Evaluation June 2024* groups (internal [issue#56](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/56)).
 - Queries with indirect sources make use of link traversal capabilities of the viewer (internal [issue#57](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/57)).
+- Logged in users can save their custom queries in a pod now (internal [issue#58](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/58)).
 
 ### Fixed
 
@@ -21,9 +18,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Upgraded the viewer to [its v1.4.0](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.4.0).
+
+## [0.3.0] - 2024-08-08
+
+### Added
+
+- The June 2024 evaluation cases (internal [issue#55](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/55)).
+- Templated queries with indirect variables in the *Generic query examples* group and in all *Evaluation June 2024* groups (internal [issue#56](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/56)).
+
+### Fixed
+
+### Changed
+
 - Eased viewing files in pods in containers using volume mapping (internal [issue#52](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/52)).
 - Automated stuffing pod contents with verifiable credentials (internal [issue#54](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/54)).
-- Upgraded the viewer to [its v1.3.10](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.3.1).
+- Upgraded the viewer to [its v1.3.0](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.3.0).
 
 ## [0.2.4] - 2024-04-08
 
