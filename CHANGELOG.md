@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.1] - 2024-10-16
+
+### Added
+
+- Queries with indirect sources make use of link traversal capabilities of the viewer (internal [issue#57](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/57)).
+- Logged in users can save their custom queries in a pod now (internal [issue#58](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/58)).
+- Changed URL composition from `https://<service>.onto-deside.ilabt.imec.be` to `https://onto-deside.ilabt.imec.be/<service>` (internal [issue#60](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/60)).
+
+### Fixed
+
+- Parent container of pod roots is no longer writable by everyone (internal [issue#59](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/59)).
+
+### Changed
+
+- Upgraded the viewer to [its v1.4.1](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.4.1).
+
 ## [0.3.0] - 2024-08-08
 
 ### Added
@@ -128,4 +144,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.2.3]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.3
 [0.2.4]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.2.4
 [0.3.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.0
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.3.0...HEAD
+[0.3.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.1
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.3.1...HEAD

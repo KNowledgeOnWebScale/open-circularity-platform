@@ -10,5 +10,5 @@ manuf1_2,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2,manufacturer,Read,${OD_CSS5_BAS
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Control,${OD_CSS5_BASE_URL}/texon/profile/card#me
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Write,${OD_CSS5_BASE_URL}/texon/profile/card#me
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
-manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,recycler,Read,https://css8.onto-deside.ilabt.imec.be/recycler/profile/card#me
-manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,sorter,Read,https://css10.onto-deside.ilabt.imec.be/sorter/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,recycler,Read,${OD_CSS8_BASE_URL}/recycler/profile/card#me
+manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,sorter,Read,${OD_CSS10_BASE_URL}/sorter/profile/card#me

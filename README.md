@@ -23,13 +23,6 @@
     * [Using the public Docker based setup case](#using-the-public-docker-based-setup-case)
     * [Bonus: local Generic Data Viewer for querying public pods](#bonus-local-generic-data-viewer-for-querying-public-pods)
     * [Stopping the public Docker based setup case](#stopping-the-public-docker-based-setup-case)
-  * [The private Docker based setup case](#the-private-docker-based-setup-case)
-    * [Prerequisites for the private Docker based setup case](#prerequisites-for-the-private-docker-based-setup-case)
-    * [Environment variables for the private Docker based setup case](#environment-variables-for-the-private-docker-based-setup-case)
-    * [Building the private Docker based setup case](#building-the-private-docker-based-setup-case)
-    * [Running the private Docker based setup case](#running-the-private-docker-based-setup-case)
-    * [Using the private Docker based setup case](#using-the-private-docker-based-setup-case)
-    * [Stopping the private Docker based setup case](#stopping-the-private-docker-based-setup-case)
 * [Other documentation resources](#other-documentation-resources)
 
 ## Introduction
@@ -65,7 +58,7 @@ The final setup is available online and needs no further action prior to usage.
 
 ### Using the included Generic Data Viewer
 
-To use this Generic Data Viewer, navigate to <https://viewer.onto-deside.ilabt.imec.be/>.
+To use this Generic Data Viewer, navigate to <https://onto-deside.ilabt.imec.be/viewer/>.
 
 The list of predefined queries is shown in expandible groups at the left side.
 
@@ -78,13 +71,13 @@ To login, click on the icon in the top right.
 To execute a query, click on it in the dashboard.
 
 [This screenshot](doc/img/texon-components-materials.png) shows the result of a query about Texon's components and materials.
-The result shown was obtained when logged in to identity provider `https://css5.onto-deside.ilabt.imec.be` as `info@texon.com`.
+The result shown was obtained when logged in to identity provider `https://onto-deside.ilabt.imec.be/css5` as `info@texon.com`.
 
 ### Using the included Comunica Webclient
 
 > This Comunica Webclient is intended for viewing low level details of the results of some predefined queries or for experimenting with new queries derived from these predefined queries.
 
-To use this Comunica Webclient, navigate to <https://webclient.onto-deside.ilabt.imec.be/>.
+To use this Comunica Webclient, navigate to <https://onto-deside.ilabt.imec.be/webclient/>.
 
 Some predefined queries are available in the *Type or pick a query:* field.
 
@@ -92,7 +85,7 @@ The above remark about queries vs. logging in applies here too.
 
 The login dialogue is available after clicking the *Settings asterisk* (top right.)
 
-[This screenshot](doc/img/query-lindner-group-products.png) demonstrates querying Lindner Group's products. The result shown was obtained when logged in to identity provider `https://css1.onto-deside.ilabt.imec.be` as `info@lindner-group.com`.
+[This screenshot](doc/img/query-lindner-group-products.png) demonstrates querying Lindner Group's products. The result shown was obtained when logged in to identity provider `https://onto-deside.ilabt.imec.be/css1` as `info@lindner-group.com`.
 
 #### Adding a Solid pod to the list of datasources for a query
 
@@ -157,11 +150,19 @@ yarn install
 
 #### Running the localhost setup case
 
+Run with new pod contents (mandatory for first run):
+
 ```bash
 ./scripts/local-run/start-csss.sh
 ```
 
-The command above starts the pods on the localhost in the background and waits until they are all ready (listening).
+Re-run with existing pod contents (requires a previous run and stop):
+
+```bash
+./scripts/local-run/start-csss.sh -r
+```
+
+The commands above start the pods on the localhost in the background and wait until they are all ready (listening).
 This takes some time to complete.
 
 The pods log files can be consulted at `./local-run/*.log`.
@@ -189,7 +190,7 @@ Using the localhost setup case is similar to [using the final setup](#using-the-
   * needs to be started as follows in a separate terminal window:
 
     ```bash
-    cd ../applied-in-architecture-generic-data-viewer-react-admin
+    cd ../applied-in-architecture-generic-data-viewer-react-admin/main
     npm run dev
     ```
   
@@ -236,14 +237,22 @@ yarn install
 
 #### Running the public Docker based setup case
 
+Run with new pod contents (mandatory for first run):
+
 ```bash
 docker compose --profile backend --profile frontend --profile extra-pod up --wait
 ```
 
-The command above starts all services in a Docker environment and and waits until they are all ready (listening).
+Re-run with existing pod contents (requires a previous run and stop):
+
+```bash
+docker compose -f docker-compose-public-restart.yml --profile backend --profile frontend --profile extra-pod up --wait
+```
+
+The commands above start all services in a Docker environment and and wait until they are all ready (listening).
 This takes some time to complete.
 
-Optional: if you're interested in what's happening while the previous command executes, you may open a new terminal window and in it, execute:
+Optional: if you're interested in what's happening while these commands execute, you may open a new terminal window and in it, execute:
 
 ```bash
 docker compose --profile backend --profile frontend --profile extra-pod logs -f
@@ -276,57 +285,6 @@ For more info, see [The modified Generic Data Viewer](./doc/DEVELOPERS.md#the-mo
 ```bash
 docker compose --profile backend --profile frontend --profile extra-pod down -t 0
 ```
-
-### The private Docker based setup case
-
-#### Prerequisites for the private Docker based setup case
-
-* a bash shell
-* Node >= 18 with npm
-* [yarn classic](https://classic.yarnpkg.com/lang/en/)
-* Java version 17, e.g. 17.0.10-tem
-* [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)
-  * Depending on your platform, different installation guides are available from the above links.
-* [OpenSSL](https://www.openssl.org/source/)
-  * Installation depends on your platform. On Linux (especially on Ubuntu 20.04 LTS), if it is not yet installed, execute `sudo apt install openssl`.
-
-#### Environment variables for the private Docker based setup case
-
-Execute this command in any terminal window, before executing any other command in the remainder of this section:
-
-```bash
-source env-docker-private
-```
-
-#### Building the private Docker based setup case
-
-Before continuing, make sure the result of a previous build isn't running. See [Stopping the private Docker based setup case](#stopping-the-private-docker-based-setup-case).
-
-Next, execute:
-
-```bash
-# install node dependencies
-yarn install
-# all further build actions
-./scripts/setup/finalize-setup.sh
-```
-
-#### Running the private Docker based setup case
-
-Same instructions as for [Running the public Docker based setup case](#running-the-public-docker-based-setup-case).
-
-#### Using the private Docker based setup case
-
-Using the private Docker based setup case is similar to [using the final setup](#using-the-final-setup), with the following differences:
-
-* Navigate to <http://localhost:5800>, to reach the integrated Firefox container, which has access to the resources in the Docker network.
-* Let the integrated Firefox browser trust our self-made Certificate Authority: follow the instructions in the [Setup section of FIREFOX_CONTAINER.md](doc/FIREFOX_CONTAINER.md#setup).
-* All further navigation is to be done from the integrated Firefox browser, with URLs identical to the those in the final setup.
-* The queries for the additional use cases won't work here, because there is no solution to add pod contents for these use cases.
-
-#### Stopping the private Docker based setup case
-
-Same instructions as for [Stopping the public Docker based setup case](#stopping-the-public-docker-based-setup-case).
 
 ## Other documentation resources
 

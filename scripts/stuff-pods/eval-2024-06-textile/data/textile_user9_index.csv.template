@@ -1,7 +1,7 @@
 ﻿included_source
-${OD_CSS11_BASE_URL}/textile_user1/ceon/data
-${OD_CSS11_BASE_URL}/textile_user2/ceon/data
-${OD_CSS11_BASE_URL}/textile_user3/ceon/data
-${OD_CSS11_BASE_URL}/textile_user4/ceon/data
-${OD_CSS11_BASE_URL}/textile_user6/ceon/data
-${OD_CSS11_BASE_URL}/textile_user7/ceon/data
+${OD_CSS11_BASE_URL}/textile_user1/ceon/index
+${OD_CSS11_BASE_URL}/textile_user2/ceon/index
+${OD_CSS11_BASE_URL}/textile_user3/ceon/index
+${OD_CSS11_BASE_URL}/textile_user4/ceon/index
+${OD_CSS11_BASE_URL}/textile_user6/ceon/index
+${OD_CSS11_BASE_URL}/textile_user7/ceon/index

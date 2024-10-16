@@ -4,7 +4,6 @@
   * [Implementation details](#implementation-details)
     * [env-localhost](#env-localhost)
     * [env-docker-public](#env-docker-public)
-    * [env-docker-private](#env-docker-private)
 * [Templates](#templates)
   * [Making a new template](#making-a-new-template)
   * [Updating templates](#updating-templates)
@@ -40,19 +39,10 @@ Below some detailed info.
 
 #### env-docker-public
 
-* Service names are set to something else but their domain name, e.g. `css1` for css1, whose baseURL is `https://css1.onto-deside.ilabt.imec.be/`.
+* Service names are set to a short name, e.g. `css1` for css1, whose baseURL is `https://onto-deside.ilabt.imec.be/css1/`.
 * Services can be addressed (and can address each other) using their defined baseURL, from everywhere, **if and only if** an external proxy takes care of this.
 * External webclients can work as well.
-* Services do not have their own SSL certificates, external certificates must be provided (Let's encrypt is your friend).
-
-#### env-docker-private
-
-* Service names are set to their domain name, e.g. `css1.onto-deside.ilabt.imec.be` for css1, whose baseURL is defined as `https://css1.onto-deside.ilabt.imec.be/`.
-* Services can be addressed (and can address each other) using their defined baseURL, inside the default Docker compose network, because it resolves the addresses using the service names.
-* Services cannot be addressed from the host using their defined baseURL.
-* As a consequence, a Firefox container in the Docker compose network is needed to address webclients and CSS's.
-* As a second consequence, webclients must be located in a container inside the Docker compose network.
-* Services have their own self-signed SSL certificates, based on a custom certification authority, to be trusted by the Firefox container.
+* Services do not have their own SSL certificates, external certificates must be provided.
 
 ## Templates
 
@@ -61,8 +51,8 @@ Unfortunately, not all the tools that read these files can read environment vari
 
 To overcome this:
 
-* files to be adapted have a companion file, whose name ends with the `.template` suffix (e.g. `docker-compose-private.yml.template`, `common/css-01.json.template`);
-* the adapted files are now git-ignored (e.g. `docker-compose-private.yml`, `common/css-01.json`);
+* files to be adapted have a companion file, whose name ends with the `.template` suffix (e.g. `docker-compose-public.yml.template`, `common/css-01.json.template`);
+* the adapted files are now git-ignored (e.g. `docker-compose-public.yml`, `common/css-01.json`);
 * the template files use the environment variables, set by sourcing the appropriate environment variables file;
 * a script is provided to generate new file contents from the templates.
 
@@ -82,7 +72,6 @@ For each new template file:
 ### Updating templates
 
 > Some template files have alternatives for the different environment variables files.
-> An example: `docker-compose-private.yml.template`, `docker-compose-public.yml.template`.
 > When updating one of these files, update the other ones too.
 
 ## Webclient Docker image
@@ -101,7 +90,7 @@ When following the setup instructions in the [main README](../README.md):
 
 * a clone of that repo is made in `../applied-in-architecture-generic-data-viewer-react-admin`;
 * a known good version of it is checked out; the known good version is selected with the `-b` option of the `git clone` command in [this script](../scripts/viewer/build-webclient-contents.sh).
-* the software is built;
+* the software is built in the clone's `main` directory;
 * the contents of its `src/config.json` file and its `public` directory are replaced with alternatives found in our directory `actors/viewer/setup`;
 * static files are generated from this modified contents and brought back to our directory `actors/viewer/html`, ready for further packaging into a service.
 
@@ -114,8 +103,8 @@ but also in the case of *env-docker-public*.
 The latter case is interesting to make experiments with data available in the public pods.
 Proceed as follows:
 
-* go to `../applied-in-architecture-generic-data-viewer-react-admin`;
-* modify the configuration file and modifiy/add queries in the public directory;
+* go to `../applied-in-architecture-generic-data-viewer-react-admin/main`;
+* modify the configuration file and modify/add queries in the public directory;
 * test by running `npm run dev` and browsing the localhost port this command reports.
 
 ## Direct access to the file system of a CSS
