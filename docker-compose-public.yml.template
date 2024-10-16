@@ -2,7 +2,7 @@ services:
   ##############################################################################
   # PODS
   ##############################################################################
-  ${OD_CSS0_SERVICE_NAME}:
+  ${OD_CSS0}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -30,13 +30,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS0_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS0_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS1_SERVICE_NAME}:
+  ${OD_CSS1}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -64,13 +64,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS1_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS1_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS2_SERVICE_NAME}:
+  ${OD_CSS2}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -98,13 +98,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS2_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS2_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS3_SERVICE_NAME}:
+  ${OD_CSS3}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -132,13 +132,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS3_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS3_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS4_SERVICE_NAME}:
+  ${OD_CSS4}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -166,13 +166,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS4_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS4_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS5_SERVICE_NAME}:
+  ${OD_CSS5}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -200,13 +200,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS5_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS5_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS6_SERVICE_NAME}:
+  ${OD_CSS6}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -234,13 +234,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS6_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS6_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS7_SERVICE_NAME}:
+  ${OD_CSS7}:
     profiles: [ "pod", "backend" ]
     image: solidproject/community-server:7
     ports:
@@ -268,7 +268,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS7_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS7_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
@@ -277,7 +277,7 @@ services:
   ##############################################################################
   # FRONTEND
   ##############################################################################
-  ${OD_WEBCLIENT_SERVICE_NAME}:
+  ${OD_WEBCLIENT}:
     profiles: [ "frontend" ]
     # not image comunica/jquery-widget.js:latest because of https://github.com/comunica/jQuery-Widget.js/issues/152
     image: ${OD_WEBCLIENT_IMAGE}
@@ -287,7 +287,7 @@ services:
       - ./actors/webclient/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./scripts/comunica/outputs/queries.json:/usr/share/nginx/html/queries.json
 
-  ${OD_VIEWER_SERVICE_NAME}:
+  ${OD_VIEWER}:
     profiles: [ "frontend" ]
     image: nginx:1.25.2-alpine
     ports:
@@ -299,7 +299,7 @@ services:
   ##############################################################################
   # TESTING
   ##############################################################################
-  ${OD_CSS_TEST_SERVICE_NAME}:
+  ${OD_CSS_TEST}:
     profiles: [ "test" ]
     image: solidproject/community-server:7
     ports:
@@ -327,7 +327,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS_TEST_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS_TEST_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
@@ -336,7 +336,7 @@ services:
   ##############################################################################
   # EXTRA PODS
   ##############################################################################
-  ${OD_CSS8_SERVICE_NAME}:
+  ${OD_CSS8}:
     profiles: [ "extra-pod" ]
     image: solidproject/community-server:7
     ports:
@@ -364,13 +364,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS8_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS8_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS9_SERVICE_NAME}:
+  ${OD_CSS9}:
     profiles: [ "extra-pod" ]
     image: solidproject/community-server:7
     ports:
@@ -398,13 +398,13 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS9_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS9_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
       start_period: 30s
 
-  ${OD_CSS10_SERVICE_NAME}:
+  ${OD_CSS10}:
     profiles: [ "extra-pod" ]
     image: solidproject/community-server:7
     ports:
@@ -432,7 +432,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS10_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS10_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65
@@ -442,7 +442,7 @@ services:
   # MORE EXTRA PODS FOR EVALUATION SCENARIOS (ALL PODS IN ONE CSS)
   ##############################################################################
 
-  ${OD_CSS11_SERVICE_NAME}:
+  ${OD_CSS11}:
     profiles: [ "extra-pod" ]
     image: solidproject/community-server:7
     ports:
@@ -470,7 +470,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     healthcheck:
-      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS11_BASE_URL} --spider; then touch healthy.flag; else false; fi"
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS11_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65

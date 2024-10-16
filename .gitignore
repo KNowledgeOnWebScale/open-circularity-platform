@@ -12,9 +12,7 @@
 # files created from a template
 /actors/*/nginx/conf.d/default.conf
 /actors/viewer/setup/src/config.json
-/common/css-01.json
 /docker-compose*.yml
-/scripts/cert/main.sh
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
 /scripts/stuff-pods/extended-textile/mapping.yml
