@@ -7,7 +7,7 @@
     "css:config/http/handler/default.json",
     "css:config/http/middleware/default.json",
     "css:config/http/notifications/all.json",
-    "${OD_CSS_SERVER_FACTORY}",
+    "css:config/http/server-factory/http.json",
     "css:config/http/static/default.json",
     "css:config/identity/access/public.json",
     "css:config/identity/email/default.json",

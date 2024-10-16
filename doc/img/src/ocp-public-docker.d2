@@ -3,7 +3,7 @@ title: |md
 | { near: top-center }
 
 vars: {
-  pool_address: "193.190.127.161"
+  private_address: "x.y.z.t"
 }
 
 browser: "User's Browser" {
@@ -15,12 +15,12 @@ www: "WWW" {
   shape: cloud
 }
 
-VW1: "imec Virtual Wall" {
-  public_ip: Pool address example: ${pool_address} {
+VW1: "imec ilabt environment" {
+  public_ip: "Reverse proxy\nfrom public address to private address ${private_address}\nand from https to http" {
     icon: https://icons.terrastruct.com/azure%2FNetworking%20Service%20Color%2FPublic%20IP%20Addresses.svg
     shape: image
   }
-  node: "Ubuntu 20.04 LTS" {
+  node: "Ubuntu 24.04 LTS" {
     icon: https://icons.terrastruct.com/essentials%2F112-server.svg
     nginx: "" {
       icon: https://icons.terrastruct.com/dev%2Fnginx.svg
@@ -53,10 +53,10 @@ VW1: "imec Virtual Wall" {
     nginx -> docker
   }
 
-  public_ip -> node.nginx: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
+  public_ip -> node.nginx: "http://${private_address}/css0\nhttp://${private_address}/cssi\nhttp://${private_address}/cssn\nhttp://${private_address}/viewer\nhttp://${private_address}/webclient"
 }
 
 browser -- www
-www -> VW1.public_ip: "https://*.onto-deside.ilabt.imec.be"
-VW1.node.docker -> www: "https://css0.onto-deside.ilabt.imec.be\nhttps://cssi.onto-deside.ilabt.imec.be\nhttps://cssn.onto-deside.ilabt.imec.be\nhttps://viewer.onto-deside.ilabt.imec.be\nhttps://webclient.onto-deside.ilabt.imec.be"
+www -> VW1.public_ip: "https://onto-deside.ilabt.imec.be/*"
+VW1.node.docker -> www: "https://onto-deside.ilabt.imec.be/css0\nhttps://onto-deside.ilabt.imec.be/cssi\nhttps://onto-deside.ilabt.imec.be/cssn\nhttps://onto-deside.ilabt.imec.be/viewer\nhttps://onto-deside.ilabt.imec.be/webclient"
 

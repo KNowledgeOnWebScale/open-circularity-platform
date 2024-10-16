@@ -1,17 +1,41 @@
 #!/bin/bash
-# Execute this script to start the CSS's in this project (no Docker)
+# Execute this script to (re)start the CSS's in this project (no Docker)
 # Assumptions:
 #   - this script is run from the repository root
+#   - in case of option -r: this script and stop-csss.sh ran before, and the ./local-run dir hasn't been deleted
+# Parameters:
+#    - -r|--restart: restart the CSS's with existing pod contents
 
 set -euo pipefail
+
+# Initialize RESTART variable
+RESTART=false
+
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -r|--restart) RESTART=true ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+# Display the status of RESTART variable
+if [ "$RESTART" = true ]; then
+    echo "Restarting CSS's with existing pod contents"
+else
+    echo "Starting CSS's with all new pod contents"
+fi
 
 # Source the environment variables for localhost
 source env-localhost
 
 # this directory should be git-ignored
 LOCAL_RUN_DIR=./local-run
-rm -rf $LOCAL_RUN_DIR
-mkdir -p $LOCAL_RUN_DIR
+if [ "$RESTART" = false ]; then
+  rm -rf $LOCAL_RUN_DIR
+  mkdir -p $LOCAL_RUN_DIR
+fi
 
 WAITING_COUNT=1
 
@@ -22,11 +46,13 @@ function start_css {
     local CSSX="$1"
 
     local ROOT_DIR=$LOCAL_RUN_DIR/data/$CSSX
-    rm -rf $ROOT_DIR
-    mkdir -p $ROOT_DIR
     local CONFIG_DIR=$LOCAL_RUN_DIR/config/$CSSX
-    rm -rf $CONFIG_DIR
-    mkdir -p $CONFIG_DIR
+    if [ "$RESTART" = false ]; then
+      rm -rf $ROOT_DIR
+      mkdir -p $ROOT_DIR
+      rm -rf $CONFIG_DIR
+      mkdir -p $CONFIG_DIR
+    fi
 
     # Name of specific files
     local CONFIG_FILE=$CONFIG_DIR/$CSSX.json
@@ -89,10 +115,15 @@ function start_css {
             ;;
     esac
 
-    # Make a specific config file
-    sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g" ./common/css-01.json > $CONFIG_FILE
-    # And... go as a background process
-    nohup npx community-solid-server --port $PORT --config $CONFIG_FILE --seedConfig ./actors/$ACTOR/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
+    if [ "$RESTART" = false ]; then
+      # Make a specific config file
+      sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g" ./common/css-01.json > $CONFIG_FILE
+      # And... go as a background process
+      nohup npx community-solid-server --port $PORT --config $CONFIG_FILE --seedConfig ./actors/$ACTOR/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
+    else  
+      # Reuse existing specific config file and go as a background process (no --seedConfig option)
+      nohup npx community-solid-server --port $PORT --config $CONFIG_FILE                                                    --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
+    fi
     # Remember the port and not the process id, because killing based on the process id does not work for node child processes
     echo "$PORT" > $PID_FILE
     echo "Started $CSSX on port $PORT."
