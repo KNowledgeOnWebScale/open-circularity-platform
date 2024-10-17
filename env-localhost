@@ -14,9 +14,6 @@ export OD_DOLLAR="$"
 # Filename of last sourced environment variables file
 export OD_ENVVARS_FILE=env-localhost
 
-# Location of the parent directory of the CSS's mirrored root directories
-export OD_MIRRORED_ROOTS_PARENT_DIR=$(pwd)/local-run/data 
-
 # --- for all services XXX below:
 # OD_XXX:                the short name (used in other variables)
 # OD_XXX_HOST_PORT:      the port used in the host network
