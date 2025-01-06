@@ -6,9 +6,13 @@
 set -euo pipefail
 
 echo "➡️ Using the RML mapper in the Docker container to upload pod contents for the evaluation use case June 2024: electronics."
-for f in data/*.yml
-do
-  MAPPING=${f#data/}
-  echo " ⏭️ Handling ${MAPPING}"
-  docker run --rm $EXTRA_DOCKER_ARGS -v $(pwd)/data:/runtime/data $DOCKER_IMAGE_NAME -m ${MAPPING}
+for d in user* ; do
+  cd $d
+  echo " ⏭️ Working in $d"
+  for f in data/*.yml ; do
+    MAPPING=${f#data/}
+    echo " ⏭️ Handling ${MAPPING}"
+    docker run --rm $EXTRA_DOCKER_ARGS -v $(pwd)/data:/runtime/data $DOCKER_IMAGE_NAME -m ${MAPPING}
+    cd ..
+  done
 done

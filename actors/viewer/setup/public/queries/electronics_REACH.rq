@@ -8,7 +8,7 @@ PREFIX ns3: <http://w3id.org/CEON/ontology/resourceODP/>
 PREFIX ns4: <http://w3id.org/CEON/ontology/provenance/>
 PREFIX ns5: <http://w3id.org/CEON/ontology/product/>
 
-SELECT ?ComponentLabel ?REACHCertificate_url
+SELECT DISTINCT ?ComponentLabel ?REACHCertificate_url
 WHERE {
         ?product rdfs:label $ProductLabel ;
         ns5:hasProductComponent ?component .

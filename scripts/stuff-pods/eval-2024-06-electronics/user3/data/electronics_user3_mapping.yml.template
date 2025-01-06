@@ -11,56 +11,49 @@ prefixes:
   ns3: http://w3id.org/CEON/ontology/resourceODP/
   ns4: http://w3id.org/CEON/ontology/provenance/
   ns5: http://w3id.org/CEON/ontology/product/
+  formats: http://www.w3.org/ns/formats/
+  rmli: https://w3id.org/imec/rml/
+  LT: http://knows.base/logical_target/
+  T: http://knows.base/target/
+  rml: http://semweb.mmlab.be/ns/rml#
+  rmlt: http://semweb.mmlab.be/ns/rml-target#
 
 base: http://knows.com/base/
 sources:
   data:
-    access: ./electronics_user5_data.csv
+    access: ./electronics_user3_data.csv
     referenceFormulation: csv
     delimiter: ','
     'null':
       - ''
   acl:
-    access: ./electronics_user5_acl.csv
+    access: ./electronics_user3_acl.csv
+    referenceFormulation: csv
+  empty:
+    access: ./empty.csv
     referenceFormulation: csv
 targets:
-  products:
-    type: solid_resource
-    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/products
-    serialization: jsonld
-    authentication: auth
-  products_acl:
-    type: solid_acl
-    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/products
-    serialization: turtle
-    authentication: auth
   ceon_index:
     type: solid_resource
-    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/index
+    access: ${OD_CSS11_BASE_URL}/electronics_user3/ceon/index
     serialization: jsonld
-    authentication: auth
-  ceon_index_acl:
-    type: solid_acl
-    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/index
-    serialization: turtle
     authentication: auth
 authentications:
   auth:
-    username: electronics_user5@example.com
-    password: electronics_user5
+    username: electronics_user3@example.com
+    password: electronics_user3
     oidc_issuer: ${OD_CSS11_BASE_URL}/
-    web_id: ${OD_CSS11_BASE_URL}/electronics_user5/profile/card#me
+    web_id: ${OD_CSS11_BASE_URL}/electronics_user3/profile/card#me
 mappings:
   products:
     sources: data
     s:
       value: ex:product-$(Part Number code)
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ rdfs:label, $(Product name) ]
       - [ a, elec:ElectronicsProduct~iri ]
       - [ elec:hasCompliance, ex:$(Part Number code)-REACHCompliance~iri ]
-      #      - [ex:hasREACHCertificate, $(REACH)~iri]
       - p: ns3:hasMatter
         o: elec:RareEarthMaterial~iri
         condition:
@@ -72,14 +65,14 @@ mappings:
     sources: data
     s:
       value: ex:manufacturer-$(Company code)
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ elec:siteCountry, $(Site Country) ]
   producing:
     sources: data
     s:
       value: ex:producing-$(Company code)-$(Part Number code)
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ ns1:participantRole, http://w3id.org/CEON/ontology/actor/manufacturer~iri ]
       - [ ns1:participatingActor, ex:manufacturer-$(Company code)~iri ]
@@ -88,7 +81,7 @@ mappings:
     sources: data
     s:
       value: ex:$(Part Number code)-REACHCompliance
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ a, [ ns5:Compliance~iri, ns4:Statement~iri ] ]
       - [ ns5:complianceWith, elec:REACH~iri ]
@@ -98,7 +91,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-PreCustomerRecycledContent
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ a, [ elec:PreCustomerRecycledContent~iri, ns4:Statement~iri ] ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
@@ -108,7 +101,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-PostCustomerRecycledContent
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ a, [ elec:PostCustomerRecycledContent~iri, ns4:Statement~iri ] ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
@@ -118,54 +111,72 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-NeodymiumComposition
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ a, [ ns5:MatterComposition~iri, ns4:Statement~iri ] ]
       - [ ns5:associatedWithMatter, ex:Nd~iri ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
       - [ ns2:numericValue, $(Neodymium), xsd:decimal ]
       - [ ns5:compositionOf,ex:product-$(Part Number code)~iri ]
-
   dysprosium:
     sources: data
     s:
       value: ex:product-$(Part Number code)-DysprosiumComposition
-      targets: products
+      targets: LT:product-$(Part Number code)
     po:
       - [ a, [ ns5:MatterComposition~iri, ns4:Statement~iri ] ]
       - [ ns5:associatedWithMatter, ex:Dy~iri ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
       - [ ns2:numericValue, $(Dysprosium), xsd:decimal ]
       - [ ns5:compositionOf,ex:product-$(Part Number code)~iri ]
-  acl:
+  read_acl:
     sources: acl
     s:
-      targets: products_acl
+      value: ex:electronics_user3_$(access_to)_read_acl
+      targets: LT:$(access_to)-acl
     po:
       - [ a, acl:Authorization~iri ]
-      - [ acl:agent, $(agent_webid)~iri ]
-      - [ acl:accessTo, $(access_to)~iri ]
-      - p: acl:mode
+      - [ acl:mode, acl:Read~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user3/ceon/$(access_to)~iri ]
+      - p: acl:agent
         o:
-          value: acl:Read
+          value: $(agent_webid)
           type: iri
         condition:
           function: idlab-fn:equal
           parameters:
             - [ grel:valueParameter, $(read_access) ]
             - [ grel:valueParameter2, Yes ]
-      - p: acl:mode
+  write_acl:
+    sources: acl
+    s:
+      value: ex:electronics_user3_$(access_to)_write_acl
+      targets: LT:$(access_to)-acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:mode, acl:Write~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user3/ceon/$(access_to)~iri ]
+      - p: acl:agent
         o:
-          value: acl:Write
+          value: $(agent_webid)
           type: iri
         condition:
           function: idlab-fn:equal
           parameters:
             - [ grel:valueParameter, $(write_access) ]
             - [ grel:valueParameter2, Yes ]
-      - p: acl:mode
+  control_acl:
+    sources: acl
+    s:
+      value: ex:electronics_user3_$(access_to)_control_acl
+      targets: LT:$(access_to)-acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:mode, acl:Control~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user3/ceon/$(access_to)~iri ]
+      - p: acl:agent
         o:
-          value: acl:Control
+          value: $(agent_webid)
           type: iri
         condition:
           function: idlab-fn:equal
@@ -173,47 +184,64 @@ mappings:
             - [ grel:valueParameter, $(control_access) ]
             - [ grel:valueParameter2, Yes ]
   index:
-    sources: acl
+    sources: data
     s:
       value: ex:index
       targets: ceon_index
     po:
       - p: rdfs:seeAlso
         o:
-          value: $(access_to)
+          value: ${OD_CSS11_BASE_URL}/electronics_user3/ceon/product-$(Part Number code)
           type: iri
-  index_acl:
+  # reusable authentication
+  UserAuthentication:
+    sources: empty
+    s:
+      value: ex:authentication_user3
+      targets: ThisMapping
+    po:
+      - [ a, idsa:UserAuthentication~iri ]
+      - [ idsa:authUsername, electronics_user3@example.com ]
+      - [ idsa:authPassword, electronics_user3 ]
+      - [ solid:oidcIssuer, ${OD_CSS11_BASE_URL}/~iri ]
+      - [ rmli:webId, ${OD_CSS11_BASE_URL}/electronics_user3/profile/card#me~iri ]
+  # dynamic targets
+  LT-product:
+    sources: data
+    s:
+      value: LT:product-$(Part Number code)
+      targets: ThisMapping
+    po:
+      - [a, rml:LogicalTarget~iri]
+      - [rmlt:serialization, formats:JSON-LD~iri]
+      - [rmlt:target, T:product-$(Part Number code)~iri]
+  T-product:
+    sources: data
+    s:
+      value: T:product-$(Part Number code)
+      targets: ThisMapping
+    po:
+      - [a, rmlt:Target~iri]
+      - [a, rmli:SolidResourceTarget~iri]
+      - [rmli:resource, ${OD_CSS11_BASE_URL}/electronics_user3/ceon/product-$(Part Number code)]
+      - [idsa:userAuthentication, ex:authentication_user3~iri]
+  LT-acl:
     sources: acl
     s:
-      targets: ceon_index_acl
+      value: LT:$(access_to)-acl
+      targets: ThisMapping
     po:
-      - [ a, acl:Authorization~iri ]
-      - [ acl:agent, $(agent_webid)~iri ]
-      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user5/ceon/index~iri ]
-      - p: acl:mode
-        o:
-          value: acl:Read
-          type: iri
-        condition:
-          function: idlab-fn:equal
-          parameters:
-            - [ grel:valueParameter, $(read_access) ]
-            - [ grel:valueParameter2, Yes ]
-      - p: acl:mode
-        o:
-          value: acl:Write
-          type: iri
-        condition:
-          function: idlab-fn:equal
-          parameters:
-            - [ grel:valueParameter, $(write_access) ]
-            - [ grel:valueParameter2, Yes ]
-      - p: acl:mode
-        o:
-          value: acl:Control
-          type: iri
-        condition:
-          function: idlab-fn:equal
-          parameters:
-            - [ grel:valueParameter, $(control_access) ]
-            - [ grel:valueParameter2, Yes ]
+      - [a, rml:LogicalTarget~iri]
+      - [rmlt:serialization, formats:Turtle~iri]
+      - p: rmlt:target
+        o: T:$(access_to)-acl~iri
+  T-acl:
+    sources: acl
+    s:
+      value: T:$(access_to)-acl
+      targets: ThisMapping
+    po:
+      - [a, rmlt:Target~iri]
+      - [a, rmli:SolidAclTarget~iri]
+      - [rmli:forResource, ${OD_CSS11_BASE_URL}/electronics_user3/ceon/$(access_to)~iri]
+      - [idsa:userAuthentication, ex:authentication_user3~iri]

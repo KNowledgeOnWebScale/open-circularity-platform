@@ -213,7 +213,7 @@ mappings:
   acl:
     sources: acl
     s:
-      targets: ceon_data_acl
+      targets: ceon_data_acl     #value: ex:$(agent_label)-acl~iria_acl
     po:
       - [ a, acl:Authorization~iri ]
       - [ acl:agent, $(agent_webid)~iri ]

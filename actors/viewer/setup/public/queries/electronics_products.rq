@@ -8,7 +8,7 @@ PREFIX ns3: <http://w3id.org/CEON/ontology/resourceODP/>
 PREFIX ns4: <http://w3id.org/CEON/ontology/provenance/>
 PREFIX ns5: <http://w3id.org/CEON/ontology/product/>
 
-SELECT ?ProductLabel ?SiteCountry ?REACHCertificate_url (BOUND(?RareEarthMaterial) as ?containsRareEarthMaterial) ?NeodymiumPercentage ?DysprosiumPercentage
+SELECT DISTINCT ?product ?ProductLabel ?SiteCountry ?REACHCertificate_url (BOUND(?RareEarthMaterial) as ?containsRareEarthMaterial) ?NeodymiumPercentage ?DysprosiumPercentage
 ?PreConsumerRecycledMaterialPercentage ?PostConsumerRecycledMaterialPercentage
 WHERE {
   ?product a elec:ElectronicsProduct ;
