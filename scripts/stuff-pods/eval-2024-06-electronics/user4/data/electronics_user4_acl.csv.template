@@ -1,0 +1,5 @@
+﻿access_to,agent_webid,read_access,write_access,control_access
+product-VTE0953,${OD_CSS11_BASE_URL}/electronics_user4/profile/card#me,Yes,Yes,Yes
+product-VTE0953,${OD_CSS11_BASE_URL}/electronics_user6/profile/card#me,Yes,No,No
+index,${OD_CSS11_BASE_URL}/electronics_user4/profile/card#me,Yes,Yes,Yes
+index,${OD_CSS11_BASE_URL}/electronics_user6/profile/card#me,Yes,No,No

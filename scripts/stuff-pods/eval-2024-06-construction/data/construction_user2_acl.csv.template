@@ -1,5 +1,5 @@
-﻿access_to,agent_webid,read_access,write_access,control_access
-${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user2/profile/card#me,Yes,Yes,Yes
-${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user3/profile/card#me,Yes,No,No
-${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user4/profile/card#me,Yes,No,No
-${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user5/profile/card#me,Yes,No,No
+﻿access_to,agent_webid,read_access,write_access,control_access,agent_label
+${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user2/profile/card#me,Yes,Yes,Yes,construction_user2
+${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user3/profile/card#me,Yes,No,No,construction_user3
+${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user4/profile/card#me,Yes,No,No,construction_user4
+${OD_CSS11_BASE_URL}/construction_user2/ceon/data,${OD_CSS11_BASE_URL}/construction_user5/profile/card#me,Yes,No,No,construction_user5
