@@ -8,7 +8,7 @@
 
 grep -lr 'onto-deside.ilabt.imec.be/' . | while read f
 do
-  if (git ls-files --error-unmatch $f >> /dev/null) ; then
+  if (git ls-files --error-unmatch $f >> /dev/null 2>&1) ; then
     echo "File $f is added to git; skipping!"
   elif [[ -f $f.template ]] ; then
     echo "File $f.template already exists; skipping!"
