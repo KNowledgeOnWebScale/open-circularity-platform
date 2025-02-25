@@ -2,7 +2,7 @@ prefixes:
   acl: http://www.w3.org/ns/auth/acl#
   solid: http://www.w3.org/ns/solid/terms#
   idsa: https://w3id.org/idsa/core/
-  idlab-fn: http://example.com/idlab/function/
+  idlab-fn: https://w3id.org/imec/idlab/function#
   grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
   textile: http://w3id.org/CEON/demo/textile/
   dcterms: http://purl.org/dc/terms/
@@ -38,31 +38,35 @@ sources:
     referenceFormulation: csv
 targets:
   ceon_data:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS11_BASE_URL}/construction_user3/ceon/data
     serialization: jsonld
     authentication: auth
   ceon_data_acl:
-    type: solid_acl
+    type: linkedhttprequest
+    rel: acl
     access: ${OD_CSS11_BASE_URL}/construction_user3/ceon/data
     serialization: turtle
     authentication: auth
   ceon_index:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS11_BASE_URL}/construction_user3/ceon/index
     serialization: jsonld
     authentication: auth
   ceon_index_acl:
-    type: solid_acl
+    type: linkedhttprequest
+    rel: acl
     access: ${OD_CSS11_BASE_URL}/construction_user3/ceon/index
     serialization: turtle
     authentication: auth
 authentications:
   auth:
-    username: construction_user3@example.com
+    type: cssclientcredentials
+    email: construction_user3@example.com
     password: construction_user3
-    oidc_issuer: ${OD_CSS11_BASE_URL}/
-    web_id: ${OD_CSS11_BASE_URL}/construction_user3/profile/card#me
+    oidcIssuer: ${OD_CSS11_BASE_URL}/
+    webId: ${OD_CSS11_BASE_URL}/construction_user3/profile/card#me
+    index: ${OD_CSS11_BASE_URL}/construction_user3/ceon/index
 mappings:
   company:
     sources: company

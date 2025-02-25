@@ -4,31 +4,17 @@
 #   - this script is run from the repository root
 #   - this script is located in reporoot/scripts/stuff-pods
 #   - the Solid servers in scope are up and running
-#
-# See also https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/docker-demo
 
 set -euo pipefail
 
 # absolute dir of script
 MY_DIR=$(pwd)/scripts/stuff-pods
 
-DOCKER_IMAGE_NAME=demo
-DOCKER_IMAGE_NAME_COMPRESSED=demo.tar.gz
-DOCKER_IMAGE_DOWNLOAD_LINK=https://cloud.ilabt.imec.be/index.php/s/8ZRmNkknQH7oEc5/download/${DOCKER_IMAGE_NAME_COMPRESSED}
+DOCKER_IMAGE_NAME=rmlio/solid-ocp-transformer:v0.1.0
 
 echo "👉 Adding extra pod contents."
 pushd ${MY_DIR} > /dev/null
 echo $(pwd)
-
-if [[ -e "${DOCKER_IMAGE_NAME_COMPRESSED}" ]] ; then
-  echo "➡️ Reusing existing ${DOCKER_IMAGE_NAME_COMPRESSED}"
-else
-  echo "➡️ Downloading ${DOCKER_IMAGE_NAME_COMPRESSED}"
-  wget ${DOCKER_IMAGE_DOWNLOAD_LINK}
-fi
-
-echo "➡️ Loading ${DOCKER_IMAGE_NAME} image into Docker"
-gunzip -c ${DOCKER_IMAGE_NAME_COMPRESSED} | docker load
 
 if [[ "$OD_ENVVARS_FILE" == "env-localhost" ]] ; then
   # the only way to reach pods at http://localhost from the a Docker container is to use the Docker host network...

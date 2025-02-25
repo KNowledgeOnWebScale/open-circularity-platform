@@ -2,7 +2,7 @@ prefixes:
   acl: http://www.w3.org/ns/auth/acl#
   solid: http://www.w3.org/ns/solid/terms#
   idsa: https://w3id.org/idsa/core/
-  idlab-fn: http://example.com/idlab/function/
+  idlab-fn: https://w3id.org/imec/idlab/function#
   grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
   ex: http://example.com/
   elec: http://w3id.org/CEON/demo/electronics/
@@ -21,35 +21,51 @@ prefixes:
 base: http://knows.com/base/
 sources:
   data:
-    access: ./electronics_user4_data.csv
+    access: ./electronics_user5_data.csv
     referenceFormulation: csv
     delimiter: ','
     'null':
       - ''
   acl:
-    access: ./electronics_user4_acl.csv
+    access: ./electronics_user5_acl.csv
     referenceFormulation: csv
   empty:
     access: ./empty.csv
     referenceFormulation: csv
 targets:
   ceon_index:
-    type: solid_resource
-    access: ${OD_CSS11_BASE_URL}/electronics_user4/ceon/index
+    type: directhttprequest
+    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/index
     serialization: jsonld
     authentication: auth
+# dynamic targets
+  product:
+    source: data
+    type: directhttprequest
+    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/product-$(Part Number code)
+    authentication: auth
+    serialization: jsonld
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+    serialization: jsonld
 authentications:
   auth:
-    username: electronics_user4@example.com
-    password: electronics_user4
-    oidc_issuer: ${OD_CSS11_BASE_URL}/
-    web_id: ${OD_CSS11_BASE_URL}/electronics_user4/profile/card#me
+    type: cssclientcredentials
+    email: electronics_user5@example.com
+    password: electronics_user5
+    oidcIssuer: ${OD_CSS11_BASE_URL}/
+    webId: ${OD_CSS11_BASE_URL}/electronics_user5/profile/card#me
+    index: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/index
 mappings:
   products:
     sources: data
     s:
       value: ex:product-$(Part Number code)
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ rdfs:label, $(Product name) ]
       - [ a, elec:ElectronicsProduct~iri ]
@@ -65,14 +81,14 @@ mappings:
     sources: data
     s:
       value: ex:manufacturer-$(Company code)
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ elec:siteCountry, $(Site Country) ]
   producing:
     sources: data
     s:
       value: ex:producing-$(Company code)-$(Part Number code)
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ ns1:participantRole, http://w3id.org/CEON/ontology/actor/manufacturer~iri ]
       - [ ns1:participatingActor, ex:manufacturer-$(Company code)~iri ]
@@ -81,7 +97,7 @@ mappings:
     sources: data
     s:
       value: ex:$(Part Number code)-REACHCompliance
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ a, [ ns5:Compliance~iri, ns4:Statement~iri ] ]
       - [ ns5:complianceWith, elec:REACH~iri ]
@@ -91,7 +107,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-PreCustomerRecycledContent
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ a, [ elec:PreCustomerRecycledContent~iri, ns4:Statement~iri ] ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
@@ -101,7 +117,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-PostCustomerRecycledContent
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ a, [ elec:PostCustomerRecycledContent~iri, ns4:Statement~iri ] ]
       - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
@@ -111,7 +127,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-NeodymiumComposition
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ a, [ ns5:MatterComposition~iri, ns4:Statement~iri ] ]
       - [ ns5:associatedWithMatter, ex:Nd~iri ]
@@ -122,7 +138,7 @@ mappings:
     sources: data
     s:
       value: ex:product-$(Part Number code)-DysprosiumComposition
-      targets: LT:product-$(Part Number code)
+      targets: product
     po:
       - [ a, [ ns5:MatterComposition~iri, ns4:Statement~iri ] ]
       - [ ns5:associatedWithMatter, ex:Dy~iri ]
@@ -132,12 +148,12 @@ mappings:
   read_acl:
     sources: acl
     s:
-      value: ex:electronics_user4_$(access_to)_read_acl
-      targets: LT:$(access_to)-acl
+      value: ex:electronics_user5_$(access_to)_read_acl
+      targets: acl
     po:
       - [ a, acl:Authorization~iri ]
       - [ acl:mode, acl:Read~iri ]
-      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user4/ceon/$(access_to)~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user5/ceon/$(access_to)~iri ]
       - p: acl:agent
         o:
           value: $(agent_webid)
@@ -150,12 +166,12 @@ mappings:
   write_acl:
     sources: acl
     s:
-      value: ex:electronics_user4_$(access_to)_write_acl
-      targets: LT:$(access_to)-acl
+      value: ex:electronics_user5_$(access_to)_write_acl
+      targets: acl
     po:
       - [ a, acl:Authorization~iri ]
       - [ acl:mode, acl:Write~iri ]
-      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user4/ceon/$(access_to)~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user5/ceon/$(access_to)~iri ]
       - p: acl:agent
         o:
           value: $(agent_webid)
@@ -168,12 +184,12 @@ mappings:
   control_acl:
     sources: acl
     s:
-      value: ex:electronics_user4_$(access_to)_control_acl
-      targets: LT:$(access_to)-acl
+      value: ex:electronics_user5_$(access_to)_control_acl
+      targets: acl
     po:
       - [ a, acl:Authorization~iri ]
       - [ acl:mode, acl:Control~iri ]
-      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user4/ceon/$(access_to)~iri ]
+      - [ acl:accessTo, ${OD_CSS11_BASE_URL}/electronics_user5/ceon/$(access_to)~iri ]
       - p: acl:agent
         o:
           value: $(agent_webid)
@@ -191,57 +207,6 @@ mappings:
     po:
       - p: rdfs:seeAlso
         o:
-          value: ${OD_CSS11_BASE_URL}/electronics_user4/ceon/product-$(Part Number code)
+          value: ${OD_CSS11_BASE_URL}/electronics_user5/ceon/product-$(Part Number code)
           type: iri
-  # reusable authentication
-  UserAuthentication:
-    sources: empty
-    s:
-      value: ex:authentication_user4
-      targets: ThisMapping
-    po:
-      - [ a, idsa:UserAuthentication~iri ]
-      - [ idsa:authUsername, electronics_user4@example.com ]
-      - [ idsa:authPassword, electronics_user4 ]
-      - [ solid:oidcIssuer, ${OD_CSS11_BASE_URL}/~iri ]
-      - [ rmli:webId, ${OD_CSS11_BASE_URL}/electronics_user4/profile/card#me~iri ]
-  # dynamic targets
-  LT-product:
-    sources: data
-    s:
-      value: LT:product-$(Part Number code)
-      targets: ThisMapping
-    po:
-      - [a, rml:LogicalTarget~iri]
-      - [rmlt:serialization, formats:JSON-LD~iri]
-      - [rmlt:target, T:product-$(Part Number code)~iri]
-  T-product:
-    sources: data
-    s:
-      value: T:product-$(Part Number code)
-      targets: ThisMapping
-    po:
-      - [a, rmlt:Target~iri]
-      - [a, rmli:SolidResourceTarget~iri]
-      - [rmli:resource, ${OD_CSS11_BASE_URL}/electronics_user4/ceon/product-$(Part Number code)]
-      - [idsa:userAuthentication, ex:authentication_user4~iri]
-  LT-acl:
-    sources: acl
-    s:
-      value: LT:$(access_to)-acl
-      targets: ThisMapping
-    po:
-      - [a, rml:LogicalTarget~iri]
-      - [rmlt:serialization, formats:Turtle~iri]
-      - p: rmlt:target
-        o: T:$(access_to)-acl~iri
-  T-acl:
-    sources: acl
-    s:
-      value: T:$(access_to)-acl
-      targets: ThisMapping
-    po:
-      - [a, rmlt:Target~iri]
-      - [a, rmli:SolidAclTarget~iri]
-      - [rmli:forResource, ${OD_CSS11_BASE_URL}/electronics_user4/ceon/$(access_to)~iri]
-      - [idsa:userAuthentication, ex:authentication_user4~iri]
+

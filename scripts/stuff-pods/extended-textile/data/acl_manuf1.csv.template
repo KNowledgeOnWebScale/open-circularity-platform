@@ -12,3 +12,9 @@ manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Write,${OD_CSS5_BA
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,recycler,Read,${OD_CSS8_BASE_URL}/recycler/profile/card#me
 manuf1_3,${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3,sorter,Read,${OD_CSS10_BASE_URL}/sorter/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,manufacturer,Control,${OD_CSS5_BASE_URL}/texon/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,manufacturer,Write,${OD_CSS5_BASE_URL}/texon/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,manufacturer,Read,${OD_CSS5_BASE_URL}/texon/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,brand,Read,${OD_CSS7_BASE_URL}/brand/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,recycler,Read,${OD_CSS8_BASE_URL}/recycler/profile/card#me
+index,${OD_CSS5_BASE_URL}/texon/ceon/index,sorter,Read,${OD_CSS10_BASE_URL}/sorter/profile/card#me
