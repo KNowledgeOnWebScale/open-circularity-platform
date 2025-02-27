@@ -20,7 +20,7 @@
 /scripts/stuff-pods/eval-2024-06-construction/**/*_mapping.yml
 /scripts/stuff-pods/eval-2024-06-construction/**/*_acl.csv
 /scripts/stuff-pods/eval-2024-06-construction/**/*_index.csv
-/scripts/stuff-pods/eval-2024-06-electronics/**/*_mapping.yml
+/scripts/stuff-pods/eval-2024-06-electronics/**/mapping.yml
 /scripts/stuff-pods/eval-2024-06-electronics/**/*_acl.csv
 /scripts/stuff-pods/eval-2024-06-electronics/**/*_index.csv
 /scripts/stuff-pods/eval-2024-06-textile/**/*_mapping.yml
@@ -34,3 +34,4 @@
 /docker-run
 /scripts/stuff-pods/demo.tar.gz
 /scripts/stuff-pods/**/mapping.rml.ttl
+/scripts/stuff-pods/**/status.json

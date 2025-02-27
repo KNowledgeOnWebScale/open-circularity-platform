@@ -6,7 +6,7 @@ prefixes:
   pcds: http://example.com/pcds/
   ceonproduct: http://w3id.org/CEON/ontology/product/
   ceonactor: http://w3id.org/CEON/ontology/actorODP/
-  idlab-fn: http://example.com/idlab/function/
+  idlab-fn: https://w3id.org/imec/idlab/function#
   grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
   acl: http://www.w3.org/ns/auth/acl#
   foaf: http://xmlns.com/foaf/0.1/
@@ -35,35 +35,45 @@ sources:
     access: ./data/acl_manuf1.csv
     referenceFormulation: csv
     delimiter: ','
-  source3:
-    access: ./data/empty_source.csv
-    referenceFormulation: csv
   source4:
     access: ./data/translation_table.csv
     referenceFormulation: csv
     delimiter: ;
 targets:
   manuf1_1:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_1
     serialization: jsonld
     authentication: auth_manufacturer
   manuf1_2:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_2
     serialization: jsonld
     authentication: auth_manufacturer
   manuf1_3:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS5_BASE_URL}/texon/ceon/manuf1_3
+    serialization: jsonld
+    authentication: auth_manufacturer
+  acl:
+    source: source2
+    type: linkedhttprequest
+    access: ${OD_CSS5_BASE_URL}/texon/ceon/$(target_id)
+    rel: acl
+    authentication: auth_manufacturer
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS5_BASE_URL}/texon/ceon/index
     serialization: jsonld
     authentication: auth_manufacturer
 authentications:
   auth_manufacturer:
-    username: info@texon.com
+    type: cssclientcredentials
+    email: info@texon.com
     password: texon123
-    oidc_issuer: ${OD_CSS5_BASE_URL}/
-    web_id: ${OD_CSS5_BASE_URL}/texon/profile/card#me
+    oidcIssuer: ${OD_CSS5_BASE_URL}/
+    webId: ${OD_CSS5_BASE_URL}/texon/profile/card#me
+    index: ${OD_CSS5_BASE_URL}/texon/ceon/index
 mappings:
   TextileProduct_0:
     sources: source1
@@ -1281,51 +1291,11 @@ mappings:
         value: textile:above99Perc
         type: iri
         targets: manuf1_3
-  LogicalTarget_0:
-    sources: source2
-    s:
-      value: LT:$(target_id)_acl
-      targets: ThisMapping
-    po:
-    - p: a
-      o:
-        value: rml:LogicalTarget
-        type: iri
-    - p: rmlt:serialization
-      o:
-        value: formats:Turtle
-        type: iri
-    - p: rmlt:target
-      o:
-        value: T:$(target_id)_acl
-        type: iri
-  Target_0:
-    sources: source2
-    s:
-      value: T:$(target_id)_acl
-      targets: ThisMapping
-    po:
-    - p: a
-      o:
-        value: rmlt:Target
-        type: iri
-    - p: a
-      o:
-        value: rmli:SolidAclTarget
-        type: iri
-    - p: rmli:forResource
-      o:
-        value: $(access_to)
-        type: iri
-    - p: idsa:userAuthentication
-      o:
-        value: ex:authentication/manufacturer
-        type: iri
   Authorization_0:
     sources: source2
     s:
       value: ex:$(agent)_acl
-      targets: LT:$(target_id)_acl
+      targets: acl
     po:
     - p: a
       o:
@@ -1343,27 +1313,17 @@ mappings:
       o:
         value: $(access_to)
         type: iri
-  UserAuthentication_0:
-    sources: source3
+  index:
+    sources: source2
     s:
-      value: ex:authentication/manufacturer
-      targets: ThisMapping
+      targets: ceon_index
     po:
-    - p: a
-      o:
-        value: idsa:UserAuthentication
-        type: iri
-    - p: idsa:authUsername
-      o:
-        value: info@texon.com
-    - p: idsa:authPassword
-      o:
-        value: texon123
-    - p: solid:oidcIssuer
-      o:
-        value: ${OD_CSS5_BASE_URL}/
-        type: iri
-    - p: rmli:webId
-      o:
-        value: ${OD_CSS5_BASE_URL}/texon/profile/card#me
-        type: iri
+      - p: rdfs:seeAlso
+        o:
+          value: $(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(target_id) ]
+            - [ grel:valueParameter2, index ]

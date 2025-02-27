@@ -54,6 +54,8 @@ We consider the permissions **read** (r), **write** (w) and **control** (c).
 | user6:ceon/data  |       | r     |       |       |       | rwc   |       |       |       |
 | user9:ceon/index | r     | r     | r     | r     | r     |       |       |       | rwc   |
 
+### Evaluation use cases June 2024: Electronics
+
 (All users `electronics_userX` abbreviated to `userX`)
 
 | Pod:Resource               | user1 | user2 | user3 | user4 | user5 | user6 | user7 | user8 | user9 |

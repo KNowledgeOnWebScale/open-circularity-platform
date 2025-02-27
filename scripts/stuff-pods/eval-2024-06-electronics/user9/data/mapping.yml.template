@@ -6,7 +6,7 @@ prefixes:
   ex: http://example.com/
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   foaf: http://xmlns.com/foaf/0.1/
-  idlab-fn: http://example.com/idlab/function/
+  idlab-fn: https://w3id.org/imec/idlab/function#
 base: http://knows.com/base/
 sources:
   index_source:
@@ -17,21 +17,24 @@ sources:
     referenceFormulation: csv
 targets:
   index_target:
-    type: solid_resource
+    type: directhttprequest
     access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon/index
     serialization: jsonld
     authentication: auth
   index_acl_target:
-    type: solid_acl
+    type: linkedhttprequest
+    rel: acl
     access: ${OD_CSS11_BASE_URL}/electronics_user9/ceon/index
     serialization: ntriples
     authentication: auth
 authentications:
   auth:
-    username: electronics_user9@example.com
+    type: cssclientcredentials
+    email: electronics_user9@example.com
     password: electronics_user9
-    oidc_issuer: ${OD_CSS11_BASE_URL}/
-    web_id: ${OD_CSS11_BASE_URL}/electronics_user9/profile/card#me
+    oidcIssuer: ${OD_CSS11_BASE_URL}/
+    webId: ${OD_CSS11_BASE_URL}/electronics_user9/profile/card#me
+    index: ${OD_CSS11_BASE_URL}/electronics_user9/ceon/index
 mappings:
   index:
     sources: index_source

@@ -27,7 +27,7 @@
     "@comunica/web-client-generator": "^1.7.1",
     "@rmlio/rmlmapper-java-wrapper": "^2.0.3",
     "@rmlio/yarrrml-parser": "1.5.1",
-    "@solid/community-server": "^7.0.0",
+    "@solid/community-server": "^7.1.6",
     "fs-extra": "^11.1.0"
   }
 }

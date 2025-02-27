@@ -7,12 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-02-27
+
+### Changed
+
+- Synchronized evaluation use cases to to state on 2025-02-25  (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
+- Solid Community Servers configured to use local copies of verifiable credentials related context files (internal [issue#63](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/63)).
+
 ## [0.3.2] - 2025-01-06
 
 ### Changed
 
 - Upgraded the viewer to [its v1.5.0](https://github.com/SolidLabResearch/generic-data-viewer-react-admin/tree/v1.5.0).
-- Synchronized evaluation usecases to latest state  (internal [issue#61](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/61)).
+- Synchronized evaluation use cases to state on 2025-01-06 (internal [issue#61](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/61)).
 
 ## [0.3.1] - 2024-10-16
 
@@ -153,4 +160,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.3.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.0
 [0.3.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.1
 [0.3.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.2
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v0.3.2...HEAD
+[1.0.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.0
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v1.0.0...HEAD

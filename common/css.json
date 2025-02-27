@@ -43,6 +43,20 @@
         "@type": "TemplatedResourcesGenerator",
         "templateFolder": "/config/templatepod"
       }
+    },
+    {
+      "@id": "urn:solid-server:default:RdfToQuadConverter",
+      "@type": "RdfToQuadConverter",
+      "contexts": [
+        {
+          "RdfToQuadConverter:_contexts_key": "https://www.w3.org/2018/credentials/v1",
+          "RdfToQuadConverter:_contexts_value": "/custom-css/context-files/credentials-v1.jsonld"
+        },
+        {
+          "RdfToQuadConverter:_contexts_key": "https://w3id.org/security/data-integrity/v2",
+          "RdfToQuadConverter:_contexts_value": "/custom-css/context-files/data-integrity-v2.jsonld"
+        }
+      ]
     }
   ]
 }
