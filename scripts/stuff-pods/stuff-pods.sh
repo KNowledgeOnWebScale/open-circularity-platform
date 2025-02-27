@@ -10,7 +10,7 @@ set -euo pipefail
 # absolute dir of script
 MY_DIR=$(pwd)/scripts/stuff-pods
 
-DOCKER_IMAGE_NAME=rmlio/solid-ocp-transformer:v0.1.0
+DOCKER_IMAGE_NAME=rmlio/solid-ocp-transformer:v0.2.1
 
 echo "👉 Adding extra pod contents."
 pushd ${MY_DIR} > /dev/null

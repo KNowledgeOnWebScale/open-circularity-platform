@@ -21,6 +21,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS0}
@@ -54,6 +57,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS1}
@@ -87,6 +93,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS2}
@@ -120,6 +129,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS3}
@@ -153,6 +165,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS4}
@@ -186,6 +201,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS5}
@@ -219,6 +237,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS6}
@@ -252,6 +273,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS7}
@@ -310,6 +334,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS_TEST}
@@ -346,6 +373,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS8}
@@ -379,6 +409,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS9}
@@ -412,6 +445,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS10}
@@ -449,6 +485,9 @@ services:
       - type: bind
         source: ./common/css-01.json
         target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
       # these lines allow an easy view on what's in the pod's data  
       - type: bind
         source: ./docker-run/data/${OD_CSS11}

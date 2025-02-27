@@ -117,7 +117,7 @@ function start_css {
 
     if [ "$RESTART" = false ]; then
       # Make a specific config file
-      sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g" ./common/css-01.json > $CONFIG_FILE
+      sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g ; s|/custom-css|./custom-css|g" ./common/css-01.json > $CONFIG_FILE
       # And... go as a background process
       nohup npx community-solid-server --port $PORT --config $CONFIG_FILE --seedConfig ./actors/$ACTOR/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
     else  
