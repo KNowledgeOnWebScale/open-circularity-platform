@@ -1,0 +1,6 @@
+﻿step,previousStep,nextStep,assemblyMethod,disassemblyMethod,output
+01_AddUpperComponents,,02_AddHeelCounter,stiched_regular,cut_stitches,UpperComponents
+02_AddHeelCounter,02_AddHeelCounter,03_AddMidsole,glued,manual,ShapedShoeWithHeelCounterAndToePuff
+03_AddMidsole,03_AddMidsole,04_AddOutsole,glued,solvent_separation,ShapedShoeWithMidsole
+04_AddOutsole,04_AddOutsole,05_AddLaces,heat_bonding,heat_separation,ShapedShoeWithMidsoleAndOutsole
+05_AddLaces,05_AddLaces,,machine,manual,shoebrand123-P001

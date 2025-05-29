@@ -1,0 +1,11 @@
+﻿id,access_to,read_access,write_access,control_access,agent_webid,agent_class
+1,data,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/supplier123/profile/card#me,
+2,data,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent
+3,index,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/supplier123/profile/card#me,
+4,index,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent
+5,batch_batch1_customer_lindner,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/supplier123/profile/card#me,
+6,batch_batch2_customer_user1,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/supplier123/profile/card#me,
+7,batch_batch1_customer_user1,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/supplier123/profile/card#me,
+8,batch_batch1_customer_lindner,Yes,No,No,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+9,batch_batch2_customer_user1,Yes,No,No,${OD_CSS12_BASE_URL}/user1/profile/card#me,
+10,batch_batch1_customer_user1,Yes,No,No,${OD_CSS12_BASE_URL}/user1/profile/card#me,

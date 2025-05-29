@@ -1,0 +1,18 @@
+﻿element_id,element_label,space_id,element_installation_date,element_removal_date,element_area_M2,element_model,component_of,available_as_supply_date
+building_1-storey_3-room_1-nortec,installed Nortec,building_1_storey_3_room_1,2005-03-14,,50,Nortec_1234,,
+building_1-storey_3-room_1-nortec-tiles,installed Nortec tiles,building_1_storey_3_room_1,2005-03-14,,50,tile_1234,building_1-storey_3-room_1-nortec,2025-04-20
+building_1-storey_3-room_1-nortec-pedestals,installed Nortec pedestals,building_1_storey_3_room_1,2005-03-14,,50,pedestal_1234,building_1-storey_3-room_1-nortec,2025-04-20
+building_1-storey_3-room_2-nortec-acoustic,installed Nortec acoustic,building_1_storey_3_room_2,2005-03-17,,60,Nortec_1235,,
+building_1-storey_3-room_2-nortec-acoustic-tiles,installed Nortec acoustic tiles,building_1_storey_3_room_2,2005-03-17,,60,tile_1234,building_1-storey_3-room_2-nortec-acoustic,2025-04-20
+building_1-storey_3-room_2-nortec-acoustic-pedestals,installed Nortec acoustic pedestals,building_1_storey_3_room_2,2005-03-17,,60,pedestal_1234,building_1-storey_3-room_2-nortec-acoustic,2025-04-20
+building_1-storey_3-room_2-nortec-acoustic-layers,installed Nortec acoustic layers,building_1_storey_3_room_2,2005-03-14,,60,acoustic_layer_1235,building_1-storey_3-room_2-nortec-acoustic,2025-04-20
+building_1_321,installed doors 321,building_1_storey_1_room_1,2005-04-20,,,,,2025-04-20
+building_1_322,installed doors 322,building_1_storey_5_room_1,2005-04-20,,,,,2025-04-20
+building_1_334,installed doors 334,building_1_storey_1_room_1,2005-04-20,,,,,2025-04-20
+building_1_335,installed doors 335,building_1_storey_2_room_1,2005-04-20,,,,,2025-04-20
+building_1_482,installed doors 482,building_1_storey_0_room_HSGII,2005-04-20,,,,,2025-04-20
+building_1_483,installed doors 483,building_1_storey_0_room_HSGII,2005-04-20,,,,,2025-04-20
+building_1_715,installed doors 715,building_1_storey_4_room_Treppenhaus ,2005-04-20,,,,,2025-04-20
+building_1_805,installed doors 805,building_1_storey_0_room_Etage,2005-04-20,,,,,2025-04-20
+building_1-storey_3-room_2-sound-system,installed sound system ,building_1_storey_3_room_2,2005-05-20,2025-03-10,,84010fa502136d41911cde0569f9b708640c76344da78acd04868f338841ec56,,
+building_1-storey_3-room_2-repaired-sound-system,installed repaired sound system ,building_1_storey_3_room_2,2025-03-15,,,fb4c1ed5b4f57f5aa61c6ea61802b3729fa34f049960d2e3b6e26c83941e5b5a,,

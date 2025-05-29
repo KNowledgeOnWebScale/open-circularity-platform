@@ -18,7 +18,11 @@
     "dt:mapping:pipeline": "yarn run dt:mapping:parse && yarn run dt:mapping:execute",
     "dt:mapping:pipeline:dev": "nodemon -w ./scripts/ -e js  --exec yarn run dt:mapping:all",
     "setup": "yarn run dt:setup",
-    "comunica:queries:setup": "node ./scripts/comunica/setup.js"
+    "comunica:queries:setup": "node ./scripts/comunica/setup.js",
+    "test:viewer": "cypress run -b chrome",
+    "test:viewer:interactive": "cypress open -b chrome --e2e",
+    "test:localviewer": "cypress run -b chrome -c baseUrl=http://localhost:5173/",
+    "test:localviewer:interactive": "cypress open -b chrome --e2e -c baseUrl=http://localhost:5173/"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
@@ -28,6 +32,7 @@
     "@rmlio/rmlmapper-java-wrapper": "^2.0.3",
     "@rmlio/yarrrml-parser": "1.5.1",
     "@solid/community-server": "^7.1.6",
+    "cypress": "13",
     "fs-extra": "^11.1.0"
   }
 }

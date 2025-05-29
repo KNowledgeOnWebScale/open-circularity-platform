@@ -1,0 +1,446 @@
+[
+  {
+    "id": 321 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": 90 ,
+    "y": 214 ,
+    "z": 13 ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/be1a3331-63fb-43a5-b455-f977524f6f0d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092839Z&X-Amz-Expires=60&X-Amz-Signature=eef8fd4771b1b3d39a03664610715976de218d59d4ab07cc4ca18c09cd10b89b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/be1a3331-63fb-43a5-b455-f977524f6f0d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/b2f00bc8-49a1-4811-8e78-6a1a8e54303a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092841Z&X-Amz-Expires=60&X-Amz-Signature=3df2abece0de64d572b86b7c0e5b59199f65aff150fb0ccc977d64041ae2380d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/b2f00bc8-49a1-4811-8e78-6a1a8e54303a.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/6339ff1d-f79f-4924-93fa-e577880d60d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092847Z&X-Amz-Expires=60&X-Amz-Signature=3961f9512a9cf0ce5e01a714ead63958315e2b07de7c147d75b8b4aa47a1c242&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/6339ff1d-f79f-4924-93fa-e577880d60d4.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/3806a436-a32a-47dd-82fc-4667088fd692.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092850Z&X-Amz-Expires=60&X-Amz-Signature=3553b8990b3f328ccb9f26d563f7395b37ca732c71da244590b92b66b704c56b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/3806a436-a32a-47dd-82fc-4667088fd692.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/2d5306e2-e134-4baa-a8e8-f497ccc5dafc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092853Z&X-Amz-Expires=60&X-Amz-Signature=f0f913027ffe134d1a29b89949d7b8f71fda116713e8312372a6e0d169a0f7f0&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/2d5306e2-e134-4baa-a8e8-f497ccc5dafc.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/528039d8-01f1-49aa-b625-74139553e207.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092854Z&X-Amz-Expires=60&X-Amz-Signature=fe72c4dd89dbb18848efc47300744061beedd24159309d55118d017ac45f677d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/528039d8-01f1-49aa-b625-74139553e207.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/a0ba912b-50b5-4eb1-8b9e-847c62a237fb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092856Z&X-Amz-Expires=60&X-Amz-Signature=4ab4ef2e292eb32f32c2db9d0e4ce2031be1a0f90ac310d80a6731eea53ffdf0&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/a0ba912b-50b5-4eb1-8b9e-847c62a237fb.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 1 ,
+    "room_name": "1" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Einfache Aufbereitung notwendig (z.B. Anstrich)"
+  } ,
+  {
+    "id": 322 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": 90 ,
+    "y": 214 ,
+    "z": 13 ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/be1a3331-63fb-43a5-b455-f977524f6f0d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092839Z&X-Amz-Expires=60&X-Amz-Signature=eef8fd4771b1b3d39a03664610715976de218d59d4ab07cc4ca18c09cd10b89b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/be1a3331-63fb-43a5-b455-f977524f6f0d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/b2f00bc8-49a1-4811-8e78-6a1a8e54303a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092841Z&X-Amz-Expires=60&X-Amz-Signature=3df2abece0de64d572b86b7c0e5b59199f65aff150fb0ccc977d64041ae2380d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/b2f00bc8-49a1-4811-8e78-6a1a8e54303a.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/6339ff1d-f79f-4924-93fa-e577880d60d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092847Z&X-Amz-Expires=60&X-Amz-Signature=3961f9512a9cf0ce5e01a714ead63958315e2b07de7c147d75b8b4aa47a1c242&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/6339ff1d-f79f-4924-93fa-e577880d60d4.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/3806a436-a32a-47dd-82fc-4667088fd692.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092850Z&X-Amz-Expires=60&X-Amz-Signature=3553b8990b3f328ccb9f26d563f7395b37ca732c71da244590b92b66b704c56b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/3806a436-a32a-47dd-82fc-4667088fd692.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/2d5306e2-e134-4baa-a8e8-f497ccc5dafc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092853Z&X-Amz-Expires=60&X-Amz-Signature=f0f913027ffe134d1a29b89949d7b8f71fda116713e8312372a6e0d169a0f7f0&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/2d5306e2-e134-4baa-a8e8-f497ccc5dafc.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/528039d8-01f1-49aa-b625-74139553e207.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092854Z&X-Amz-Expires=60&X-Amz-Signature=fe72c4dd89dbb18848efc47300744061beedd24159309d55118d017ac45f677d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/528039d8-01f1-49aa-b625-74139553e207.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/321/a0ba912b-50b5-4eb1-8b9e-847c62a237fb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T092856Z&X-Amz-Expires=60&X-Amz-Signature=4ab4ef2e292eb32f32c2db9d0e4ce2031be1a0f90ac310d80a6731eea53ffdf0&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/321/a0ba912b-50b5-4eb1-8b9e-847c62a237fb.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 5 ,
+    "room_name": "1" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Einfache Aufbereitung notwendig (z.B. Anstrich)"
+  } ,
+  {
+    "id": 334 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": 96 ,
+    "y": 204 ,
+    "z": 17.5 ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/755a6b91-1485-4ead-a0e4-f12341cb60dd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101251Z&X-Amz-Expires=60&X-Amz-Signature=2122b5eecd504cbfadad331d302fd3f489d89f5e03c99e79cb259d167cc619e1&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/755a6b91-1485-4ead-a0e4-f12341cb60dd.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/bd98c90b-98a9-4782-b2cc-4eabbc191f21.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101306Z&X-Amz-Expires=60&X-Amz-Signature=345e9e508a1f5609bcbc77a1f1eaff133aeb5964ceb3b13ce190ed3fb435430f&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/bd98c90b-98a9-4782-b2cc-4eabbc191f21.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/66a7375d-362f-405e-9ed5-57f8a9b5c02d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101310Z&X-Amz-Expires=60&X-Amz-Signature=f89e3400ae8bc09fc446446eedfcc77b1a4c762a5d7918b8a50804770128cc60&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/66a7375d-362f-405e-9ed5-57f8a9b5c02d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/32bb1345-c1df-46a6-9549-dad390430c3d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101314Z&X-Amz-Expires=60&X-Amz-Signature=33e5d01b091f8126e7dcdf535789c218ea5be0359acc9359efe180d0cf6f4552&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/32bb1345-c1df-46a6-9549-dad390430c3d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/94bb10fa-d187-497e-be63-aa60ad9de83d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101318Z&X-Amz-Expires=60&X-Amz-Signature=71a9d207396698b2235469d134065ebd4cb75fa8e625513f1140a27b80fb98b0&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/94bb10fa-d187-497e-be63-aa60ad9de83d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/83f46285-dcf3-46b1-8c15-e4d5a0a75b0c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101332Z&X-Amz-Expires=60&X-Amz-Signature=e927c6a4136f38e7f72f1db7e20bf74b33f18cdaf8861957dd0c271d08cfbb40&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/83f46285-dcf3-46b1-8c15-e4d5a0a75b0c.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/a77ecc30-f48b-46df-a04a-5a587f1502e6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101337Z&X-Amz-Expires=60&X-Amz-Signature=29d60b9ea398a75cbe7d4f469cb8a2e15c47f045526053ce6647a58603122ae5&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/a77ecc30-f48b-46df-a04a-5a587f1502e6.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/83b51910-9d04-4b50-9295-57d21a02b7e9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101345Z&X-Amz-Expires=60&X-Amz-Signature=21633235ed43339db6a3d7fcc139271f876c15eac0e37c7c78fa126cb48bcddb&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/83b51910-9d04-4b50-9295-57d21a02b7e9.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/581b7950-a1a1-4aa2-9abb-0bea0916167b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101352Z&X-Amz-Expires=60&X-Amz-Signature=7afac06f0fc18535be337baeed91456b5cb07f8e863cd248bc4e7560d8514be3&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/581b7950-a1a1-4aa2-9abb-0bea0916167b.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/14fdfb0b-a873-421f-8c97-94220fb964b7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101403Z&X-Amz-Expires=60&X-Amz-Signature=c2fcd99a693081ec0f49069978277580e5bd18e36bdea2aedc1ec5d242cdb9ad&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/14fdfb0b-a873-421f-8c97-94220fb964b7.png" ,
+        "fileType": "binary"
+      } ,
+      null ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/334/45a7c04d-268a-4ab6-b194-e64a03885f81.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T101533Z&X-Amz-Expires=60&X-Amz-Signature=9c04d68e7b46276b4faf4aa1857a32f7d206014e00a98b51b82327dddb323d72&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/334/45a7c04d-268a-4ab6-b194-e64a03885f81.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 3 ,
+    "building_level": 1 ,
+    "room_name": "1" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Zeitintensive Aufbereitung notwendig (z.B. Ersatzteile)"
+  } ,
+  {
+    "id": 335 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": 96 ,
+    "y": 217 ,
+    "z": 14 ,
+    "dimension_unit": "cm" ,
+    "description": "1x DIN/R (Türgriffe sind nicht identisch auf beiden Seiten)\n1x DIN/L\n" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/335/055035f3-9d77-4c74-b544-4767c9e9bf5d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T105230Z&X-Amz-Expires=60&X-Amz-Signature=3f11aabde00a20a757cde2320773592b46c00573bdde3537ed24c0611bbf7a86&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/335/055035f3-9d77-4c74-b544-4767c9e9bf5d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/335/1d33bfb3-5170-4e44-a079-ce9a36d63331.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T105233Z&X-Amz-Expires=60&X-Amz-Signature=55c8acb21a17cc9f6e0b393085c2f370f51c139f522d3d6c01bd47cd4aa6356b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/335/1d33bfb3-5170-4e44-a079-ce9a36d63331.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/335/6e5ffd0b-b1fc-4352-8207-e1e8f60ad3ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T105235Z&X-Amz-Expires=60&X-Amz-Signature=7f8c26225a7d7b66fd1ff73c982d1b635c35b18fba0fe923dd9f4343d0772e8b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/335/6e5ffd0b-b1fc-4352-8207-e1e8f60ad3ca.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/335/727b68d3-4324-47df-9fa1-d6818443cafa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T105237Z&X-Amz-Expires=60&X-Amz-Signature=aad54e3fc2f302a48162a9140a864ad2d88c2c5cf49267e862ebbf63c07abde4&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/335/727b68d3-4324-47df-9fa1-d6818443cafa.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/108/335/26d94e6e-2e7c-4e7d-a260-94f28348e9e1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20240925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240925T105238Z&X-Amz-Expires=60&X-Amz-Signature=02f50bfa8dbea221e264adcfee75783f12669a94723837084d650de65488acde&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/108/335/26d94e6e-2e7c-4e7d-a260-94f28348e9e1.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 2 ,
+    "room_name": "1" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Einfache Aufbereitung notwendig (z.B. Anstrich)"
+  } ,
+  {
+    "id": 482 ,
+    "name": "Hörmann" ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": null ,
+    "y": null ,
+    "z": null ,
+    "dimension_unit": "cm" ,
+    "description": "Brandschutztür mit aktueller Übereinstimmungserklärung" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/76f5ede5-e710-4343-87f2-81e5b4c3ace0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081758Z&X-Amz-Expires=60&X-Amz-Signature=a0b698ac52dd63b968d618042561a1f5afb22c0d5f81ae224f999b771c8ff727&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/76f5ede5-e710-4343-87f2-81e5b4c3ace0.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/ff262fca-cfae-481e-af7f-197cce20f46d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081808Z&X-Amz-Expires=60&X-Amz-Signature=f840fc7c22e4c052f084571327f6425b2d4fc83a493eb25e5978f2367a7307bd&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/ff262fca-cfae-481e-af7f-197cce20f46d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/9ed2bd83-a2f1-4bb5-83ea-2171772211ee.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081816Z&X-Amz-Expires=60&X-Amz-Signature=a601a7fba99a09aa8b25634c5a7dd48ab55cdaa14b90ad0b2f1b71acf59a84b2&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/9ed2bd83-a2f1-4bb5-83ea-2171772211ee.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/1cd23ee0-0115-4ee0-ba95-88beeb3f46b0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081824Z&X-Amz-Expires=60&X-Amz-Signature=87e3f4996824b833babc7dd6b8883dd110e08f68726731d93e3de5b9d7adb652&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/1cd23ee0-0115-4ee0-ba95-88beeb3f46b0.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/be95720d-f75a-478b-bc8a-3386b671d720.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081831Z&X-Amz-Expires=60&X-Amz-Signature=ceae42a2a3c93772c82361ce469d95b418c517e5b3b3f50874936fe989583bf2&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/be95720d-f75a-478b-bc8a-3386b671d720.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/799d0bd4-3675-4bd0-8008-ca9753350e9d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081842Z&X-Amz-Expires=60&X-Amz-Signature=e702334f81cd6fcf325eab4bc38afea792fa2cd3e7e9f7fe1255dff7e5cbf9e7&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/799d0bd4-3675-4bd0-8008-ca9753350e9d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/f8bd1aef-6d58-4695-910b-7859374fc843.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081845Z&X-Amz-Expires=60&X-Amz-Signature=1091e1aaead9072b23f6870ebc9e7e3007aa39b8483f3d09373ca6714c120b1f&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/f8bd1aef-6d58-4695-910b-7859374fc843.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/61e92d17-5f41-46cf-a1d2-4de8483b9655.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081855Z&X-Amz-Expires=60&X-Amz-Signature=9919d7e4c3fab8652615abb9ad4d1fa4dcd98224967a977748fe2dba5947d3ac&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/61e92d17-5f41-46cf-a1d2-4de8483b9655.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/35324f93-6786-46e2-bc5f-badbe18f8a6a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081908Z&X-Amz-Expires=60&X-Amz-Signature=5d6723fb26d73122f57e310f31789d358fc8fdd31e3492982db525cc2a283b7b&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/35324f93-6786-46e2-bc5f-badbe18f8a6a.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/482/ab65bf4e-66da-486b-90a8-b737c5098ddc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T081930Z&X-Amz-Expires=60&X-Amz-Signature=f31628622e11b38c1bc833966f2480e39c832ebbe769b905477fe0df3a04014d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/482/ab65bf4e-66da-486b-90a8-b737c5098ddc.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 0 ,
+    "room_name": "HSGII" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geschraubt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Einfache Aufbereitung notwendig (z.B. Anstrich)"
+  } ,
+  {
+    "id": 483 ,
+    "name": "Hörmann" ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": null ,
+    "y": null ,
+    "z": null ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/d073ea7f-9ddb-47d1-9634-d5e34da41687.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082554Z&X-Amz-Expires=60&X-Amz-Signature=9a35efc143d2b088873b9979ea1246620b1013588a03c070bbfacf018a0840a8&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/d073ea7f-9ddb-47d1-9634-d5e34da41687.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/4481a997-b9e2-4348-82ae-724f4fd2c8c9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082635Z&X-Amz-Expires=60&X-Amz-Signature=a4f4ecb5110d810c7cd3665c2fadcadca7f56900c90bb24363c7e413b13054b2&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/4481a997-b9e2-4348-82ae-724f4fd2c8c9.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/3ee54297-2c9c-49f3-b1c9-654a80d1dd92.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082648Z&X-Amz-Expires=60&X-Amz-Signature=8a7c79ac4a239dd2a5f0d350262183f88f0758b2233f0fa65d4e18cc76289fea&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/3ee54297-2c9c-49f3-b1c9-654a80d1dd92.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/765d4aae-81b9-47b2-95af-db8651e7219d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082657Z&X-Amz-Expires=60&X-Amz-Signature=1c4c449ab5479dea64ed6d12f44df2eb8ea3001f6ba277ea0dffd73624c6fccf&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/765d4aae-81b9-47b2-95af-db8651e7219d.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/d77e8663-7679-4a0a-89c9-360ef20bd9cc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082705Z&X-Amz-Expires=60&X-Amz-Signature=513b7480f3dff6ab5a87b617bfb3b4703232447911862569b9cbb160ffd05d48&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/d77e8663-7679-4a0a-89c9-360ef20bd9cc.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/a9eafc8d-22f5-4dfe-9a26-6420878251fb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082726Z&X-Amz-Expires=60&X-Amz-Signature=23e99acc196dafe39cd4577eed44d4c24c7ad062263a0176a3086d0220bd8a04&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/a9eafc8d-22f5-4dfe-9a26-6420878251fb.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/113/483/e501d503-5b31-4472-8c74-19fff3b62623.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241015%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241015T082741Z&X-Amz-Expires=60&X-Amz-Signature=65022b431c8da0e545aad7e6de96b786828aa8a9bffa047d0ffee73330487b6c&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/113/483/e501d503-5b31-4472-8c74-19fff3b62623.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 3 ,
+    "building_level": 0 ,
+    "room_name": "HSGII" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Einfache Aufbereitung notwendig (z.B. Anstrich)"
+  } ,
+  {
+    "id": 715 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": null ,
+    "y": null ,
+    "z": null ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/8353e55e-2cc4-4295-836b-5cdfff540422.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241030%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241030T085205Z&X-Amz-Expires=60&X-Amz-Signature=fb851e4edad0dae3b5cd74f378904e859e150726826416c09fa6eaad312f0694&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/8353e55e-2cc4-4295-836b-5cdfff540422.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/a9302a64-7a32-46bd-8ddd-eefe5c04d9a4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241030%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241030T085210Z&X-Amz-Expires=60&X-Amz-Signature=c69bff240228767218f2a458eb6c37339ead66fc0a14d0fcc00fc42723f6df91&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/a9302a64-7a32-46bd-8ddd-eefe5c04d9a4.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/72db01a7-2068-49d7-8232-03b3faa208f2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241030%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241030T085211Z&X-Amz-Expires=60&X-Amz-Signature=71e3d94fee590c4ebe19ffda924aa13bfcd8eb30f1a972dbc8c6d7ccfc605744&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/72db01a7-2068-49d7-8232-03b3faa208f2.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/520cfc25-422f-4c08-bf84-e62fc1cf389c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241030%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241030T112247Z&X-Amz-Expires=60&X-Amz-Signature=ce5e8ebc06f57bddbfd6b4378808650c795831272849f284a8bb320481f58847&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/520cfc25-422f-4c08-bf84-e62fc1cf389c.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/4b54de57-3e46-4b47-8aab-89853a1f09fa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241030%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241030T112256Z&X-Amz-Expires=60&X-Amz-Signature=27142438bbacdf8c0897840133bfb79c9abcd1a6cea0151a05a71d803392436c&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/4b54de57-3e46-4b47-8aab-89853a1f09fa.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/715/9a47a72d-e095-4923-96e0-8d6046f1bbfa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241031%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241031T105830Z&X-Amz-Expires=60&X-Amz-Signature=37dc44d0ac3f3f1876c5fa295ca5087a632ebd867061d415e3021f3bbe285f73&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/715/9a47a72d-e095-4923-96e0-8d6046f1bbfa.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 4 ,
+    "room_name": "Treppenhaus " ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Gemörtelt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Zeitintensive Aufbereitung notwendig (z.B. Ersatzteile)"
+  } ,
+  {
+    "id": 805 ,
+    "name": null ,
+    "concular_cat_name": "Innenwandöffnungen" ,
+    "concular_cat_id": "baaf7da1-a52a-45c0-8de5-1cc7322881c9" ,
+    "amount_unit": "PCS" ,
+    "x": null ,
+    "y": null ,
+    "z": null ,
+    "dimension_unit": "cm" ,
+    "description": "" ,
+    "images": [
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/805/71021eb4-5c37-4eb2-87dd-9043849c9969.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241031%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241031T112930Z&X-Amz-Expires=60&X-Amz-Signature=9fd688563c0b13251f00cb38d14aa74580b8e4a9656ccebb27e215ec290655d3&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/805/71021eb4-5c37-4eb2-87dd-9043849c9969.png" ,
+        "fileType": "binary"
+      } ,
+      {
+        "signedUrl": "https://concular-retool-assets.s3.eu-central-1.amazonaws.com/images/144/805/4223d302-c50a-4395-96a7-8ab40cf6cd31.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQU7DU5DRONLFQZ5L%2F20241031%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241031T112933Z&X-Amz-Expires=60&X-Amz-Signature=8f411aa6fb1078f3b9a943b3071b0f9e2c339e7b8550bcf5cb48603f4435a55d&X-Amz-SignedHeaders=host" ,
+        "fileName": "images/144/805/4223d302-c50a-4395-96a7-8ab40cf6cd31.png" ,
+        "fileType": "binary"
+      }
+    ] ,
+    "total_amount": 1 ,
+    "building_level": 0 ,
+    "room_name": "Etage" ,
+    "formatted_unit": "Stück" ,
+    "deconstructability": "Geklebt" ,
+    "preuse": "Aus vorheriger Nutzung" ,
+    "reusability": "Zeitintensive Aufbereitung notwendig (z.B. Ersatzteile)"
+  }
+]

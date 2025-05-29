@@ -1,0 +1,3 @@
+batch_id,batch_label,product_model_id,batch_size,batch_weight_kg,batch_volume_m3,condition,percentage_recycled,available_from_date
+batch1,used shoe soles,outsolemanufacturer123-C002,2500,1500,3,good_condition,100,2025-05-01
+batch2,used shoe laces,lacesmanufacturer123-C004,10000,20,0.5,moderate_condition,100,2025-04-20

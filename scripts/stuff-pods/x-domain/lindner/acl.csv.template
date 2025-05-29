@@ -1,0 +1,15 @@
+﻿id,access_to,read_access,write_access,control_access,agent_webid,agent_class
+1,data,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+2,data,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent
+3,index,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+4,index,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent
+5,batch_building_1-storey_3-room_1-nortec-tiles_customer_buildingowner123,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+6,batch_building_1-storey_3-room_1-nortec-pedestals_customer_buildingowner123,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+8,batch_building_1-storey_3-room_2-nortec-acoustic-tiles_customer_buildingowner123,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+9,batch_building_1-storey_3-room_2-nortec-acoustic-pedestals_customer_buildingowner123,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+10,batch_building_1-storey_3-room_1-nortec-tiles_customer_buildingowner123,Yes,No,No,${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me,
+11,batch_building_1-storey_3-room_1-nortec-pedestals_customer_buildingowner123,Yes,No,No,${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me,
+13,batch_building_1-storey_3-room_2-nortec-acoustic-tiles_customer_buildingowner123,Yes,No,No,${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me,
+14,batch_building_1-storey_3-room_2-nortec-acoustic-pedestals_customer_buildingowner123,Yes,No,No,${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me,
+7,batch_building_1-storey_3-room_2-nortec-acoustic-layers_customer_buildingowner123,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/lindner/profile/card#me,
+12,batch_building_1-storey_3-room_2-nortec-acoustic-layers_customer_buildingowner123,Yes,No,No,${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me,

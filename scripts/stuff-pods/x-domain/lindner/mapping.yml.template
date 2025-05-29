@@ -1,0 +1,312 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+  ceon-statement: http://w3id.org/CEON/ontology/statement/
+
+base: http://knows.com/base/
+sources:
+  products:
+    access: ./lindner_products.csv
+    referenceFormulation: csv
+    delimiter: ','
+    'null':
+      - ''
+  product_composition:
+    access: ./lindner_product_composition.csv
+    referenceFormulation: csv
+  product_matter_composition:
+    access: ./lindner_product_matter_composition.csv
+    referenceFormulation: csv
+  company:
+    access: ./lindner_company.csv
+    referenceFormulation: csv
+  takeback:
+    access: ./lindner_product_takeback.csv
+    referenceFormulation: csv
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/lindner/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/lindner/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/lindner/ceon/index
+    serialization: jsonld
+    authentication: auth
+  takeback_offer:
+    source: takeback
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/lindner/ceon/batch_$(batch_id)_customer_$(customer_id)
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: lindner@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/lindner/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/lindner/ceon/index
+mappings:
+  products:
+    sources: products
+    s:
+      value: ex:$(Product id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-product:Product~iri ]
+      - [ a, construction:$(ProductType)~iri ]
+      - [ rdfs:label, $(Product Name) ]
+      - [ construction:hasProductDescription, $(Product description)]
+      - [ construction:hasProductQuality, ex:$(Product quality)~iri]
+      - p: construction:hasTakeBackProgramFromOriginalManufacturer
+        o:
+          function: idlab-fn:equal
+          parameters:
+          - [ grel:valueParameter, $(Take back program original manufacturer) ]
+          - [ grel:valueParameter2, YES ]
+          datatype: xsd:boolean
+      - [ construction:hasReusePotential, construction:$(Reuse potential)~iri ]
+      - [ construction:hasAccessories, $(Accessories)]
+      - [ construction:hasDimensionalDeviation, ex:$(Product id)-dimensionalDeviation~iri ]
+      - [ construction:hasSystemWeight, ex:$(Product id)-systemWeight~iri ]
+      - [ construction:hasThickness, ex:$(Product id)-thinkness~iri ]
+      - [ construction:hasResistanceToEarth, ex:$(Product id)-resistanceToEarth~iri ]
+      - [ construction:hasDismantlingInstruction, $(Dismantling Instruction)~iri]
+      - [ construction:hasCompliance, ex:$(Product id)-C2C_silver_compliance~iri]
+      - [ ceon-quantity:hasLength, ex:$(Product id)-length~iri ]
+      - [ ceon-quantity:hasWidth, ex:$(Product id)-width~iri ]
+      - [ ceon-quantity:hasHeight, ex:$(Product id)-height~iri ]
+  dimensional_deviation:
+    sources: products
+    s:
+      value: ex:$(Product id)-dimensionalDeviation
+      targets: ceon_data
+    po:
+      - [ ceon-quantity:hasObjectValue, ex:$(Dimensional deviation according to EN 12825) ]
+      - [ qudt:hasQuantityKind, ex:EN_12825~iri ]
+  system_weight:
+    sources: products
+    s:
+      value: ex:$(Product id)-systemWeight
+      targets: ceon_data
+    po:
+    - [ a, [construction:SystemWeight~iri, qudt:QuantityValue~iri ] ]
+    - [ ceon-quantity:numericalMaxValue,  $(System weight max), xsd:double ]
+    - [ ceon-quantity:numericalMinValue,  $(System weight min), xsd:double ]
+    - [ qudt:hasUnit, qudt-unit:KiloGM-PER-M2~iri ]
+  resistance_to_earth:
+    sources: products
+    s:
+      value: ex:$(Product id)-resistanceToEarth
+      targets: ceon_data
+    po:
+    - [ a, [construction:ResistanceToEarth~iri, qudt:QuantityValue~iri ] ]
+    - [ ceon-quantity:numericalMinValue, $(Resistance to earth min), xsd:double ]
+    - [ qudt:hasUnit, qudt-unit:OHM~iri ]
+  thinkness:
+    sources: products
+    s:
+      value: ex:$(Product id)-thinkness
+      targets: ceon_data
+    po:
+      - [ a, [ceon-quantity:Thickness~iri, qudt:QuantityValue~iri ] ]
+      - [ ceon-quantity:numericalMaxValue,  $(Thickness max), xsd:double ]
+      - [ ceon-quantity:numericalMinValue,  $(Thickness min), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  C2C_MH-SIlver_compliance:
+    sources: products
+    s:
+      value: ex:$(Product id)-C2C_silver_compliance
+      targets: ceon_data
+    po:
+      - [ a, [construction:C2CMHSilverCompliance~iri, ceon-statement:Statement~iri]]
+      - [ ceon-product:complianceWith, construction:C2C_MH_Silver~iri ]
+      - [ ceon-product:hasCertificate,  $(C2C_MH_Silver_Certificate)~iri ]
+      - [ ceon-statement:statementAbout, ex:$(Product id)~iri ]
+  product_length:
+    sources: products
+    s:
+      value: ex:$(Product id)-length
+      targets: ceon_data
+    po:
+      - [ a, [ceon-quantity:Length~iri, qudt:QuantityValue~iri ] ]
+      - [ qudt:numericValue, $(Length), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_width:
+    sources: products
+    s:
+      value: ex:$(Product id)-width
+      targets: ceon_data
+    po:
+      - [ a, [ceon-quantity:Width~iri, qudt:QuantityValue~iri ] ]
+      - [ qudt:numericValue, $(Width), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_height:
+    sources: products
+    s:
+      value: ex:$(Product id)-height
+      targets: ceon_data
+    po:
+      - [ a, [ceon-quantity:Height~iri, qudt:QuantityValue~iri ] ]
+      - [ qudt:numericValue, $(Height), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:MilliM~iri ]
+  product_component:
+    sources: product_composition
+    s:
+      value: ex:$(product)
+      targets: ceon_data
+    po:
+      - [ ceon-product:hasProductComponent, ex:$(component)~iri ]
+  product_composition:
+    sources: product_composition
+    s:
+      value: ex:$(product)-prodcomp-$(component)
+      targets: ceon_data
+    po:
+      - [ a, [ceon-product:ProductComposition~iri, ceon-statement:Statement~iri]]
+      - [ ceon-product:associatedWithProductModel, ex:$(component)~iri ]
+      - [ qudt:hasUnit, qudt-unit:PERCENT~iri ]
+      - [ qudt:numericValue, $(percentage), xsd:double ]
+      - [ ceon-product:compositionOf, ex:$(product)~iri ]
+  company:
+    sources: company
+    s:
+      value: ex:$(company_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(company_label) ]
+  manufacturer_relation:
+    sources: products
+    s:
+      value: ex:$(Product id)-$(Manufacturer id)-manufacturer-relation
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:ResourceRelation~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:manufacturer~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(Manufacturer id)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(Product id)~iri ]
+  product_matter:
+    sources: product_matter_composition
+    s:
+      value: ex:$(product_id)-$(matter)-matter_composition
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:MatterComposition~iri, ceon-statement:Statement~iri ] ]
+      - [ ceon-product:associatedWithMatter, ex:$(matter)~iri ]
+      - [ ceon-product:compositionOf, ex:$(product_id)~iri ]
+      - [ qudt:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ qudt:numericValue, $(Mass percentage), xsd:double ]
+  takeback_resource:
+    sources: takeback
+    s:
+      value: ex:$(batch_id)-takeback
+      targets: takeback_offer
+    po:
+      - [ a, ceon-actor:TakingBackResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:buyer~iri ]
+      - p: ceon-actorODP:participatingActor
+        o:
+          - mapping: company
+      - [ ceon-actorODP:participatingResource, ex:$(batch_id)~iri ]
+      - p: ceon-quantity:hasPrice
+        o:
+          - mapping: takeback_price
+  takeback_price:
+    sources: takeback
+    s:
+      value: ex:$(batch_id)-takeback-price
+      targets: takeback_offer
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(takeback_price), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:Euro~iri ]
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/lindner/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/lindner/ceon/$(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(access_to) ]
+            - [ grel:valueParameter2, index ]

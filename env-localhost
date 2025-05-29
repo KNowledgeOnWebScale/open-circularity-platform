@@ -86,8 +86,8 @@ export OD_WEBCLIENT_IMAGE=mvanbrab/jquery-widget.js:v0.0.2.http-localhost-8080
 # The Generic Data Viewer
 
 export OD_VIEWER=viewer
-export OD_VIEWER_HOST_PORT=8081
-export OD_VIEWER_CONTAINER_PORT=8081
+export OD_VIEWER_HOST_PORT=5173
+export OD_VIEWER_CONTAINER_PORT=5173
 export OD_VIEWER_BASE_URL=http://localhost:${OD_VIEWER_HOST_PORT}
 
 # Extra pods
@@ -113,3 +113,8 @@ export OD_CSS11=css11
 export OD_CSS11_HOST_PORT=3011
 export OD_CSS11_CONTAINER_PORT=3011
 export OD_CSS11_BASE_URL=http://localhost:${OD_CSS11_HOST_PORT}
+
+export OD_CSS12=css12
+export OD_CSS12_HOST_PORT=3012
+export OD_CSS12_CONTAINER_PORT=3012
+export OD_CSS12_BASE_URL=http://localhost:${OD_CSS12_HOST_PORT}

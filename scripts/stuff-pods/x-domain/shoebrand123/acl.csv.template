@@ -1,0 +1,5 @@
+﻿id,access_to,read_access,write_access,control_access,agent_webid,agent_class
+1,data,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/shoebrand123/profile/card#me,
+2,index,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/shoebrand123/profile/card#me,
+1,data,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent
+2,index,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent

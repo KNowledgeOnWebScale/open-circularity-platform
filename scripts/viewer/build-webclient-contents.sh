@@ -2,11 +2,13 @@
 #
 # Note: this script assumes:
 #   - to run it the directory where it is located
+#   - our repo is cloned in a directory $OUR_CLONE
 
 set -euo pipefail
 
-VIEWER_REPO=generic-data-viewer-react-admin
-VIEWER_CLONE=applied-in-architecture-generic-data-viewer-react-admin
+OUR_CLONE=architecture
+VIEWER_REPO=miravi-a-linked-data-viewer
+VIEWER_CLONE=applied-in-architecture-miravi-a-linked-data-viewer
 
 # absolute dir
 OUR_ROOT_DIR=$(pwd)/../..
@@ -15,15 +17,12 @@ pushd ${OUR_ROOT_DIR}/.. > /dev/null
 
 echo Cloning, selecting tag, installing...
 rm -rf ${VIEWER_CLONE}
-git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b v1.5.0 ${VIEWER_CLONE}
+git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b v2.0.0 ${VIEWER_CLONE}
 cd ${VIEWER_CLONE}/main
 npm install
 
-echo Preparing input...
-rm -f ./src/config.json
-cp ${OUR_ROOT_DIR}/actors/viewer/setup/src/config.json ./src/
-rm -rf ./public
-cp -r ${OUR_ROOT_DIR}/actors/viewer/setup/public .
+echo Selecting our configuration...
+node scripts/select-config.cjs ../../../${OUR_CLONE}/actors/viewer/setup
 
 echo Rebuilding static content...
 rm -rf dist
