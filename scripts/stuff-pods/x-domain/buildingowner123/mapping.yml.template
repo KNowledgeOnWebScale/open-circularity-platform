@@ -1,0 +1,286 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+  missingvoc: http://missingvoc.com#
+
+base: http://knows.com/base/
+sources:
+  company:
+    access: ./building-owner_company.csv
+    referenceFormulation: csv
+  building:
+    access: ./building-owner_building.csv
+    referenceFormulation: csv
+  storey:
+    access: ./building-owner_storey.csv
+    referenceFormulation: csv
+  space:
+    access: ./building-owner_space.csv
+    referenceFormulation: csv
+  element:
+    access: ./building-owner_element.csv
+    referenceFormulation: csv
+  batch_price_offers:
+    access: ./building-owner_batch_price_offers.csv
+    referenceFormulation: csv
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/data
+    serialization: jsonld
+    authentication: auth
+  price_offer:
+    source: batch_price_offers
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/batch_$(batch_id)_customer_$(customer_id)
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/index
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: buildingowner123@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/buildingowner123/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/index
+mappings:
+  company:
+    sources: company
+    s:
+      value: ex:$(company_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(company_label) ]
+
+  building:
+    sources: building
+    s:
+      value: ex:$(building_id)
+      targets: ceon_data
+    po:
+      - [ a, bot:Building~iri ]
+      - [ rdfs:label, $(building_label) ]
+      - [ geo:lat, $(lat) ]
+      - [ geo:long, $(long) ]
+      - [ construction:constructionYear, $(construction_year) ]
+      # TODO who is the owner of this building
+  storey:
+    sources: storey
+    s:
+      value: ex:$(storey_id)
+      targets: ceon_data
+    po:
+      - [ a, bot:Storey~iri ]
+      - [ rdfs:label, $(storey_label) ]
+  building_storey:
+    sources: storey
+    s:
+      value: ex:$(building_id)
+      targets: ceon_data
+    po:
+      - [ bot:hasStorey, ex:$(storey_id)~iri ]
+  space:
+    sources: space
+    s:
+      value: ex:$(space_id)
+      targets: ceon_data
+    po:
+      - [ a, bot:Space~iri ]
+      - [ rdfs:label, $(space_label) ]
+  storey_space:
+    sources: space
+    s:
+      value: ex:$(storey_id)
+      targets: ceon_data
+    po:
+      - [ bot:hasSpace, ex:$(space_id)~iri ]
+  element:
+    sources: element
+    s:
+      value: ex:$(element_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-resourceODP:BatchOfObjects~iri ]
+      - [ rdfs:label, $(element_label) ]
+      - [ ceon-product:batchOfProduct, ex:$(element_model)~iri ]
+  space_element:
+    sources: element
+    s:
+      value: ex:$(space_id)
+      targets: ceon_data
+    po:
+      - [ bot:containsElement, ex:$(element_id)~iri ]
+  element_parent:
+    sources: element
+    s:
+      value: ex:$(component_of)
+      targets: ceon_data
+    po:
+     - [ ceon-product:hasProductComponent, ex:$(element_id)~iri ]
+  installation:
+    sources: element
+    s:
+      value: ex:$(space_id)-$(element_id)-relation
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-actorODP:ResourceRelation~iri, ceon-provenance:Statement~iri ] ]
+      - [ construction:hasInstallationDate, $(element_installation_date), xsd:date ]
+      - [ construction:hasRemovalDate, $(element_removal_date), xsd:date ]
+      - [ ceon-quantity:hasDimension, ex:$(space_id)-$(element_id)-relation-area~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(element_id)~iri ]
+      - [ construction:installationLocation, ex:$(space_id)~iri ]
+  installation_area:
+    sources: element
+    s:
+      value: ex:$(space_id)-$(element_id)-relation-area
+      targets: ceon_data
+    po:
+      - [ a, [ construction:Area~iri, qudt:QuantityValue~iri  ] ]
+      - [ qudt:numericValue, $(element_area_M2), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:M2~iri ]
+  batch_supply:
+    sources: element
+    s:
+      value: ex:$(element_id)-supply
+      targets: ceon_data
+    po:
+      - [ a, ceon-actor:SupplingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:supplier~iri ]
+      - [ ceon-actorODP:participatingActor, ex:buildingowner123~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(element_id)~iri ]
+      - [ ceon-actorODP:participationStartTime, $(available_as_supply_date), xsd:time ]
+  batch_sell:
+    sources: batch_price_offers
+    s:
+      value: ex:$(batch_id)-$(customer_id)-sell
+      targets: price_offer
+    po:
+      - [ a, ceon-actor:SellingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:seller~iri ]
+      - [ ceon-actorODP:participatingActor, ex:buildingowner123~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(batch_id)~iri ]
+      - [ ceon-actor:hasProcessParticipation, ex:$(batch_id)-$(customer_id)-process-participation~iri ]
+      - [ ceon-quantity:hasPrice, ex:$(batch_id)-$(customer_id)-sell-price~iri ]
+  batch_price:
+    sources: batch_price_offers
+    s:
+      value: ex:$(batch_id)-$(customer_id)-sell-price
+      targets: price_offer
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(selling_price), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:EURO~iri ]
+  batch_buy:
+    sources: batch_price_offers
+    s:
+      value: ex:$(batch_id)-$(customer_id)-buy
+      targets: ceon_data
+    po:
+      - [ a, ceon-actor:BuyingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:buyer~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(customer_id)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(batch_id)~iri ]
+  batch_process_participation:
+    sources: batch_price_offers
+    s:
+      value: ex:$(batch_id)-$(customer_id)-process-participation
+      targets: price_offer
+    po:
+      - [ a, ceon-actor:ProcessParticipation~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:seller~iri ]
+      - [ ceon-actorODP:participatingActor, ex:buildingowner123~iri ]
+      - [ ceon-actorODP:participationIn, ex:$(batch_id)-$(customer_id)-sell-buy~iri ]
+      - [ ceon-actor:hasResourceRelation, [ex:$(batch_id)-$(customer_id)-buy~iri, ex:$(batch_id)-$(customer_id)-sell~iri ]]
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/buildingowner123/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/buildingowner123/ceon/$(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(access_to) ]
+            - [ grel:valueParameter2, index ]

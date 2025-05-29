@@ -1,0 +1,242 @@
+[
+  {
+    "email": "texon@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "texon",
+        "settings": {
+          "name": "Texon"
+        }
+      }
+    ]
+  },
+  {
+    "email": "ragnsells@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "ragnsells",
+        "settings": {
+          "name": "Ragn-Sells"
+        }
+      }
+    ]
+  },
+  {
+    "email": "supplier123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "supplier123",
+        "settings": {
+          "name": "Supplier 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "lindner@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "lindner",
+        "settings": {
+          "name": "Lindner"
+        }
+      }
+    ]
+  },
+  {
+    "email": "buildingowner123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "buildingowner123",
+        "settings": {
+          "name": "Building Owner 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "soundsystemmanufacturer@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "soundsystemmanufacturer",
+        "settings": {
+          "name": "Sound System Manufacturer"
+        }
+      }
+    ]
+  },
+  {
+    "email": "circularise@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "circularise",
+        "settings": {
+          "name": "Circularise"
+        }
+      }
+    ]
+  },
+  {
+    "email": "concular@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "concular",
+        "settings": {
+          "name": "Concular"
+        }
+      }
+    ]
+  },
+  {
+    "email": "dismantler123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "dismantler123",
+        "settings": {
+          "name": "Dismantler 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "recycler123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "recycler123",
+        "settings": {
+          "name": "Recycler 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "constructioncompany123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "constructioncompany123",
+        "settings": {
+          "name": "Construction Company 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "shoebrand123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "shoebrand123",
+        "settings": {
+          "name": "Shoe Brand 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "outsolemanufacturer123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "outsolemanufacturer123",
+        "settings": {
+          "name": "Outsole Manufacturer 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "lacesmanufacturer123@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "lacesmanufacturer123",
+        "settings": {
+          "name": "Laces Manufacturer 123"
+        }
+      }
+    ]
+  },
+  {
+    "email": "user1@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "user1",
+        "settings": {
+          "name": "User 1"
+        }
+      }
+    ]
+  },
+  {
+    "email": "user2@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "user2",
+        "settings": {
+          "name": "User 2"
+        }
+      }
+    ]
+  },
+  {
+    "email": "user3@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "user3",
+        "settings": {
+          "name": "User 3"
+        }
+      }
+    ]
+  },
+  {
+    "email": "user4@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "user4",
+        "settings": {
+          "name": "User 4"
+        }
+      }
+    ]
+  },
+  {
+    "email": "user5@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "user5",
+        "settings": {
+          "name": "User 5"
+        }
+      }
+    ]
+  },
+  {
+    "email": "ceonadmin@example.com",
+    "password": "abc123",
+    "pods": [
+      {
+        "name": "ceonadmin",
+        "settings": {
+          "name": "CEON Admin"
+        }
+      }
+    ]
+  }
+]

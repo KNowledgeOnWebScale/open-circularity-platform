@@ -1,0 +1,391 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  ex: http://example.com/
+  elec: http://w3id.org/CEON/demo/electronics/
+  ns1: http://w3id.org/CEON/ontology/actorODP/
+  ns2: http://qudt.org/schema/qudt/
+  ns3: http://w3id.org/CEON/ontology/resourceODP/
+  ns4: http://w3id.org/CEON/ontology/statement/
+  ns5: http://w3id.org/CEON/ontology/product/
+  formats: http://www.w3.org/ns/formats/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+
+base: http://knows.com/base/
+sources:
+  Soundsystem:
+    access: ./Soundsystem.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Speaker:
+    access: ./Speaker.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Basket:
+    access: ./Basket.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Circuits:
+    access: ./Circuits.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Coil:
+    access: ./Coil.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Cone:
+    access: ./Cone.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Magnet:
+    access: ./Magnet.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Soundsystemrepaired:
+    access: ./Soundsystemrepaired.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Soundsystemrepairedcoc:
+    access: ./Soundsystemrepaired.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp.chain_of_custody.inputs[*]
+  Speaker2:
+    access: ./Speaker2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Basket2:
+    access: ./Basket2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Circuits2:
+    access: ./Circuits2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Coil2:
+    access: ./Coil2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Cone2:
+    access: ./Cone2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  Magnet2:
+    access: ./Magnet2.json
+    referenceFormulation: jsonpath
+    iterator: $.dpp
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/circularise/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/circularise/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/circularise/ceon/index
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: circularise@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/circularise/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/circularise/ceon/index
+mappings:
+  product:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)
+      targets: ceon_data
+    po:
+      - [ rdfs:label, $(product_name) ]
+      - [ a, elec:ElectronicsProduct~iri ]
+      - p: elec:hasCompliance
+        o: ex:$(asset_id)-REACHCompliance~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(datapoints.product.data.reachFrameworkFile) ]
+            - [ grel:valueParameter2, Yes ]
+      - [ elec:hasPreConsumerRecycledContentValue, ex:$(asset_id)-PreConsumerRecycledContentValue~iri ]
+      - [ elec:hasPostConsumerRecycledContentValue, ex:$(asset_id)-PostConsumerRecycledContentValue~iri ]
+      - [ elec:hasRenewableContentValue, ex:$(asset_id)-RenewableContentValue~iri ]
+      - [ elec:hasVirginFosilContentValue, ex:$(asset_id)-VirginFosilContentValue~iri ]
+  manufacturer:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:manufacturer-$(company.company.ID)
+      targets: ceon_data
+    po:
+      - [ elec:siteCountry, '$(company.sites[*].country)' ]
+  producing:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:producing-$(company.company.ID)-$(asset_id)
+      targets: ceon_data
+    po:
+      - [ ns1:participantRole, http://w3id.org/CEON/ontology/actor/manufacturer~iri ]
+      - [ ns1:participatingActor, ex:manufacturer-$(company.company.ID)~iri ]
+      - [ ns1:participatingResource, ex:$(asset_id)~iri ]
+  reachcompliance:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-REACHCompliance
+      targets: ceon_data
+    po:
+      - [ a, [ ns5:Compliance~iri, ns4:Statement~iri ] ]
+      - [ ns5:complianceWith, elec:REACH~iri ]
+      -  p: ns5:hasCertificate
+         o:
+           function: idlab-fn:lookup
+           parameters:
+             - parameter: idlab-fn:str
+               value: $(datapoints.product.data.reachFrameworkFile[0].name)
+             - [ idlab-fn:inputFile, ./reach_links.csv ]
+             - [ idlab-fn:fromColumn, 0 ]
+             - [ idlab-fn:toColumn, 1 ]
+           type: iri
+      - [ ns4:statementAbout, ex:$(asset_id)~iri ]
+  preconsumer:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-PreConsumerRecycledContentValue
+      targets: ceon_data
+    po:
+      - [ a, elec:PreConsumerRecycledContentValue~iri, ns4:Statement~iri ]
+      - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ ns2:numericValue, $(datapoints.product.data.sourcingComposition.preConsumerRecycledContent), xsd:decimal ]
+  postconsumer:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-PostConsumerRecycledContentValue
+      targets: ceon_data
+    po:
+      - [ a, elec:PostConsumerRecycledContentValue~iri ]
+      - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ ns2:numericValue, $(datapoints.product.data.sourcingComposition.postConsumerRecycledContent), xsd:decimal ]
+  renewable:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-RenewableContentValue
+      targets: ceon_data
+    po:
+      - [ a, elec:RenewableContentValue~iri ]
+      - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ ns2:numericValue, $(datapoints.product.data.sourcingComposition.renewableContent), xsd:decimal ]
+  virgin:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-VirginFosilContentValue
+      targets: ceon_data
+    po:
+      - [ a, elec:VirginFosilContentValue~iri ]
+      - [ ns2:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ ns2:numericValue, $(datapoints.product.data.sourcingComposition.virgin), xsd:decimal ]
+  coc:
+    sources:
+      - Speaker
+      - Circuits
+      - Magnet
+      - Basket
+      - Coil
+      - Cone
+      - Speaker2
+      - Circuits2
+      - Magnet2
+      - Basket2
+      - Coil2
+      - Cone2
+      - Soundsystem
+      - Soundsystemrepaired
+    s:
+      value: ex:$(asset_id)-production
+      targets: ceon_data
+    po:
+    - [ a, ceon-process:ProductionProcess~iri ]
+    - p: ceon-processODP:hasInput
+      o:
+        value: 'ex:$($.chain_of_custody.inputs[*]._id)'
+        type: iri
+    - p: ceon-processODP:hasOutput
+      o:
+        value: ex:$(asset_id)
+        type: iri
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/circularise/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+      condition:
+        function: idlab-fn:notEqual
+        parameters:
+          - [ grel:valueParameter, $(access_to) ]
+          - [ grel:valueParameter2, index ]
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/circularise/ceon/$(access_to)
+          type: iri

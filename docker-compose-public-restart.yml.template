@@ -19,7 +19,7 @@ services:
         source: ./actors/admin/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -55,7 +55,7 @@ services:
         source: ./actors/lindner-group/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -91,7 +91,7 @@ services:
         source: ./actors/building-owner/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -127,7 +127,7 @@ services:
         source: ./actors/building-owner2/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -163,7 +163,7 @@ services:
         source: ./actors/ragn-sells/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -199,7 +199,7 @@ services:
         source: ./actors/texon/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -235,7 +235,7 @@ services:
         source: ./actors/manufacturer/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -271,7 +271,7 @@ services:
         source: ./actors/brand/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -332,7 +332,7 @@ services:
         source: ./actors/test/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -371,7 +371,7 @@ services:
         source: ./actors/recycler/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -407,7 +407,7 @@ services:
         source: ./actors/retailer/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -443,7 +443,7 @@ services:
         source: ./actors/sorter/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -483,7 +483,7 @@ services:
         source: ./actors/any-evaluation-scenario-actor/config/css-users.json
         target: /config/css-users.json
       - type: bind
-        source: ./common/css-01.json
+        source: ./common/css.json
         target: /config/server.json
       - type: bind
         source: ./custom-css
@@ -497,6 +497,42 @@ services:
       - /etc/group:/etc/group:ro
     healthcheck:
       test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS11_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
+      interval: 15s
+      timeout: 10s
+      retries: 65
+      start_period: 30s
+
+  ${OD_CSS12}:
+    profiles: [ "extra-pod" ]
+    image: solidproject/community-server:7
+    ports:
+      - "${OD_CSS12_HOST_PORT}:${OD_CSS12_CONTAINER_PORT}"
+    environment:
+      - CSS_BASE_URL=${OD_CSS12_BASE_URL}
+      - CSS_PORT=${OD_CSS12_CONTAINER_PORT}
+      - CSS_CONFIG=/config/server.json
+    volumes:
+      - type: bind
+        source: ./actors/any-evaluation-scenario-actor-2/pod-template
+        target: /config/pod-template
+      - type: bind
+        source: ./actors/any-evaluation-scenario-actor-2/config/css-users.json
+        target: /config/css-users.json
+      - type: bind
+        source: ./common/css.json
+        target: /config/server.json
+      - type: bind
+        source: ./custom-css
+        target: /custom-css  
+      # these lines allow an easy view on what's in the pod's data  
+      - type: bind
+        source: ./docker-run/data/${OD_CSS12}
+        target: /data
+      # these lines make the current computer's users and groups available in the container
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    healthcheck:
+      test: "[ -e healthy.flag ] || if wget --no-check-certificate ${OD_CSS12_BASE_URL}/ --spider; then touch healthy.flag; else false; fi"
       interval: 15s
       timeout: 10s
       retries: 65

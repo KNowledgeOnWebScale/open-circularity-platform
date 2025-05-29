@@ -1,0 +1,378 @@
+{
+  "dpp": {
+    "asset_id": "fb4c1ed5b4f57f5aa61c6ea61802b3729fa34f049960d2e3b6e26c83941e5b5a" ,
+    "asset_type_id": "7" ,
+    "asset_type_name": "Product" ,
+    "product_name": "Repaired sound system" ,
+    "timestamps": {
+      "last_updated_time": 1741357847 ,
+      "submission_time": 1738251059 ,
+      "creation_time": 1738251061
+    } ,
+    "applicable_sq_lists": {
+      "ALL": {
+        "name": "ALL" ,
+        "data_points": [
+          "batch.partNumberCodeBCSpeakers" ,
+          "batch.textInvoiceNumber" ,
+          "batch.eurecomProductionDate" ,
+          "product.reachCompliance" ,
+          "product.reachFrameworkFile" ,
+          "product.rohsCompliance" ,
+          "product.rohsFrameworkFile" ,
+          "product.safetyDataSheets" ,
+          "product.materialDataSheets" ,
+          "product.epdFiles"
+        ]
+      } ,
+      "[public] Onto deside demo general": {
+        "name": "Onto deside demo general" ,
+        "data_points": [
+          "batch.partNumberCodeBCSpeakers" ,
+          "batch.textInvoiceNumber" ,
+          "batch.eurecomProductionDate" ,
+          "product.reachCompliance" ,
+          "product.reachFrameworkFile" ,
+          "product.rohsCompliance" ,
+          "product.rohsFrameworkFile" ,
+          "product.safetyDataSheets" ,
+          "product.materialDataSheets" ,
+          "product.epdFiles"
+        ]
+      }
+    } ,
+    "chain_of_custody": {
+      "_id": "fb4c1ed5b4f57f5aa61c6ea61802b3729fa34f049960d2e3b6e26c83941e5b5a" ,
+      "inputs": [
+        {
+          "_id": "84010fa502136d41911cde0569f9b708640c76344da78acd04868f338841ec56" ,
+          "inputs": [
+            {
+              "_id": "44e34d59d1822eb4846826c51761319d75f96978208cb046a3b71edfbfa8c22c" ,
+              "inputs": [
+                {
+                  "_id": "9c1e11693dba4f52690b59d5565f72a54bc4aca63685d4409b1c3705f8ad777b" ,
+                  "inputs": []
+                } ,
+                {
+                  "_id": "508c43c48cfccaf9d011479c34ebbb0eded0c190e51f4eb8741e8d8ba4f697fa" ,
+                  "inputs": []
+                } ,
+                {
+                  "_id": "621e82bc9211e731cf2b3ae9d69bf95f7097a9b2c08d53a34e27aa490c531a69" ,
+                  "inputs": []
+                } ,
+                {
+                  "_id": "fb08dd4a3914bba0f5216ba591d51960cecc219f4523230b26f55696bb2bb353" ,
+                  "inputs": []
+                } ,
+                {
+                  "_id": "95f588b9c5420cefd43da9c554e1c3e16112d974e9e653ca6c22a9478fdb6a13" ,
+                  "inputs": []
+                }
+              ]
+            }
+          ]
+        } ,
+        {
+          "_id": "26bcc88bcb7fe59541c2079a2ecfddbc34f509049329e3bd79c2d1474de8b62d" ,
+          "inputs": [
+            {
+              "_id": "db7e36ef3798136a0c74385d48400573849c457bb05220c89ff267a13569b185" ,
+              "inputs": []
+            } ,
+            {
+              "_id": "eda6f4362809c479e33057e2fc1189398e410f3bf78c7f3bdf2ff9374aeb138e" ,
+              "inputs": []
+            } ,
+            {
+              "_id": "a3b29609aed1c3c69d71b0bd20ab3e1d0d09f212891d28430b3ffbc162e3ccbb" ,
+              "inputs": []
+            } ,
+            {
+              "_id": "a9d48cb8f6c75ed15efdcff0879a70f9f39bc6d9653906bee7a1f90b096e56d0" ,
+              "inputs": []
+            } ,
+            {
+              "_id": "b0bf221c54c14e03b0a38270ae63334a2151ff3d4f4652d778dba84a95f51d9d" ,
+              "inputs": []
+            }
+          ]
+        }
+      ]
+    } ,
+    "datapoints": {
+      "site": {
+        "data": {} ,
+        "ui_schema": {}
+      } ,
+      "product": {
+        "data": {
+          "epdFiles": [] ,
+          "materialDataSheets": [] ,
+          "reachCompliance": "yes" ,
+          "reachFrameworkFile": [] ,
+          "rohsCompliance": "yes" ,
+          "rohsFrameworkFile": [] ,
+          "safetyDataSheets": []
+        } ,
+        "ui_schema": {
+          "epdFiles": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "EPD (Environmental Product Declaration)" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "materialDataSheets": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "Material Data Sheet" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "reachCompliance": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": "Select Yes or No" ,
+            "title": {
+              "icon": null ,
+              "text": "Does it comply with REACH?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "reachFrameworkFile": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": null ,
+              "text": "REACH " ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "rohsCompliance": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": "Select Yes or No" ,
+            "title": {
+              "icon": null ,
+              "text": "Does it comply with RoHS?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "rohsFrameworkFile": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "ROHS" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "safetyDataSheets": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "MSDS (Safety Data Sheet)" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          }
+        }
+      } ,
+      "batch": {
+        "data": null ,
+        "ui_schema": null
+      }
+    } ,
+    "chemicals": {
+      "62a1e4e31ef71eedd76622fe": {
+        "_id": "62a1e4e31ef71eedd76622fe" ,
+        "name": "Cellulose" ,
+        "casNumber": "009004-34-6"
+      } ,
+      "6311215e41cb2631acb9f558": {
+        "_id": "6311215e41cb2631acb9f558" ,
+        "name": "Nickel" ,
+        "casNumber": "7440-02-0"
+      } ,
+      "63244d229bc3606a1a1dd629": {
+        "_id": "63244d229bc3606a1a1dd629" ,
+        "name": "Copper" ,
+        "casNumber": "7440-50-8"
+      } ,
+      "63244d229bc3606a1a1dd62b": {
+        "_id": "63244d229bc3606a1a1dd62b" ,
+        "name": "Chromium" ,
+        "casNumber": "7440-47-3"
+      } ,
+      "63244d229bc3606a1a1dd62f": {
+        "_id": "63244d229bc3606a1a1dd62f" ,
+        "name": "Manganese" ,
+        "casNumber": "7439-96-5"
+      } ,
+      "63244d229bc3606a1a1dd630": {
+        "_id": "63244d229bc3606a1a1dd630" ,
+        "name": "Zinc" ,
+        "casNumber": "7440-66-6"
+      } ,
+      "64068d3c6eb84e9a53990525": {
+        "_id": "64068d3c6eb84e9a53990525" ,
+        "name": "Iron" ,
+        "casNumber": "7439-89-6"
+      } ,
+      "6621022e65b2301f6344b98a": {
+        "_id": "6621022e65b2301f6344b98a" ,
+        "name": "Titanium" ,
+        "casNumber": "7440-32-6"
+      } ,
+      "6622a2b1710d22e9186bba94": {
+        "_id": "6622a2b1710d22e9186bba94" ,
+        "name": "Oxygen" ,
+        "casNumber": "7782-44-7"
+      } ,
+      "6622a305e6f6bb531ae8471e": {
+        "_id": "6622a305e6f6bb531ae8471e" ,
+        "name": "Nitrogen" ,
+        "casNumber": "7727-37-9"
+      } ,
+      "66581592443c2f5fd20e0d64": {
+        "_id": "66581592443c2f5fd20e0d64" ,
+        "name": "Neodymium" ,
+        "casNumber": "CAS7440-00-8"
+      } ,
+      "6658167ee624ec5e3c8f462f": {
+        "_id": "6658167ee624ec5e3c8f462f" ,
+        "name": "Dysprosium" ,
+        "casNumber": "7429-91-6"
+      } ,
+      "66581708d7c7d5dd2cdaec4f": {
+        "_id": "66581708d7c7d5dd2cdaec4f" ,
+        "name": "Boron" ,
+        "casNumber": "7440-42-8"
+      } ,
+      "6659a328c0941716f96d3b74": {
+        "_id": "6659a328c0941716f96d3b74" ,
+        "name": "Aluminum (elemental)" ,
+        "casNumber": "7429-90-5"
+      } ,
+      "6659a3ee0fdbfc446d1115a6": {
+        "_id": "6659a3ee0fdbfc446d1115a6" ,
+        "name": "Magnesium" ,
+        "casNumber": "7439-95-4"
+      } ,
+      "666995e73203edc9ad6798b9": {
+        "_id": "666995e73203edc9ad6798b9" ,
+        "name": "Bromide" ,
+        "casNumber": "024959-67-9"
+      } ,
+      "66699632fd47f92531e33ce5": {
+        "_id": "66699632fd47f92531e33ce5" ,
+        "name": "Niobium (Nb)" ,
+        "casNumber": "007440-03-1"
+      } ,
+      "6669965d8de12bd26665c692": {
+        "_id": "6669965d8de12bd26665c692" ,
+        "name": "Silicon (Si)" ,
+        "casNumber": "007440-21-3"
+      }
+    } ,
+    "api_version": 1 ,
+    "company": {
+      "company": {
+        "legalName": "Speaker and Sound system manufacturer" ,
+        "cocNumber": "1234" ,
+        "address": "Freyung 6" ,
+        "cityName": "Vienna" ,
+        "zipCode": "1010" ,
+        "country": "Austria" ,
+        "ID": "65576a28975d34a0b83945a4"
+      } ,
+      "sites": [
+        {
+          "_id": "65576a28975d34a0b83945a5" ,
+          "address": "Freyung 6" ,
+          "zipCode": "1010" ,
+          "country": "AT" ,
+          "siteName": "Speaker and Sound system manufacturer site" ,
+          "city": "Vienna" ,
+          "units": [
+            {
+              "_id": "65576a28975d34a0b83945a6" ,
+              "unitName": "Speaker and Sound system manufacturer Unit" ,
+              "cocNumber": null ,
+              "manufacturerName": "Speaker and Sound system manufacturer"
+            }
+          ]
+        }
+      ]
+    } ,
+    "extras": {
+      "yt_link": "" ,
+      "sust_disclaimer": "" ,
+      "barcode": "" ,
+      "product_images": null
+    }
+  } ,
+  "settings": {
+    "company_id": "65576a28975d34a0b83945a4" ,
+    "pdpp": {
+      "pdppAnonymous": "no" ,
+      "pdppCoCItemType": "product" ,
+      "pdppCoCName": "coc" ,
+      "pdppDPPType": "product" ,
+      "pdppEnableCoC": "yes" ,
+      "pdppEnableDiagrams": "yes" ,
+      "pdppExtraID": "" ,
+      "pdppGenericName": ""
+    } ,
+    "page": {
+      "customDomain": "" ,
+      "diagramColor": "#000000" ,
+      "disableCirLogo": "no" ,
+      "enableCircCuV2": "no" ,
+      "enableCompanyLogo": "no" ,
+      "enableFavicon": "no" ,
+      "gdpdSiteId": "" ,
+      "gdprPolicyId": "" ,
+      "primaryColor": "#000000" ,
+      "secondaryColor": "#6c757d" ,
+      "trackerId": "" ,
+      "trackerType": "none"
+    }
+  }
+}

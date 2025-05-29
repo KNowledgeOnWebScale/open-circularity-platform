@@ -1,5 +1,7 @@
 # Testing
 
+> This file is kept for reference, but these tests are not maintained.
+
 ## Local testing
 
 Execute all local tests in the project root.

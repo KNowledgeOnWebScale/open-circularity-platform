@@ -1,0 +1,10 @@
+﻿step,input,input_label
+01_AddUpper components,texon-C001,
+02_AddHeelCounter,texon-C005,
+02_AddHeelCounter,UpperComponents,Upper components
+03_AddMidsole,texon-C003,
+03_AddMidsole,ShapedShoeWithHeelCounterAndToePuff,Shaped shoe
+04_AddOutsole,outsolemanufacturer123-C002,
+04_AddOutsole,ShapedShoeWithMidsole,Shaped shoe with midsole
+05_AddLaces,lacesmanufacturer123-C004,
+05_AddLaces,ShapedShoeWithMidsoleAndOutsole,Shaped shoe with midsole and outsole
