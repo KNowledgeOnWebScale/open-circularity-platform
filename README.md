@@ -190,7 +190,7 @@ Using the localhost setup case is similar to [using the final setup](#using-the-
   * needs to be started as follows in a separate terminal window:
 
     ```bash
-    cd ../applied-in-architecture-generic-data-viewer-react-admin/main
+    cd ../applied-in-architecture-miravi-a-linked-data-viewer/main
     npm run dev
     ```
   
@@ -291,7 +291,7 @@ docker compose --profile backend --profile frontend --profile extra-pod down -t 
 * [Overview of actors' WebIDs, emails and passwords](doc/ACTORS_OVERVIEW.md)
 * [Overview of permissions](doc/PERMISSIONS_OVERVIEW.md)
 * [About the different setup cases](doc/SETUP_CASES.md)
-* [Testing guide](doc/TESTING.md)
 * [Community Solid Server (CSS) configuration](doc/CSS_SETUP.md)
 * [The Firefox container](doc/FIREFOX_CONTAINER.md)
 * [Developer documentation](doc/DEVELOPERS.md)
+* [Testing the viewer](doc/TESTING_VIEWER.md)

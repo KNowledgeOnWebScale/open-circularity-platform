@@ -1,0 +1,3 @@
+﻿id,access_to,read_access,write_access,control_access,agent_webid,agent_class
+1,index,Yes,Yes,Yes,${OD_CSS12_BASE_URL}/ceonadmin/profile/card#me,
+2,index,Yes,No,No,,http://xmlns.com/foaf/0.1/Agent

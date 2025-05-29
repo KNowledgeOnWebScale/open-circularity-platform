@@ -1,0 +1,232 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+  missingvoc: http://missingvoc.com#
+
+base: http://knows.com/base/
+sources:
+  batches:
+    access: ./ragnsells_batches.csv
+    referenceFormulation: csv
+  batch_price_offers:
+    access: ./ragnsells_batch_price_offers.csv
+    referenceFormulation: csv
+  company:
+    access: ./ragnsells_company.csv
+    referenceFormulation: csv
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/ragnsells/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/ragnsells/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/ragnsells/ceon/index
+    serialization: jsonld
+    authentication: auth
+  price_offer:
+    source: batch_price_offers
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/ragnsells/ceon/batch_$(batch_id)_customer_$(customer_id)
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: ragnsells@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/ragnsells/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/ragnsells/ceon/index
+mappings:
+  company:
+    sources: company
+    s:
+      value: ex:$(company_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(company_label) ]
+  batch:
+    sources: batches
+    s:
+      value: ex:ragnsells-$(batch_id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-resourceODP:BatchOfObjects~iri ]
+      - [ rdfs:label, $(batch_label) ]
+      - [ ceon-product:batchOfProduct, ex:$(product_model_id)~iri ]
+      #TODO batchofproduct
+      - [ ceon-quantity:hasWeight, ex:ragnsells-$(batch_id)-weight~iri ]
+      - [ ceon-quantity:hasVolume, ex:ragnsells-$(batch_id)-volume~iri ]
+      - [ ceon-resourceODP:batchSize, $(batch_size), xsd:int ]
+      - [ textile:hasRecycledContentValue, ex:ragnsells-$(batch_id)-recycledContentValue~iri ]
+      - [ ceon-resourceODP:hasResourceCondition, textile:$(condition) ]
+  batch_weight:
+    sources: batches
+    s:
+      value: ex:ragnsells-$(batch_id)-weight
+      targets: ceon_data
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(batch_weight_kg), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:KiloGM~iri ]
+  batch_volume:
+    sources: batches
+    s:
+      value: ex:ragnsells-$(batch_id)-volume
+      targets: ceon_data
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(batch_volume_m3), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:M3~iri ]
+  batch_recycledContentValue:
+    sources: batches
+    s:
+      value: ex:ragnsells-$(batch_id)-recycledContentValue
+      targets: ceon_data
+    po:
+      - [ a, [ textile:RecycledContentValue~iri, qudt:QuantityValue~iri ] ]
+      - [ qudt:numericValue, $(percentage_recycled), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:PERCENT~iri ]
+  batch_supply:
+    sources: batches
+    s:
+      value: ex:ragnsells-$(batch_id)-supply
+      targets: ceon_data
+    po:
+      - [ a, ceon-actor:SupplingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:supplier~iri ]
+      - [ ceon-actorODP:participatingActor, ex:ragnsells~iri ]
+      - [ ceon-actorODP:participatingResource, ex:ragnsells-$(batch_id)~iri ]
+      - [ ceon-actorODP:participationStartTime, $(available_from_date), xsd:time ]
+  batch_sell:
+    sources: batch_price_offers
+    s:
+      value: ex:ragnsells-$(batch_id)-$(customer_id)-sell
+      targets: price_offer
+    po:
+      - [ a, ceon-actor:SellingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:seller~iri ]
+      - [ ceon-actorODP:participatingActor, ex:ragnsells~iri ]
+      - [ ceon-actorODP:participatingResource, ex:ragnsells-$(batch_id)~iri ]
+      - [ ceon-actor:hasProcessParticipation, ex:ragnsells-$(batch_id)-$(customer_id)-process-participation~iri ]
+      - [ ceon-quantity:hasPrice, ex:ragnsells-$(batch_id)-$(customer_id)-sell-price~iri ]
+  batch_price:
+    sources: batch_price_offers
+    s:
+      value: ex:ragnsells-$(batch_id)-$(customer_id)-sell-price
+      targets: price_offer
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(selling_price), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:EURO~iri ]
+  batch_buy:
+    sources: batch_price_offers
+    s:
+      value: ex:ragnsells-$(batch_id)-$(customer_id)-buy
+      targets: price_offer
+    po:
+      - [ a, ceon-actor:BuyingResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:buyer~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(customer_id)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:ragnsells-$(batch_id)~iri ]
+  batch_process_participation:
+    sources: batch_price_offers
+    s:
+      value: ex:ragnsells-$(batch_id)-$(customer_id)-process-participation
+      targets: price_offer
+    po:
+      - [ a, ceon-actor:ProcessParticipation~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:seller~iri ]
+      - [ ceon-actorODP:participatingActor, ex:ragnsells~iri ]
+      - [ ceon-actorODP:participationIn, ex:ragnsells-$(batch_id)-$(customer_id)-sell-buy~iri ]
+      - [ ceon-actor:hasResourceRelation, [ex:ragnsells-$(batch_id)-$(customer_id)-buy~iri, ex:ragnsells-$(batch_id)-$(customer_id)-sell~iri ]]
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/ragnsells/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/ragnsells/ceon/$(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(access_to) ]
+            - [ grel:valueParameter2, index ]

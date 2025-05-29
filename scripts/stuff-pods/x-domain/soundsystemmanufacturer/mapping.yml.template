@@ -1,0 +1,122 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  ex: http://example.com/
+  elec: http://w3id.org/CEON/demo/electronics/
+  ns1: http://w3id.org/CEON/ontology/actorODP/
+  ns2: http://qudt.org/schema/qudt/
+  ns3: http://w3id.org/CEON/ontology/resourceODP/
+  ns4: http://w3id.org/CEON/ontology/provenance/
+  ns5: http://w3id.org/CEON/ontology/product/
+  formats: http://www.w3.org/ns/formats/
+  rmli: https://w3id.org/imec/rml/
+  LT: http://knows.base/logical_target/
+  T: http://knows.base/target/
+  rml: http://semweb.mmlab.be/ns/rml#
+  rmlt: http://semweb.mmlab.be/ns/rml-target#
+  missingvoc: http://missingvoc.com#
+
+base: http://knows.com/base/
+sources:
+  repairinfo:
+    access: ./repair_info.json
+    referenceFormulation: jsonpath
+    iterator: $[*]
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/index
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: soundsystemmanufacturer@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/index
+mappings:
+  product:
+    sources: repairinfo
+    s:
+      value: ex:$(product_id)
+      targets: ceon_data
+    po:
+      - [ rdfs:label, $(product_name) ]
+      - [ a, elec:ElectronicsProduct~iri ]
+      - [ elec:hasRepairInstructions, $(repair_manual)~iri]
+      - p: elec:hasCompatibleProduct
+        o:
+          value: 'ex:$(compatible_components[*])'
+          type: iri
+
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+      condition:
+        function: idlab-fn:notEqual
+        parameters:
+          - [ grel:valueParameter, $(access_to) ]
+          - [ grel:valueParameter2, index ]
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/soundsystemmanufacturer/ceon/$(access_to)
+          type: iri

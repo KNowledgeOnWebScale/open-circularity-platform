@@ -51,8 +51,8 @@ Unfortunately, not all the tools that read these files can read environment vari
 
 To overcome this:
 
-* files to be adapted have a companion file, whose name ends with the `.template` suffix (e.g. `docker-compose-public.yml.template`, `common/css-01.json.template`);
-* the adapted files are now git-ignored (e.g. `docker-compose-public.yml`, `common/css-01.json`);
+* files to be adapted have a companion file, whose name ends with the `.template` suffix (e.g. `docker-compose-public.yml.template`);
+* the adapted files are now git-ignored (e.g. `docker-compose-public.yml`);
 * the template files use the environment variables, set by sourcing the appropriate environment variables file;
 * a script is provided to generate new file contents from the templates.
 
@@ -82,13 +82,13 @@ These images are currently supplied from [this GitHub repository](https://github
 
 ## The modified Generic Data Viewer
 
-This project includes a service based on a modified build of <https://github.com/SolidLabResearch/generic-data-viewer-react-admin>.
+This project includes a service based on a modified build of <https://github.com/SolidLabResearch/miravi-a-linked-data-viewer>.
 
 ### How the modified Generic Data Viewer is built
 
 When following the setup instructions in the [main README](../README.md):
 
-* a clone of that repo is made in `../applied-in-architecture-generic-data-viewer-react-admin`;
+* a clone of that repo is made in `../applied-in-architecture-miravi-a-linked-data-viewer`;
 * a known good version of it is checked out; the known good version is selected with the `-b` option of the `git clone` command in [this script](../scripts/viewer/build-webclient-contents.sh).
 * the software is built in the clone's `main` directory;
 * the contents of its `src/config.json` file and its `public` directory are replaced with alternatives found in our directory `actors/viewer/setup`;
@@ -103,7 +103,7 @@ but also in the case of *env-docker-public*.
 The latter case is interesting to make experiments with data available in the public pods.
 Proceed as follows:
 
-* go to `../applied-in-architecture-generic-data-viewer-react-admin/main`;
+* go to `../applied-in-architecture-miravi-a-linked-data-viewer/main`;
 * modify the configuration file and modify/add queries in the public directory;
 * test by running `npm run dev` and browsing the localhost port this command reports.
 

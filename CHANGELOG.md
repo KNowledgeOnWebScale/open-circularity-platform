@@ -7,11 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-05-29
+
+### Added
+
+- Cross-domain evaluation 2025 (internal [issue#64](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/64)).
+
+## Changed
+
+- Upgraded the viewer to [its v2.0.0](https://github.com/SolidLabResearch/miravi-a-linked-data-viewer/releases/tag/v2.0.0) (mind the modified repository name) (internal [issue#65](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/65)).
+
 ## [1.0.0] - 2025-02-27
 
 ### Changed
 
-- Synchronized evaluation use cases to to state on 2025-02-25  (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
+- Synchronized evaluation use cases to state on 2025-02-25 (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
 - Solid Community Servers configured to use local copies of verifiable credentials related context files (internal [issue#63](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/63)).
 
 ## [0.3.2] - 2025-01-06
@@ -161,4 +171,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.3.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.1
 [0.3.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.2
 [1.0.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.0
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.0
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v1.1.0...HEAD

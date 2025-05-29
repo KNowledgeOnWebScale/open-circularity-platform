@@ -1,0 +1,16 @@
+﻿company_id,role,resource,process_type,euro,resourceid
+dismantler123,dismantler,building_1-storey_3-room_1-nortec-tiles,Dismantling,3000,1
+dismantler123,dismantler,building_1-storey_3-room_1-nortec-pedestals,Dismantling,300,2
+dismantler123,dismantler,building_1-storey_3-room_2-nortec-tiles,Dismantling,3000,3
+dismantler123,dismantler,building_1-storey_3-room_2-nortec-pedestals,Dismantling,300,4
+dismantler123,dismantler,building_1-storey_3-room_2-nortec-acoustic-tiles,Dismantling,3000,5
+dismantler123,dismantler,building_1-storey_3-room_2-nortec-acoustic-pedestals,Dismantling,300,6
+dismantler123,dismantler,building_1-storey_3-room_2-nortec-acoustic-layers,Dismantling,200,7
+dismantler123,dismantler,building_1_321,Dismantling,150,8
+dismantler123,dismantler,building_1_322,Dismantling,150,9
+dismantler123,dismantler,building_1_334,Dismantling,150,10
+dismantler123,dismantler,building_1_335,Dismantling,150,11
+dismantler123,dismantler,building_1_482,Dismantling,150,12
+dismantler123,dismantler,building_1_483,Dismantling,150,13
+dismantler123,dismantler,building_1_715,Dismantling,150,14
+dismantler123,dismantler,building_1_805,Dismantling,150,15

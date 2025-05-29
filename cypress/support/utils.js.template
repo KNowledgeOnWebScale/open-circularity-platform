@@ -1,0 +1,107 @@
+const css0 = "${OD_CSS0_BASE_URL}/";
+const css5 = "${OD_CSS5_BASE_URL}/";
+const css11 = "${OD_CSS11_BASE_URL}/";
+const css12 = "${OD_CSS12_BASE_URL}/";
+
+export const users = {
+  css0_admin_ocp: {
+    idp: css0,
+    email: "admin@ocp.com",
+    password: "admin123"
+  },
+  css5_info_texon: {
+    idp: css5,
+    email: "info@texon.com",
+    password: "texon123"
+  },
+  css11_construction_user2: {
+    idp: css11,
+    email: "construction_user2@example.com",
+    password: "construction_user2"
+  },
+  css11_electronics_user6: {
+    idp: css11,
+    email: "electronics_user6@example.com",
+    password: "electronics_user6"
+  },
+  css11_textile_user6: {
+    idp: css11,
+    email: "textile_user6@example.com",
+    password: "textile_user6"
+  },
+  css12_buildingowner123: {
+    idp: css12,
+    email: "buildingowner123 @example.com",
+    password: "abc123"
+  },
+  css12_ceonadmin: {
+    idp: css12,
+    email: "ceonadmin@example.com",
+    password: "abc123"
+  }
+}
+
+export function login(idp, email, password) {
+  cy.visit("/");
+
+  cy.get('[aria-label="Profile"]').click();
+  cy.contains('[role="menuitem"]', "Login").click();
+
+  cy.get('input[name="idp"]').clear();
+  cy.get('input[name="idp"]').type(idp);
+  cy.contains("Login").click();
+
+  const idpUrl = new URL(idp);
+  const baseUrl = new URL(Cypress.config('baseUrl'));
+
+  if (idpUrl.host == baseUrl.host) {
+    cy.get("input#email").type(email);
+    cy.get("input#password").type(password);
+    cy.contains("button", "Log in").click();
+    cy.contains("button", "Authorize").click();
+  } else {
+    cy.origin(idp, { args: { email, password } }, ({ email, password }) => {
+      cy.get("input#email").type(email);
+      cy.get("input#password").type(password);
+      cy.contains("button", "Log in").click();
+      cy.contains("button", "Authorize").click();
+    });
+  }
+
+  cy.url().should("eq", Cypress.config('baseUrl'));
+}
+
+export function openGroup(groupTitle) {
+  cy.contains(groupTitle).click();
+}
+
+function checkContents(nrResultsTotal, containsAlso) {
+  if (nrResultsTotal) {
+    cy.contains(new RegExp('\\d+-\\d+ of ' + nrResultsTotal));
+  } else {
+    cy.contains("The result list is empty.");
+  }
+  if (containsAlso) {
+    cy.contains(containsAlso);
+  }
+}
+
+export function simpleTest(queryTitle, nrResultsTotal, containsAlso) {
+  cy.contains(queryTitle).click();
+  checkContents(nrResultsTotal, containsAlso);
+}
+
+export function variablesTest(queryTitle, variables, nrResultsTotal, containsAlso) {
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  cy.contains(queryTitle).click();
+  for (const key of Object.keys(variables)) {
+    cy.get('.ra-input-' + key).click();
+    cy.get('li').contains(new RegExp(`^${escapeRegex(variables[key])}$`)).click();
+  }
+  cy.get('button').contains('Query').click();
+  checkContents(nrResultsTotal, containsAlso);
+}
+

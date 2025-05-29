@@ -1,12 +1,12 @@
 # Community Solid Server (CSS) configuration
 
-[`/common/css.json`](../common/css.json) is the original CSS configuration,
+[`/common/css-obsolete.json`](../common/css-obsolete.json) is the original CSS configuration,
 used for debugging purposes when the Docker Compose infrastructure was being developed.
 It disables security settings.
 It is valid for CSS version 5.1.
 
 The CSS configuration used by all CSS containers in `docker-compose*.yml`
-is controlled by the template [`/common/css-01.json.template`](../common/css-01.json.template).
+is controlled by [`/common/css.json`](../common/css.json).
 
 See also the [documentation on how to configure your CSS server](https://github.com/CommunitySolidServer/CommunitySolidServer).
 

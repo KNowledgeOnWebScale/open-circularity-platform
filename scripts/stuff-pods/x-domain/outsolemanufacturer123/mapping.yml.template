@@ -1,0 +1,323 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-statement: http://w3id.org/CEON/ontology/statement/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+
+base: http://knows.com/base/
+sources:
+  products:
+    access: ./outsolemanufacturer123_products.csv
+    referenceFormulation: csv
+    delimiter: ','
+    'null':
+      - ''
+      - 'N.A'
+  product_composition:
+    access: ./outsolemanufacturer123_product_composition.csv
+    referenceFormulation: csv
+  matter_composition:
+    access: ./outsolemanufacturer123_matter_composition.csv
+    referenceFormulation: csv
+  process:
+    access: ./outsolemanufacturer123_process.csv
+    referenceFormulation: csv
+  process_input:
+    access: ./outsolemanufacturer123_process_input.csv
+    referenceFormulation: csv
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/index
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: outsolemanufacturer123@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/index
+mappings:
+  company:
+    sources: products
+    s:
+      value: ex:$(Company ID)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri ]
+      - [ rdfs:label, $(Supplier identification) ]
+  products:
+    sources: products
+    s:
+      value: ex:$(Company ID)-$(Product Code 1103)
+      targets: ceon_data
+    po:
+      - [ a, textile:TextileProduct~iri ]
+      - [ rdfs:label, $(Product Name 1100) ]
+      - [ ceon-product:productionSiteName, $(Product site name)]
+      - p: textile:hasTextileProduct$(content_type)ContentValue
+        o:
+          - mapping: content_type
+      - [ textile:hasTextileProductType, textile:$(Type CF100)~iri ]
+      - [ textile:hasColor, textile:$(Colors CF101)~iri ]
+# TODO color split method
+      - [ textile:hasDyeMethod, textile:$(Dye method CF700)~iri ]
+      - [ textile:hasDyeStuff, textile:$(Dye stuff CF701)~iri ]
+      - [ textile:hasPrintMethod, textile:$(Print method CF702)~iri ]
+      - [ textile:hasPrintStuff, textile:$(Print method CF703)~iri ]
+      - [ textile:hasFinishingStep,textile:$(Finishing steps CF704)Finishing~iri ]
+      - [ textile:hasFinishingStep,textile:$(Other finishing steps CF705)Finishing~iri ]
+      - [ textile:hasWaterProperty, textile:$(Water properties CF706)~iri ]
+      - p: textile:designForDemounting
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Demountable) ]
+            - [ grel:valueParameter2, Yes ]
+          datatype: xsd:boolean
+      - p: textile:designedForCyclingInTechnicalCycle
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Cyclable_in_technical_cycle) ]
+            - [ grel:valueParameter2, Yes ]
+          value: xsd:boolean
+      - p: textile:designedForCyclingInTechnicalCycle
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(Fraction_recyclable_at_similar_quality_level) ]
+            - [ grel:valueParameter2, Yes ]
+          value: xsd:boolean
+      - p: textile:textile:hasMFOfProductDesignForRecyclingSimilarLevelToOriginal
+        o:
+          - mapping: similar_quality
+      - p: textile:textileProductDesignForRecycling
+        o: textile:industrialComposting~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(industrial_compostable) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: textile:textileProductDesignForRecycling
+        o: textile:homeComposting~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(home_compostable) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: textile:designedForFullBiodegradability
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(full_biodegradabie) ]
+            - [ grel:valueParameter2, Yes ]
+          value: xsd:boolean
+      - p: textile:withoutKnownHazardousSubstanceBasedOnStandardRegulation
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(no_known_hazardous_substances) ]
+            - [ grel:valueParameter2, Yes ]
+          value: xsd:boolean
+      - p: textile:withPublicDeclarationOfHazardousSubstancesBasedOnStandardRegulation
+        o:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(public_declaration_of_hazardous_substances_available) ]
+            - [ grel:valueParameter2, Yes ]
+          value: xsd:boolean
+      - [ textile:hasPCDSPublication, $(PCDS_available)~iri]
+  content_type:
+    sources: products
+    s:
+      value: ex:$(Company ID)-$(Product Code 1103)-content-type
+      targets: ceon_data
+    po:
+      - [ a, [textile:TextileProduct$(content_type)ContentValue~iri, qudt:QuantityValue~iri ] ]
+      - [ ceon-quantity:numericalMaxValue,  $(max_mass_fraction_content_type), xsd:double ]
+      - [ ceon-quantity:numericalMinValue,  $(min_mass_fraction_content_type), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:PERCENT~iri ]
+  similar_quality:
+    sources: products
+    s:
+      value: ex:$(Company ID)-$(Product Code 1103)-similar-quality
+      targets: ceon_data
+    po:
+      - [ a, [ textile:MFOfProductDesignForRecyclingSimilarLevelToOriginal~iri, qudt:QuantityValue~iri ] ]
+      - [ qudt:numericValue, $(Fraction_recyclable_at_similar_quality_level), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:PERCENT~iri ]
+  actor:
+    sources: products
+    s:
+      value: ex:$(Company ID)
+      targets: ceon_data
+    po:
+      - [ a, ceon-actorODP:Actor~iri]
+      - [ rdfs:label, $(Brand 1101)]
+  brand_of_resource:
+    sources: products
+    s:
+      value: ex:$(Company ID)-$(Product Code 1103)-brand
+      targets: ceon_data
+    po:
+      - [ a, textile:BrandOfResource ]
+      - [ ceon-actorODP:participantRole, textile:brand~iri ]
+      - [ ceon-actorODP:participatingActor, ex:$(Company ID)~iri ]
+      - [ ceon-actorODP:participatingResource, ex:$(Company ID)-$(Product Code 1103)~iri ]
+      - [ textile:productionSite, $(Supplier identification) ]
+  product_composition:
+    sources: product_composition
+    s:
+      value: ex:$(product)-$(component)-composition
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:ProductComposition~iri, ceon-statement:Statement~iri ] ]
+      - [ ceon-product:associatedWithProductModel, ex:$(component)~iri ]
+      - [ qudt:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ qudt:numericValue, $(Mass percentage), xsd:double ]
+      - [ ceon-product:compositionOf, ex:$(product)~iri ]
+  matter_composition:
+    sources: matter_composition
+    s:
+      value: ex:$(product)-$(matter)-matter-composition
+      targets: ceon_data
+    po:
+      - [ a, [ ceon-product:MatterComposition~iri, ceon-statement:Statement~iri ] ]
+      - [ ceon-product:associatedWithMatter, ex:$(matter)~iri ]
+      - [ qudt:hasUnit, https://qudt.org/vocab/unit/PERCENT~iri ]
+      - [ qudt:numericValue, $(Mass percentage), xsd:double ]
+      - [ ceon-product:compositionOf, ex:$(product)~iri ]
+  process:
+    sources: process
+    s:
+      value: ex:$(step)
+      targets: ceon_data
+    po:
+    - [ a, ceon-process:AssemblingProcess~iri ]
+    - [ ceon-processODP:hasOutput, ex:$(output)~iri ]
+    - [ ceon-processODP:hasAssemblyMethod, textile:$(assemblyMethod)_assembly~iri]
+    - [ ceon-processODP:hasDisassemblyMethod, textile:$(disassemblyMethod)_disassembly~iri]
+  process_execution:
+    sources: process
+    s:
+      value: ex:$(step)-execution
+      targets: ceon_data
+    po:
+      - [ a, ceon-process:PlanExecution~iri]
+      - p: ceon-processODP:isSettingFor
+        o:
+        - mapping: process
+      - [ ceon-processODP:followsExecution, ex:$(previous_step)_execution~iri]
+      - [ ceon-processODP:precedesExecution, ex:$(next_step)_execution~iri]
+  # TODO check method uris
+  process_output_product:
+    sources: process
+    s:
+      value: ex:$(output)
+      targets: ceon_data
+    po:
+      - [ a, textile:TextileProduct ]
+  process_input:
+    sources: process_input
+    s:
+      value: ex:$(step)
+      targets: ceon_data
+    po:
+    - [ ceon-processODP:hasInput,  ex:$(input)~iri ]
+  process_input_product:
+    sources: process_input
+    s:
+      value: ex:$(input)
+      targets: ceon_data
+    po:
+      - [ a, textile:TextileProduct ]
+      - [ rdfs:label, $(input_label) ]
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/outsolemanufacturer123/ceon/$(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(access_to) ]
+            - [ grel:valueParameter2, index ]
