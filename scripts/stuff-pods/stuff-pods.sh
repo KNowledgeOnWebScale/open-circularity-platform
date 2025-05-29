@@ -45,6 +45,10 @@ cd eval-2024-06-textile
 ./stuff-pods.sh
 cd ..
 
+cd x-domain
+./stuff-pods.sh
+cd ..
+
 popd > /dev/null
 echo "👉 Done."
 

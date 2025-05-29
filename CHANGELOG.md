@@ -7,11 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Cross-domain evaluation 2025 (internal [issue#64](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/64)).
+
+## Changed
+
+- Upgraded the viewer to [its v2.0.0](https://github.com/SolidLabResearch/miravi-a-linked-data-viewer/releases/tag/v2.0.0) (mind the modified repository name).
+
 ## [1.0.0] - 2025-02-27
 
 ### Changed
 
-- Synchronized evaluation use cases to the state on 2025-02-25  (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
+- Synchronized evaluation use cases to to state on 2025-02-25 (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
 - Solid Community Servers configured to use local copies of verifiable credentials related context files (internal [issue#63](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/63)).
 
 ## [0.3.2] - 2025-01-06

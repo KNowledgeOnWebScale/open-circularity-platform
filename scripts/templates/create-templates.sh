@@ -16,6 +16,7 @@ do
     echo "Creating $f.template"
     # Heredoc with EOF in quotes to avoid variable expansion!
     cat << 'EOF' | sed -f - $f > $f.template
+s|https://onto-deside.ilabt.imec.be/css12|${OD_CSS12_BASE_URL}|g
 s|https://onto-deside.ilabt.imec.be/css11|${OD_CSS11_BASE_URL}|g
 s|https://onto-deside.ilabt.imec.be/css10|${OD_CSS10_BASE_URL}|g
 s|https://onto-deside.ilabt.imec.be/css9|${OD_CSS9_BASE_URL}|g

@@ -109,6 +109,10 @@ function start_css {
             local ACTOR=any-evaluation-scenario-actor
             local PORT=$OD_CSS11_HOST_PORT
             ;;
+        "css12")
+            local ACTOR=any-evaluation-scenario-actor-2
+            local PORT=$OD_CSS12_HOST_PORT
+            ;;
         *)
             echo "Unknown CSSX: $CSSX"
             exit 2
@@ -117,7 +121,7 @@ function start_css {
 
     if [ "$RESTART" = false ]; then
       # Make a specific config file
-      sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g ; s|/custom-css|./custom-css|g" ./common/css-01.json > $CONFIG_FILE
+      sed "s|/config/pod-template|./actors/$ACTOR/pod-template|g ; s|/custom-css|./custom-css|g" ./common/css.json > $CONFIG_FILE
       # And... go as a background process
       nohup npx community-solid-server --port $PORT --config $CONFIG_FILE --seedConfig ./actors/$ACTOR/config/css-users.json --rootFilePath $ROOT_DIR > $LOG_FILE 2>&1 &
     else  
@@ -141,7 +145,7 @@ function check_css {
     fi
 }
 
-for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 css11; do
+for css in css0 css1 css2 css3 css4 css5 css6 css7 css8 css9 css10 css11 css12; do
     start_css $css
 done
 

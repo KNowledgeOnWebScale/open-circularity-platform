@@ -1,0 +1,3 @@
+batch_id,batch_label,product_model_id,batch_size,batch_weight_kg,batch_volume_m3,condition,percentage_recycled,available_from_date
+batch1,new rubber layers,supplier123-layer1,500,300,1,new,0,2025-03-01
+batch2,new rubber layers2,supplier123-layer2,250,150,0.5,new,0,2025-04-20

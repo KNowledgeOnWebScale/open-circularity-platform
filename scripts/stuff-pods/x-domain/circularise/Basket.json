@@ -1,0 +1,1151 @@
+{
+  "dpp": {
+    "asset_id": "fb08dd4a3914bba0f5216ba591d51960cecc219f4523230b26f55696bb2bb353" ,
+    "asset_type_id": "13" ,
+    "asset_type_name": "Aluminium Part" ,
+    "product_name": "Aluminum basket" ,
+    "timestamps": {
+      "last_updated_time": 1733240824 ,
+      "submission_time": 1733240786 ,
+      "creation_time": 1733240786
+    } ,
+    "applicable_sq_lists": {
+      "ALL": {
+        "name": "ALL" ,
+        "data_points": [
+          "batch.partNumberCodeBCSpeakers" ,
+          "batch.textInvoiceNumber" ,
+          "batch.eurecomProductionDate" ,
+          "product.reachCompliance" ,
+          "product.reachFrameworkFile" ,
+          "product.rohsCompliance" ,
+          "product.rohsFrameworkFile" ,
+          "product.safetyDataSheets" ,
+          "product.materialDataSheets" ,
+          "product.epdFiles" ,
+          "product.metalsContent.containsMetals" ,
+          "product.metalsContent.metalQuantity" ,
+          "product.metalsContent.quantityUnit" ,
+          "product.metalsContent.metalType" ,
+          "product.rareEarthsKEEP.rareEarthType" ,
+          "product.rareEarthsKEEP.rareEarthTypeDetail" ,
+          "product.rareEarthsKEEP.quantityRareEarths" ,
+          "product.containsCatalysts" ,
+          "product.containsCatalystsType" ,
+          "product.containsMatrixAdditive" ,
+          "product.containsCores" ,
+          "product.containsLaminates" ,
+          "product.containsPrePregs" ,
+          "product.containsAdhesives" ,
+          "product.containsAdhesivesType" ,
+          "product.containsSurfaceFinish" ,
+          "product.eurecompChemicalProperties.flameRetardancy" ,
+          "product.eurecompChemicalProperties.flameRetartdantName" ,
+          "product.eurecompChemicalProperties.flameRetardancyYes" ,
+          "product.chemicalComposition.66581592443c2f5fd20e0d64" ,
+          "product.chemicalComposition.64068d3c6eb84e9a53990525" ,
+          "product.chemicalComposition.66581708d7c7d5dd2cdaec4f" ,
+          "product.chemicalComposition.66699632fd47f92531e33ce5" ,
+          "product.chemicalComposition.6658167ee624ec5e3c8f462f" ,
+          "product.chemicalComposition.6311215e41cb2631acb9f558" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd629" ,
+          "product.chemicalComposition.6659a328c0941716f96d3b74" ,
+          "product.chemicalComposition.6669965d8de12bd26665c692" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd62f" ,
+          "product.chemicalComposition.6659a3ee0fdbfc446d1115a6" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd62b" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd630" ,
+          "product.chemicalComposition.6621022e65b2301f6344b98a" ,
+          "product.chemicalComposition.62a1e4e31ef71eedd76622fe" ,
+          "product.chemicalComposition.6622a2b1710d22e9186bba94" ,
+          "product.chemicalComposition.6622a305e6f6bb531ae8471e" ,
+          "product.chemicalComposition.666995e73203edc9ad6798b9" ,
+          "product.sourcingComposition.virgin" ,
+          "product.sourcingComposition.preConsumerRecycledContent" ,
+          "product.sourcingComposition.postConsumerRecycledContent" ,
+          "product.sourcingComposition.renewableContent"
+        ]
+      } ,
+      "[public] Onto deside demo general": {
+        "name": "Onto deside demo general" ,
+        "data_points": [
+          "batch.partNumberCodeBCSpeakers" ,
+          "batch.textInvoiceNumber" ,
+          "batch.eurecomProductionDate" ,
+          "product.reachCompliance" ,
+          "product.reachFrameworkFile" ,
+          "product.rohsCompliance" ,
+          "product.rohsFrameworkFile" ,
+          "product.safetyDataSheets" ,
+          "product.materialDataSheets" ,
+          "product.epdFiles"
+        ]
+      } ,
+      "[public] onto deside demo composition": {
+        "name": "onto deside demo composition" ,
+        "data_points": [
+          "product.metalsContent.containsMetals" ,
+          "product.metalsContent.metalQuantity" ,
+          "product.metalsContent.quantityUnit" ,
+          "product.metalsContent.metalType" ,
+          "product.rareEarthsKEEP.rareEarthType" ,
+          "product.rareEarthsKEEP.rareEarthTypeDetail" ,
+          "product.rareEarthsKEEP.quantityRareEarths" ,
+          "product.containsCatalysts" ,
+          "product.containsCatalystsType" ,
+          "product.containsMatrixAdditive" ,
+          "product.containsCores" ,
+          "product.containsLaminates" ,
+          "product.containsPrePregs" ,
+          "product.containsAdhesives" ,
+          "product.containsAdhesivesType" ,
+          "product.containsSurfaceFinish" ,
+          "product.eurecompChemicalProperties.flameRetardancy" ,
+          "product.eurecompChemicalProperties.flameRetartdantName" ,
+          "product.eurecompChemicalProperties.flameRetardancyYes" ,
+          "product.chemicalComposition.66581592443c2f5fd20e0d64" ,
+          "product.chemicalComposition.64068d3c6eb84e9a53990525" ,
+          "product.chemicalComposition.66581708d7c7d5dd2cdaec4f" ,
+          "product.chemicalComposition.66699632fd47f92531e33ce5" ,
+          "product.chemicalComposition.6658167ee624ec5e3c8f462f" ,
+          "product.chemicalComposition.6311215e41cb2631acb9f558" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd629" ,
+          "product.chemicalComposition.6659a328c0941716f96d3b74" ,
+          "product.chemicalComposition.6669965d8de12bd26665c692" ,
+          "product.chemicalComposition.64068d3c6eb84e9a53990525" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd629" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd62f" ,
+          "product.chemicalComposition.6659a3ee0fdbfc446d1115a6" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd62b" ,
+          "product.chemicalComposition.63244d229bc3606a1a1dd630" ,
+          "product.chemicalComposition.6621022e65b2301f6344b98a" ,
+          "product.chemicalComposition.62a1e4e31ef71eedd76622fe" ,
+          "product.chemicalComposition.6622a2b1710d22e9186bba94" ,
+          "product.chemicalComposition.6622a305e6f6bb531ae8471e" ,
+          "product.chemicalComposition.666995e73203edc9ad6798b9" ,
+          "product.sourcingComposition.virgin" ,
+          "product.sourcingComposition.preConsumerRecycledContent" ,
+          "product.sourcingComposition.postConsumerRecycledContent" ,
+          "product.sourcingComposition.renewableContent"
+        ]
+      }
+    } ,
+    "chain_of_custody": {
+      "_id": "fb08dd4a3914bba0f5216ba591d51960cecc219f4523230b26f55696bb2bb353" ,
+      "inputs": []
+    } ,
+    "datapoints": {
+      "site": {
+        "data": {} ,
+        "ui_schema": {}
+      } ,
+      "product": {
+        "data": {
+          "chemicalComposition": {
+            "62a1e4e31ef71eedd76622fe": "##RP|gte|60|false" ,
+            "6311215e41cb2631acb9f558": "##RP|lt|9|true" ,
+            "63244d229bc3606a1a1dd629": "##RP|lt|5|true" ,
+            "63244d229bc3606a1a1dd62b": "##RP|lt|0.4|true" ,
+            "63244d229bc3606a1a1dd62f": "##RP|lt|0.2|true" ,
+            "63244d229bc3606a1a1dd630": "##RP|lt|0.26|true" ,
+            "64068d3c6eb84e9a53990525": "##RP|lt|69|true" ,
+            "6621022e65b2301f6344b98a": "##RP|lt|0.16|true" ,
+            "6622a2b1710d22e9186bba94": "0" ,
+            "6622a305e6f6bb531ae8471e": "0" ,
+            "66581592443c2f5fd20e0d64": "##RP|lt|33|true" ,
+            "6658167ee624ec5e3c8f462f": "##RP|lt|1.3|true" ,
+            "66581708d7c7d5dd2cdaec4f": "##RP|lt|1.3|true" ,
+            "6659a328c0941716f96d3b74": "##RP|lt|99|true" ,
+            "6659a3ee0fdbfc446d1115a6": "##RP|lt|1.3|true" ,
+            "666995e73203edc9ad6798b9": "0" ,
+            "66699632fd47f92531e33ce5": "##RP|lt|1|true" ,
+            "6669965d8de12bd26665c692": "##RP|lt|0.9|true"
+          } ,
+          "containsAdhesives": "" ,
+          "containsAdhesivesType": "" ,
+          "containsCatalysts": "no" ,
+          "containsCatalystsType": "" ,
+          "containsCores": "no" ,
+          "containsLaminates": "no" ,
+          "containsMatrixAdditive": "no" ,
+          "containsPrePregs": "no" ,
+          "containsSurfaceFinish": "no" ,
+          "epdFiles": [] ,
+          "eurecompChemicalProperties": {
+            "flameRetardancy": "no" ,
+            "flameRetardancyYes": "" ,
+            "flameRetartdantName": ""
+          } ,
+          "materialDataSheets": [
+            {
+              "name": "dtk_TeliaRouterProductDataSheet.pdf" ,
+              "size": "195"
+            }
+          ] ,
+          "metalsContent": {
+            "containsMetals": "yes" ,
+            "metalQuantity": "" ,
+            "metalType": "" ,
+            "quantityUnit": ""
+          } ,
+          "rareEarthsKEEP": {
+            "quantityRareEarths": "" ,
+            "rareEarthType": "none" ,
+            "rareEarthTypeDetail": ""
+          } ,
+          "reachCompliance": "yes" ,
+          "reachFrameworkFile": [
+            {
+              "name": "sge_REACH-statement.pdf" ,
+              "size": "363"
+            }
+          ] ,
+          "rohsCompliance": "yes" ,
+          "rohsFrameworkFile": [
+            {
+              "name": "yvt_RoHS-statement.pdf" ,
+              "size": "443"
+            }
+          ] ,
+          "safetyDataSheets": [
+            {
+              "name": "toj_MaterialSafetyDataSheet.pdf" ,
+              "size": "106"
+            }
+          ] ,
+          "sourcingComposition": {
+            "postConsumerRecycledContent": "0" ,
+            "preConsumerRecycledContent": "15" ,
+            "renewableContent": "0" ,
+            "virgin": "85"
+          }
+        } ,
+        "ui_schema": {
+          "chemicalComposition": {
+            "placeholder": "Select or search ingredient" ,
+            "title": {
+              "icon": "ClipboardListIcon" ,
+              "text": "Chemical composition" ,
+              "tooltip": {
+                "text": "A CAS number is a numerical designation for chemicals that is maintained by the Chemical Abstracts Service (CAS) of the American Chemical Society." ,
+                "type": "tooltip"
+              } ,
+              "type": "title"
+            } ,
+            "type": "chemicalCompositionSelectV2Plus"
+          } ,
+          "containsAdhesives": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Adhesives?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsAdhesivesType": {
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "If selected \"yes\" on the question above, please indicate which one" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "text"
+          } ,
+          "containsCatalysts": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Catalysts?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsCatalystsType": {
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "If selected \"yes\" on the question above, please indicate which one" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "text"
+          } ,
+          "containsCores": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Cores?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsLaminates": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Laminates?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsMatrixAdditive": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Matrix additive?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsPrePregs": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it contain any Pre-pregs?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "containsSurfaceFinish": {
+            "optionList": [
+              {
+                "label": "Yes" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "No" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Does it have any Surface finish?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "epdFiles": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "EPD (Environmental Product Declaration)" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "eurecompChemicalProperties": {
+            "rows": {
+              "absoprtionRate": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "24 hour water absoprtion rates" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "number"
+                } ,
+                "label": "absoprtionRate"
+              } ,
+              "anhydrideEquivalentWeight": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Anhydride equivalent weight" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "g/equiv"
+                } ,
+                "label": "anhydrideEquivalentWeight"
+              } ,
+              "epoxyEquivalentWeight": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Epoxy equivalent weight" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "g/equiv"
+                } ,
+                "label": "epoxyEquivalentWeight"
+              } ,
+              "epoxyGroupContent": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Epoxy group content" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "mmol/kg"
+                } ,
+                "label": "epoxyGroupContent"
+              } ,
+              "epoxyMolarMass": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Epoxy Molar Mass" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "g/eq"
+                } ,
+                "label": "epoxyMolarMass"
+              } ,
+              "flameRetardancy": {
+                "component": {
+                  "optionList": [
+                    {
+                      "label": "Yes" ,
+                      "value": "yes"
+                    } ,
+                    {
+                      "label": "No" ,
+                      "value": "no"
+                    }
+                  ] ,
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Does it have flame retardancy?" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "select"
+                } ,
+                "label": "flameRetardancy"
+              } ,
+              "flameRetardancyYes": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "If selected \"yes\" on the question above, please indicate which one" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "flameRetardancyYes"
+              } ,
+              "flameRetartdantName": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "If answered yes in the question above, indicate the name(s) of the substance(s)" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "flameRetartdantName"
+              } ,
+              "hydrolysableChlorine": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Hydrolysable chlorine" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "mg/kg"
+                } ,
+                "label": "hydrolysableChlorine"
+              } ,
+              "meltingTValues": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "If no input on previous question on Tg, please indicate melting temperature values (in °C)" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "meltingTValues"
+              } ,
+              "tg": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Tg" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "°C"
+                } ,
+                "label": "tg"
+              } ,
+              "totalChlorine": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Total Chlorine" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": "mg/kg"
+                } ,
+                "label": "totalChlorine"
+              } ,
+              "uvResistance": {
+                "component": {
+                  "optionList": [
+                    {
+                      "label": "Yes" ,
+                      "value": "yes"
+                    } ,
+                    {
+                      "label": "No" ,
+                      "value": "no"
+                    }
+                  ] ,
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Does it have High UV resistance?" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "select"
+                } ,
+                "label": "uvResistance"
+              }
+            } ,
+            "rowsGroup": [] ,
+            "rowsOrder": null ,
+            "title": {
+              "icon": "FingerPrintIcon" ,
+              "text": "Chemical Properties" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "keyValue"
+          } ,
+          "materialDataSheets": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "Material Data Sheet" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "metalsContent": {
+            "rows": {
+              "containsMetals": {
+                "component": {
+                  "optionList": [
+                    {
+                      "label": "Yes" ,
+                      "value": "yes"
+                    } ,
+                    {
+                      "label": "No" ,
+                      "value": "no"
+                    }
+                  ] ,
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Does it contain any metals?" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "select"
+                } ,
+                "label": "containsMetals"
+              } ,
+              "metalQuantity": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Please indicate the quantity of the metal" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "numberWithUnit" ,
+                  "unit": ""
+                } ,
+                "label": "metalQuantity"
+              } ,
+              "metalType": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Please indicate the metal type and name" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "metalType"
+              } ,
+              "quantityUnit": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Indicate the unit of the quantity expressed above" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "quantityUnit"
+              }
+            } ,
+            "rowsGroup": [] ,
+            "rowsOrder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Metals content" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "keyValue"
+          } ,
+          "rareEarthsKEEP": {
+            "rows": {
+              "quantityRareEarths": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "Indicate the quantity in g (if multiple, separate them with a comma)" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "quantityRareEarths"
+              } ,
+              "rareEarthType": {
+                "component": {
+                  "optionList": [
+                    {
+                      "label": "Lanthanum" ,
+                      "value": "lanthanum"
+                    } ,
+                    {
+                      "label": "Cerium" ,
+                      "value": "cerium"
+                    } ,
+                    {
+                      "label": "Praseodymium" ,
+                      "value": "praseodymium"
+                    } ,
+                    {
+                      "label": "Neodymium" ,
+                      "value": "neodymium"
+                    } ,
+                    {
+                      "label": "Promethium" ,
+                      "value": "promethium"
+                    } ,
+                    {
+                      "label": "Samarium" ,
+                      "value": "samarium"
+                    } ,
+                    {
+                      "label": "Europium" ,
+                      "value": "europium"
+                    } ,
+                    {
+                      "label": "Gadolinium" ,
+                      "value": "gadolinium"
+                    } ,
+                    {
+                      "label": "Terbium" ,
+                      "value": "terbium"
+                    } ,
+                    {
+                      "label": "Dysprosium" ,
+                      "value": "dysprosium"
+                    } ,
+                    {
+                      "label": "Holmium" ,
+                      "value": "holmium"
+                    } ,
+                    {
+                      "label": "Erbium" ,
+                      "value": "erbium"
+                    } ,
+                    {
+                      "label": "Thulium" ,
+                      "value": "thulium"
+                    } ,
+                    {
+                      "label": "Ytterbium" ,
+                      "value": "ytterbium"
+                    } ,
+                    {
+                      "label": "Lutetium" ,
+                      "value": "lutetium"
+                    } ,
+                    {
+                      "label": "Scandium" ,
+                      "value": "scandium"
+                    } ,
+                    {
+                      "label": "Yttrium" ,
+                      "value": "yttrium"
+                    } ,
+                    {
+                      "label": "Tantallum" ,
+                      "value": "tantallum"
+                    } ,
+                    {
+                      "label": "Other" ,
+                      "value": "other"
+                    } ,
+                    {
+                      "label": "Multiple" ,
+                      "value": "multiple"
+                    } ,
+                    {
+                      "label": "None" ,
+                      "value": "none"
+                    }
+                  ] ,
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "What type of Rare Earth does it contain?" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "select"
+                } ,
+                "label": "rareEarthType"
+              } ,
+              "rareEarthTypeDetail": {
+                "component": {
+                  "placeholder": null ,
+                  "title": {
+                    "icon": null ,
+                    "text": "If selected \"Other\" or \"Multiple\" in the question above, please indicate which one (if multiple, separate them with a comma)" ,
+                    "tooltip": null ,
+                    "type": "title"
+                  } ,
+                  "type": "text"
+                } ,
+                "label": "rareEarthTypeDetail"
+              }
+            } ,
+            "rowsGroup": [] ,
+            "rowsOrder": null ,
+            "title": {
+              "icon": null ,
+              "text": "Rare Earth" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "keyValue"
+          } ,
+          "reachCompliance": {
+            "optionList": [
+              {
+                "label": "YES" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "NO" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": "Select Yes or No" ,
+            "title": {
+              "icon": null ,
+              "text": "Does it comply with REACH?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "reachFrameworkFile": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": null ,
+              "text": "REACH " ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "rohsCompliance": {
+            "optionList": [
+              {
+                "label": "YES" ,
+                "value": "yes"
+              } ,
+              {
+                "label": "NO" ,
+                "value": "no"
+              }
+            ] ,
+            "placeholder": "Select Yes or No" ,
+            "title": {
+              "icon": null ,
+              "text": "Does it comply with RoHS?" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "select"
+          } ,
+          "rohsFrameworkFile": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "ROHS" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "safetyDataSheets": {
+            "acceptedFileTypes": [] ,
+            "fileLimit": 20 ,
+            "title": {
+              "icon": "ClipboardCheckIcon" ,
+              "text": "MSDS (Safety Data Sheet)" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "fileUpload"
+          } ,
+          "sourcingComposition": {
+            "columnLabel": null ,
+            "rowOrder": [
+              "virgin" ,
+              "preConsumerRecycledContent" ,
+              "postConsumerRecycledContent" ,
+              "circular" ,
+              "renewableContent" ,
+              "bio-circular" ,
+              "biobasedC14" ,
+              "biobasedOther" ,
+              "bio" ,
+              "seggregatedSustainableShare" ,
+              "attributedSustainableShareViaMassBalanceBioBased" ,
+              "attributedSustainableShareViaMassBalanceRecycled"
+            ] ,
+            "rows": {
+              "attributedSustainableShareViaMassBalanceBioBased": {
+                "label": "Attributed sustainable share via mass-balance - Bio based" ,
+                "unit": "%"
+              } ,
+              "attributedSustainableShareViaMassBalanceRecycled": {
+                "label": "Attributed sustainable share via mass-balance - recycled or bio-circular" ,
+                "unit": "%"
+              } ,
+              "bio": {
+                "label": "Bio" ,
+                "unit": "%"
+              } ,
+              "bio-circular": {
+                "label": "Bio-Circular" ,
+                "unit": "%"
+              } ,
+              "biobasedC14": {
+                "label": "Biobased C14" ,
+                "unit": "%"
+              } ,
+              "biobasedOther": {
+                "label": "Biobased Other" ,
+                "unit": "%"
+              } ,
+              "circular": {
+                "label": "Circular" ,
+                "unit": "%"
+              } ,
+              "postConsumerRecycledContent": {
+                "label": "Post-consumer recycled" ,
+                "unit": "%"
+              } ,
+              "preConsumerRecycledContent": {
+                "label": "Pre-consumer recycled" ,
+                "unit": "%"
+              } ,
+              "renewableContent": {
+                "label": "Renewable" ,
+                "unit": "%"
+              } ,
+              "seggregatedSustainableShare": {
+                "label": "Seggregated sustainable share" ,
+                "unit": "%"
+              } ,
+              "virgin": {
+                "label": "Virgin" ,
+                "unit": "%"
+              }
+            } ,
+            "title": {
+              "icon": "PuzzleIcon" ,
+              "text": "Sourcing composition" ,
+              "tooltip": null ,
+              "type": "title"
+            } ,
+            "type": "mapKeyValue"
+          }
+        }
+      } ,
+      "batch": {
+        "data": null ,
+        "ui_schema": null
+      }
+    } ,
+    "chemicals": {
+      "62a1e4e31ef71eedd76622fe": {
+        "_id": "62a1e4e31ef71eedd76622fe" ,
+        "name": "Cellulose" ,
+        "casNumber": "009004-34-6"
+      } ,
+      "6311215e41cb2631acb9f558": {
+        "_id": "6311215e41cb2631acb9f558" ,
+        "name": "Nickel" ,
+        "casNumber": "7440-02-0"
+      } ,
+      "63244d229bc3606a1a1dd629": {
+        "_id": "63244d229bc3606a1a1dd629" ,
+        "name": "Copper" ,
+        "casNumber": "7440-50-8"
+      } ,
+      "63244d229bc3606a1a1dd62b": {
+        "_id": "63244d229bc3606a1a1dd62b" ,
+        "name": "Chromium" ,
+        "casNumber": "7440-47-3"
+      } ,
+      "63244d229bc3606a1a1dd62f": {
+        "_id": "63244d229bc3606a1a1dd62f" ,
+        "name": "Manganese" ,
+        "casNumber": "7439-96-5"
+      } ,
+      "63244d229bc3606a1a1dd630": {
+        "_id": "63244d229bc3606a1a1dd630" ,
+        "name": "Zinc" ,
+        "casNumber": "7440-66-6"
+      } ,
+      "64068d3c6eb84e9a53990525": {
+        "_id": "64068d3c6eb84e9a53990525" ,
+        "name": "Iron" ,
+        "casNumber": "7439-89-6"
+      } ,
+      "6621022e65b2301f6344b98a": {
+        "_id": "6621022e65b2301f6344b98a" ,
+        "name": "Titanium" ,
+        "casNumber": "7440-32-6"
+      } ,
+      "6622a2b1710d22e9186bba94": {
+        "_id": "6622a2b1710d22e9186bba94" ,
+        "name": "Oxygen" ,
+        "casNumber": "7782-44-7"
+      } ,
+      "6622a305e6f6bb531ae8471e": {
+        "_id": "6622a305e6f6bb531ae8471e" ,
+        "name": "Nitrogen" ,
+        "casNumber": "7727-37-9"
+      } ,
+      "66581592443c2f5fd20e0d64": {
+        "_id": "66581592443c2f5fd20e0d64" ,
+        "name": "Neodymium" ,
+        "casNumber": "CAS7440-00-8"
+      } ,
+      "6658167ee624ec5e3c8f462f": {
+        "_id": "6658167ee624ec5e3c8f462f" ,
+        "name": "Dysprosium" ,
+        "casNumber": "7429-91-6"
+      } ,
+      "66581708d7c7d5dd2cdaec4f": {
+        "_id": "66581708d7c7d5dd2cdaec4f" ,
+        "name": "Boron" ,
+        "casNumber": "7440-42-8"
+      } ,
+      "6659a328c0941716f96d3b74": {
+        "_id": "6659a328c0941716f96d3b74" ,
+        "name": "Aluminum (elemental)" ,
+        "casNumber": "7429-90-5"
+      } ,
+      "6659a3ee0fdbfc446d1115a6": {
+        "_id": "6659a3ee0fdbfc446d1115a6" ,
+        "name": "Magnesium" ,
+        "casNumber": "7439-95-4"
+      } ,
+      "666995e73203edc9ad6798b9": {
+        "_id": "666995e73203edc9ad6798b9" ,
+        "name": "Bromide" ,
+        "casNumber": "024959-67-9"
+      } ,
+      "66699632fd47f92531e33ce5": {
+        "_id": "66699632fd47f92531e33ce5" ,
+        "name": "Niobium (Nb)" ,
+        "casNumber": "007440-03-1"
+      } ,
+      "6669965d8de12bd26665c692": {
+        "_id": "6669965d8de12bd26665c692" ,
+        "name": "Silicon (Si)" ,
+        "casNumber": "007440-21-3"
+      }
+    } ,
+    "api_version": 1 ,
+    "company": {
+      "company": {
+        "legalName": "Aluminum manufacturer" ,
+        "cocNumber": "1234" ,
+        "address": "Address" ,
+        "cityName": "City" ,
+        "zipCode": "123" ,
+        "country": "China" ,
+        "ID": "6557848ab69e8bc4a4a3e56b"
+      } ,
+      "sites": [
+        {
+          "_id": "6557848ab69e8bc4a4a3e56c" ,
+          "address": "" ,
+          "zipCode": "" ,
+          "country": "CN" ,
+          "siteName": "Default Site" ,
+          "city": "" ,
+          "units": [
+            {
+              "_id": "6557848ab69e8bc4a4a3e56d" ,
+              "unitName": "Default Unit" ,
+              "cocNumber": null ,
+              "manufacturerName": "Aluminum manufacturer"
+            }
+          ]
+        }
+      ]
+    } ,
+    "extras": {
+      "yt_link": "" ,
+      "sust_disclaimer": "" ,
+      "product_images": null
+    }
+  } ,
+  "settings": {
+    "company_id": "6557848ab69e8bc4a4a3e56b" ,
+    "pdpp": {
+      "pdppAnonymous": "no" ,
+      "pdppCoCItemType": "product" ,
+      "pdppCoCName": "coc" ,
+      "pdppDPPType": "product" ,
+      "pdppEnableCoC": "yes" ,
+      "pdppEnableDiagrams": "yes" ,
+      "pdppExtraID": "" ,
+      "pdppGenericName": ""
+    } ,
+    "page": {
+      "customDomain": "" ,
+      "diagramColor": "#000000" ,
+      "disableCirLogo": "no" ,
+      "enableCircCuV2": "no" ,
+      "enableCompanyLogo": "no" ,
+      "enableFavicon": "no" ,
+      "gdpdSiteId": "" ,
+      "gdprPolicyId": "" ,
+      "primaryColor": "#000000" ,
+      "secondaryColor": "#6c757d" ,
+      "trackerId": "" ,
+      "trackerType": "none"
+    }
+  }
+}

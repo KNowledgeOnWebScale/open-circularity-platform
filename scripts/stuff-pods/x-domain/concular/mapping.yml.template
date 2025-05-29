@@ -1,0 +1,234 @@
+prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
+  solid: http://www.w3.org/ns/solid/terms#
+  idsa: https://w3id.org/idsa/core/
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  textile: http://w3id.org/CEON/demo/textile/
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  ceon-actorODP: http://w3id.org/CEON/ontology/actorODP/
+  ceon-resourceODP: http://w3id.org/CEON/ontology/resourceODP/
+  ceon-product: http://w3id.org/CEON/ontology/product/
+  ceon-provenance: http://w3id.org/CEON/ontology/provenance/
+  ceon-material: http://w3id.org/CEON/ontology/material/
+  ceon-processODP: http://w3id.org/CEON/ontology/processODP/
+  ceon-process: http://w3id.org/CEON/ontology/process/
+  qudt-unit: http://qudt.org/vocab/unit/
+  ceon-quantity: http://w3id.org/CEON/ontology/quantity/
+  ceon-actor: http://w3id.org/CEON/ontology/actor/
+  qudt-quantitykind: http://qudt.org/vocab/quantitykind/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  vann: http://purl.org/vocab/vann/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  ex: http://example.com/
+  construction: http://w3id.org/CEON/demo/construction/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  bot: https://w3id.org/bot#
+  missingvoc: https://missingvoc.com#
+
+base: http://knows.com/base/
+sources:
+  concular:
+    access: ./concular.json
+    referenceFormulation: jsonpath
+    iterator: '$[*]'
+  acl:
+    access: ./acl.csv
+    referenceFormulation: csv
+targets:
+  ceon_data:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/concular/ceon/data
+    serialization: jsonld
+    authentication: auth
+  acl:
+    source: acl
+    type: linkedhttprequest
+    access: ${OD_CSS12_BASE_URL}/concular/ceon/$(access_to)
+    rel: acl
+    authentication: auth
+  ceon_index:
+    type: directhttprequest
+    access: ${OD_CSS12_BASE_URL}/concular/ceon/index
+    serialization: jsonld
+    authentication: auth
+authentications:
+  auth:
+    type: cssclientcredentials
+    email: concular@example.com
+    password: abc123
+    oidcIssuer: ${OD_CSS12_BASE_URL}/
+    webId: ${OD_CSS12_BASE_URL}/concular/profile/card#me
+    index: ${OD_CSS12_BASE_URL}/concular/ceon/index
+mappings:
+  batch:
+    sources: concular
+    s:
+      value: ex:building_1_$(id)
+      targets: ceon_data
+    po:
+      - [ a, ceon-resourceODP:BatchOfObjects~iri ]
+    #  - [ rdfs:label, 'installed doors $(id)' ]
+      - [ ceon-product:batchOfProduct, ex:building_1_$(id)-product_model~iri ]
+      - [ ceon-resourceODP:batchSize, $(total_amount), xsd:int ]
+      - p: construction:hasInstallationLocation
+        o:
+          - mapping: installation_location
+      - [ construction:hasDeconstructabilityDescription, $(deconstructability) ]
+      - [ construction:hasPreuseDescription, $(preuse) ]
+      - [ construction:hasReusabilityDescription, $(reusability) ]
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[0].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[1].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[2].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[3].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[4].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[5].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[6].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[7].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[8].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[9].fileName)'
+          type: iri
+      - p: construction:hasImage
+        o:
+          value: 'https://d2wx3ap9itjm6k.cloudfront.net/$(images[10].fileName)'
+          type: iri
+  product:
+    sources: concular
+    s:
+      value: ex:building_1_$(id)-product_model
+      targets: ceon_data
+    po:
+      - [ a, ceon-product:Product~iri ]
+      - [ rdfs:label, 'Concular batch $(id) model' ]
+      - [ ceon-quantity:hasThickness, ex:building_1_$(id)-product_model-thickness~iri ]
+      - [ ceon-quantity:hasWidth, ex:building_1_$(id)-product_model-width~iri ]
+      - [ ceon-quantity:hasHeight, ex:building_1_$(id)-product_model-height~iri ]
+  product_width:
+      sources: concular
+      s:
+        value: ex:building_1_$(id)-product_model-width
+        targets: ceon_data
+      po:
+        - [ a, qudt:QuantityValue~iri ]
+        - [ qudt:numericValue, $(x), xsd:double ]
+        - [ qudt:hasUnit, qudt-unit:CentiM~iri ]
+  product_height:
+    sources: concular
+    s:
+      value: ex:building_1_$(id)-product_model-height
+      targets: ceon_data
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(y), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:CentiM~iri ]
+  product_thickness:
+    sources: concular
+    s:
+      value: ex:building_1_$(id)-product_model-thickness
+      targets: ceon_data
+    po:
+      - [ a, qudt:QuantityValue~iri ]
+      - [ qudt:numericValue, $(z), xsd:double ]
+      - [ qudt:hasUnit, qudt-unit:CentiM~iri ]
+  batch_owning_resource:
+    sources: concular
+    s:
+      value: ex:$(id)-buildingowner123-owning-resource
+      targets: ceon_data
+    po:
+      - [ a, ceon-actor:OwningResource~iri ]
+      - [ ceon-actorODP:participantRole, ceon-actor:owner~iri ]
+      - [ ceon-actorODP:participatingActor, ex:buildingowner123~iri ]
+      - [ ceon-actorODP:participatingResource, ex:building_1_$(id)~iri ]
+  installation_location:
+    sources: concular
+    s:
+      value: ex:building_1_storey_$(building_level)_room_$(room_name)
+      targets: ceon_data
+    po:
+    - [ construction:locatedInBuilding, ex:building_1~iri ]
+    - [ construction:locatedInStorey, ex:building_1_storey_$(building_level)~iri ]
+  acl:
+    sources: acl
+    s:
+      value: ex:acl_$(id)
+      targets: acl
+    po:
+      - [ a, acl:Authorization~iri ]
+      - [ acl:accessTo, ${OD_CSS12_BASE_URL}/concular/ceon/$(access_to)~iri ]
+      - p: acl:mode
+        o: acl:Read~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(read_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Write~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(write_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:mode
+        o: acl:Control~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, $(control_access) ]
+            - [ grel:valueParameter2, Yes ]
+      - p: acl:agent
+        o:
+          value: $(agent_webid)
+          type: iri
+      - p: acl:agentClass
+        o:
+          value: $(agent_class)
+          type: iri
+  index:
+    sources: acl
+    s:
+      value: ex:index
+      targets: ceon_index
+    po:
+      - p: rdfs:seeAlso
+        o:
+          value: ${OD_CSS12_BASE_URL}/concular/ceon/$(access_to)
+          type: iri
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [ grel:valueParameter, $(access_to) ]
+            - [ grel:valueParameter2, index ]

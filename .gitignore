@@ -11,7 +11,7 @@
 
 # files created from a template
 /actors/*/nginx/conf.d/default.conf
-/actors/viewer/setup/src/config.json
+/actors/viewer/setup/config.json
 /docker-compose*.yml
 /scripts/comunica/settings.json
 /scripts/comunica/queries/*.sparql
@@ -26,8 +26,15 @@
 /scripts/stuff-pods/eval-2024-06-textile/**/*_mapping.yml
 /scripts/stuff-pods/eval-2024-06-textile/**/*_acl.csv
 /scripts/stuff-pods/eval-2024-06-textile/**/*_index.csv
+/scripts/stuff-pods/x-domain/**/mapping.yml
+/scripts/stuff-pods/x-domain/**/acl.csv
+/scripts/stuff-pods/x-domain/**/acl-old.csv
+/scripts/stuff-pods/x-domain/**/index.csv
+/scripts/stuff-pods/x-domain/**/index_with_ontology.csv
 /specification-tests/*.env
 /specification-tests/access-control-scenarios/**/*.feature
+/cypress.config.mjs
+/cypress/support/utils.js
 
 # temporary files and directories
 /local-run
@@ -35,3 +42,5 @@
 /scripts/stuff-pods/demo.tar.gz
 /scripts/stuff-pods/**/mapping.rml.ttl
 /scripts/stuff-pods/**/status.json
+/cypress/downloads
+/cypress/screenshots

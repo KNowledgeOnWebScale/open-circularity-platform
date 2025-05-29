@@ -1,0 +1,11 @@
+import { defineConfig } from "cypress";
+
+export default defineConfig({
+  e2e: {
+    experimentalStudio: true,
+    experimentalRunAllSpecs: true,
+    defaultCommandTimeout: 60000,
+    baseUrl: '${OD_VIEWER_BASE_URL}/', /* include trailing slash */
+    video: false
+  },
+});

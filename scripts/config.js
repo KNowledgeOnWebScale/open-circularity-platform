@@ -33,5 +33,6 @@ module.exports.csss = [
   'css8',
   'css9',
   'css10',
-  'css11'
+  'css11',
+  'css12'
 ];
