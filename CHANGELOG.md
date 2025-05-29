@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Changed
 
-- Upgraded the viewer to [its v2.0.0](https://github.com/SolidLabResearch/miravi-a-linked-data-viewer/releases/tag/v2.0.0) (mind the modified repository name).
+- Upgraded the viewer to [its v2.0.0](https://github.com/SolidLabResearch/miravi-a-linked-data-viewer/releases/tag/v2.0.0) (mind the modified repository name) (internal [issue#65](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/65)).
 
 ## [1.0.0] - 2025-02-27
 
