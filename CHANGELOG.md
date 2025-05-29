@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Synchronized evaluation use cases to to state on 2025-02-25 (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
+- Synchronized evaluation use cases to state on 2025-02-25 (internal [issue#62](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/62)).
 - Solid Community Servers configured to use local copies of verifiable credentials related context files (internal [issue#63](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/63)).
 
 ## [0.3.2] - 2025-01-06
