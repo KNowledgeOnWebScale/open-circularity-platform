@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-09-25
+
+### Changed
+
+- Upgraded Miravi (the viewer) to [its v2.1.0](https://github.com/SolidLabResearch/miravi-a-linked-data-viewer/releases/tag/v2.1.0) (mind the modified repository name) (internal [issue#65](https://gitlab.ilabt.imec.be/KNoWS/projects/onto-deside/architecture/-/issues/67)).
+
 ## [1.1.0] - 2025-05-29
 
 ### Added
@@ -172,4 +178,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.3.2]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v0.3.2
 [1.0.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.0
 [1.1.0]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.0
-[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v1.1.0...HEAD
+[1.1.1]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/releases/tag/v1.0.1
+[Unreleased]: https://github.com/KNowledgeOnWebScale/open-circularity-platform/compare/v1.1.1...HEAD
