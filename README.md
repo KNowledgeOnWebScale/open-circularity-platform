@@ -58,7 +58,7 @@ The final setup is available online and needs no further action prior to usage.
 
 ### Using the included Generic Data Viewer
 
-To use this Generic Data Viewer, navigate to <https://onto-deside.ilabt.imec.be/viewer/>.
+To use this Generic Data Viewer (a.k.a. Miravi), navigate to <https://onto-deside.ilabt.imec.be/viewer/>.
 
 The list of predefined queries is shown in expandible groups at the left side.
 

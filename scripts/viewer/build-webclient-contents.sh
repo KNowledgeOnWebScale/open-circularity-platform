@@ -17,7 +17,7 @@ pushd ${OUR_ROOT_DIR}/.. > /dev/null
 
 echo Cloning, selecting tag, installing...
 rm -rf ${VIEWER_CLONE}
-git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b v2.0.0 ${VIEWER_CLONE}
+git clone https://github.com/SolidLabResearch/${VIEWER_REPO}.git -b v2.1.0 ${VIEWER_CLONE}
 cd ${VIEWER_CLONE}/main
 npm install
 
